@@ -25,20 +25,20 @@ defaults:
 
 
 
-title: "λ lambda"
-email: sincerebravefight@gmail.com
+title: "Haonan Dong's Website"
+email: august_dong@163.com  haonandong.cn@gmail.com
 description: ""
 github:
-  username: bit-ranger
+  username: Haonan DONG
 swiftype:
-  searchId: iXZyPokVfxFaBTvi64Y6
+  searchId: Wuhan University
 gitment:
     repo: blog
     client_id: a6fb73b3e790e234bab8
     client_secret: cc10aaff53a03d05ab2ee002dbf401dd7627c7a3
 
 url: "https://haonan-dong.github.io"
-imgrepo: "https://bit-ranger.github.io/blog/static/img"
+imgrepo: "https://haonan-dong.github.io/static/img"
 
 
 #url: "http://127.0.0.1:4000"
