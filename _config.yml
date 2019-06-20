@@ -1,0 +1,16 @@
+# Site settings
+title: Haonan Dong's Website
+description: >
+    This is an example of the Butane Jekyll Theme created by Alex Carpenter
+author: Haonan Dong 
+email: august_dong@163.com// haonandong.cn@gmail.com
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "http://alexcarpenter.github.io" # the base hostname & protocol for your site
+github_username:  haonan-dong
+
+# Build settings
+include: [_pages]
+markdown: kramdown
+permalink: /:year/:month/:title
+sass:
+    style: compressed
