@@ -1,0 +1,1332 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>SQL 拼接</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="keywords" content="SQL 拼接, database, sql,database,Java, λ lambda" />
+    <meta name="description" content="SQL 拼接, database, sql,database,Java, 在java中进行SQL拼接是一件无比痛苦的工作，这是由于需要通过判断参数动态生成SQL" />
+    <meta name="theme-color" content="#2CA6CB"/>
+    <link rel="shortcut icon" type="image/x-icon" media="screen" href="https://haonan-dong.github.io/favicon.ico" />
+    <link rel="canonical" href="https://haonan-dong.github.io/database/sqlappend/" />
+    <link rel="alternate" type="application/rss+xml" title="λ lambda" href="https://haonan-dong.github.io/feed.xml"  />
+
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/octicons/3.5.0/octicons.min.css" >
+    <link rel="stylesheet" type="text/css" href="https://haonan-dong.github.io/static/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="https://haonan-dong.github.io/static/css/highlight.css" />
+    <link rel="stylesheet" type="text/css" href="https://haonan-dong.github.io/static/css/gitment.css" />
+    <link rel="stylesheet" type="text/css" href="https://haonan-dong.github.io/static/css/post.css" />
+    
+
+</head>
+
+
+<body>
+
+    <header>
+        <nav class="navbar navbar-tiffany rectangle" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="https://haonan-dong.github.io/">λ lambda</a>
+                    <p class="navbar-text"></p>
+                </div>
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        
+                        <li>
+                        <a href="https://haonan-dong.github.io/" class="word-keep"><span class="octicon octicon-book"></span></span>&nbsp;&nbsp;Blog</a>
+                        </li>
+                        
+                        
+                        <li>
+                            <a href="https://haonan-dong.github.io/archive/" class="word-keep"><span class="octicon octicon-repo"></span>&nbsp;&nbsp;Archive</a>
+                        </li>
+                        
+                        
+                        
+                        <li>
+                            <a href="https://haonan-dong.github.io/category/" class="word-keep"><span class="octicon octicon-list-unordered"></span>&nbsp;&nbsp;Category</a>
+                        </li>
+                        
+                        
+                        
+                        <li>
+                            <a href="https://haonan-dong.github.io/tags/" class="word-keep"><span class="octicon octicon-tag"></span>&nbsp;&nbsp;Tag</a>
+                        </li>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <li><a href="#stq=" class="search-button"><span class="octicon octicon-search"></span></a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+
+
+<div class="main">
+    <div class="container">
+        <div class="row">
+    <div class="content col-lg-9">
+        <div class="sheet post">
+          <header>
+            <h2>SQL 拼接</h2>
+            <p class="post-meta">
+                <span class="octicon octicon-clock"></span> Feb 13, 2015
+            </p>
+            <p class="post-tag">
+                <span><a href="https://haonan-dong.github.io/category/#database"><span class="octicon octicon-list-unordered"></span>&nbsp;database</a></span>
+                <span>
+                    <a class="word-keep" href="https://haonan-dong.github.io/tags/#sql"><span class="octicon octicon-tag"></span>&nbsp;sql</a>
+                    
+                    <a class="word-keep" href="https://haonan-dong.github.io/tags/#database"><span class="octicon octicon-tag"></span>&nbsp;database</a>
+                    
+                    <a class="word-keep" href="https://haonan-dong.github.io/tags/#Java"><span class="octicon octicon-tag"></span>&nbsp;Java</a>
+                    
+                </span>
+            </p>
+          </header>
+          <hr class="boundary">
+          <article>
+            <p>在java中进行SQL拼接是一件无比痛苦的工作，这是由于需要通过判断参数动态生成SQL</p>
+
+<p>而且拼接时产生满屏幕的加号或者append，使SQL几乎失去了可读性，那么丢失<code>WHERE</code>，<code>AND</code>，逗号等语法错误将随之而来</p>
+
+<p>最近研究mybatis时发现了一个非常好用的工具类 SQL Builder <sup id="fnref:sqlBuilder"><a href="#fn:sqlBuilder" class="footnote">1</a></sup></p>
+
+<h2 id="section">示例</h2>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"> <a href="#n1" name="n1">1</a></span>    <span style="color:#007">@Test</span>
+<span class="line-numbers"> <a href="#n2" name="n2">2</a></span>    <span style="color:#088;font-weight:bold">public</span> <span style="color:#339;font-weight:bold">void</span> test(){
+<span class="line-numbers"> <a href="#n3" name="n3">3</a></span>        <span style="color:#0a8;font-weight:bold">String</span> sql = <span style="color:#080;font-weight:bold">new</span> SQL(){ {
+<span class="line-numbers"> <a href="#n4" name="n4">4</a></span>            SELECT(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">name</span><span style="color:#710">&quot;</span></span>);
+<span class="line-numbers"> <a href="#n5" name="n5">5</a></span>            SELECT(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">password</span><span style="color:#710">&quot;</span></span>);
+<span class="line-numbers"> <a href="#n6" name="n6">6</a></span>            SELECT(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">sex</span><span style="color:#710">&quot;</span></span>);
+<span class="line-numbers"> <a href="#n7" name="n7">7</a></span>            FROM(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">student s</span><span style="color:#710">&quot;</span></span>);
+<span class="line-numbers"> <a href="#n8" name="n8">8</a></span>            INNER_JOIN(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">info i on s.id = i.id</span><span style="color:#710">&quot;</span></span>);
+<span class="line-numbers"> <a href="#n9" name="n9">9</a></span>            WHERE(<span style="color:#0a8;font-weight:bold">String</span>.format(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">name = '%s'</span><span style="color:#710">&quot;</span></span>,<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">HanMeiMei</span><span style="color:#710">&quot;</span></span>));
+<span class="line-numbers"><strong><a href="#n10" name="n10">10</a></strong></span>        } }.toString();
+<span class="line-numbers"><a href="#n11" name="n11">11</a></span>
+<span class="line-numbers"><a href="#n12" name="n12">12</a></span>        <span style="color:#0a8;font-weight:bold">System</span>.out.println(sql);
+<span class="line-numbers"><a href="#n13" name="n13">13</a></span>    }
+</pre></div>
+</div>
+</div>
+
+<p>运行结果为：</p>
+
+<p>SELECT name, password, sex</p>
+
+<p>FROM student s</p>
+
+<p>INNER JOIN info i on s.id = i.id</p>
+
+<p>WHERE (name = ‘HanMeiMei’ AND i.sex = 1)</p>
+
+<p>SQL的拼接词都自动生成了</p>
+
+<h2 id="section-1">源码</h2>
+
+<p>事实上不必为了使用这个类而引入Mybatis，SQL Builder非常简单，简单到没有使用任何第三方类库，只需将这个类复制粘贴一下就可以直接用了。</p>
+
+<p>SQL Builder 全部代码</p>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers">  <a href="#n1" name="n1">1</a></span><span style="color:#080;font-weight:bold">import</span> <span style="color:#B44;font-weight:bold">java.io.IOException</span>;
+<span class="line-numbers">  <a href="#n2" name="n2">2</a></span><span style="color:#080;font-weight:bold">import</span> <span style="color:#B44;font-weight:bold">java.util.ArrayList</span>;
+<span class="line-numbers">  <a href="#n3" name="n3">3</a></span><span style="color:#080;font-weight:bold">import</span> <span style="color:#B44;font-weight:bold">java.util.List</span>;
+<span class="line-numbers">  <a href="#n4" name="n4">4</a></span>
+<span class="line-numbers">  <a href="#n5" name="n5">5</a></span><span style="color:#088;font-weight:bold">public</span> <span style="color:#088;font-weight:bold">abstract</span> <span style="color:#339;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">AbstractSQL</span>&lt;T&gt; {
+<span class="line-numbers">  <a href="#n6" name="n6">6</a></span>
+<span class="line-numbers">  <a href="#n7" name="n7">7</a></span>  <span style="color:#088;font-weight:bold">private</span> <span style="color:#088;font-weight:bold">static</span> <span style="color:#088;font-weight:bold">final</span> <span style="color:#0a8;font-weight:bold">String</span> AND = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">) </span><span style="color:#b0b">\n</span><span style="color:#D20">AND (</span><span style="color:#710">&quot;</span></span>;
+<span class="line-numbers">  <a href="#n8" name="n8">8</a></span>  <span style="color:#088;font-weight:bold">private</span> <span style="color:#088;font-weight:bold">static</span> <span style="color:#088;font-weight:bold">final</span> <span style="color:#0a8;font-weight:bold">String</span> OR = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">) </span><span style="color:#b0b">\n</span><span style="color:#D20">OR (</span><span style="color:#710">&quot;</span></span>;
+<span class="line-numbers">  <a href="#n9" name="n9">9</a></span>
+<span class="line-numbers"> <strong><a href="#n10" name="n10">10</a></strong></span>  <span style="color:#088;font-weight:bold">public</span> <span style="color:#088;font-weight:bold">abstract</span> T getSelf();
+<span class="line-numbers"> <a href="#n11" name="n11">11</a></span>
+<span class="line-numbers"> <a href="#n12" name="n12">12</a></span>  <span style="color:#088;font-weight:bold">public</span> T UPDATE(<span style="color:#0a8;font-weight:bold">String</span> table) {
+<span class="line-numbers"> <a href="#n13" name="n13">13</a></span>    sql().statementType = SQLStatement.StatementType.UPDATE;
+<span class="line-numbers"> <a href="#n14" name="n14">14</a></span>    sql().tables.add(table);
+<span class="line-numbers"> <a href="#n15" name="n15">15</a></span>    <span style="color:#080;font-weight:bold">return</span> getSelf();
+<span class="line-numbers"> <a href="#n16" name="n16">16</a></span>  }
+<span class="line-numbers"> <a href="#n17" name="n17">17</a></span>
+<span class="line-numbers"> <a href="#n18" name="n18">18</a></span>  <span style="color:#088;font-weight:bold">public</span> T SET(<span style="color:#0a8;font-weight:bold">String</span> sets) {
+<span class="line-numbers"> <a href="#n19" name="n19">19</a></span>    sql().sets.add(sets);
+<span class="line-numbers"> <strong><a href="#n20" name="n20">20</a></strong></span>    <span style="color:#080;font-weight:bold">return</span> getSelf();
+<span class="line-numbers"> <a href="#n21" name="n21">21</a></span>  }
+<span class="line-numbers"> <a href="#n22" name="n22">22</a></span>
+<span class="line-numbers"> <a href="#n23" name="n23">23</a></span>  <span style="color:#088;font-weight:bold">public</span> T INSERT_INTO(<span style="color:#0a8;font-weight:bold">String</span> tableName) {
+<span class="line-numbers"> <a href="#n24" name="n24">24</a></span>    sql().statementType = SQLStatement.StatementType.INSERT;
+<span class="line-numbers"> <a href="#n25" name="n25">25</a></span>    sql().tables.add(tableName);
+<span class="line-numbers"> <a href="#n26" name="n26">26</a></span>    <span style="color:#080;font-weight:bold">return</span> getSelf();
+<span class="line-numbers"> <a href="#n27" name="n27">27</a></span>  }
+<span class="line-numbers"> <a href="#n28" name="n28">28</a></span>
+<span class="line-numbers"> <a href="#n29" name="n29">29</a></span>  <span style="color:#088;font-weight:bold">public</span> T VALUES(<span style="color:#0a8;font-weight:bold">String</span> columns, <span style="color:#0a8;font-weight:bold">String</span> values) {
+<span class="line-numbers"> <strong><a href="#n30" name="n30">30</a></strong></span>    sql().columns.add(columns);
+<span class="line-numbers"> <a href="#n31" name="n31">31</a></span>    sql().values.add(values);
+<span class="line-numbers"> <a href="#n32" name="n32">32</a></span>    <span style="color:#080;font-weight:bold">return</span> getSelf();
+<span class="line-numbers"> <a href="#n33" name="n33">33</a></span>  }
+<span class="line-numbers"> <a href="#n34" name="n34">34</a></span>
+<span class="line-numbers"> <a href="#n35" name="n35">35</a></span>  <span style="color:#088;font-weight:bold">public</span> T SELECT(<span style="color:#0a8;font-weight:bold">String</span> columns) {
+<span class="line-numbers"> <a href="#n36" name="n36">36</a></span>    sql().statementType = SQLStatement.StatementType.SELECT;
+<span class="line-numbers"> <a href="#n37" name="n37">37</a></span>    sql().select.add(columns);
+<span class="line-numbers"> <a href="#n38" name="n38">38</a></span>    <span style="color:#080;font-weight:bold">return</span> getSelf();
+<span class="line-numbers"> <a href="#n39" name="n39">39</a></span>  }
+<span class="line-numbers"> <strong><a href="#n40" name="n40">40</a></strong></span>
+<span class="line-numbers"> <a href="#n41" name="n41">41</a></span>  <span style="color:#088;font-weight:bold">public</span> T SELECT_DISTINCT(<span style="color:#0a8;font-weight:bold">String</span> columns) {
+<span class="line-numbers"> <a href="#n42" name="n42">42</a></span>    sql().distinct = <span style="color:#069">true</span>;
+<span class="line-numbers"> <a href="#n43" name="n43">43</a></span>    SELECT(columns);
+<span class="line-numbers"> <a href="#n44" name="n44">44</a></span>    <span style="color:#080;font-weight:bold">return</span> getSelf();
+<span class="line-numbers"> <a href="#n45" name="n45">45</a></span>  }
+<span class="line-numbers"> <a href="#n46" name="n46">46</a></span>
+<span class="line-numbers"> <a href="#n47" name="n47">47</a></span>  <span style="color:#088;font-weight:bold">public</span> T DELETE_FROM(<span style="color:#0a8;font-weight:bold">String</span> table) {
+<span class="line-numbers"> <a href="#n48" name="n48">48</a></span>    sql().statementType = SQLStatement.StatementType.DELETE;
+<span class="line-numbers"> <a href="#n49" name="n49">49</a></span>    sql().tables.add(table);
+<span class="line-numbers"> <strong><a href="#n50" name="n50">50</a></strong></span>    <span style="color:#080;font-weight:bold">return</span> getSelf();
+<span class="line-numbers"> <a href="#n51" name="n51">51</a></span>  }
+<span class="line-numbers"> <a href="#n52" name="n52">52</a></span>
+<span class="line-numbers"> <a href="#n53" name="n53">53</a></span>  <span style="color:#088;font-weight:bold">public</span> T FROM(<span style="color:#0a8;font-weight:bold">String</span> table) {
+<span class="line-numbers"> <a href="#n54" name="n54">54</a></span>    sql().tables.add(table);
+<span class="line-numbers"> <a href="#n55" name="n55">55</a></span>    <span style="color:#080;font-weight:bold">return</span> getSelf();
+<span class="line-numbers"> <a href="#n56" name="n56">56</a></span>  }
+<span class="line-numbers"> <a href="#n57" name="n57">57</a></span>
+<span class="line-numbers"> <a href="#n58" name="n58">58</a></span>  <span style="color:#088;font-weight:bold">public</span> T JOIN(<span style="color:#0a8;font-weight:bold">String</span> join) {
+<span class="line-numbers"> <a href="#n59" name="n59">59</a></span>    sql().join.add(join);
+<span class="line-numbers"> <strong><a href="#n60" name="n60">60</a></strong></span>    <span style="color:#080;font-weight:bold">return</span> getSelf();
+<span class="line-numbers"> <a href="#n61" name="n61">61</a></span>  }
+<span class="line-numbers"> <a href="#n62" name="n62">62</a></span>
+<span class="line-numbers"> <a href="#n63" name="n63">63</a></span>  <span style="color:#088;font-weight:bold">public</span> T INNER_JOIN(<span style="color:#0a8;font-weight:bold">String</span> join) {
+<span class="line-numbers"> <a href="#n64" name="n64">64</a></span>    sql().innerJoin.add(join);
+<span class="line-numbers"> <a href="#n65" name="n65">65</a></span>    <span style="color:#080;font-weight:bold">return</span> getSelf();
+<span class="line-numbers"> <a href="#n66" name="n66">66</a></span>  }
+<span class="line-numbers"> <a href="#n67" name="n67">67</a></span>
+<span class="line-numbers"> <a href="#n68" name="n68">68</a></span>  <span style="color:#088;font-weight:bold">public</span> T LEFT_OUTER_JOIN(<span style="color:#0a8;font-weight:bold">String</span> join) {
+<span class="line-numbers"> <a href="#n69" name="n69">69</a></span>    sql().leftOuterJoin.add(join);
+<span class="line-numbers"> <strong><a href="#n70" name="n70">70</a></strong></span>    <span style="color:#080;font-weight:bold">return</span> getSelf();
+<span class="line-numbers"> <a href="#n71" name="n71">71</a></span>  }
+<span class="line-numbers"> <a href="#n72" name="n72">72</a></span>
+<span class="line-numbers"> <a href="#n73" name="n73">73</a></span>  <span style="color:#088;font-weight:bold">public</span> T RIGHT_OUTER_JOIN(<span style="color:#0a8;font-weight:bold">String</span> join) {
+<span class="line-numbers"> <a href="#n74" name="n74">74</a></span>    sql().rightOuterJoin.add(join);
+<span class="line-numbers"> <a href="#n75" name="n75">75</a></span>    <span style="color:#080;font-weight:bold">return</span> getSelf();
+<span class="line-numbers"> <a href="#n76" name="n76">76</a></span>  }
+<span class="line-numbers"> <a href="#n77" name="n77">77</a></span>
+<span class="line-numbers"> <a href="#n78" name="n78">78</a></span>  <span style="color:#088;font-weight:bold">public</span> T OUTER_JOIN(<span style="color:#0a8;font-weight:bold">String</span> join) {
+<span class="line-numbers"> <a href="#n79" name="n79">79</a></span>    sql().outerJoin.add(join);
+<span class="line-numbers"> <strong><a href="#n80" name="n80">80</a></strong></span>    <span style="color:#080;font-weight:bold">return</span> getSelf();
+<span class="line-numbers"> <a href="#n81" name="n81">81</a></span>  }
+<span class="line-numbers"> <a href="#n82" name="n82">82</a></span>
+<span class="line-numbers"> <a href="#n83" name="n83">83</a></span>  <span style="color:#088;font-weight:bold">public</span> T WHERE(<span style="color:#0a8;font-weight:bold">String</span> conditions) {
+<span class="line-numbers"> <a href="#n84" name="n84">84</a></span>    sql().where.add(conditions);
+<span class="line-numbers"> <a href="#n85" name="n85">85</a></span>    sql().lastList = sql().where;
+<span class="line-numbers"> <a href="#n86" name="n86">86</a></span>    <span style="color:#080;font-weight:bold">return</span> getSelf();
+<span class="line-numbers"> <a href="#n87" name="n87">87</a></span>  }
+<span class="line-numbers"> <a href="#n88" name="n88">88</a></span>
+<span class="line-numbers"> <a href="#n89" name="n89">89</a></span>  <span style="color:#088;font-weight:bold">public</span> T OR() {
+<span class="line-numbers"> <strong><a href="#n90" name="n90">90</a></strong></span>    sql().lastList.add(OR);
+<span class="line-numbers"> <a href="#n91" name="n91">91</a></span>    <span style="color:#080;font-weight:bold">return</span> getSelf();
+<span class="line-numbers"> <a href="#n92" name="n92">92</a></span>  }
+<span class="line-numbers"> <a href="#n93" name="n93">93</a></span>
+<span class="line-numbers"> <a href="#n94" name="n94">94</a></span>  <span style="color:#088;font-weight:bold">public</span> T AND() {
+<span class="line-numbers"> <a href="#n95" name="n95">95</a></span>    sql().lastList.add(AND);
+<span class="line-numbers"> <a href="#n96" name="n96">96</a></span>    <span style="color:#080;font-weight:bold">return</span> getSelf();
+<span class="line-numbers"> <a href="#n97" name="n97">97</a></span>  }
+<span class="line-numbers"> <a href="#n98" name="n98">98</a></span>
+<span class="line-numbers"> <a href="#n99" name="n99">99</a></span>  <span style="color:#088;font-weight:bold">public</span> T GROUP_BY(<span style="color:#0a8;font-weight:bold">String</span> columns) {
+<span class="line-numbers"><strong><a href="#n100" name="n100">100</a></strong></span>    sql().groupBy.add(columns);
+<span class="line-numbers"><a href="#n101" name="n101">101</a></span>    <span style="color:#080;font-weight:bold">return</span> getSelf();
+<span class="line-numbers"><a href="#n102" name="n102">102</a></span>  }
+<span class="line-numbers"><a href="#n103" name="n103">103</a></span>
+<span class="line-numbers"><a href="#n104" name="n104">104</a></span>  <span style="color:#088;font-weight:bold">public</span> T HAVING(<span style="color:#0a8;font-weight:bold">String</span> conditions) {
+<span class="line-numbers"><a href="#n105" name="n105">105</a></span>    sql().having.add(conditions);
+<span class="line-numbers"><a href="#n106" name="n106">106</a></span>    sql().lastList = sql().having;
+<span class="line-numbers"><a href="#n107" name="n107">107</a></span>    <span style="color:#080;font-weight:bold">return</span> getSelf();
+<span class="line-numbers"><a href="#n108" name="n108">108</a></span>  }
+<span class="line-numbers"><a href="#n109" name="n109">109</a></span>
+<span class="line-numbers"><strong><a href="#n110" name="n110">110</a></strong></span>  <span style="color:#088;font-weight:bold">public</span> T ORDER_BY(<span style="color:#0a8;font-weight:bold">String</span> columns) {
+<span class="line-numbers"><a href="#n111" name="n111">111</a></span>    sql().orderBy.add(columns);
+<span class="line-numbers"><a href="#n112" name="n112">112</a></span>    <span style="color:#080;font-weight:bold">return</span> getSelf();
+<span class="line-numbers"><a href="#n113" name="n113">113</a></span>  }
+<span class="line-numbers"><a href="#n114" name="n114">114</a></span>
+<span class="line-numbers"><a href="#n115" name="n115">115</a></span>  <span style="color:#088;font-weight:bold">private</span> SQLStatement sql = <span style="color:#080;font-weight:bold">new</span> SQLStatement();
+<span class="line-numbers"><a href="#n116" name="n116">116</a></span>
+<span class="line-numbers"><a href="#n117" name="n117">117</a></span>  <span style="color:#088;font-weight:bold">private</span> SQLStatement sql() {
+<span class="line-numbers"><a href="#n118" name="n118">118</a></span>    <span style="color:#080;font-weight:bold">return</span> sql;
+<span class="line-numbers"><a href="#n119" name="n119">119</a></span>  }
+<span class="line-numbers"><strong><a href="#n120" name="n120">120</a></strong></span>
+<span class="line-numbers"><a href="#n121" name="n121">121</a></span>  <span style="color:#088;font-weight:bold">public</span> &lt;A <span style="color:#088;font-weight:bold">extends</span> <span style="color:#0a8;font-weight:bold">Appendable</span>&gt; A usingAppender(A a) {
+<span class="line-numbers"><a href="#n122" name="n122">122</a></span>    sql().sql(a);
+<span class="line-numbers"><a href="#n123" name="n123">123</a></span>    <span style="color:#080;font-weight:bold">return</span> a;
+<span class="line-numbers"><a href="#n124" name="n124">124</a></span>  }
+<span class="line-numbers"><a href="#n125" name="n125">125</a></span>
+<span class="line-numbers"><a href="#n126" name="n126">126</a></span>  <span style="color:#007">@Override</span>
+<span class="line-numbers"><a href="#n127" name="n127">127</a></span>  <span style="color:#088;font-weight:bold">public</span> <span style="color:#0a8;font-weight:bold">String</span> toString() {
+<span class="line-numbers"><a href="#n128" name="n128">128</a></span>    <span style="color:#0a8;font-weight:bold">StringBuilder</span> sb = <span style="color:#080;font-weight:bold">new</span> <span style="color:#0a8;font-weight:bold">StringBuilder</span>();
+<span class="line-numbers"><a href="#n129" name="n129">129</a></span>    sql().sql(sb);
+<span class="line-numbers"><strong><a href="#n130" name="n130">130</a></strong></span>    <span style="color:#080;font-weight:bold">return</span> sb.toString();
+<span class="line-numbers"><a href="#n131" name="n131">131</a></span>  }
+<span class="line-numbers"><a href="#n132" name="n132">132</a></span>
+<span class="line-numbers"><a href="#n133" name="n133">133</a></span>  <span style="color:#088;font-weight:bold">private</span> <span style="color:#088;font-weight:bold">static</span> <span style="color:#339;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">SafeAppendable</span> {
+<span class="line-numbers"><a href="#n134" name="n134">134</a></span>    <span style="color:#088;font-weight:bold">private</span> <span style="color:#088;font-weight:bold">final</span> <span style="color:#0a8;font-weight:bold">Appendable</span> a;
+<span class="line-numbers"><a href="#n135" name="n135">135</a></span>    <span style="color:#088;font-weight:bold">private</span> <span style="color:#339;font-weight:bold">boolean</span> empty = <span style="color:#069">true</span>;
+<span class="line-numbers"><a href="#n136" name="n136">136</a></span>
+<span class="line-numbers"><a href="#n137" name="n137">137</a></span>    <span style="color:#088;font-weight:bold">public</span> SafeAppendable(<span style="color:#0a8;font-weight:bold">Appendable</span> a) {
+<span class="line-numbers"><a href="#n138" name="n138">138</a></span>      <span style="color:#950">super</span>();
+<span class="line-numbers"><a href="#n139" name="n139">139</a></span>      <span style="color:#950">this</span>.a = a;
+<span class="line-numbers"><strong><a href="#n140" name="n140">140</a></strong></span>    }
+<span class="line-numbers"><a href="#n141" name="n141">141</a></span>
+<span class="line-numbers"><a href="#n142" name="n142">142</a></span>    <span style="color:#088;font-weight:bold">public</span> SafeAppendable append(<span style="color:#0a8;font-weight:bold">CharSequence</span> s) {
+<span class="line-numbers"><a href="#n143" name="n143">143</a></span>      <span style="color:#080;font-weight:bold">try</span> {
+<span class="line-numbers"><a href="#n144" name="n144">144</a></span>        <span style="color:#080;font-weight:bold">if</span> (empty &amp;&amp; s.length() &gt; <span style="color:#00D">0</span>) empty = <span style="color:#069">false</span>;
+<span class="line-numbers"><a href="#n145" name="n145">145</a></span>        a.append(s);
+<span class="line-numbers"><a href="#n146" name="n146">146</a></span>      } <span style="color:#080;font-weight:bold">catch</span> (<span style="color:#C00;font-weight:bold">IOException</span> e) {
+<span class="line-numbers"><a href="#n147" name="n147">147</a></span>        <span style="color:#080;font-weight:bold">throw</span> <span style="color:#080;font-weight:bold">new</span> <span style="color:#C00;font-weight:bold">RuntimeException</span>(e);
+<span class="line-numbers"><a href="#n148" name="n148">148</a></span>      }
+<span class="line-numbers"><a href="#n149" name="n149">149</a></span>      <span style="color:#080;font-weight:bold">return</span> <span style="color:#950">this</span>;
+<span class="line-numbers"><strong><a href="#n150" name="n150">150</a></strong></span>    }
+<span class="line-numbers"><a href="#n151" name="n151">151</a></span>
+<span class="line-numbers"><a href="#n152" name="n152">152</a></span>    <span style="color:#088;font-weight:bold">public</span> <span style="color:#339;font-weight:bold">boolean</span> isEmpty() {
+<span class="line-numbers"><a href="#n153" name="n153">153</a></span>      <span style="color:#080;font-weight:bold">return</span> empty;
+<span class="line-numbers"><a href="#n154" name="n154">154</a></span>    }
+<span class="line-numbers"><a href="#n155" name="n155">155</a></span>
+<span class="line-numbers"><a href="#n156" name="n156">156</a></span>  }
+<span class="line-numbers"><a href="#n157" name="n157">157</a></span>
+<span class="line-numbers"><a href="#n158" name="n158">158</a></span>  <span style="color:#088;font-weight:bold">private</span> <span style="color:#088;font-weight:bold">static</span> <span style="color:#339;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">SQLStatement</span> {
+<span class="line-numbers"><a href="#n159" name="n159">159</a></span>
+<span class="line-numbers"><strong><a href="#n160" name="n160">160</a></strong></span>    <span style="color:#088;font-weight:bold">public</span> <span style="color:#339;font-weight:bold">enum</span> StatementType {
+<span class="line-numbers"><a href="#n161" name="n161">161</a></span>      DELETE, INSERT, SELECT, UPDATE
+<span class="line-numbers"><a href="#n162" name="n162">162</a></span>    }
+<span class="line-numbers"><a href="#n163" name="n163">163</a></span>
+<span class="line-numbers"><a href="#n164" name="n164">164</a></span>    StatementType statementType;
+<span class="line-numbers"><a href="#n165" name="n165">165</a></span>    <span style="color:#0a8;font-weight:bold">List</span>&lt;<span style="color:#0a8;font-weight:bold">String</span>&gt; sets = <span style="color:#080;font-weight:bold">new</span> <span style="color:#0a8;font-weight:bold">ArrayList</span>&lt;<span style="color:#0a8;font-weight:bold">String</span>&gt;();
+<span class="line-numbers"><a href="#n166" name="n166">166</a></span>    <span style="color:#0a8;font-weight:bold">List</span>&lt;<span style="color:#0a8;font-weight:bold">String</span>&gt; select = <span style="color:#080;font-weight:bold">new</span> <span style="color:#0a8;font-weight:bold">ArrayList</span>&lt;<span style="color:#0a8;font-weight:bold">String</span>&gt;();
+<span class="line-numbers"><a href="#n167" name="n167">167</a></span>    <span style="color:#0a8;font-weight:bold">List</span>&lt;<span style="color:#0a8;font-weight:bold">String</span>&gt; tables = <span style="color:#080;font-weight:bold">new</span> <span style="color:#0a8;font-weight:bold">ArrayList</span>&lt;<span style="color:#0a8;font-weight:bold">String</span>&gt;();
+<span class="line-numbers"><a href="#n168" name="n168">168</a></span>    <span style="color:#0a8;font-weight:bold">List</span>&lt;<span style="color:#0a8;font-weight:bold">String</span>&gt; join = <span style="color:#080;font-weight:bold">new</span> <span style="color:#0a8;font-weight:bold">ArrayList</span>&lt;<span style="color:#0a8;font-weight:bold">String</span>&gt;();
+<span class="line-numbers"><a href="#n169" name="n169">169</a></span>    <span style="color:#0a8;font-weight:bold">List</span>&lt;<span style="color:#0a8;font-weight:bold">String</span>&gt; innerJoin = <span style="color:#080;font-weight:bold">new</span> <span style="color:#0a8;font-weight:bold">ArrayList</span>&lt;<span style="color:#0a8;font-weight:bold">String</span>&gt;();
+<span class="line-numbers"><strong><a href="#n170" name="n170">170</a></strong></span>    <span style="color:#0a8;font-weight:bold">List</span>&lt;<span style="color:#0a8;font-weight:bold">String</span>&gt; outerJoin = <span style="color:#080;font-weight:bold">new</span> <span style="color:#0a8;font-weight:bold">ArrayList</span>&lt;<span style="color:#0a8;font-weight:bold">String</span>&gt;();
+<span class="line-numbers"><a href="#n171" name="n171">171</a></span>    <span style="color:#0a8;font-weight:bold">List</span>&lt;<span style="color:#0a8;font-weight:bold">String</span>&gt; leftOuterJoin = <span style="color:#080;font-weight:bold">new</span> <span style="color:#0a8;font-weight:bold">ArrayList</span>&lt;<span style="color:#0a8;font-weight:bold">String</span>&gt;();
+<span class="line-numbers"><a href="#n172" name="n172">172</a></span>    <span style="color:#0a8;font-weight:bold">List</span>&lt;<span style="color:#0a8;font-weight:bold">String</span>&gt; rightOuterJoin = <span style="color:#080;font-weight:bold">new</span> <span style="color:#0a8;font-weight:bold">ArrayList</span>&lt;<span style="color:#0a8;font-weight:bold">String</span>&gt;();
+<span class="line-numbers"><a href="#n173" name="n173">173</a></span>    <span style="color:#0a8;font-weight:bold">List</span>&lt;<span style="color:#0a8;font-weight:bold">String</span>&gt; where = <span style="color:#080;font-weight:bold">new</span> <span style="color:#0a8;font-weight:bold">ArrayList</span>&lt;<span style="color:#0a8;font-weight:bold">String</span>&gt;();
+<span class="line-numbers"><a href="#n174" name="n174">174</a></span>    <span style="color:#0a8;font-weight:bold">List</span>&lt;<span style="color:#0a8;font-weight:bold">String</span>&gt; having = <span style="color:#080;font-weight:bold">new</span> <span style="color:#0a8;font-weight:bold">ArrayList</span>&lt;<span style="color:#0a8;font-weight:bold">String</span>&gt;();
+<span class="line-numbers"><a href="#n175" name="n175">175</a></span>    <span style="color:#0a8;font-weight:bold">List</span>&lt;<span style="color:#0a8;font-weight:bold">String</span>&gt; groupBy = <span style="color:#080;font-weight:bold">new</span> <span style="color:#0a8;font-weight:bold">ArrayList</span>&lt;<span style="color:#0a8;font-weight:bold">String</span>&gt;();
+<span class="line-numbers"><a href="#n176" name="n176">176</a></span>    <span style="color:#0a8;font-weight:bold">List</span>&lt;<span style="color:#0a8;font-weight:bold">String</span>&gt; orderBy = <span style="color:#080;font-weight:bold">new</span> <span style="color:#0a8;font-weight:bold">ArrayList</span>&lt;<span style="color:#0a8;font-weight:bold">String</span>&gt;();
+<span class="line-numbers"><a href="#n177" name="n177">177</a></span>    <span style="color:#0a8;font-weight:bold">List</span>&lt;<span style="color:#0a8;font-weight:bold">String</span>&gt; lastList = <span style="color:#080;font-weight:bold">new</span> <span style="color:#0a8;font-weight:bold">ArrayList</span>&lt;<span style="color:#0a8;font-weight:bold">String</span>&gt;();
+<span class="line-numbers"><a href="#n178" name="n178">178</a></span>    <span style="color:#0a8;font-weight:bold">List</span>&lt;<span style="color:#0a8;font-weight:bold">String</span>&gt; columns = <span style="color:#080;font-weight:bold">new</span> <span style="color:#0a8;font-weight:bold">ArrayList</span>&lt;<span style="color:#0a8;font-weight:bold">String</span>&gt;();
+<span class="line-numbers"><a href="#n179" name="n179">179</a></span>    <span style="color:#0a8;font-weight:bold">List</span>&lt;<span style="color:#0a8;font-weight:bold">String</span>&gt; values = <span style="color:#080;font-weight:bold">new</span> <span style="color:#0a8;font-weight:bold">ArrayList</span>&lt;<span style="color:#0a8;font-weight:bold">String</span>&gt;();
+<span class="line-numbers"><strong><a href="#n180" name="n180">180</a></strong></span>    <span style="color:#339;font-weight:bold">boolean</span> distinct;
+<span class="line-numbers"><a href="#n181" name="n181">181</a></span>
+<span class="line-numbers"><a href="#n182" name="n182">182</a></span>    <span style="color:#088;font-weight:bold">private</span> <span style="color:#339;font-weight:bold">void</span> sqlClause(SafeAppendable builder, <span style="color:#0a8;font-weight:bold">String</span> keyword, <span style="color:#0a8;font-weight:bold">List</span>&lt;<span style="color:#0a8;font-weight:bold">String</span>&gt; parts, <span style="color:#0a8;font-weight:bold">String</span> open, <span style="color:#0a8;font-weight:bold">String</span> close,
+<span class="line-numbers"><a href="#n183" name="n183">183</a></span>                           <span style="color:#0a8;font-weight:bold">String</span> conjunction) {
+<span class="line-numbers"><a href="#n184" name="n184">184</a></span>      <span style="color:#080;font-weight:bold">if</span> (!parts.isEmpty()) {
+<span class="line-numbers"><a href="#n185" name="n185">185</a></span>        <span style="color:#080;font-weight:bold">if</span> (!builder.isEmpty())
+<span class="line-numbers"><a href="#n186" name="n186">186</a></span>          builder.append(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#b0b">\n</span><span style="color:#710">&quot;</span></span>);
+<span class="line-numbers"><a href="#n187" name="n187">187</a></span>        builder.append(keyword);
+<span class="line-numbers"><a href="#n188" name="n188">188</a></span>        builder.append(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20"> </span><span style="color:#710">&quot;</span></span>);
+<span class="line-numbers"><a href="#n189" name="n189">189</a></span>        builder.append(open);
+<span class="line-numbers"><strong><a href="#n190" name="n190">190</a></strong></span>        <span style="color:#0a8;font-weight:bold">String</span> last = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">________</span><span style="color:#710">&quot;</span></span>;
+<span class="line-numbers"><a href="#n191" name="n191">191</a></span>        <span style="color:#080;font-weight:bold">for</span> (<span style="color:#339;font-weight:bold">int</span> i = <span style="color:#00D">0</span>, n = parts.size(); i &lt; n; i++) {
+<span class="line-numbers"><a href="#n192" name="n192">192</a></span>          <span style="color:#0a8;font-weight:bold">String</span> part = parts.get(i);
+<span class="line-numbers"><a href="#n193" name="n193">193</a></span>          <span style="color:#080;font-weight:bold">if</span> (i &gt; <span style="color:#00D">0</span> &amp;&amp; !part.equals(AND) &amp;&amp; !part.equals(OR) &amp;&amp; !last.equals(AND) &amp;&amp; !last.equals(OR)) {
+<span class="line-numbers"><a href="#n194" name="n194">194</a></span>            builder.append(conjunction);
+<span class="line-numbers"><a href="#n195" name="n195">195</a></span>          }
+<span class="line-numbers"><a href="#n196" name="n196">196</a></span>          builder.append(part);
+<span class="line-numbers"><a href="#n197" name="n197">197</a></span>          last = part;
+<span class="line-numbers"><a href="#n198" name="n198">198</a></span>        }
+<span class="line-numbers"><a href="#n199" name="n199">199</a></span>        builder.append(close);
+<span class="line-numbers"><strong><a href="#n200" name="n200">200</a></strong></span>      }
+<span class="line-numbers"><a href="#n201" name="n201">201</a></span>    }
+<span class="line-numbers"><a href="#n202" name="n202">202</a></span>
+<span class="line-numbers"><a href="#n203" name="n203">203</a></span>    <span style="color:#088;font-weight:bold">private</span> <span style="color:#0a8;font-weight:bold">String</span> selectSQL(SafeAppendable builder) {
+<span class="line-numbers"><a href="#n204" name="n204">204</a></span>      <span style="color:#080;font-weight:bold">if</span> (distinct) {
+<span class="line-numbers"><a href="#n205" name="n205">205</a></span>        sqlClause(builder, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">SELECT DISTINCT</span><span style="color:#710">&quot;</span></span>, select, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">, </span><span style="color:#710">&quot;</span></span>);
+<span class="line-numbers"><a href="#n206" name="n206">206</a></span>      } <span style="color:#080;font-weight:bold">else</span> {
+<span class="line-numbers"><a href="#n207" name="n207">207</a></span>        sqlClause(builder, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">SELECT</span><span style="color:#710">&quot;</span></span>, select, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">, </span><span style="color:#710">&quot;</span></span>);
+<span class="line-numbers"><a href="#n208" name="n208">208</a></span>      }
+<span class="line-numbers"><a href="#n209" name="n209">209</a></span>
+<span class="line-numbers"><strong><a href="#n210" name="n210">210</a></strong></span>      sqlClause(builder, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">FROM</span><span style="color:#710">&quot;</span></span>, tables, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">, </span><span style="color:#710">&quot;</span></span>);
+<span class="line-numbers"><a href="#n211" name="n211">211</a></span>      sqlClause(builder, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">JOIN</span><span style="color:#710">&quot;</span></span>, join, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#b0b">\n</span><span style="color:#D20">JOIN </span><span style="color:#710">&quot;</span></span>);
+<span class="line-numbers"><a href="#n212" name="n212">212</a></span>      sqlClause(builder, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">INNER JOIN</span><span style="color:#710">&quot;</span></span>, innerJoin, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#b0b">\n</span><span style="color:#D20">INNER JOIN </span><span style="color:#710">&quot;</span></span>);
+<span class="line-numbers"><a href="#n213" name="n213">213</a></span>      sqlClause(builder, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">OUTER JOIN</span><span style="color:#710">&quot;</span></span>, outerJoin, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#b0b">\n</span><span style="color:#D20">OUTER JOIN </span><span style="color:#710">&quot;</span></span>);
+<span class="line-numbers"><a href="#n214" name="n214">214</a></span>      sqlClause(builder, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">LEFT OUTER JOIN</span><span style="color:#710">&quot;</span></span>, leftOuterJoin, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#b0b">\n</span><span style="color:#D20">LEFT OUTER JOIN </span><span style="color:#710">&quot;</span></span>);
+<span class="line-numbers"><a href="#n215" name="n215">215</a></span>      sqlClause(builder, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">RIGHT OUTER JOIN</span><span style="color:#710">&quot;</span></span>, rightOuterJoin, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#b0b">\n</span><span style="color:#D20">RIGHT OUTER JOIN </span><span style="color:#710">&quot;</span></span>);
+<span class="line-numbers"><a href="#n216" name="n216">216</a></span>      sqlClause(builder, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">WHERE</span><span style="color:#710">&quot;</span></span>, where, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">(</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">)</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20"> AND </span><span style="color:#710">&quot;</span></span>);
+<span class="line-numbers"><a href="#n217" name="n217">217</a></span>      sqlClause(builder, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">GROUP BY</span><span style="color:#710">&quot;</span></span>, groupBy, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">, </span><span style="color:#710">&quot;</span></span>);
+<span class="line-numbers"><a href="#n218" name="n218">218</a></span>      sqlClause(builder, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">HAVING</span><span style="color:#710">&quot;</span></span>, having, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">(</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">)</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20"> AND </span><span style="color:#710">&quot;</span></span>);
+<span class="line-numbers"><a href="#n219" name="n219">219</a></span>      sqlClause(builder, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">ORDER BY</span><span style="color:#710">&quot;</span></span>, orderBy, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">, </span><span style="color:#710">&quot;</span></span>);
+<span class="line-numbers"><strong><a href="#n220" name="n220">220</a></strong></span>      <span style="color:#080;font-weight:bold">return</span> builder.toString();
+<span class="line-numbers"><a href="#n221" name="n221">221</a></span>    }
+<span class="line-numbers"><a href="#n222" name="n222">222</a></span>
+<span class="line-numbers"><a href="#n223" name="n223">223</a></span>    <span style="color:#088;font-weight:bold">private</span> <span style="color:#0a8;font-weight:bold">String</span> insertSQL(SafeAppendable builder) {
+<span class="line-numbers"><a href="#n224" name="n224">224</a></span>      sqlClause(builder, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">INSERT INTO</span><span style="color:#710">&quot;</span></span>, tables, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#710">&quot;</span></span>);
+<span class="line-numbers"><a href="#n225" name="n225">225</a></span>      sqlClause(builder, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#710">&quot;</span></span>, columns, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">(</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">)</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">, </span><span style="color:#710">&quot;</span></span>);
+<span class="line-numbers"><a href="#n226" name="n226">226</a></span>      sqlClause(builder, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">VALUES</span><span style="color:#710">&quot;</span></span>, values, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">(</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">)</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">, </span><span style="color:#710">&quot;</span></span>);
+<span class="line-numbers"><a href="#n227" name="n227">227</a></span>      <span style="color:#080;font-weight:bold">return</span> builder.toString();
+<span class="line-numbers"><a href="#n228" name="n228">228</a></span>    }
+<span class="line-numbers"><a href="#n229" name="n229">229</a></span>
+<span class="line-numbers"><strong><a href="#n230" name="n230">230</a></strong></span>    <span style="color:#088;font-weight:bold">private</span> <span style="color:#0a8;font-weight:bold">String</span> deleteSQL(SafeAppendable builder) {
+<span class="line-numbers"><a href="#n231" name="n231">231</a></span>      sqlClause(builder, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">DELETE FROM</span><span style="color:#710">&quot;</span></span>, tables, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#710">&quot;</span></span>);
+<span class="line-numbers"><a href="#n232" name="n232">232</a></span>      sqlClause(builder, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">WHERE</span><span style="color:#710">&quot;</span></span>, where, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">(</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">)</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20"> AND </span><span style="color:#710">&quot;</span></span>);
+<span class="line-numbers"><a href="#n233" name="n233">233</a></span>      <span style="color:#080;font-weight:bold">return</span> builder.toString();
+<span class="line-numbers"><a href="#n234" name="n234">234</a></span>    }
+<span class="line-numbers"><a href="#n235" name="n235">235</a></span>
+<span class="line-numbers"><a href="#n236" name="n236">236</a></span>    <span style="color:#088;font-weight:bold">private</span> <span style="color:#0a8;font-weight:bold">String</span> updateSQL(SafeAppendable builder) {
+<span class="line-numbers"><a href="#n237" name="n237">237</a></span>
+<span class="line-numbers"><a href="#n238" name="n238">238</a></span>      sqlClause(builder, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">UPDATE</span><span style="color:#710">&quot;</span></span>, tables, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#710">&quot;</span></span>);
+<span class="line-numbers"><a href="#n239" name="n239">239</a></span>      sqlClause(builder, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">SET</span><span style="color:#710">&quot;</span></span>, sets, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">, </span><span style="color:#710">&quot;</span></span>);
+<span class="line-numbers"><strong><a href="#n240" name="n240">240</a></strong></span>      sqlClause(builder, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">WHERE</span><span style="color:#710">&quot;</span></span>, where, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">(</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">)</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20"> AND </span><span style="color:#710">&quot;</span></span>);
+<span class="line-numbers"><a href="#n241" name="n241">241</a></span>      <span style="color:#080;font-weight:bold">return</span> builder.toString();
+<span class="line-numbers"><a href="#n242" name="n242">242</a></span>    }
+<span class="line-numbers"><a href="#n243" name="n243">243</a></span>
+<span class="line-numbers"><a href="#n244" name="n244">244</a></span>    <span style="color:#088;font-weight:bold">public</span> <span style="color:#0a8;font-weight:bold">String</span> sql(<span style="color:#0a8;font-weight:bold">Appendable</span> a) {
+<span class="line-numbers"><a href="#n245" name="n245">245</a></span>      SafeAppendable builder = <span style="color:#080;font-weight:bold">new</span> SafeAppendable(a);
+<span class="line-numbers"><a href="#n246" name="n246">246</a></span>      <span style="color:#080;font-weight:bold">if</span> (statementType == <span style="color:#069">null</span>) {
+<span class="line-numbers"><a href="#n247" name="n247">247</a></span>        <span style="color:#080;font-weight:bold">return</span> <span style="color:#069">null</span>;
+<span class="line-numbers"><a href="#n248" name="n248">248</a></span>      }
+<span class="line-numbers"><a href="#n249" name="n249">249</a></span>
+<span class="line-numbers"><strong><a href="#n250" name="n250">250</a></strong></span>      <span style="color:#0a8;font-weight:bold">String</span> answer;
+<span class="line-numbers"><a href="#n251" name="n251">251</a></span>
+<span class="line-numbers"><a href="#n252" name="n252">252</a></span>      <span style="color:#080;font-weight:bold">switch</span> (statementType) {
+<span class="line-numbers"><a href="#n253" name="n253">253</a></span>        <span style="color:#080;font-weight:bold">case</span> DELETE:
+<span class="line-numbers"><a href="#n254" name="n254">254</a></span>          answer = deleteSQL(builder);
+<span class="line-numbers"><a href="#n255" name="n255">255</a></span>          <span style="color:#080;font-weight:bold">break</span>;
+<span class="line-numbers"><a href="#n256" name="n256">256</a></span>
+<span class="line-numbers"><a href="#n257" name="n257">257</a></span>        <span style="color:#080;font-weight:bold">case</span> INSERT:
+<span class="line-numbers"><a href="#n258" name="n258">258</a></span>          answer = insertSQL(builder);
+<span class="line-numbers"><a href="#n259" name="n259">259</a></span>          <span style="color:#080;font-weight:bold">break</span>;
+<span class="line-numbers"><strong><a href="#n260" name="n260">260</a></strong></span>
+<span class="line-numbers"><a href="#n261" name="n261">261</a></span>        <span style="color:#080;font-weight:bold">case</span> SELECT:
+<span class="line-numbers"><a href="#n262" name="n262">262</a></span>          answer = selectSQL(builder);
+<span class="line-numbers"><a href="#n263" name="n263">263</a></span>          <span style="color:#080;font-weight:bold">break</span>;
+<span class="line-numbers"><a href="#n264" name="n264">264</a></span>
+<span class="line-numbers"><a href="#n265" name="n265">265</a></span>        <span style="color:#080;font-weight:bold">case</span> UPDATE:
+<span class="line-numbers"><a href="#n266" name="n266">266</a></span>          answer = updateSQL(builder);
+<span class="line-numbers"><a href="#n267" name="n267">267</a></span>          <span style="color:#080;font-weight:bold">break</span>;
+<span class="line-numbers"><a href="#n268" name="n268">268</a></span>
+<span class="line-numbers"><a href="#n269" name="n269">269</a></span>        <span style="color:#080;font-weight:bold">default</span>:
+<span class="line-numbers"><strong><a href="#n270" name="n270">270</a></strong></span>          answer = <span style="color:#069">null</span>;
+<span class="line-numbers"><a href="#n271" name="n271">271</a></span>      }
+<span class="line-numbers"><a href="#n272" name="n272">272</a></span>
+<span class="line-numbers"><a href="#n273" name="n273">273</a></span>      <span style="color:#080;font-weight:bold">return</span> answer;
+<span class="line-numbers"><a href="#n274" name="n274">274</a></span>    }
+<span class="line-numbers"><a href="#n275" name="n275">275</a></span>  }
+<span class="line-numbers"><a href="#n276" name="n276">276</a></span>}
+<span class="line-numbers"><a href="#n277" name="n277">277</a></span>
+<span class="line-numbers"><a href="#n278" name="n278">278</a></span>
+<span class="line-numbers"><a href="#n279" name="n279">279</a></span><span style="color:#088;font-weight:bold">public</span> <span style="color:#339;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">SQL</span> <span style="color:#088;font-weight:bold">extends</span> AbstractSQL&lt;SQL&gt; {
+<span class="line-numbers"><strong><a href="#n280" name="n280">280</a></strong></span>
+<span class="line-numbers"><a href="#n281" name="n281">281</a></span>  <span style="color:#007">@Override</span>
+<span class="line-numbers"><a href="#n282" name="n282">282</a></span>  <span style="color:#088;font-weight:bold">public</span> SQL getSelf() {
+<span class="line-numbers"><a href="#n283" name="n283">283</a></span>    <span style="color:#080;font-weight:bold">return</span> <span style="color:#950">this</span>;
+<span class="line-numbers"><a href="#n284" name="n284">284</a></span>  }
+<span class="line-numbers"><a href="#n285" name="n285">285</a></span>
+<span class="line-numbers"><a href="#n286" name="n286">286</a></span>}
+</pre></div>
+</div>
+</div>
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:sqlBuilder">
+      <p><a href="http://mybatis.github.io/mybatis-3/statement-builders.html">http://mybatis.github.io/mybatis-3/statement-builders.html</a> <a href="#fnref:sqlBuilder" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+
+          </article>
+          <hr class="boundary">
+          <div id="post-share" class="bdsharebuttonbox">
+              <a href="#" class="bds_more" data-cmd="more"></a>
+              <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+              <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+              <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+              <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+              <a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+          </div>
+        </div>
+        <div class="pad-min"></div>
+        <div id="post-comment" class="sheet post hidden">
+            <div id="disqus_thread"></div>
+        </div>
+    </div>
+    <div class="content-navigation col-lg-3">
+      <div class="shadow-bottom-center" >
+        <div class="content-navigation-toc">
+            <div class="content-navigation-header">
+                <span class="octicon octicon-list-unordered"></span>&nbsp;Toc
+            </div>
+            <div class="content-navigation-list toc"></div>
+        </div>
+        <div class="content-navigation-tag">
+            <div class="content-navigation-header">
+                <span class="octicon octicon-list-unordered"></span>&nbsp;Tags
+            </div>
+            <div class="content-navigation-list">
+                <ul>
+                    
+                    <li>
+                        <a href="https://haonan-dong.github.io/tags#sql"><span class="octicon octicon-tag"></span>&nbsp;sql</a>
+                    </li>
+                    
+                    <li>
+                        <a href="https://haonan-dong.github.io/tags#database"><span class="octicon octicon-tag"></span>&nbsp;database</a>
+                    </li>
+                    
+                    <li>
+                        <a href="https://haonan-dong.github.io/tags#Java"><span class="octicon octicon-tag"></span>&nbsp;Java</a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="content-navigation-related">
+            <div class="content-navigation-header">
+                <span class="octicon octicon-list-unordered"></span>&nbsp;Related
+            </div>
+            <div class="content-navigation-list">
+                <ul>
+                    
+
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                                    
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                                
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+                                
+                                    
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                                
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+                                
+                                    
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                                
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+                                
+                                    
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                                
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                                    
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                                
+                            
+                        
+                    
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                                    
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                                
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                                    
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                                
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                                    
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                                
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                                    
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                                
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                                    
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                                
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                                    
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                                
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                                    
+                                
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                                
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                                    
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                                
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                                    
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                                
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+
+                    
+                        
+                            <li>
+                                <a href="https://haonan-dong.github.io/java/rmi/">RMI</a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://haonan-dong.github.io/web/servlet-encode/">Servlet乱码分析</a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://haonan-dong.github.io/web/spring-security/">spring security 探秘</a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://haonan-dong.github.io/java/validator/">Bean Validation</a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://haonan-dong.github.io/java/javajs/">Java中用js解析json</a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://haonan-dong.github.io/web/webservice/">WebService</a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://haonan-dong.github.io/java/java-newfeature/">Java8 新特性</a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://haonan-dong.github.io/java/java-concurrent/">Java Concurrent</a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://haonan-dong.github.io/java/jvm/">Java虚拟机</a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://haonan-dong.github.io/java/effective/">Effective Java</a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://haonan-dong.github.io/web/fileupload/">Custom Fileupload</a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://haonan-dong.github.io/java/reentrantlock/">可重入锁</a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://haonan-dong.github.io/java/java-nio/">Java NIO</a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://haonan-dong.github.io/java/java-io/">Java IO</a>
+                            </li>
+                        
+                    
+                </ul>
+            </div>
+        </div>
+      </div>
+    </div>
+</div>
+    </div>
+    <div class="page-scrollTop" data-toggle="tooltip" data-placement="top" title="Top">
+        <a href="javascript:void(0);">
+            <div class="arrow"></div>
+            <div class="stick"></div>
+        </a>
+    </div>
+</div>
+
+    <footer  class="footnote footnote-tiffany">
+        <div class="container">
+                <a class="foot-item" href="mailto:sincerebravefight@gmail.com" target="_blank"><span class="octicon octicon-mail"></span></a>
+                <a class="foot-item" href="https://github.com/bit-ranger" target="_blank"><span class="octicon octicon-mark-github"></span></a>
+                <a class="foot-item" href="https://haonan-dong.github.io/feed.xml" target="_blank"><span class="octicon octicon-rss"></span></a>
+                <a class="foot-item" href="https://haonan-dong.github.io/link/"><span class="octicon octicon-link-external"></span></a>
+                &nbsp;
+                <a href="https://github.com/bit-ranger"><span class="word-keep">&copy; bit-ranger</span></a>
+        </div>
+    </footer>
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://haonan-dong.github.io/static/js/script.js"></script>
+    <script type="text/javascript" src="https://haonan-dong.github.io/static/js/gitment.js"></script>
+    <script type="text/javascript" src="https://haonan-dong.github.io/static/js/post.js"></script>
+    
+
+
+</body>
+</html>

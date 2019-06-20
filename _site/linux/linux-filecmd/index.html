@@ -1,0 +1,1379 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Linux目录与文件</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="keywords" content="Linux目录与文件, linux, Linux,命令, λ lambda" />
+    <meta name="description" content="Linux目录与文件, linux, Linux,命令, " />
+    <meta name="theme-color" content="#2CA6CB"/>
+    <link rel="shortcut icon" type="image/x-icon" media="screen" href="https://haonan-dong.github.io/favicon.ico" />
+    <link rel="canonical" href="https://haonan-dong.github.io/linux/linux-filecmd/" />
+    <link rel="alternate" type="application/rss+xml" title="λ lambda" href="https://haonan-dong.github.io/feed.xml"  />
+
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/octicons/3.5.0/octicons.min.css" >
+    <link rel="stylesheet" type="text/css" href="https://haonan-dong.github.io/static/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="https://haonan-dong.github.io/static/css/highlight.css" />
+    <link rel="stylesheet" type="text/css" href="https://haonan-dong.github.io/static/css/gitment.css" />
+    <link rel="stylesheet" type="text/css" href="https://haonan-dong.github.io/static/css/post.css" />
+    
+
+</head>
+
+
+<body>
+
+    <header>
+        <nav class="navbar navbar-tiffany rectangle" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="https://haonan-dong.github.io/">λ lambda</a>
+                    <p class="navbar-text"></p>
+                </div>
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        
+                        <li>
+                        <a href="https://haonan-dong.github.io/" class="word-keep"><span class="octicon octicon-book"></span></span>&nbsp;&nbsp;Blog</a>
+                        </li>
+                        
+                        
+                        <li>
+                            <a href="https://haonan-dong.github.io/archive/" class="word-keep"><span class="octicon octicon-repo"></span>&nbsp;&nbsp;Archive</a>
+                        </li>
+                        
+                        
+                        
+                        <li>
+                            <a href="https://haonan-dong.github.io/category/" class="word-keep"><span class="octicon octicon-list-unordered"></span>&nbsp;&nbsp;Category</a>
+                        </li>
+                        
+                        
+                        
+                        <li>
+                            <a href="https://haonan-dong.github.io/tags/" class="word-keep"><span class="octicon octicon-tag"></span>&nbsp;&nbsp;Tag</a>
+                        </li>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <li><a href="#stq=" class="search-button"><span class="octicon octicon-search"></span></a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+
+
+<div class="main">
+    <div class="container">
+        <div class="row">
+    <div class="content col-lg-9">
+        <div class="sheet post">
+          <header>
+            <h2>Linux目录与文件</h2>
+            <p class="post-meta">
+                <span class="octicon octicon-clock"></span> Jan 25, 2014
+            </p>
+            <p class="post-tag">
+                <span><a href="https://haonan-dong.github.io/category/#linux"><span class="octicon octicon-list-unordered"></span>&nbsp;linux</a></span>
+                <span>
+                    <a class="word-keep" href="https://haonan-dong.github.io/tags/#Linux"><span class="octicon octicon-tag"></span>&nbsp;Linux</a>
+                    
+                    <a class="word-keep" href="https://haonan-dong.github.io/tags/#命令"><span class="octicon octicon-tag"></span>&nbsp;命令</a>
+                    
+                </span>
+            </p>
+          </header>
+          <hr class="boundary">
+          <article>
+            <ul id="markdown-toc">
+  <li><a href="#cd-"><code>cd </code></a></li>
+  <li><a href="#pwd"><code>pwd</code></a></li>
+  <li><a href="#mkdir"><code>mkdir</code></a></li>
+  <li><a href="#rmdir"><code>rmdir</code></a></li>
+  <li><a href="#path"><code>$PATH</code></a></li>
+  <li><a href="#ls"><code>ls</code></a></li>
+  <li><a href="#cp"><code>cp</code></a></li>
+  <li><a href="#rm"><code>rm</code></a></li>
+  <li><a href="#mv"><code>mv</code></a></li>
+  <li><a href="#basenamedirname"><code>basename</code>，<code>dirname</code></a></li>
+  <li><a href="#cat"><code>cat</code></a></li>
+  <li><a href="#tac"><code>tac</code></a></li>
+  <li><a href="#nl"><code>nl</code></a></li>
+  <li><a href="#more"><code>more</code></a></li>
+  <li><a href="#less"><code>less</code></a></li>
+  <li><a href="#head"><code>head</code></a></li>
+  <li><a href="#tail"><code>tail</code></a></li>
+  <li><a href="#od"><code>od</code></a></li>
+  <li><a href="#touch"><code>touch</code></a></li>
+  <li><a href="#file"><code>file</code></a></li>
+</ul>
+
+<blockquote>
+  <p><code>.</code></p>
+
+  <p>代表此层目录</p>
+
+  <p><code>..</code></p>
+
+  <p>代表上一层目录</p>
+
+  <p><code>-</code></p>
+
+  <p>代表前一个工作目录</p>
+
+  <p><code>~</code></p>
+
+  <p>代表『目前使用者身份』所在的家目录</p>
+
+  <p><code>~account</code></p>
+
+  <p>代表 account 这个使用者的家目录(account是个帐号名称)</p>
+</blockquote>
+
+<hr />
+
+<h2 id="cd-"><code>cd </code></h2>
+
+<p><strong>变换目录</strong></p>
+
+<hr />
+
+<h2 id="pwd"><code>pwd</code></h2>
+
+<p><strong>显示目前所在的目录</strong></p>
+
+<p>[root@www ~]#  <code>pwd [-Pl]</code></p>
+
+<p>选项与参数：</p>
+
+<p><code>-P</code>：显示出真实的路径，而非使用连结 (link) 路径。</p>
+
+<p><code>-l </code> : 显示逻辑路径(默认)</p>
+
+<hr />
+
+<h2 id="mkdir"><code>mkdir</code></h2>
+
+<p><strong>创建新目录</strong></p>
+
+<p>[root@www ~]#  <code>mkdir [-mp]</code> 目录名称</p>
+
+<p>选项与参数：</p>
+
+<p><code>-m</code> ：配置文件的权限喔！直接配置，不需要看默认权限 (umask) 的脸色～</p>
+
+<p><code>-p</code> ：帮助你直接将所需要的目录(包含上一级目录)递归创建起来！</p>
+
+<hr />
+
+<h2 id="rmdir"><code>rmdir</code></h2>
+
+<p><strong>删除『空』的目录</strong></p>
+
+<p>[root@www ~]#  <code>rmdir [-p]</code> 目录名称</p>
+
+<p>选项与参数：</p>
+
+<p><code>-p</code> ：连同上一级『空的』目录也一起删除</p>
+
+<hr />
+
+<h2 id="path"><code>$PATH</code></h2>
+
+<p><strong>环境变量</strong></p>
+
+<p>不同身份使用者默认的PATH不同，默认能够随意运行的命令也不同(如root与vbird)；</p>
+
+<p>PATH是可以修改的，所以一般使用者还是可以透过修改PATH来运行某些位於/sbin或/usr/sbin下的命令来查询；</p>
+
+<p>使用绝对路径或相对路径直接指定某个命令的档名来运行，会比搜寻PATH来的正确；</p>
+
+<p>命令应该要放置到正确的目录下，运行才会比较方便；本目录(.)最好不要放到PATH当中。</p>
+
+<hr />
+
+<h2 id="ls"><code>ls</code></h2>
+
+<p><strong>查看文件与目录</strong></p>
+
+<p>[root@linux ~]#  <code>ls [-aAdfFhilRS]</code> 目录名称</p>
+
+<p>[root@linux ~]#  <code>ls [--color={none,auto,always}]</code> 目录名称</p>
+
+<p>[root@linux ~]#  <code>ls [--full-time]</code> 目录名称</p>
+
+<p>选项与参数：</p>
+
+<p><code>-a</code> ：全部的档案，连同隐藏档( 开头为 . 的档案) 一起列出来～</p>
+
+<p><code>-A</code> ：全部的档案，连同隐藏档，但不包括 . 与 .. 这两个目录，一起列出来～</p>
+
+<p><code>-d</code> ：仅列出目录本身，而不是列出目录内的档案数据</p>
+
+<p><code>-f</code> ：直接列出结果，而不进行排序 (ls 预设会以档名排序！)</p>
+
+<p><code>-F</code> ：根据档案、目录等信息，给予附加数据结构</p>
+
+<blockquote>
+  <p>例如： <code>*</code>：代表可执行档； <code>/</code>：代表目录； <code>=</code>：代表 socket 档案； <code>|</code>：代表 FIFO 档案</p>
+</blockquote>
+
+<p><code>-h</code> ：将档案容量以人类较易读的方式(例如 GB, KB 等等)列出来</p>
+
+<p><code>-i</code> ：列出 inode 位置，而非列出档案属性</p>
+
+<p><code>-l</code> ：长数据串行出，包含档案的属性等等数据；</p>
+
+<p><code>-n</code> ：列出 UID 与 GID 而非使用者与群组的名称</p>
+
+<p><code>-r</code> ：将排序结果反向输出</p>
+
+<p><code>-R</code> ：连同子目录内容一起列出来；</p>
+
+<p><code>-S</code> ：以档案容量大小排序！</p>
+
+<p><code>-t</code> ：依时间排序</p>
+
+<p><code>--color=never</code> ：不要依据档案特性给予颜色显示；</p>
+
+<p><code>--color=always</code> ：显示颜色</p>
+
+<p><code>--color=auto</code> ：让系统自行依据设定来判断是否给予颜色</p>
+
+<p><code>--full-time</code> ：以完整时间模式 (包含年、月、日、时、分) 输出</p>
+
+<p><code>--time={atime,ctime}</code> ：输出 access 时间或 改变权限属性时间 (ctime) 而非内容变更时间 (modification time)</p>
+
+<hr />
+
+<h2 id="cp"><code>cp</code></h2>
+
+<p><strong>复制文件或目录</strong></p>
+
+<p>[root@www ~]#  <code>cp [-adfilprsu]</code> 来源档(source) 目标档(destination)</p>
+
+<p>[root@www ~]#  <code>cp [options]</code> source1 source2 source3 …. directory</p>
+
+<p>选项与参数：</p>
+
+<p><code>-a </code> ：相当於 -pdr 的意思，至於 pdr 请参考下列说明；(常用)</p>
+
+<p><code>-d</code>  ：若来源档为连结档的属性(link file)，则复制连结档属性而非文件本身；</p>
+
+<p><code>-f</code>  ：为强制(force)的意思，若目标文件已经存在且无法开启，则移除后再尝试一次；</p>
+
+<p><code>-i</code>  ：若目标档(destination)已经存在时，在覆盖时会先询问动作的进行(常用)</p>
+
+<p><code>-l</code>  ：进行硬式连结(hard link)的连结档创建，而非复制文件本身；</p>
+
+<p><code>-p</code>  ：连同文件的属性一起复制过去，而非使用默认属性(备份常用)；</p>
+
+<p><code>-r</code>  ：递回持续复制，用於目录的复制行为；(常用)</p>
+
+<p><code>-s</code>  ：复制成为符号连结档 (symbolic link)，亦即『捷径』文件；</p>
+
+<p><code>-u</code>  ：若 destination 比 source 旧才升级 destination ！</p>
+
+<p>最后需要注意的，如果来源档有两个以上，则最后一个目的档一定要是『目录』才行！</p>
+
+<hr />
+
+<h2 id="rm"><code>rm</code></h2>
+
+<p><strong>移除文件或目录</strong></p>
+
+<p>[root@www ~]#  <code>rm [-fir]</code> 文件或目录</p>
+
+<p>选项与参数：</p>
+
+<p><code>-f</code>  ：就是 force 的意思，忽略不存在的文件，不会出现警告信息；</p>
+
+<p><code>-i</code>  ：互动模式，在删除前会询问使用者是否动作</p>
+
+<p><code>-r</code>  ：递回删除啊！最常用在目录的删除了！这是非常危险的选项！！！</p>
+
+<hr />
+
+<h2 id="mv"><code>mv</code></h2>
+
+<p><strong>移动文件与目录，或更名</strong></p>
+
+<p>[root@www ~]#  <code>mv [-fiu]</code> source destination</p>
+
+<p>[root@www ~]#  <code>mv [options]</code> source1 source2 source3 …. directory</p>
+
+<p>选项与参数：</p>
+
+<p><code>-f</code>  ：force 强制的意思，如果目标文件已经存在，不会询问而直接覆盖；</p>
+
+<p><code>-i</code>  ：若目标文件 (destination) 已经存在时，就会询问是否覆盖！</p>
+
+<p><code>-u</code>  ：若目标文件已经存在，且 source 比较新，才会升级 (update)</p>
+
+<hr />
+
+<h2 id="basenamedirname"><code>basename</code>，<code>dirname</code></h2>
+
+<p><strong>取得路径的文件名称与目录名称</strong></p>
+
+<p>[root@www ~]#  <code>basename</code> /etc/sysconfig/network</p>
+
+<p>network        &lt;== 很简单！就取得最后的档名～</p>
+
+<p>[root@www ~]#  <code>dirname</code> /etc/sysconfig/network</p>
+
+<p>/etc/sysconfig  &lt;== 取得的变成目录名了！</p>
+
+<hr />
+
+<h2 id="cat"><code>cat</code></h2>
+
+<p><strong>查看文件</strong></p>
+
+<p>[root@www ~]#  <code>cat [-AbEnTv]</code></p>
+
+<p>选项与参数：</p>
+
+<p><code>-A</code>  ：相当於 -vET 的整合选项，可列出一些特殊字符而不是空白而已；</p>
+
+<p><code>-b</code>  ：列出行号，仅针对非空白行做行号显示，空白行不标行号！</p>
+
+<p><code>-E</code>  ：将结尾的断行字节 $ 显示出来；</p>
+
+<p><code>-n</code>  ：列印出行号，连同空白行也会有行号，与 -b 的选项不同；</p>
+
+<p><code>-T</code>  ：将 [tab] 按键以 ^I 显示出来；</p>
+
+<p><code>-v</code>  ：列出一些看不出来的特殊字符</p>
+
+<h2 id="tac"><code>tac</code></h2>
+
+<p><strong>反向显示</strong></p>
+
+<hr />
+
+<h2 id="nl"><code>nl</code></h2>
+
+<p><strong>添加行号显示</strong></p>
+
+<p>[root@www ~]#  <code>nl [-bnw]</code> 文件</p>
+
+<p>选项与参数：</p>
+
+<p><code>-b</code> ：指定行号指定的方式，主要有两种：</p>
+
+<blockquote>
+  <p><code>-b a</code> ：表示不论是否为空行，也同样列出行号(类似 cat -n)；</p>
+
+  <p><code>-b t</code> ：如果有空行，空的那一行不要列出行号(默认值)；</p>
+</blockquote>
+
+<p><code>-n</code> ：列出行号表示的方法，主要有三种：</p>
+
+<blockquote>
+  <p><code>-n ln</code> ：行号在萤幕的最左方显示；</p>
+
+  <p><code>-n rn</code> ：行号在自己栏位的最右方显示，且不加 0 ；</p>
+
+  <p><code>-n rz</code> ：行号在自己栏位的最右方显示，且加 0 ；</p>
+</blockquote>
+
+<p><code>-w</code> ：行号栏位的占用的位数。</p>
+
+<hr />
+
+<h2 id="more"><code>more</code></h2>
+
+<p><strong>一页一页翻动</strong></p>
+
+<p>[root@www ~]#  <code>more</code> /etc/man.config</p>
+
+<p>在more查看文件时可在最底行输入:</p>
+
+<p>空白键 (<code>space</code>)：代表向下翻一页；</p>
+
+<p><code>Enter</code>         ：代表向下翻『一行』；</p>
+
+<p><code>/</code>字串         ：代表在这个显示的内容当中，向下搜寻『字串』这个关键字；</p>
+
+<p><code>:f</code>            ：立刻显示出档名以及目前显示的行数；</p>
+
+<p><code>q</code>             ：代表立刻离开 more ，不再显示该文件内容。</p>
+
+<p><code>b</code> 或 <code>[ctrl]-b</code> ：代表往回翻页，不过这动作只对文件有用，对管线无用。</p>
+
+<hr />
+
+<h2 id="less"><code>less</code></h2>
+
+<p><strong>一页一页翻动</strong></p>
+
+<p>[root@www ~]#  <code>less</code> /etc/man.config</p>
+
+<p>在more查看文件时可在最底行输入:</p>
+
+<p>空白键(<code>space</code>)    ：向下翻动一页；</p>
+
+<p>[<code>pagedown</code>]：向下翻动一页；</p>
+
+<p>[<code>pageup</code>]  ：向上翻动一页；</p>
+
+<p><code>/</code>字串     ：向下搜寻『字串』的功能；</p>
+
+<p><code>?</code>字串     ：向上搜寻『字串』的功能；</p>
+
+<p><code>n</code>         ：重复前一个搜寻 (与 / 或 ? 有关！)</p>
+
+<p><code>N</code>         ：反向的重复前一个搜寻 (与 / 或 ? 有关！)</p>
+
+<p><code>q</code>         ：离开 less 这个程序；</p>
+
+<hr />
+
+<h2 id="head"><code>head</code></h2>
+
+<p><strong>取出前面几行</strong></p>
+
+<p>[root@www ~]#  <code>head [-n number]</code> 文件</p>
+
+<p>选项与参数：</p>
+
+<p><code>-n</code>  ：后面接数字，代表显示几行的意思</p>
+
+<hr />
+
+<h2 id="tail"><code>tail</code></h2>
+
+<p><strong>取出后面几行</strong></p>
+
+<p>[root@www ~]#  <code>tail [-n number]</code> 文件</p>
+
+<p>选项与参数：</p>
+
+<p><code>-n</code>  ：后面接数字，代表显示几行的意思</p>
+
+<p><code>-f</code>  ：表示持续侦测后面所接的档名，要等到按下[ctrl]-c才会结束tail的侦测</p>
+
+<hr />
+
+<h2 id="od"><code>od</code></h2>
+
+<p><strong>非纯文字档</strong></p>
+
+<p>[root@www ~]#  <code>od [-t TYPE]</code> 文件</p>
+
+<p>选项或参数：</p>
+
+<p><code>-t</code>  ：后面可以接各种『类型 (TYPE)』的输出，例如：</p>
+
+<blockquote>
+  <p><code>a</code>         ：利用默认的字节来输出；</p>
+
+  <p><code>c</code>         ：使用 ASCII 字节来输出</p>
+
+  <p><code>d</code>[size] ：利用十进位(decimal)来输出数据，每个整数占用 size bytes</p>
+
+  <p><code>f</code>[size] ：利用浮点数值(floating)来输出数据，每个数占用 size bytes</p>
+
+  <p><code>o</code>[size] ：利用八进位(octal)来输出数据，每个整数占用 size bytes</p>
+
+  <p><code>x</code>[size] ：利用十六进位(hexadecimal)来输出数据，每个整数占用 size bytes</p>
+</blockquote>
+
+<hr />
+
+<h2 id="touch"><code>touch</code></h2>
+
+<p><strong>修改文件时间或建置新档</strong></p>
+
+<p>[root@www ~]#  <code>touch [-acdmt]</code> 文件</p>
+
+<p>选项与参数：</p>
+
+<p><code>-a</code>  ：仅修订 access time；</p>
+
+<p><code>-c</code>  ：仅修改文件的时间，若该文件不存在则不创建新文件；</p>
+
+<p><code>-d</code>  ：后面可以接欲修订的日期而不用目前的日期，也可以使用 –date=”日期或时间”</p>
+
+<p><code>-m</code>  ：仅修改 mtime ；</p>
+
+<p><code>-t</code>  ：后面可以接欲修订的时间而不用目前的时间，格式为[YYMMDDhhmm]</p>
+
+<hr />
+
+<h2 id="file"><code>file</code></h2>
+
+<p><strong>查看文件类型</strong></p>
+
+<p>[root@www ~]#  <code>file</code> 文件</p>
+
+
+          </article>
+          <hr class="boundary">
+          <div id="post-share" class="bdsharebuttonbox">
+              <a href="#" class="bds_more" data-cmd="more"></a>
+              <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+              <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+              <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+              <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+              <a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+          </div>
+        </div>
+        <div class="pad-min"></div>
+        <div id="post-comment" class="sheet post hidden">
+            <div id="disqus_thread"></div>
+        </div>
+    </div>
+    <div class="content-navigation col-lg-3">
+      <div class="shadow-bottom-center" >
+        <div class="content-navigation-toc">
+            <div class="content-navigation-header">
+                <span class="octicon octicon-list-unordered"></span>&nbsp;Toc
+            </div>
+            <div class="content-navigation-list toc"></div>
+        </div>
+        <div class="content-navigation-tag">
+            <div class="content-navigation-header">
+                <span class="octicon octicon-list-unordered"></span>&nbsp;Tags
+            </div>
+            <div class="content-navigation-list">
+                <ul>
+                    
+                    <li>
+                        <a href="https://haonan-dong.github.io/tags#Linux"><span class="octicon octicon-tag"></span>&nbsp;Linux</a>
+                    </li>
+                    
+                    <li>
+                        <a href="https://haonan-dong.github.io/tags#命令"><span class="octicon octicon-tag"></span>&nbsp;命令</a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="content-navigation-related">
+            <div class="content-navigation-header">
+                <span class="octicon octicon-list-unordered"></span>&nbsp;Related
+            </div>
+            <div class="content-navigation-list">
+                <ul>
+                    
+
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+                                
+                                    
+                                
+                            
+                                
+                            
+
+                            
+                                
+                                    
+                                
+                            
+
+                            
+                                
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                                    
+                                
+                            
+                                
+                                    
+                                
+                            
+                                
+                            
+
+                            
+                                
+                                    
+                                
+                            
+
+                            
+                                
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                                    
+                                
+                            
+
+                            
+                                
+                                    
+                                
+                            
+
+                            
+                                
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                                    
+                                
+                            
+                                
+                            
+
+                            
+                                
+                                    
+                                
+                            
+
+                            
+                                
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                                    
+                                
+                            
+                                
+                            
+
+                            
+                                
+                                    
+                                
+                            
+
+                            
+                                
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                                    
+                                
+                            
+                                
+                                    
+                                
+                            
+
+                            
+                                
+                                    
+                                
+                            
+
+                            
+                                
+                            
+                        
+                    
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                                    
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                                
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                                    
+                                
+                            
+                                
+                            
+
+                            
+                                
+                                    
+                                
+                            
+
+                            
+                                
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+
+                    
+                        
+                            <li>
+                                <a href="https://haonan-dong.github.io/linux/shell-trash/">告别rm,自制回收站</a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://haonan-dong.github.io/linux/ssh/">SSH</a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://haonan-dong.github.io/linux/linux-job/">Linux计划任务</a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://haonan-dong.github.io/linux/linux-boot/">Linux启动流程</a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://haonan-dong.github.io/linux/linux-ps/">Linux进程管理</a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://haonan-dong.github.io/linux/linux-power/">Linux权限管理</a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://haonan-dong.github.io/special/vim/">VIM</a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://haonan-dong.github.io/linux/linux-print/">Linux打印</a>
+                            </li>
+                        
+                    
+                </ul>
+            </div>
+        </div>
+      </div>
+    </div>
+</div>
+    </div>
+    <div class="page-scrollTop" data-toggle="tooltip" data-placement="top" title="Top">
+        <a href="javascript:void(0);">
+            <div class="arrow"></div>
+            <div class="stick"></div>
+        </a>
+    </div>
+</div>
+
+    <footer  class="footnote footnote-tiffany">
+        <div class="container">
+                <a class="foot-item" href="mailto:sincerebravefight@gmail.com" target="_blank"><span class="octicon octicon-mail"></span></a>
+                <a class="foot-item" href="https://github.com/bit-ranger" target="_blank"><span class="octicon octicon-mark-github"></span></a>
+                <a class="foot-item" href="https://haonan-dong.github.io/feed.xml" target="_blank"><span class="octicon octicon-rss"></span></a>
+                <a class="foot-item" href="https://haonan-dong.github.io/link/"><span class="octicon octicon-link-external"></span></a>
+                &nbsp;
+                <a href="https://github.com/bit-ranger"><span class="word-keep">&copy; bit-ranger</span></a>
+        </div>
+    </footer>
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://haonan-dong.github.io/static/js/script.js"></script>
+    <script type="text/javascript" src="https://haonan-dong.github.io/static/js/gitment.js"></script>
+    <script type="text/javascript" src="https://haonan-dong.github.io/static/js/post.js"></script>
+    
+
+
+</body>
+</html>

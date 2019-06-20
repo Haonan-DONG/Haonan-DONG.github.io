@@ -1,0 +1,2013 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>XML</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="keywords" content="XML, common, XML, λ lambda" />
+    <meta name="description" content="XML, common, XML, " />
+    <meta name="theme-color" content="#2CA6CB"/>
+    <link rel="shortcut icon" type="image/x-icon" media="screen" href="https://haonan-dong.github.io/favicon.ico" />
+    <link rel="canonical" href="https://haonan-dong.github.io/common/xml/" />
+    <link rel="alternate" type="application/rss+xml" title="λ lambda" href="https://haonan-dong.github.io/feed.xml"  />
+
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/octicons/3.5.0/octicons.min.css" >
+    <link rel="stylesheet" type="text/css" href="https://haonan-dong.github.io/static/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="https://haonan-dong.github.io/static/css/highlight.css" />
+    <link rel="stylesheet" type="text/css" href="https://haonan-dong.github.io/static/css/gitment.css" />
+    <link rel="stylesheet" type="text/css" href="https://haonan-dong.github.io/static/css/post.css" />
+    
+
+</head>
+
+
+<body>
+
+    <header>
+        <nav class="navbar navbar-tiffany rectangle" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="https://haonan-dong.github.io/">λ lambda</a>
+                    <p class="navbar-text"></p>
+                </div>
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        
+                        <li>
+                        <a href="https://haonan-dong.github.io/" class="word-keep"><span class="octicon octicon-book"></span></span>&nbsp;&nbsp;Blog</a>
+                        </li>
+                        
+                        
+                        <li>
+                            <a href="https://haonan-dong.github.io/archive/" class="word-keep"><span class="octicon octicon-repo"></span>&nbsp;&nbsp;Archive</a>
+                        </li>
+                        
+                        
+                        
+                        <li>
+                            <a href="https://haonan-dong.github.io/category/" class="word-keep"><span class="octicon octicon-list-unordered"></span>&nbsp;&nbsp;Category</a>
+                        </li>
+                        
+                        
+                        
+                        <li>
+                            <a href="https://haonan-dong.github.io/tags/" class="word-keep"><span class="octicon octicon-tag"></span>&nbsp;&nbsp;Tag</a>
+                        </li>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <li><a href="#stq=" class="search-button"><span class="octicon octicon-search"></span></a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+
+
+<div class="main">
+    <div class="container">
+        <div class="row">
+    <div class="content col-lg-9">
+        <div class="sheet post">
+          <header>
+            <h2>XML</h2>
+            <p class="post-meta">
+                <span class="octicon octicon-clock"></span> Jan 16, 2014
+            </p>
+            <p class="post-tag">
+                <span><a href="https://haonan-dong.github.io/category/#common"><span class="octicon octicon-list-unordered"></span>&nbsp;common</a></span>
+                <span>
+                    <a class="word-keep" href="https://haonan-dong.github.io/tags/#XML"><span class="octicon octicon-tag"></span>&nbsp;XML</a>
+                    
+                </span>
+            </p>
+          </header>
+          <hr class="boundary">
+          <article>
+            <ul id="markdown-toc">
+  <li><a href="#namespace">NameSpace</a></li>
+  <li><a href="#section">构建模块</a></li>
+  <li><a href="#css">CSS</a></li>
+  <li><a href="#xslt">XSLT</a></li>
+  <li><a href="#dtd">DTD</a>    <ul>
+      <li><a href="#xml">XML文档定义：</a></li>
+      <li><a href="#dtd-1">外部DTD</a></li>
+      <li><a href="#section-1">元素</a></li>
+      <li><a href="#section-2">属性</a></li>
+      <li><a href="#section-3">实体</a></li>
+      <li><a href="#section-4">验证</a></li>
+    </ul>
+  </li>
+  <li><a href="#xsd">XSD</a>    <ul>
+      <li><a href="#section-5">元素</a>        <ul>
+          <li><a href="#section-6">简易元素</a></li>
+          <li><a href="#section-7">复合元素</a></li>
+          <li><a href="#section-8">复合空元素</a></li>
+          <li><a href="#section-9">仅含元素复合类型</a></li>
+          <li><a href="#section-10">仅含文本复合类型</a></li>
+          <li><a href="#section-11">混合内容复合类型</a></li>
+        </ul>
+      </li>
+      <li><a href="#section-12">属性</a></li>
+      <li><a href="#facets">限定 / Facets</a></li>
+      <li><a href="#section-13">指示器</a></li>
+      <li><a href="#any">any</a></li>
+      <li><a href="#anyattribute">anyAttribute</a></li>
+      <li><a href="#section-14">元素替换</a></li>
+      <li><a href="#section-15">数据类型</a></li>
+    </ul>
+  </li>
+  <li><a href="#dom">DOM</a></li>
+  <li><a href="#section-16">解析器</a></li>
+  <li><a href="#section-17">衍生产品</a></li>
+</ul>
+
+<p>XML 文档可以包含非 ASCII 字符，为了避免错误，需要<strong>规定</strong> XML 编码，或者将 XML 文档<strong>存</strong>为 Unicode，两者需要保持一致。</p>
+
+<p>必须包含<strong>根</strong>元素，该元素是所有其他元素的父元素。</p>
+
+<p>所有元素都必须有<strong>关闭</strong>标签</p>
+
+<p>对大小写<strong>敏感</strong></p>
+
+<p>属性值须加<strong>引号</strong>，如果属性本身包含引号，就用单引号包围属性</p>
+
+<p><code>&lt;</code> 和 <code>&amp;</code> 是非法的，用实体引用代替</p>
+
+<p>文档中的空格不会被删节，而html只会保留1个</p>
+
+<p>XML以 <code>LF</code> 存储换行</p>
+
+<p>名称不能以数字或者标点符号或“xml”（或者 XML、Xml）开始，不能包含空格，避免<code>-.:</code>字符</p>
+
+<p>元数据（有关数据的数据）应当存储为属性，而数据本身应当存储为元素。</p>
+
+<p>Internet Explorer 5 拥有对 XML 的支持，但是 XSL 部分与 W3C 的官方标准不兼容！</p>
+
+<h1 id="namespace">NameSpace</h1>
+
+<p>XML 命名空间属性被放置于元素的开始标签之中，并使用以下的语法：</p>
+
+<pre><code>xmlns:namespace-prefix="namespaceURI"
+</code></pre>
+<p>默认的命名空间，省去前缀：</p>
+
+<pre><code>xmlns="namespaceURI"
+</code></pre>
+
+<h1 id="section">构建模块</h1>
+
+<ul>
+  <li>
+    <p>元素</p>
+  </li>
+  <li>
+    <p>属性</p>
+  </li>
+  <li>
+    <p>实体</p>
+  </li>
+  <li>
+    <p><strong>PCDATA</strong>：会被解析器解析的文本，这些文本将被解析器检查实体以及标记。解析器将能识别PCDATA包含的元素，并将其作为节点</p>
+  </li>
+  <li>
+    <p><strong>CDATA</strong>：不会被解析器解析的文本。某些文本，比如 JavaScript 代码，包含大量 “&lt;” 或 “&amp;” 字符。为了避免错误，可以将脚本代码定义为 CDATA。</p>
+  </li>
+</ul>
+
+<p>CDATA 部分由 “<code>&lt;![CDATA[</code>” 开始，由 “<code>]]&gt;</code>” 结束，包含的内容将被解析器忽略，CDATA 部分不能包含字符串 “]]&gt;”，也不允许嵌套的 ，标记 CDATA 部分结尾的 “]]&gt;” 不能包含空格或折行。：</p>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"> <a href="#n1" name="n1">1</a></span><span style="color:#070;font-weight:bold">&lt;script&gt;</span>
+<span class="line-numbers"> <a href="#n2" name="n2">2</a></span><span style="background-color:hsla(0,0%,0%,0.07);color:black">&lt;![CDATA[</span>
+<span class="line-numbers"> <a href="#n3" name="n3">3</a></span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="color:#080;font-weight:bold">function</span> <span style="color:#06B;font-weight:bold">matchwo</span>(a,b)</span>
+<span class="line-numbers"> <a href="#n4" name="n4">4</a></span><span style="background-color:hsla(0,0%,0%,0.07);color:black">{</span>
+<span class="line-numbers"> <a href="#n5" name="n5">5</a></span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="color:#080;font-weight:bold">if</span> (a &lt; b &amp;&amp; a &lt; <span style="color:#00D">0</span>) then</span>
+<span class="line-numbers"> <a href="#n6" name="n6">6</a></span><span style="background-color:hsla(0,0%,0%,0.07);color:black">  {</span>
+<span class="line-numbers"> <a href="#n7" name="n7">7</a></span><span style="background-color:hsla(0,0%,0%,0.07);color:black">  <span style="color:#080;font-weight:bold">return</span> <span style="color:#00D">1</span>;</span>
+<span class="line-numbers"> <a href="#n8" name="n8">8</a></span><span style="background-color:hsla(0,0%,0%,0.07);color:black">  }</span>
+<span class="line-numbers"> <a href="#n9" name="n9">9</a></span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="color:#080;font-weight:bold">else</span></span>
+<span class="line-numbers"><strong><a href="#n10" name="n10">10</a></strong></span><span style="background-color:hsla(0,0%,0%,0.07);color:black">  {</span>
+<span class="line-numbers"><a href="#n11" name="n11">11</a></span><span style="background-color:hsla(0,0%,0%,0.07);color:black">  <span style="color:#080;font-weight:bold">return</span> <span style="color:#00D">0</span>;</span>
+<span class="line-numbers"><a href="#n12" name="n12">12</a></span><span style="background-color:hsla(0,0%,0%,0.07);color:black">  }</span>
+<span class="line-numbers"><a href="#n13" name="n13">13</a></span><span style="background-color:hsla(0,0%,0%,0.07);color:black">}</span>
+<span class="line-numbers"><a href="#n14" name="n14">14</a></span><span style="background-color:hsla(0,0%,0%,0.07);color:black">]]&gt;</span>
+<span class="line-numbers"><a href="#n15" name="n15">15</a></span><span style="color:#070;font-weight:bold">&lt;/script&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<h1 id="css">CSS</h1>
+
+<p>XML文本展示效果可以被CSS渲染，建议使用XSLT</p>
+
+<pre><code>&lt;?xml version="1.0" encoding="ISO-8859-1"?&gt;
+&lt;?xml-stylesheet type="text/css" href="cd_catalog.css"?&gt;
+</code></pre>
+
+<h1 id="xslt">XSLT</h1>
+
+<p>XSLT 是首选的 XML 样式表语言。<br />
+XSLT (eXtensible Stylesheet Language Transformations) 远比 CSS 更加完善，XSLT 可以把 XML 文档转换为其他格式，比如 XHTML。<br />
+<a href="http://www.w3school.com.cn/xsl/index.asp">XSLT</a></p>
+
+<h1 id="dtd">DTD</h1>
+
+<p>DTD：XML Type Definition ，文档类型定义，建议使用XSD</p>
+
+<h2 id="xml">XML文档定义：</h2>
+
+<pre><code>&lt;!DOCTYPE 根元素 [元素声明]&gt;
+</code></pre>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"> <a href="#n1" name="n1">1</a></span>&lt;?xml version=&quot;1.0&quot;?&gt;
+<span class="line-numbers"> <a href="#n2" name="n2">2</a></span>&lt;!DOCTYPE note [
+<span class="line-numbers"> <a href="#n3" name="n3">3</a></span>  &lt;!ELEMENT note (to,from,heading,body)&gt;
+<span class="line-numbers"> <a href="#n4" name="n4">4</a></span>  &lt;!ELEMENT to      (# PCDATA)&gt;
+<span class="line-numbers"> <a href="#n5" name="n5">5</a></span>  &lt;!ELEMENT from    (# PCDATA)&gt;
+<span class="line-numbers"> <a href="#n6" name="n6">6</a></span>  &lt;!ELEMENT heading (# PCDATA)&gt;
+<span class="line-numbers"> <a href="#n7" name="n7">7</a></span>  &lt;!ELEMENT body    (# PCDATA)&gt;
+<span class="line-numbers"> <a href="#n8" name="n8">8</a></span>]&gt;
+<span class="line-numbers"> <a href="#n9" name="n9">9</a></span>&lt;note&gt;
+<span class="line-numbers"><strong><a href="#n10" name="n10">10</a></strong></span>  &lt;to&gt;George&lt;/to&gt;
+<span class="line-numbers"><a href="#n11" name="n11">11</a></span>  &lt;from&gt;John&lt;/from&gt;
+<span class="line-numbers"><a href="#n12" name="n12">12</a></span>  &lt;heading&gt;Reminder&lt;/heading&gt;
+<span class="line-numbers"><a href="#n13" name="n13">13</a></span>  &lt;body&gt;Don't forget the meeting!&lt;/body&gt;
+<span class="line-numbers"><a href="#n14" name="n14">14</a></span>&lt;/note&gt;
+</pre></div>
+</div>
+</div>
+<p><code>!ELEMENT note</code> (第三行)定义 note 元素有四个元素：”to、from、heading,、body”<br />
+<code>!ELEMENT to</code> (第四行)定义 to 元素为 “<code># PCDATA</code>” 类型</p>
+
+<h2 id="dtd-1">外部DTD</h2>
+
+<pre><code>&lt;!DOCTYPE 根元素 SYSTEM "文件名"&gt;
+</code></pre>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span><span style="color:#579">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
+<span class="line-numbers"><a href="#n2" name="n2">2</a></span><span style="color:#34b">&lt;!DOCTYPE note SYSTEM &quot;note.dtd&quot;&gt;</span>
+<span class="line-numbers"><a href="#n3" name="n3">3</a></span><span style="color:#070;font-weight:bold">&lt;note&gt;</span>
+<span class="line-numbers"><a href="#n4" name="n4">4</a></span><span style="color:#070;font-weight:bold">&lt;to&gt;</span>George<span style="color:#070;font-weight:bold">&lt;/to&gt;</span>
+<span class="line-numbers"><a href="#n5" name="n5">5</a></span><span style="color:#070;font-weight:bold">&lt;from&gt;</span>John<span style="color:#070;font-weight:bold">&lt;/from&gt;</span>
+<span class="line-numbers"><a href="#n6" name="n6">6</a></span><span style="color:#070;font-weight:bold">&lt;heading&gt;</span>Reminder<span style="color:#070;font-weight:bold">&lt;/heading&gt;</span>
+<span class="line-numbers"><a href="#n7" name="n7">7</a></span><span style="color:#070;font-weight:bold">&lt;body&gt;</span>Don't forget the meeting!<span style="color:#070;font-weight:bold">&lt;/body&gt;</span>
+<span class="line-numbers"><a href="#n8" name="n8">8</a></span><span style="color:#070;font-weight:bold">&lt;/note&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span>&lt;!ELEMENT note (to,from,heading,body)&gt;
+<span class="line-numbers"><a href="#n2" name="n2">2</a></span>&lt;!ELEMENT to (# PCDATA)&gt;
+<span class="line-numbers"><a href="#n3" name="n3">3</a></span>&lt;!ELEMENT from (# PCDATA)&gt;
+<span class="line-numbers"><a href="#n4" name="n4">4</a></span>&lt;!ELEMENT heading (# PCDATA)&gt;
+<span class="line-numbers"><a href="#n5" name="n5">5</a></span>&lt;!ELEMENT body (# PCDATA)&gt;
+</pre></div>
+</div>
+</div>
+
+<h2 id="section-1">元素</h2>
+
+<p>声明元素</p>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span>&lt;!ELEMENT 元素名称 类别&gt;
+<span class="line-numbers"><a href="#n2" name="n2">2</a></span>&lt;!ELEMENT 元素名称 (元素内容)&gt;
+</pre></div>
+</div>
+</div>
+<p>空元素</p>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span>&lt;!ELEMENT 元素名称 EMPTY&gt;
+</pre></div>
+</div>
+</div>
+<p>只有 PCDATA 的元素</p>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span>&lt;!ELEMENT 元素名称 (# PCDATA)&gt;
+</pre></div>
+</div>
+</div>
+<p>带有任何内容的元素</p>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span>&lt;!ELEMENT 元素名称 ANY&gt;
+</pre></div>
+</div>
+</div>
+
+<p>带有子元素（序列）的元素</p>
+
+<p>当子元素按照由逗号分隔开的序列进行声明时，这些子元素必须按照<strong>相同的顺序</strong>出现在文档中。在一个完整的声明中，子元素也必须被声明，同时子元素也可拥有子元素。</p>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span>&lt;!ELEMENT 元素名称 (子元素名称 1,子元素名称 2,.....)&gt;
+</pre></div>
+</div>
+</div>
+
+<p>声明元素重复出现的次数，重复标记与正则表达式相同</p>
+
+<p>声明只出现一次的元素</p>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span>&lt;!ELEMENT 元素名称 (子元素名称)&gt;
+</pre></div>
+</div>
+</div>
+<p>声明最少出现一次的元素</p>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span>&lt;!ELEMENT 元素名称 (子元素名称+)&gt;
+</pre></div>
+</div>
+</div>
+<p>声明出现零次或多次的元素</p>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span>&lt;!ELEMENT 元素名称 (子元素名称*)&gt;
+</pre></div>
+</div>
+</div>
+<p>声明出现零次或一次的元素</p>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span>&lt;!ELEMENT 元素名称 (子元素名称?)&gt;
+</pre></div>
+</div>
+</div>
+
+<p>声明“或”类型的内容，第四个元素可以为message或body</p>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span>&lt;!ELEMENT note (to,from,header,(message|body))&gt;
+</pre></div>
+</div>
+</div>
+<p>声明混合型的内容</p>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span>&lt;!ELEMENT note (# PCDATA|to|from|header|message)*&gt;
+</pre></div>
+</div>
+</div>
+
+<h2 id="section-2">属性</h2>
+
+<p>声明属性</p>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span>&lt;!ATTLIST 元素名称 属性名称 属性类型 默认值&gt;
+</pre></div>
+</div>
+</div>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span>&lt;!ATTLIST payment type CDATA &quot;check&quot;&gt;
+</pre></div>
+</div>
+</div>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span><span style="color:#070;font-weight:bold">&lt;payment</span> <span style="color:#b48">type</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">check</span><span style="color:#710">&quot;</span></span> <span style="color:#070;font-weight:bold">/&gt;</span>
+</pre></div>
+</div>
+</div>
+<p><img src="https://bit-ranger.github.io/blog/static/img/xml-field-type.jpg" alt="field-type" /></p>
+
+<hr />
+
+<h2 id="section-3">实体</h2>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span>&lt;!ENTITY 实体名称 &quot;实体的值&quot;&gt;
+</pre></div>
+</div>
+</div>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span>&lt;!ENTITY writer &quot;Bill Gates&quot;&gt;
+<span class="line-numbers"><a href="#n2" name="n2">2</a></span>&lt;!ENTITY copyright &quot;Copyright W3School.com.cn&quot;&gt;
+</pre></div>
+</div>
+</div>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span><span style="color:#070;font-weight:bold">&lt;author&gt;</span><span style="color:#800;font-weight:bold">&amp;writer;</span><span style="color:#800;font-weight:bold">&amp;copyright;</span><span style="color:#070;font-weight:bold">&lt;/author&gt;</span>
+</pre></div>
+</div>
+</div>
+<p>外部实体声明</p>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span>&lt;!ENTITY 实体名称 SYSTEM &quot;URI/URL&quot;&gt;
+</pre></div>
+</div>
+</div>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span>&lt;!ENTITY writer SYSTEM &quot;http://www.w3school.com.cn/dtd/entities.dtd&quot;&gt;
+<span class="line-numbers"><a href="#n2" name="n2">2</a></span>&lt;!ENTITY copyright SYSTEM &quot;http://www.w3school.com.cn/dtd/entities.dtd&quot;&gt;
+</pre></div>
+</div>
+</div>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span><span style="color:#070;font-weight:bold">&lt;author&gt;</span><span style="color:#800;font-weight:bold">&amp;writer;</span><span style="color:#800;font-weight:bold">&amp;copyright;</span><span style="color:#070;font-weight:bold">&lt;/author&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<h2 id="section-4">验证</h2>
+
+<p>javascript验证，load( ) 方法用于文件，而 loadXML( ) 方法用于字符串，validateOnParse设为false关闭验证</p>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span><span style="color:#080;font-weight:bold">var</span> xmlDoc = <span style="color:#080;font-weight:bold">new</span> ActiveXObject(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Microsoft.XMLDOM</span><span style="color:#710">&quot;</span></span>);
+<span class="line-numbers"><a href="#n2" name="n2">2</a></span>xmlDoc.async=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">false</span><span style="color:#710">&quot;</span></span>;
+<span class="line-numbers"><a href="#n3" name="n3">3</a></span>xmlDoc.validateOnParse=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">true</span><span style="color:#710">&quot;</span></span>;
+<span class="line-numbers"><a href="#n4" name="n4">4</a></span>xmlDoc.load(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">note_dtd_error.xml</span><span style="color:#710">&quot;</span></span>);
+</pre></div>
+</div>
+</div>
+
+<h1 id="xsd">XSD</h1>
+
+<p>XML Schema Definition，文档模式定义，是基于 XML 的 DTD 替代物。</p>
+
+<p>与 DTD 不同，XML Schema 支持数据类型和命名空间。</p>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"> <a href="#n1" name="n1">1</a></span><span style="color:#579">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
+<span class="line-numbers"> <a href="#n2" name="n2">2</a></span><span style="color:#070;font-weight:bold">&lt;xs:schema</span> <span style="color:#b48">xmlns:xs</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">http://www.w3.org/2001/XMLSchema</span><span style="color:#710">&quot;</span></span>
+<span class="line-numbers"> <a href="#n3" name="n3">3</a></span><span style="color:#b48">targetNamespace</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">http://www.w3school.com.cn</span><span style="color:#710">&quot;</span></span>
+<span class="line-numbers"> <a href="#n4" name="n4">4</a></span><span style="color:#b48">xmlns</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">http://www.w3school.com.cn</span><span style="color:#710">&quot;</span></span>
+<span class="line-numbers"> <a href="#n5" name="n5">5</a></span><span style="color:#b48">elementFormDefault</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">qualified</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">&gt;</span>
+<span class="line-numbers"> <a href="#n6" name="n6">6</a></span>
+<span class="line-numbers"> <a href="#n7" name="n7">7</a></span><span style="color:#070;font-weight:bold">&lt;xs:element</span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">note</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">&gt;</span>
+<span class="line-numbers"> <a href="#n8" name="n8">8</a></span>    <span style="color:#070;font-weight:bold">&lt;xs:complexType&gt;</span>
+<span class="line-numbers"> <a href="#n9" name="n9">9</a></span>      <span style="color:#070;font-weight:bold">&lt;xs:sequence&gt;</span>
+<span class="line-numbers"><strong><a href="#n10" name="n10">10</a></strong></span>        <span style="color:#070;font-weight:bold">&lt;xs:element</span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">to</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">type</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">xs:string</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">/&gt;</span>
+<span class="line-numbers"><a href="#n11" name="n11">11</a></span>        <span style="color:#070;font-weight:bold">&lt;xs:element</span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">from</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">type</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">xs:string</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">/&gt;</span>
+<span class="line-numbers"><a href="#n12" name="n12">12</a></span>        <span style="color:#070;font-weight:bold">&lt;xs:element</span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">heading</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">type</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">xs:string</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">/&gt;</span>
+<span class="line-numbers"><a href="#n13" name="n13">13</a></span>        <span style="color:#070;font-weight:bold">&lt;xs:element</span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">body</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">type</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">xs:string</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">/&gt;</span>
+<span class="line-numbers"><a href="#n14" name="n14">14</a></span>      <span style="color:#070;font-weight:bold">&lt;/xs:sequence&gt;</span>
+<span class="line-numbers"><a href="#n15" name="n15">15</a></span>    <span style="color:#070;font-weight:bold">&lt;/xs:complexType&gt;</span>
+<span class="line-numbers"><a href="#n16" name="n16">16</a></span><span style="color:#070;font-weight:bold">&lt;/xs:element&gt;</span>
+<span class="line-numbers"><a href="#n17" name="n17">17</a></span>
+<span class="line-numbers"><a href="#n18" name="n18">18</a></span><span style="color:#070;font-weight:bold">&lt;/xs:schema&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<p>xmlns:xs 显示 schema 中<strong>用到的元素</strong>和<strong>数据类型</strong>来自哪个命名空间，同时它还规定了来自此命名空间的元素和数据类型应该使用前缀 xs；</p>
+
+<p>targetNamespace  显示被此 schema <strong>定义的元素</strong> (note, to, from, heading, body) 来自哪个命名空间, 这意味着，如果在xml文档中使用此命名空间，那么定义的元素将可以被使用，如果不同的命名空间含有同名元素，使用前缀区分。</p>
+
+<p>elementFormDefault=”qualified” 指出任何 XML 实例文档所使用的且在此 schema 中声明过的元素必须被命名空间限定。</p>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"> <a href="#n1" name="n1">1</a></span><span style="color:#579">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
+<span class="line-numbers"> <a href="#n2" name="n2">2</a></span><span style="color:#070;font-weight:bold">&lt;note</span>
+<span class="line-numbers"> <a href="#n3" name="n3">3</a></span><span style="color:#b48">xmlns</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">http://www.w3school.com.cn</span><span style="color:#710">&quot;</span></span>
+<span class="line-numbers"> <a href="#n4" name="n4">4</a></span><span style="color:#b48">xmlns:xsi</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">http://www.w3.org/2001/XMLSchema-instance</span><span style="color:#710">&quot;</span></span>
+<span class="line-numbers"> <a href="#n5" name="n5">5</a></span><span style="color:#b48">xsi:schemaLocation</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">http://www.w3school.com.cn note.xsd</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">&gt;</span>
+<span class="line-numbers"> <a href="#n6" name="n6">6</a></span>
+<span class="line-numbers"> <a href="#n7" name="n7">7</a></span><span style="color:#070;font-weight:bold">&lt;to&gt;</span>George<span style="color:#070;font-weight:bold">&lt;/to&gt;</span>
+<span class="line-numbers"> <a href="#n8" name="n8">8</a></span><span style="color:#070;font-weight:bold">&lt;from&gt;</span>John<span style="color:#070;font-weight:bold">&lt;/from&gt;</span>
+<span class="line-numbers"> <a href="#n9" name="n9">9</a></span><span style="color:#070;font-weight:bold">&lt;heading&gt;</span>Reminder<span style="color:#070;font-weight:bold">&lt;/heading&gt;</span>
+<span class="line-numbers"><strong><a href="#n10" name="n10">10</a></strong></span><span style="color:#070;font-weight:bold">&lt;body&gt;</span>Don't forget the meeting!<span style="color:#070;font-weight:bold">&lt;/body&gt;</span>
+<span class="line-numbers"><a href="#n11" name="n11">11</a></span><span style="color:#070;font-weight:bold">&lt;/note&gt;</span>
+</pre></div>
+</div>
+</div>
+<p>一旦拥有了可用的 XML Schema 实例命名空间：xmlns:xsi</p>
+
+<p>就可以使用 schemaLocation 属性来注册命名空间，只有注册的命名空间可以被使用。此属性有两个值，第一个值是需要使用的命名空间，第二个值是供命名空间使用的 XML schema 的位置：xsi:schemaLocation</p>
+
+<h2 id="section-5">元素</h2>
+
+<p><code>&lt;schema&gt;</code> 元素是每一个 XML Schema 的根元素</p>
+
+<h3 id="section-6">简易元素</h3>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span><span style="color:#070;font-weight:bold">&lt;xs:element</span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">xxx</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">type</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">yyy</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">/&gt;</span>
+</pre></div>
+</div>
+</div>
+<p>常用类型：<br />
+xs:string<br />
+xs:decimal<br />
+xs:integer<br />
+xs:boolean<br />
+xs:date<br />
+xs:time<br />
+缺省值</p>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span><span style="color:#070;font-weight:bold">&lt;xs:element</span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">color</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">type</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">xs:string</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">default</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">red</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">/&gt;</span>
+</pre></div>
+</div>
+</div>
+<p>固定值</p>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span><span style="color:#070;font-weight:bold">&lt;xs:element</span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">color</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">type</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">xs:string</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">fixed</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">red</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">/&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<h3 id="section-7">复合元素</h3>
+
+<p>子元素包围在<code> &lt;sequence&gt;</code>中，这意味着子元素必须以它们被声明的次序出现。</p>
+
+<p>声明形式，这种类型是employee独有的</p>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span><span style="color:#070;font-weight:bold">&lt;xs:element</span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">employee</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">&gt;</span>
+<span class="line-numbers"><a href="#n2" name="n2">2</a></span>  <span style="color:#070;font-weight:bold">&lt;xs:complexType&gt;</span>
+<span class="line-numbers"><a href="#n3" name="n3">3</a></span>    <span style="color:#070;font-weight:bold">&lt;xs:sequence&gt;</span>
+<span class="line-numbers"><a href="#n4" name="n4">4</a></span>      <span style="color:#070;font-weight:bold">&lt;xs:element</span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">firstname</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">type</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">xs:string</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">/&gt;</span>
+<span class="line-numbers"><a href="#n5" name="n5">5</a></span>      <span style="color:#070;font-weight:bold">&lt;xs:element</span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">lastname</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">type</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">xs:string</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">/&gt;</span>
+<span class="line-numbers"><a href="#n6" name="n6">6</a></span>    <span style="color:#070;font-weight:bold">&lt;/xs:sequence&gt;</span>
+<span class="line-numbers"><a href="#n7" name="n7">7</a></span>  <span style="color:#070;font-weight:bold">&lt;/xs:complexType&gt;</span>
+<span class="line-numbers"><a href="#n8" name="n8">8</a></span><span style="color:#070;font-weight:bold">&lt;/xs:element&gt;</span>
+</pre></div>
+</div>
+</div>
+<p>引用形式，这种类型是共享的</p>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span><span style="color:#070;font-weight:bold">&lt;xs:element</span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">employee</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">type</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">personinfo</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">/&gt;</span>
+<span class="line-numbers"><a href="#n2" name="n2">2</a></span>
+<span class="line-numbers"><a href="#n3" name="n3">3</a></span><span style="color:#070;font-weight:bold">&lt;xs:complexType</span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">personinfo</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">&gt;</span>
+<span class="line-numbers"><a href="#n4" name="n4">4</a></span>  <span style="color:#070;font-weight:bold">&lt;xs:sequence&gt;</span>
+<span class="line-numbers"><a href="#n5" name="n5">5</a></span>    <span style="color:#070;font-weight:bold">&lt;xs:element</span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">firstname</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">type</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">xs:string</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">/&gt;</span>
+<span class="line-numbers"><a href="#n6" name="n6">6</a></span>    <span style="color:#070;font-weight:bold">&lt;xs:element</span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">lastname</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">type</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">xs:string</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">/&gt;</span>
+<span class="line-numbers"><a href="#n7" name="n7">7</a></span>  <span style="color:#070;font-weight:bold">&lt;/xs:sequence&gt;</span>
+<span class="line-numbers"><a href="#n8" name="n8">8</a></span><span style="color:#070;font-weight:bold">&lt;/xs:complexType&gt;</span>
+</pre></div>
+</div>
+</div>
+<p>类型扩展</p>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"> <a href="#n1" name="n1">1</a></span><span style="color:#070;font-weight:bold">&lt;xs:element</span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">employee</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">type</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">fullpersoninfo</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">/&gt;</span>
+<span class="line-numbers"> <a href="#n2" name="n2">2</a></span>
+<span class="line-numbers"> <a href="#n3" name="n3">3</a></span><span style="color:#070;font-weight:bold">&lt;xs:complexType</span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">personinfo</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">&gt;</span>
+<span class="line-numbers"> <a href="#n4" name="n4">4</a></span>  <span style="color:#070;font-weight:bold">&lt;xs:sequence&gt;</span>
+<span class="line-numbers"> <a href="#n5" name="n5">5</a></span>    <span style="color:#070;font-weight:bold">&lt;xs:element</span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">firstname</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">type</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">xs:string</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">/&gt;</span>
+<span class="line-numbers"> <a href="#n6" name="n6">6</a></span>    <span style="color:#070;font-weight:bold">&lt;xs:element</span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">lastname</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">type</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">xs:string</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">/&gt;</span>
+<span class="line-numbers"> <a href="#n7" name="n7">7</a></span>  <span style="color:#070;font-weight:bold">&lt;/xs:sequence&gt;</span>
+<span class="line-numbers"> <a href="#n8" name="n8">8</a></span><span style="color:#070;font-weight:bold">&lt;/xs:complexType&gt;</span>
+<span class="line-numbers"> <a href="#n9" name="n9">9</a></span>
+<span class="line-numbers"><strong><a href="#n10" name="n10">10</a></strong></span><span style="color:#070;font-weight:bold">&lt;xs:complexType</span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">fullpersoninfo</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">&gt;</span>
+<span class="line-numbers"><a href="#n11" name="n11">11</a></span>  <span style="color:#070;font-weight:bold">&lt;xs:complexContent&gt;</span>
+<span class="line-numbers"><a href="#n12" name="n12">12</a></span>    <span style="color:#070;font-weight:bold">&lt;xs:extension</span> <span style="color:#b48">base</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">personinfo</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">&gt;</span>
+<span class="line-numbers"><a href="#n13" name="n13">13</a></span>      <span style="color:#070;font-weight:bold">&lt;xs:sequence&gt;</span>
+<span class="line-numbers"><a href="#n14" name="n14">14</a></span>        <span style="color:#070;font-weight:bold">&lt;xs:element</span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">address</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">type</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">xs:string</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">/&gt;</span>
+<span class="line-numbers"><a href="#n15" name="n15">15</a></span>        <span style="color:#070;font-weight:bold">&lt;xs:element</span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">city</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">type</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">xs:string</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">/&gt;</span>
+<span class="line-numbers"><a href="#n16" name="n16">16</a></span>        <span style="color:#070;font-weight:bold">&lt;xs:element</span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">country</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">type</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">xs:string</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">/&gt;</span>
+<span class="line-numbers"><a href="#n17" name="n17">17</a></span>      <span style="color:#070;font-weight:bold">&lt;/xs:sequence&gt;</span>
+<span class="line-numbers"><a href="#n18" name="n18">18</a></span>    <span style="color:#070;font-weight:bold">&lt;/xs:extension&gt;</span>
+<span class="line-numbers"><a href="#n19" name="n19">19</a></span>  <span style="color:#070;font-weight:bold">&lt;/xs:complexContent&gt;</span>
+<span class="line-numbers"><strong><a href="#n20" name="n20">20</a></strong></span><span style="color:#070;font-weight:bold">&lt;/xs:complexType&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<h3 id="section-8">复合空元素</h3>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"> <a href="#n1" name="n1">1</a></span><span style="color:#070;font-weight:bold">&lt;xs:element</span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">product</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">&gt;</span>
+<span class="line-numbers"> <a href="#n2" name="n2">2</a></span>  <span style="color:#070;font-weight:bold">&lt;xs:complexType&gt;</span>
+<span class="line-numbers"> <a href="#n3" name="n3">3</a></span>    <span style="color:#070;font-weight:bold">&lt;xs:complexContent&gt;</span>
+<span class="line-numbers"> <a href="#n4" name="n4">4</a></span>      <span style="color:#070;font-weight:bold">&lt;xs:restriction</span> <span style="color:#b48">base</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">xs:integer</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">&gt;</span>
+<span class="line-numbers"> <a href="#n5" name="n5">5</a></span>        <span style="color:#070;font-weight:bold">&lt;xs:attribute</span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">prodid</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">type</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">xs:positiveInteger</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">/&gt;</span>
+<span class="line-numbers"> <a href="#n6" name="n6">6</a></span>      <span style="color:#070;font-weight:bold">&lt;/xs:restriction&gt;</span>
+<span class="line-numbers"> <a href="#n7" name="n7">7</a></span>    <span style="color:#070;font-weight:bold">&lt;/xs:complexContent&gt;</span>
+<span class="line-numbers"> <a href="#n8" name="n8">8</a></span>  <span style="color:#070;font-weight:bold">&lt;/xs:complexType&gt;</span>
+<span class="line-numbers"> <a href="#n9" name="n9">9</a></span><span style="color:#070;font-weight:bold">&lt;/xs:element&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span><span style="color:#070;font-weight:bold">&lt;xs:element</span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">product</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">&gt;</span>
+<span class="line-numbers"><a href="#n2" name="n2">2</a></span>  <span style="color:#070;font-weight:bold">&lt;xs:complexType&gt;</span>
+<span class="line-numbers"><a href="#n3" name="n3">3</a></span>    <span style="color:#070;font-weight:bold">&lt;xs:attribute</span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">prodid</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">type</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">xs:positiveInteger</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">/&gt;</span>
+<span class="line-numbers"><a href="#n4" name="n4">4</a></span>  <span style="color:#070;font-weight:bold">&lt;/xs:complexType&gt;</span>
+<span class="line-numbers"><a href="#n5" name="n5">5</a></span><span style="color:#070;font-weight:bold">&lt;/xs:element&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span><span style="color:#070;font-weight:bold">&lt;xs:element</span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">product</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">type</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">prodtype</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">/&gt;</span>
+<span class="line-numbers"><a href="#n2" name="n2">2</a></span>
+<span class="line-numbers"><a href="#n3" name="n3">3</a></span><span style="color:#070;font-weight:bold">&lt;xs:complexType</span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">prodtype</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">&gt;</span>
+<span class="line-numbers"><a href="#n4" name="n4">4</a></span>  <span style="color:#070;font-weight:bold">&lt;xs:attribute</span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">prodid</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">type</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">xs:positiveInteger</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">/&gt;</span>
+<span class="line-numbers"><a href="#n5" name="n5">5</a></span><span style="color:#070;font-weight:bold">&lt;/xs:complexType&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<h3 id="section-9">仅含元素复合类型</h3>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span><span style="color:#070;font-weight:bold">&lt;xs:element</span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">person</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">&gt;</span>
+<span class="line-numbers"><a href="#n2" name="n2">2</a></span>  <span style="color:#070;font-weight:bold">&lt;xs:complexType&gt;</span>
+<span class="line-numbers"><a href="#n3" name="n3">3</a></span>    <span style="color:#070;font-weight:bold">&lt;xs:sequence&gt;</span>
+<span class="line-numbers"><a href="#n4" name="n4">4</a></span>      <span style="color:#070;font-weight:bold">&lt;xs:element</span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">firstname</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">type</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">xs:string</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">/&gt;</span>
+<span class="line-numbers"><a href="#n5" name="n5">5</a></span>      <span style="color:#070;font-weight:bold">&lt;xs:element</span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">lastname</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">type</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">xs:string</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">/&gt;</span>
+<span class="line-numbers"><a href="#n6" name="n6">6</a></span>    <span style="color:#070;font-weight:bold">&lt;/xs:sequence&gt;</span>
+<span class="line-numbers"><a href="#n7" name="n7">7</a></span>  <span style="color:#070;font-weight:bold">&lt;/xs:complexType&gt;</span>
+<span class="line-numbers"><a href="#n8" name="n8">8</a></span><span style="color:#070;font-weight:bold">&lt;/xs:element&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span><span style="color:#070;font-weight:bold">&lt;xs:element</span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">person</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">type</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">persontype</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">/&gt;</span>
+<span class="line-numbers"><a href="#n2" name="n2">2</a></span>
+<span class="line-numbers"><a href="#n3" name="n3">3</a></span><span style="color:#070;font-weight:bold">&lt;xs:complexType</span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">persontype</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">&gt;</span>
+<span class="line-numbers"><a href="#n4" name="n4">4</a></span>  <span style="color:#070;font-weight:bold">&lt;xs:sequence&gt;</span>
+<span class="line-numbers"><a href="#n5" name="n5">5</a></span>    <span style="color:#070;font-weight:bold">&lt;xs:element</span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">firstname</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">type</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">xs:string</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">/&gt;</span>
+<span class="line-numbers"><a href="#n6" name="n6">6</a></span>    <span style="color:#070;font-weight:bold">&lt;xs:element</span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">lastname</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">type</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">xs:string</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">/&gt;</span>
+<span class="line-numbers"><a href="#n7" name="n7">7</a></span>  <span style="color:#070;font-weight:bold">&lt;/xs:sequence&gt;</span>
+<span class="line-numbers"><a href="#n8" name="n8">8</a></span><span style="color:#070;font-weight:bold">&lt;/xs:complexType&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<h3 id="section-10">仅含文本复合类型</h3>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"> <a href="#n1" name="n1">1</a></span><span style="color:#070;font-weight:bold">&lt;xs:element</span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">某个名称</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">&gt;</span>
+<span class="line-numbers"> <a href="#n2" name="n2">2</a></span>  <span style="color:#070;font-weight:bold">&lt;xs:complexType&gt;</span>
+<span class="line-numbers"> <a href="#n3" name="n3">3</a></span>    <span style="color:#070;font-weight:bold">&lt;xs:simpleContent&gt;</span>
+<span class="line-numbers"> <a href="#n4" name="n4">4</a></span>      <span style="color:#070;font-weight:bold">&lt;xs:extension</span> <span style="color:#b48">base</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">basetype</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">&gt;</span>
+<span class="line-numbers"> <a href="#n5" name="n5">5</a></span>        ....
+<span class="line-numbers"> <a href="#n6" name="n6">6</a></span>        ....
+<span class="line-numbers"> <a href="#n7" name="n7">7</a></span>      <span style="color:#070;font-weight:bold">&lt;/xs:extension&gt;</span>
+<span class="line-numbers"> <a href="#n8" name="n8">8</a></span>    <span style="color:#070;font-weight:bold">&lt;/xs:simpleContent&gt;</span>
+<span class="line-numbers"> <a href="#n9" name="n9">9</a></span>  <span style="color:#070;font-weight:bold">&lt;/xs:complexType&gt;</span>
+<span class="line-numbers"><strong><a href="#n10" name="n10">10</a></strong></span><span style="color:#070;font-weight:bold">&lt;/xs:element&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"> <a href="#n1" name="n1">1</a></span><span style="color:#070;font-weight:bold">&lt;xs:element</span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">某个名称</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">&gt;</span>
+<span class="line-numbers"> <a href="#n2" name="n2">2</a></span>  <span style="color:#070;font-weight:bold">&lt;xs:complexType&gt;</span>
+<span class="line-numbers"> <a href="#n3" name="n3">3</a></span>    <span style="color:#070;font-weight:bold">&lt;xs:simpleContent&gt;</span>
+<span class="line-numbers"> <a href="#n4" name="n4">4</a></span>      <span style="color:#070;font-weight:bold">&lt;xs:restriction</span> <span style="color:#b48">base</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">basetype</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">&gt;</span>
+<span class="line-numbers"> <a href="#n5" name="n5">5</a></span>        ....
+<span class="line-numbers"> <a href="#n6" name="n6">6</a></span>        ....
+<span class="line-numbers"> <a href="#n7" name="n7">7</a></span>      <span style="color:#070;font-weight:bold">&lt;/xs:restriction&gt;</span>
+<span class="line-numbers"> <a href="#n8" name="n8">8</a></span>    <span style="color:#070;font-weight:bold">&lt;/xs:simpleContent&gt;</span>
+<span class="line-numbers"> <a href="#n9" name="n9">9</a></span>  <span style="color:#070;font-weight:bold">&lt;/xs:complexType&gt;</span>
+<span class="line-numbers"><strong><a href="#n10" name="n10">10</a></strong></span><span style="color:#070;font-weight:bold">&lt;/xs:element&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<h3 id="section-11">混合内容复合类型</h3>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"> <a href="#n1" name="n1">1</a></span><span style="color:#070;font-weight:bold">&lt;xs:element</span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">letter</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">&gt;</span>
+<span class="line-numbers"> <a href="#n2" name="n2">2</a></span>  <span style="color:#070;font-weight:bold">&lt;xs:complexType</span> <span style="color:#b48">mixed</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">true</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">&gt;</span>
+<span class="line-numbers"> <a href="#n3" name="n3">3</a></span>    <span style="color:#070;font-weight:bold">&lt;xs:sequence&gt;</span>
+<span class="line-numbers"> <a href="#n4" name="n4">4</a></span>      <span style="color:#070;font-weight:bold">&lt;xs:element</span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">name</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">type</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">xs:string</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">/&gt;</span>
+<span class="line-numbers"> <a href="#n5" name="n5">5</a></span>      <span style="color:#070;font-weight:bold">&lt;xs:element</span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">orderid</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">type</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">xs:positiveInteger</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">/&gt;</span>
+<span class="line-numbers"> <a href="#n6" name="n6">6</a></span>      <span style="color:#070;font-weight:bold">&lt;xs:element</span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">shipdate</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">type</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">xs:date</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">/&gt;</span>
+<span class="line-numbers"> <a href="#n7" name="n7">7</a></span>    <span style="color:#070;font-weight:bold">&lt;/xs:sequence&gt;</span>
+<span class="line-numbers"> <a href="#n8" name="n8">8</a></span>  <span style="color:#070;font-weight:bold">&lt;/xs:complexType&gt;</span>
+<span class="line-numbers"> <a href="#n9" name="n9">9</a></span><span style="color:#070;font-weight:bold">&lt;/xs:element&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"> <a href="#n1" name="n1">1</a></span><span style="color:#070;font-weight:bold">&lt;xs:element</span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">letter</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">type</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">lettertype</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">/&gt;</span>
+<span class="line-numbers"> <a href="#n2" name="n2">2</a></span>
+<span class="line-numbers"> <a href="#n3" name="n3">3</a></span><span style="color:#070;font-weight:bold">&lt;xs:complexType</span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">lettertype</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">mixed</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">true</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">&gt;</span>
+<span class="line-numbers"> <a href="#n4" name="n4">4</a></span>  <span style="color:#070;font-weight:bold">&lt;xs:sequence&gt;</span>
+<span class="line-numbers"> <a href="#n5" name="n5">5</a></span>    <span style="color:#070;font-weight:bold">&lt;xs:element</span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">name</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">type</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">xs:string</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">/&gt;</span>
+<span class="line-numbers"> <a href="#n6" name="n6">6</a></span>    <span style="color:#070;font-weight:bold">&lt;xs:element</span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">orderid</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">type</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">xs:positiveInteger</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">/&gt;</span>
+<span class="line-numbers"> <a href="#n7" name="n7">7</a></span>    <span style="color:#070;font-weight:bold">&lt;xs:element</span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">shipdate</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">type</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">xs:date</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">/&gt;</span>
+<span class="line-numbers"> <a href="#n8" name="n8">8</a></span>  <span style="color:#070;font-weight:bold">&lt;/xs:sequence&gt;</span>
+<span class="line-numbers"> <a href="#n9" name="n9">9</a></span><span style="color:#070;font-weight:bold">&lt;/xs:complexType&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<h2 id="section-12">属性</h2>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span><span style="color:#070;font-weight:bold">&lt;xs:attribute</span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">xxx</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">type</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">yyy</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">/&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<p>常用类型与元素相同</p>
+
+<p>默认值与固定值用法与元素相同</p>
+
+<p>可选的和必需的属性，在缺省的情况下，属性是可选的。如需规定属性为必选，请使用 “use” 属性：</p>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span><span style="color:#070;font-weight:bold">&lt;xs:attribute</span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">lang</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">type</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">xs:string</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">use</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">required</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">/&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<h2 id="facets">限定 / Facets</h2>
+
+<p>对值的限定</p>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"> <a href="#n1" name="n1">1</a></span><span style="color:#070;font-weight:bold">&lt;xs:element</span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">age</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">&gt;</span>
+<span class="line-numbers"> <a href="#n2" name="n2">2</a></span>
+<span class="line-numbers"> <a href="#n3" name="n3">3</a></span><span style="color:#070;font-weight:bold">&lt;xs:simpleType&gt;</span>
+<span class="line-numbers"> <a href="#n4" name="n4">4</a></span>  <span style="color:#070;font-weight:bold">&lt;xs:restriction</span> <span style="color:#b48">base</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">xs:integer</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">&gt;</span>
+<span class="line-numbers"> <a href="#n5" name="n5">5</a></span>    <span style="color:#070;font-weight:bold">&lt;xs:minInclusive</span> <span style="color:#b48">value</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">0</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">/&gt;</span>
+<span class="line-numbers"> <a href="#n6" name="n6">6</a></span>    <span style="color:#070;font-weight:bold">&lt;xs:maxInclusive</span> <span style="color:#b48">value</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">120</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">/&gt;</span>
+<span class="line-numbers"> <a href="#n7" name="n7">7</a></span>  <span style="color:#070;font-weight:bold">&lt;/xs:restriction&gt;</span>
+<span class="line-numbers"> <a href="#n8" name="n8">8</a></span><span style="color:#070;font-weight:bold">&lt;/xs:simpleType&gt;</span>
+<span class="line-numbers"> <a href="#n9" name="n9">9</a></span>
+<span class="line-numbers"><strong><a href="#n10" name="n10">10</a></strong></span><span style="color:#070;font-weight:bold">&lt;/xs:element&gt;</span>
+</pre></div>
+</div>
+</div>
+<p>枚举限定</p>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"> <a href="#n1" name="n1">1</a></span><span style="color:#070;font-weight:bold">&lt;xs:element</span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">car</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">&gt;</span>
+<span class="line-numbers"> <a href="#n2" name="n2">2</a></span>
+<span class="line-numbers"> <a href="#n3" name="n3">3</a></span><span style="color:#070;font-weight:bold">&lt;xs:simpleType&gt;</span>
+<span class="line-numbers"> <a href="#n4" name="n4">4</a></span>  <span style="color:#070;font-weight:bold">&lt;xs:restriction</span> <span style="color:#b48">base</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">xs:string</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">&gt;</span>
+<span class="line-numbers"> <a href="#n5" name="n5">5</a></span>    <span style="color:#070;font-weight:bold">&lt;xs:enumeration</span> <span style="color:#b48">value</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Audi</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">/&gt;</span>
+<span class="line-numbers"> <a href="#n6" name="n6">6</a></span>    <span style="color:#070;font-weight:bold">&lt;xs:enumeration</span> <span style="color:#b48">value</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Golf</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">/&gt;</span>
+<span class="line-numbers"> <a href="#n7" name="n7">7</a></span>    <span style="color:#070;font-weight:bold">&lt;xs:enumeration</span> <span style="color:#b48">value</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">BMW</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">/&gt;</span>
+<span class="line-numbers"> <a href="#n8" name="n8">8</a></span>  <span style="color:#070;font-weight:bold">&lt;/xs:restriction&gt;</span>
+<span class="line-numbers"> <a href="#n9" name="n9">9</a></span><span style="color:#070;font-weight:bold">&lt;/xs:simpleType&gt;</span>
+<span class="line-numbers"><strong><a href="#n10" name="n10">10</a></strong></span>
+<span class="line-numbers"><a href="#n11" name="n11">11</a></span><span style="color:#070;font-weight:bold">&lt;/xs:element&gt;</span>
+</pre></div>
+</div>
+</div>
+<p>也可以写成</p>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"> <a href="#n1" name="n1">1</a></span><span style="color:#070;font-weight:bold">&lt;xs:element</span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">car</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">type</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">carType</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">/&gt;</span>
+<span class="line-numbers"> <a href="#n2" name="n2">2</a></span>
+<span class="line-numbers"> <a href="#n3" name="n3">3</a></span><span style="color:#070;font-weight:bold">&lt;xs:simpleType</span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">carType</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">&gt;</span>
+<span class="line-numbers"> <a href="#n4" name="n4">4</a></span>  <span style="color:#070;font-weight:bold">&lt;xs:restriction</span> <span style="color:#b48">base</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">xs:string</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">&gt;</span>
+<span class="line-numbers"> <a href="#n5" name="n5">5</a></span>    <span style="color:#070;font-weight:bold">&lt;xs:enumeration</span> <span style="color:#b48">value</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Audi</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">/&gt;</span>
+<span class="line-numbers"> <a href="#n6" name="n6">6</a></span>    <span style="color:#070;font-weight:bold">&lt;xs:enumeration</span> <span style="color:#b48">value</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Golf</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">/&gt;</span>
+<span class="line-numbers"> <a href="#n7" name="n7">7</a></span>    <span style="color:#070;font-weight:bold">&lt;xs:enumeration</span> <span style="color:#b48">value</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">BMW</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">/&gt;</span>
+<span class="line-numbers"> <a href="#n8" name="n8">8</a></span>  <span style="color:#070;font-weight:bold">&lt;/xs:restriction&gt;</span>
+<span class="line-numbers"> <a href="#n9" name="n9">9</a></span><span style="color:#070;font-weight:bold">&lt;/xs:simpleType&gt;</span>
+</pre></div>
+</div>
+</div>
+<p>对一系列值的限定<br />
+模式约束（pattern constraint）,类似于正则</p>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"> <a href="#n1" name="n1">1</a></span><span style="color:#070;font-weight:bold">&lt;xs:element</span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">password</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">&gt;</span>
+<span class="line-numbers"> <a href="#n2" name="n2">2</a></span>
+<span class="line-numbers"> <a href="#n3" name="n3">3</a></span><span style="color:#070;font-weight:bold">&lt;xs:simpleType&gt;</span>
+<span class="line-numbers"> <a href="#n4" name="n4">4</a></span>  <span style="color:#070;font-weight:bold">&lt;xs:restriction</span> <span style="color:#b48">base</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">xs:string</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">&gt;</span>
+<span class="line-numbers"> <a href="#n5" name="n5">5</a></span>    <span style="color:#070;font-weight:bold">&lt;xs:pattern</span> <span style="color:#b48">value</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">[a-zA-Z0-9]{8}</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">/&gt;</span>
+<span class="line-numbers"> <a href="#n6" name="n6">6</a></span>  <span style="color:#070;font-weight:bold">&lt;/xs:restriction&gt;</span>
+<span class="line-numbers"> <a href="#n7" name="n7">7</a></span><span style="color:#070;font-weight:bold">&lt;/xs:simpleType&gt;</span>
+<span class="line-numbers"> <a href="#n8" name="n8">8</a></span>
+<span class="line-numbers"> <a href="#n9" name="n9">9</a></span><span style="color:#070;font-weight:bold">&lt;/xs:element&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<p>对空白字符的限定</p>
+
+<p>preserve，不会移除任何空白字符</p>
+
+<p>replace， 将移除所有空白字符（换行、回车、空格以及制表符）</p>
+
+<p>collapse，移除所有空白字符（换行、回车、空格以及制表符会被替换为空格，开头和结尾的空格会被移除，而多个连续的空格会被缩减为一个单一的空格）</p>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"> <a href="#n1" name="n1">1</a></span><span style="color:#070;font-weight:bold">&lt;xs:element</span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">address</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">&gt;</span>
+<span class="line-numbers"> <a href="#n2" name="n2">2</a></span>
+<span class="line-numbers"> <a href="#n3" name="n3">3</a></span><span style="color:#070;font-weight:bold">&lt;xs:simpleType&gt;</span>
+<span class="line-numbers"> <a href="#n4" name="n4">4</a></span>  <span style="color:#070;font-weight:bold">&lt;xs:restriction</span> <span style="color:#b48">base</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">xs:string</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">&gt;</span>
+<span class="line-numbers"> <a href="#n5" name="n5">5</a></span>    <span style="color:#070;font-weight:bold">&lt;xs:whiteSpace</span> <span style="color:#b48">value</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">preserve</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">/&gt;</span>
+<span class="line-numbers"> <a href="#n6" name="n6">6</a></span>  <span style="color:#070;font-weight:bold">&lt;/xs:restriction&gt;</span>
+<span class="line-numbers"> <a href="#n7" name="n7">7</a></span><span style="color:#070;font-weight:bold">&lt;/xs:simpleType&gt;</span>
+<span class="line-numbers"> <a href="#n8" name="n8">8</a></span>
+<span class="line-numbers"> <a href="#n9" name="n9">9</a></span><span style="color:#070;font-weight:bold">&lt;/xs:element&gt;</span>
+</pre></div>
+</div>
+</div>
+<p>对长度的限定</p>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"> <a href="#n1" name="n1">1</a></span><span style="color:#070;font-weight:bold">&lt;xs:element</span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">password</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">&gt;</span>
+<span class="line-numbers"> <a href="#n2" name="n2">2</a></span>
+<span class="line-numbers"> <a href="#n3" name="n3">3</a></span><span style="color:#070;font-weight:bold">&lt;xs:simpleType&gt;</span>
+<span class="line-numbers"> <a href="#n4" name="n4">4</a></span>  <span style="color:#070;font-weight:bold">&lt;xs:restriction</span> <span style="color:#b48">base</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">xs:string</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">&gt;</span>
+<span class="line-numbers"> <a href="#n5" name="n5">5</a></span>    <span style="color:#070;font-weight:bold">&lt;xs:length</span> <span style="color:#b48">value</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">8</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">/&gt;</span>
+<span class="line-numbers"> <a href="#n6" name="n6">6</a></span>  <span style="color:#070;font-weight:bold">&lt;/xs:restriction&gt;</span>
+<span class="line-numbers"> <a href="#n7" name="n7">7</a></span><span style="color:#070;font-weight:bold">&lt;/xs:simpleType&gt;</span>
+<span class="line-numbers"> <a href="#n8" name="n8">8</a></span>
+<span class="line-numbers"> <a href="#n9" name="n9">9</a></span><span style="color:#070;font-weight:bold">&lt;/xs:element&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"> <a href="#n1" name="n1">1</a></span><span style="color:#070;font-weight:bold">&lt;xs:element</span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">password</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">&gt;</span>
+<span class="line-numbers"> <a href="#n2" name="n2">2</a></span>
+<span class="line-numbers"> <a href="#n3" name="n3">3</a></span><span style="color:#070;font-weight:bold">&lt;xs:simpleType&gt;</span>
+<span class="line-numbers"> <a href="#n4" name="n4">4</a></span>  <span style="color:#070;font-weight:bold">&lt;xs:restriction</span> <span style="color:#b48">base</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">xs:string</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">&gt;</span>
+<span class="line-numbers"> <a href="#n5" name="n5">5</a></span>    <span style="color:#070;font-weight:bold">&lt;xs:minLength</span> <span style="color:#b48">value</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">5</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">/&gt;</span>
+<span class="line-numbers"> <a href="#n6" name="n6">6</a></span>    <span style="color:#070;font-weight:bold">&lt;xs:maxLength</span> <span style="color:#b48">value</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">8</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">/&gt;</span>
+<span class="line-numbers"> <a href="#n7" name="n7">7</a></span>  <span style="color:#070;font-weight:bold">&lt;/xs:restriction&gt;</span>
+<span class="line-numbers"> <a href="#n8" name="n8">8</a></span><span style="color:#070;font-weight:bold">&lt;/xs:simpleType&gt;</span>
+<span class="line-numbers"> <a href="#n9" name="n9">9</a></span>
+<span class="line-numbers"><strong><a href="#n10" name="n10">10</a></strong></span><span style="color:#070;font-weight:bold">&lt;/xs:element&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<p>数据类型的限定</p>
+
+<p><img src="https://bit-ranger.github.io/blog/static/img/xml-data-type.jpg" alt="data-type" /></p>
+
+<h2 id="section-13">指示器</h2>
+
+<p>有七种指示器：</p>
+
+<p>Order 指示器：用于定义元素的顺序，标签</p>
+
+<ul>
+  <li>
+    <p>All：子元素可以按照任意顺序出现，且每个子元素必须只出现<strong>1</strong>次</p>
+  </li>
+  <li>
+    <p>Choice：可出现某个子元素或者可出现另外一个子元素（非此即彼）</p>
+  </li>
+  <li>
+    <p>Sequence：子元素必须按照特定的顺序出现：</p>
+  </li>
+</ul>
+
+<p>Occurrence 指示器：用于定义某个元素出现的频率，属性</p>
+
+<ul>
+  <li>
+    <p>maxOccurs：规定某个元素可出现的最大次数，（maxOccurs=”unbounded”表示不受限制）</p>
+  </li>
+  <li>
+    <p>minOccurs：规定某个元素可出现的最小次数</p>
+  </li>
+</ul>
+
+<p>Group 指示器：定义相关的数批元素，标签</p>
+
+<ul>
+  <li>
+    <p>Group name：必须在 group 声明内部定义一个 all、choice 或者 sequence 元素，通过<code>&lt;xs:group ref="group"/&gt;</code>引用</p>
+  </li>
+  <li>
+    <p>attributeGroup name：属性组通过 attributeGroup 声明来进行定义，子元素为<code>attribute</code>，通过<code>&lt;xs:attributeGroup ref="personattrgroup"/&gt;</code>引用</p>
+  </li>
+</ul>
+
+<h2 id="any">any</h2>
+
+<p><code>&lt;any&gt; </code>元素使我们有能力通过未被 schema 规定的元素来拓展 XML 文档，</p>
+
+<p>定义<code>&lt;any&gt;</code>元素，表示此处添加任何由其他 schema 规定的元素</p>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"> <a href="#n1" name="n1">1</a></span><span style="color:#070;font-weight:bold">&lt;xs:element</span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">person</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">&gt;</span>
+<span class="line-numbers"> <a href="#n2" name="n2">2</a></span>  <span style="color:#070;font-weight:bold">&lt;xs:complexType&gt;</span>
+<span class="line-numbers"> <a href="#n3" name="n3">3</a></span>    <span style="color:#070;font-weight:bold">&lt;xs:sequence&gt;</span>
+<span class="line-numbers"> <a href="#n4" name="n4">4</a></span>      <span style="color:#070;font-weight:bold">&lt;xs:element</span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">firstname</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">type</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">xs:string</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">/&gt;</span>
+<span class="line-numbers"> <a href="#n5" name="n5">5</a></span>      <span style="color:#070;font-weight:bold">&lt;xs:element</span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">lastname</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">type</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">xs:string</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">/&gt;</span>
+<span class="line-numbers"> <a href="#n6" name="n6">6</a></span>      <span style="color:#070;font-weight:bold">&lt;xs:any</span> <span style="color:#b48">minOccurs</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">0</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">/&gt;</span>
+<span class="line-numbers"> <a href="#n7" name="n7">7</a></span>    <span style="color:#070;font-weight:bold">&lt;/xs:sequence&gt;</span>
+<span class="line-numbers"> <a href="#n8" name="n8">8</a></span>  <span style="color:#070;font-weight:bold">&lt;/xs:complexType&gt;</span>
+<span class="line-numbers"> <a href="#n9" name="n9">9</a></span><span style="color:#070;font-weight:bold">&lt;/xs:element&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<h2 id="anyattribute">anyAttribute</h2>
+
+<p><code>&lt;anyAttribute&gt;</code> 元素使我们有能力通过未被 schema 规定的属性来扩展 XML 文档，</p>
+
+<p>定义<code>&lt;anyAttribute&gt;</code>元素，表示此处添加任何由其他 schema 规定的属性</p>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"> <a href="#n1" name="n1">1</a></span><span style="color:#070;font-weight:bold">&lt;xs:element</span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">person</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">&gt;</span>
+<span class="line-numbers"> <a href="#n2" name="n2">2</a></span>  <span style="color:#070;font-weight:bold">&lt;xs:complexType&gt;</span>
+<span class="line-numbers"> <a href="#n3" name="n3">3</a></span>    <span style="color:#070;font-weight:bold">&lt;xs:sequence&gt;</span>
+<span class="line-numbers"> <a href="#n4" name="n4">4</a></span>      <span style="color:#070;font-weight:bold">&lt;xs:element</span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">firstname</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">type</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">xs:string</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">/&gt;</span>
+<span class="line-numbers"> <a href="#n5" name="n5">5</a></span>      <span style="color:#070;font-weight:bold">&lt;xs:element</span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">lastname</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">type</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">xs:string</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">/&gt;</span>
+<span class="line-numbers"> <a href="#n6" name="n6">6</a></span>    <span style="color:#070;font-weight:bold">&lt;/xs:sequence&gt;</span>
+<span class="line-numbers"> <a href="#n7" name="n7">7</a></span>    <span style="color:#070;font-weight:bold">&lt;xs:anyAttribute</span><span style="color:#070;font-weight:bold">/&gt;</span>
+<span class="line-numbers"> <a href="#n8" name="n8">8</a></span>  <span style="color:#070;font-weight:bold">&lt;/xs:complexType&gt;</span>
+<span class="line-numbers"> <a href="#n9" name="n9">9</a></span><span style="color:#070;font-weight:bold">&lt;/xs:element&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<h2 id="section-14">元素替换</h2>
+
+<p>可替换元素的类型必须和主元素相同，或者从主元素衍生而来。假如可替换元素的类型与主元素的类型相同，那么您就不必规定可替换元素的类型了。</p>
+
+<p>请注意，substitutionGroup 中的所有元素（主元素和可替换元素）必须被声明为全局元素，否则就无法工作！</p>
+
+<p>全局元素指 “schema” 元素的直接子元素！本地元素（Local elements）指嵌套在其他元素中的元素。</p>
+
+<p>首先，我们声明主元素，然后我们会声明次元素，这些次元素可声明它们能够替换主元素。</p>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"> <a href="#n1" name="n1">1</a></span><span style="color:#070;font-weight:bold">&lt;xs:element</span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">name</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">type</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">xs:string</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">/&gt;</span>
+<span class="line-numbers"> <a href="#n2" name="n2">2</a></span><span style="color:#070;font-weight:bold">&lt;xs:element</span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">navn</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">substitutionGroup</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">name</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">/&gt;</span>
+<span class="line-numbers"> <a href="#n3" name="n3">3</a></span>
+<span class="line-numbers"> <a href="#n4" name="n4">4</a></span><span style="color:#070;font-weight:bold">&lt;xs:complexType</span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">custinfo</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">&gt;</span>
+<span class="line-numbers"> <a href="#n5" name="n5">5</a></span>  <span style="color:#070;font-weight:bold">&lt;xs:sequence&gt;</span>
+<span class="line-numbers"> <a href="#n6" name="n6">6</a></span>    <span style="color:#070;font-weight:bold">&lt;xs:element</span> <span style="color:#b48">ref</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">name</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">/&gt;</span>
+<span class="line-numbers"> <a href="#n7" name="n7">7</a></span>  <span style="color:#070;font-weight:bold">&lt;/xs:sequence&gt;</span>
+<span class="line-numbers"> <a href="#n8" name="n8">8</a></span><span style="color:#070;font-weight:bold">&lt;/xs:complexType&gt;</span>
+<span class="line-numbers"> <a href="#n9" name="n9">9</a></span>
+<span class="line-numbers"><strong><a href="#n10" name="n10">10</a></strong></span><span style="color:#070;font-weight:bold">&lt;xs:element</span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">customer</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">type</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">custinfo</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">/&gt;</span>
+<span class="line-numbers"><a href="#n11" name="n11">11</a></span><span style="color:#070;font-weight:bold">&lt;xs:element</span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">kunde</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">substitutionGroup</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">customer</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">/&gt;</span>
+</pre></div>
+</div>
+</div>
+<p>复合此规定的xml文档格式：</p>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span><span style="color:#070;font-weight:bold">&lt;customer&gt;</span>
+<span class="line-numbers"><a href="#n2" name="n2">2</a></span>  <span style="color:#070;font-weight:bold">&lt;name&gt;</span>John Smith<span style="color:#070;font-weight:bold">&lt;/name&gt;</span>
+<span class="line-numbers"><a href="#n3" name="n3">3</a></span><span style="color:#070;font-weight:bold">&lt;/customer&gt;</span>
+</pre></div>
+</div>
+</div>
+<p>或者</p>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span><span style="color:#070;font-weight:bold">&lt;kunde&gt;</span>
+<span class="line-numbers"><a href="#n2" name="n2">2</a></span>  <span style="color:#070;font-weight:bold">&lt;navn&gt;</span>John Smith<span style="color:#070;font-weight:bold">&lt;/navn&gt;</span>
+<span class="line-numbers"><a href="#n3" name="n3">3</a></span><span style="color:#070;font-weight:bold">&lt;/kunde&gt;</span>
+</pre></div>
+</div>
+</div>
+<p>阻止元素替换</p>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span><span style="color:#070;font-weight:bold">&lt;xs:element</span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">name</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">type</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">xs:string</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">block</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">substitution</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">/&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<h2 id="section-15">数据类型</h2>
+
+<p>略，详见<a href="http://www.w3school.com.cn/schema/schema_dtypes_string.asp">W3C</a></p>
+
+<h1 id="dom">DOM</h1>
+
+<p>获取元素值</p>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span>x=xmlDoc.getElementsByTagName(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">title</span><span style="color:#710">&quot;</span></span>)[<span style="color:#00D">0</span>].childNodes[<span style="color:#00D">0</span>];
+<span class="line-numbers"><a href="#n2" name="n2">2</a></span>txt=x.nodeValue;
+</pre></div>
+</div>
+</div>
+<p>获取属性值</p>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span>txt=xmlDoc.getElementsByTagName(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">title</span><span style="color:#710">&quot;</span></span>)[<span style="color:#00D">0</span>].getAttribute(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">lang</span><span style="color:#710">&quot;</span></span>);
+</pre></div>
+</div>
+</div>
+<p>改变元素的值</p>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span>x=xmlDoc.getElementsByTagName(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">title</span><span style="color:#710">&quot;</span></span>)[<span style="color:#00D">0</span>].childNodes[<span style="color:#00D">0</span>];
+<span class="line-numbers"><a href="#n2" name="n2">2</a></span>x.nodeValue=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Easy Cooking</span><span style="color:#710">&quot;</span></span>;
+</pre></div>
+</div>
+</div>
+<p>改变属性的值</p>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span>x=xmlDoc.getElementsByTagName(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">book</span><span style="color:#710">&quot;</span></span>);
+<span class="line-numbers"><a href="#n2" name="n2">2</a></span><span style="color:#080;font-weight:bold">for</span>(i=<span style="color:#00D">0</span>;i&lt;x.length;i++)
+<span class="line-numbers"><a href="#n3" name="n3">3</a></span>  {
+<span class="line-numbers"><a href="#n4" name="n4">4</a></span>  x[i].setAttribute(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">edition</span><span style="color:#710">&quot;</span></span>,<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">first</span><span style="color:#710">&quot;</span></span>);
+<span class="line-numbers"><a href="#n5" name="n5">5</a></span>  }
+</pre></div>
+</div>
+</div>
+<p>创建元素</p>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span>newel=xmlDoc.createElement(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">edition</span><span style="color:#710">&quot;</span></span>); <span style="color:#777">//创建新的元素节点。</span>
+<span class="line-numbers"><a href="#n2" name="n2">2</a></span>newtext=xmlDoc.createTextNode(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">First</span><span style="color:#710">&quot;</span></span>); <span style="color:#777">//创建新的文本节点</span>
+<span class="line-numbers"><a href="#n3" name="n3">3</a></span>newel.appendChild(newtext); <span style="color:#777">//向节点添加子节点</span>
+<span class="line-numbers"><a href="#n4" name="n4">4</a></span>
+<span class="line-numbers"><a href="#n5" name="n5">5</a></span>x=xmlDoc.getElementsByTagName(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">book</span><span style="color:#710">&quot;</span></span>);
+<span class="line-numbers"><a href="#n6" name="n6">6</a></span>x[<span style="color:#00D">0</span>].appendChild(newel);
+</pre></div>
+</div>
+</div>
+<p>删除元素</p>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span>x=xmlDoc.getElementsByTagName(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">book</span><span style="color:#710">&quot;</span></span>)[<span style="color:#00D">0</span>];
+<span class="line-numbers"><a href="#n2" name="n2">2</a></span>x.removeChild(x.childNodes[<span style="color:#00D">0</span>]);
+</pre></div>
+</div>
+</div>
+
+<h1 id="section-16">解析器</h1>
+
+<p>js解析xml</p>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"> <a href="#n1" name="n1">1</a></span><span style="color:#080;font-weight:bold">if</span> (window.XMLHttpRequest)
+<span class="line-numbers"> <a href="#n2" name="n2">2</a></span>  {<span style="color:#777">// code for IE7+, Firefox, Chrome, Opera, Safari</span>
+<span class="line-numbers"> <a href="#n3" name="n3">3</a></span>  xmlhttp=<span style="color:#080;font-weight:bold">new</span> XMLHttpRequest();
+<span class="line-numbers"> <a href="#n4" name="n4">4</a></span>  }
+<span class="line-numbers"> <a href="#n5" name="n5">5</a></span><span style="color:#080;font-weight:bold">else</span>
+<span class="line-numbers"> <a href="#n6" name="n6">6</a></span>  {<span style="color:#777">// code for IE6, IE5</span>
+<span class="line-numbers"> <a href="#n7" name="n7">7</a></span>  xmlhttp=<span style="color:#080;font-weight:bold">new</span> ActiveXObject(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Microsoft.XMLHTTP</span><span style="color:#710">&quot;</span></span>);
+<span class="line-numbers"> <a href="#n8" name="n8">8</a></span>  }
+<span class="line-numbers"> <a href="#n9" name="n9">9</a></span>
+<span class="line-numbers"><strong><a href="#n10" name="n10">10</a></strong></span>xmlhttp.open(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">GET</span><span style="color:#710">&quot;</span></span>,<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">books.xml</span><span style="color:#710">&quot;</span></span>,<span style="color:#069">false</span>);
+<span class="line-numbers"><a href="#n11" name="n11">11</a></span>xmlhttp.send();
+<span class="line-numbers"><a href="#n12" name="n12">12</a></span>xmlDoc=xmlhttp.responseXML; 
+</pre></div>
+</div>
+</div>
+<p>js解析字符串</p>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"> <a href="#n1" name="n1">1</a></span>txt=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">&lt;bookstore&gt;&lt;book&gt;</span><span style="color:#710">&quot;</span></span>;
+<span class="line-numbers"> <a href="#n2" name="n2">2</a></span>txt=txt+<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">&lt;title&gt;Everyday Italian&lt;/title&gt;</span><span style="color:#710">&quot;</span></span>;
+<span class="line-numbers"> <a href="#n3" name="n3">3</a></span>txt=txt+<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">&lt;author&gt;Giada De Laurentiis&lt;/author&gt;</span><span style="color:#710">&quot;</span></span>;
+<span class="line-numbers"> <a href="#n4" name="n4">4</a></span>txt=txt+<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">&lt;year&gt;2005&lt;/year&gt;</span><span style="color:#710">&quot;</span></span>;
+<span class="line-numbers"> <a href="#n5" name="n5">5</a></span>txt=txt+<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">&lt;/book&gt;&lt;/bookstore&gt;</span><span style="color:#710">&quot;</span></span>;
+<span class="line-numbers"> <a href="#n6" name="n6">6</a></span>
+<span class="line-numbers"> <a href="#n7" name="n7">7</a></span><span style="color:#080;font-weight:bold">if</span> (window.DOMParser)
+<span class="line-numbers"> <a href="#n8" name="n8">8</a></span>  {
+<span class="line-numbers"> <a href="#n9" name="n9">9</a></span>  parser=<span style="color:#080;font-weight:bold">new</span> DOMParser();
+<span class="line-numbers"><strong><a href="#n10" name="n10">10</a></strong></span>  xmlDoc=parser.parseFromString(txt,<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">text/xml</span><span style="color:#710">&quot;</span></span>);
+<span class="line-numbers"><a href="#n11" name="n11">11</a></span>  }
+<span class="line-numbers"><a href="#n12" name="n12">12</a></span><span style="color:#080;font-weight:bold">else</span> <span style="color:#777">// Internet Explorer</span>
+<span class="line-numbers"><a href="#n13" name="n13">13</a></span>  {
+<span class="line-numbers"><a href="#n14" name="n14">14</a></span>  xmlDoc=<span style="color:#080;font-weight:bold">new</span> ActiveXObject(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Microsoft.XMLDOM</span><span style="color:#710">&quot;</span></span>);
+<span class="line-numbers"><a href="#n15" name="n15">15</a></span>  xmlDoc.async=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">false</span><span style="color:#710">&quot;</span></span>;
+<span class="line-numbers"><a href="#n16" name="n16">16</a></span>  <span style="color:#777">//loadXML() 方法用于加载字符串（文本），load() 用于加载文件</span>
+<span class="line-numbers"><a href="#n17" name="n17">17</a></span>  xmlDoc.loadXML(txt);
+<span class="line-numbers"><a href="#n18" name="n18">18</a></span>  }
+</pre></div>
+</div>
+</div>
+<p>访问xml节点</p>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span>xmlDoc.getElementsByTagName(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">to</span><span style="color:#710">&quot;</span></span>)[<span style="color:#00D">0</span>].childNodes[<span style="color:#00D">0</span>].nodeValue
+</pre></div>
+</div>
+</div>
+<p>XMLHttpRequest</p>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"> <a href="#n1" name="n1">1</a></span><span style="color:#080;font-weight:bold">var</span> xmlhttp;
+<span class="line-numbers"> <a href="#n2" name="n2">2</a></span><span style="color:#080;font-weight:bold">function</span> <span style="color:#06B;font-weight:bold">loadXMLDoc</span>(url)
+<span class="line-numbers"> <a href="#n3" name="n3">3</a></span>{
+<span class="line-numbers"> <a href="#n4" name="n4">4</a></span>xmlhttp=<span style="color:#069">null</span>;
+<span class="line-numbers"> <a href="#n5" name="n5">5</a></span><span style="color:#080;font-weight:bold">if</span> (window.XMLHttpRequest)
+<span class="line-numbers"> <a href="#n6" name="n6">6</a></span>  {<span style="color:#777">// code for all new browsers</span>
+<span class="line-numbers"> <a href="#n7" name="n7">7</a></span>  xmlhttp=<span style="color:#080;font-weight:bold">new</span> XMLHttpRequest();
+<span class="line-numbers"> <a href="#n8" name="n8">8</a></span>  }
+<span class="line-numbers"> <a href="#n9" name="n9">9</a></span><span style="color:#080;font-weight:bold">else</span> <span style="color:#080;font-weight:bold">if</span> (window.ActiveXObject)
+<span class="line-numbers"><strong><a href="#n10" name="n10">10</a></strong></span>  {<span style="color:#777">// code for IE5 and IE6</span>
+<span class="line-numbers"><a href="#n11" name="n11">11</a></span>  xmlhttp=<span style="color:#080;font-weight:bold">new</span> ActiveXObject(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Microsoft.XMLHTTP</span><span style="color:#710">&quot;</span></span>);
+<span class="line-numbers"><a href="#n12" name="n12">12</a></span>  }
+<span class="line-numbers"><a href="#n13" name="n13">13</a></span><span style="color:#080;font-weight:bold">if</span> (xmlhttp!=<span style="color:#069">null</span>)
+<span class="line-numbers"><a href="#n14" name="n14">14</a></span>  {
+<span class="line-numbers"><a href="#n15" name="n15">15</a></span>  xmlhttp.onreadystatechange=state_Change;
+<span class="line-numbers"><a href="#n16" name="n16">16</a></span>  xmlhttp.open(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">GET</span><span style="color:#710">&quot;</span></span>,url,<span style="color:#069">true</span>);
+<span class="line-numbers"><a href="#n17" name="n17">17</a></span>  xmlhttp.send(<span style="color:#069">null</span>);
+<span class="line-numbers"><a href="#n18" name="n18">18</a></span>  }
+<span class="line-numbers"><a href="#n19" name="n19">19</a></span><span style="color:#080;font-weight:bold">else</span>
+<span class="line-numbers"><strong><a href="#n20" name="n20">20</a></strong></span>  {
+<span class="line-numbers"><a href="#n21" name="n21">21</a></span>  alert(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Your browser does not support XMLHTTP.</span><span style="color:#710">&quot;</span></span>);
+<span class="line-numbers"><a href="#n22" name="n22">22</a></span>  }
+<span class="line-numbers"><a href="#n23" name="n23">23</a></span>}
+<span class="line-numbers"><a href="#n24" name="n24">24</a></span>
+<span class="line-numbers"><a href="#n25" name="n25">25</a></span><span style="color:#080;font-weight:bold">function</span> <span style="color:#06B;font-weight:bold">state_Change</span>()
+<span class="line-numbers"><a href="#n26" name="n26">26</a></span>{
+<span class="line-numbers"><a href="#n27" name="n27">27</a></span><span style="color:#080;font-weight:bold">if</span> (xmlhttp.readyState==<span style="color:#00D">4</span>)
+<span class="line-numbers"><a href="#n28" name="n28">28</a></span>  {<span style="color:#777">// 4 = &quot;loaded&quot;</span>
+<span class="line-numbers"><a href="#n29" name="n29">29</a></span>  <span style="color:#080;font-weight:bold">if</span> (xmlhttp.status==<span style="color:#00D">200</span>)
+<span class="line-numbers"><strong><a href="#n30" name="n30">30</a></strong></span>    {<span style="color:#777">// 200 = OK</span>
+<span class="line-numbers"><a href="#n31" name="n31">31</a></span>    <span style="color:#777">// ...our code here...</span>
+<span class="line-numbers"><a href="#n32" name="n32">32</a></span>    }
+<span class="line-numbers"><a href="#n33" name="n33">33</a></span>  <span style="color:#080;font-weight:bold">else</span>
+<span class="line-numbers"><a href="#n34" name="n34">34</a></span>    {
+<span class="line-numbers"><a href="#n35" name="n35">35</a></span>    alert(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Problem retrieving XML data</span><span style="color:#710">&quot;</span></span>);
+<span class="line-numbers"><a href="#n36" name="n36">36</a></span>    }
+<span class="line-numbers"><a href="#n37" name="n37">37</a></span>  }
+<span class="line-numbers"><a href="#n38" name="n38">38</a></span>}
+</pre></div>
+</div>
+</div>
+
+<h1 id="section-17">衍生产品</h1>
+
+<ul>
+  <li>
+    <p>XHTML<br />
+更严格更纯净的基于 XML 的 HTML 版本。</p>
+  </li>
+  <li>
+    <p>XML DOM<br />
+访问和操作 XML 的标准文档模型。</p>
+  </li>
+  <li>
+    <p>XSLT<br />
+XSL 包含三个部分：<br />
+XSLT - 把 XML 转换为其他格式，比如 HTML<br />
+XSL-FO - 用于格式化 XML 文档的语言<br />
+XPath - 用于在 XML 文档中导航的语言</p>
+  </li>
+  <li>
+    <p>XQuery<br />
+基于 XML 的用于查询 XML 数据的语言。</p>
+  </li>
+  <li>
+    <p>DTD<br />
+用于定义 XML 文档中的合法元素的标准。</p>
+  </li>
+  <li>
+    <p>XSD<br />
+XML Schema。基于 XML 的 DTD 替代物。</p>
+  </li>
+  <li>
+    <p>XLink<br />
+在 XML 文档中创建超级链接的语言。</p>
+  </li>
+  <li>
+    <p>XPointer<br />
+允许 XLink 超级链接指向 XML 文档中更多具体的部分。</p>
+  </li>
+  <li>
+    <p>XForms<br />
+使用 XML 定义表单数据。</p>
+  </li>
+  <li>
+    <p>SOAP<br />
+允许应用程序在 HTTP 之上交换信息的基于 XML 的协议。</p>
+  </li>
+  <li>
+    <p>WSDL<br />
+用于描述网络服务的基于 XML 的语言。</p>
+  </li>
+  <li>
+    <p>RDF<br />
+用于描述网络资源的基于 XML 的语言。</p>
+  </li>
+  <li>
+    <p>RSS<br />
+聚合新闻以及类新闻站点内容的格式。</p>
+  </li>
+  <li>
+    <p>WAP<br />
+用于在无线设备上（比如移动电话）显示内容的一种基于 XML 的语言。</p>
+  </li>
+  <li>
+    <p>SMIL<br />
+描述视听呈现的语言。</p>
+  </li>
+  <li>
+    <p>SVG<br />
+使用 XML 格式定义图形。</p>
+  </li>
+</ul>
+
+
+          </article>
+          <hr class="boundary">
+          <div id="post-share" class="bdsharebuttonbox">
+              <a href="#" class="bds_more" data-cmd="more"></a>
+              <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+              <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+              <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+              <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+              <a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+          </div>
+        </div>
+        <div class="pad-min"></div>
+        <div id="post-comment" class="sheet post hidden">
+            <div id="disqus_thread"></div>
+        </div>
+    </div>
+    <div class="content-navigation col-lg-3">
+      <div class="shadow-bottom-center" >
+        <div class="content-navigation-toc">
+            <div class="content-navigation-header">
+                <span class="octicon octicon-list-unordered"></span>&nbsp;Toc
+            </div>
+            <div class="content-navigation-list toc"></div>
+        </div>
+        <div class="content-navigation-tag">
+            <div class="content-navigation-header">
+                <span class="octicon octicon-list-unordered"></span>&nbsp;Tags
+            </div>
+            <div class="content-navigation-list">
+                <ul>
+                    
+                    <li>
+                        <a href="https://haonan-dong.github.io/tags#XML"><span class="octicon octicon-tag"></span>&nbsp;XML</a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="content-navigation-related">
+            <div class="content-navigation-header">
+                <span class="octicon octicon-list-unordered"></span>&nbsp;Related
+            </div>
+            <div class="content-navigation-list">
+                <ul>
+                    
+
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                                    
+                                
+                            
+
+                            
+                                
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                                    
+                                
+                            
+
+                            
+                                
+                            
+                        
+                    
+
+                    
+                        
+                            <li>
+                                <a href="https://haonan-dong.github.io/common/design-pattern/">设计模式与原则</a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://haonan-dong.github.io/common/complement/">为什么要用补码表示负数</a>
+                            </li>
+                        
+                    
+                </ul>
+            </div>
+        </div>
+      </div>
+    </div>
+</div>
+    </div>
+    <div class="page-scrollTop" data-toggle="tooltip" data-placement="top" title="Top">
+        <a href="javascript:void(0);">
+            <div class="arrow"></div>
+            <div class="stick"></div>
+        </a>
+    </div>
+</div>
+
+    <footer  class="footnote footnote-tiffany">
+        <div class="container">
+                <a class="foot-item" href="mailto:sincerebravefight@gmail.com" target="_blank"><span class="octicon octicon-mail"></span></a>
+                <a class="foot-item" href="https://github.com/bit-ranger" target="_blank"><span class="octicon octicon-mark-github"></span></a>
+                <a class="foot-item" href="https://haonan-dong.github.io/feed.xml" target="_blank"><span class="octicon octicon-rss"></span></a>
+                <a class="foot-item" href="https://haonan-dong.github.io/link/"><span class="octicon octicon-link-external"></span></a>
+                &nbsp;
+                <a href="https://github.com/bit-ranger"><span class="word-keep">&copy; bit-ranger</span></a>
+        </div>
+    </footer>
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://haonan-dong.github.io/static/js/script.js"></script>
+    <script type="text/javascript" src="https://haonan-dong.github.io/static/js/gitment.js"></script>
+    <script type="text/javascript" src="https://haonan-dong.github.io/static/js/post.js"></script>
+    
+
+
+</body>
+</html>

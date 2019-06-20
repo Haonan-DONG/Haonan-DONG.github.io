@@ -1,0 +1,1355 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>spring security 探秘</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="keywords" content="spring security 探秘, web, spring,security,Java, λ lambda" />
+    <meta name="description" content="spring security 探秘, web, spring,security,Java, 概述" />
+    <meta name="theme-color" content="#2CA6CB"/>
+    <link rel="shortcut icon" type="image/x-icon" media="screen" href="https://haonan-dong.github.io/favicon.ico" />
+    <link rel="canonical" href="https://haonan-dong.github.io/web/spring-security/" />
+    <link rel="alternate" type="application/rss+xml" title="λ lambda" href="https://haonan-dong.github.io/feed.xml"  />
+
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/octicons/3.5.0/octicons.min.css" >
+    <link rel="stylesheet" type="text/css" href="https://haonan-dong.github.io/static/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="https://haonan-dong.github.io/static/css/highlight.css" />
+    <link rel="stylesheet" type="text/css" href="https://haonan-dong.github.io/static/css/gitment.css" />
+    <link rel="stylesheet" type="text/css" href="https://haonan-dong.github.io/static/css/post.css" />
+    
+
+</head>
+
+
+<body>
+
+    <header>
+        <nav class="navbar navbar-tiffany rectangle" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="https://haonan-dong.github.io/">λ lambda</a>
+                    <p class="navbar-text"></p>
+                </div>
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        
+                        <li>
+                        <a href="https://haonan-dong.github.io/" class="word-keep"><span class="octicon octicon-book"></span></span>&nbsp;&nbsp;Blog</a>
+                        </li>
+                        
+                        
+                        <li>
+                            <a href="https://haonan-dong.github.io/archive/" class="word-keep"><span class="octicon octicon-repo"></span>&nbsp;&nbsp;Archive</a>
+                        </li>
+                        
+                        
+                        
+                        <li>
+                            <a href="https://haonan-dong.github.io/category/" class="word-keep"><span class="octicon octicon-list-unordered"></span>&nbsp;&nbsp;Category</a>
+                        </li>
+                        
+                        
+                        
+                        <li>
+                            <a href="https://haonan-dong.github.io/tags/" class="word-keep"><span class="octicon octicon-tag"></span>&nbsp;&nbsp;Tag</a>
+                        </li>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <li><a href="#stq=" class="search-button"><span class="octicon octicon-search"></span></a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+
+
+<div class="main">
+    <div class="container">
+        <div class="row">
+    <div class="content col-lg-9">
+        <div class="sheet post">
+          <header>
+            <h2>spring security 探秘</h2>
+            <p class="post-meta">
+                <span class="octicon octicon-clock"></span> Mar 12, 2015
+            </p>
+            <p class="post-tag">
+                <span><a href="https://haonan-dong.github.io/category/#web"><span class="octicon octicon-list-unordered"></span>&nbsp;web</a></span>
+                <span>
+                    <a class="word-keep" href="https://haonan-dong.github.io/tags/#spring"><span class="octicon octicon-tag"></span>&nbsp;spring</a>
+                    
+                    <a class="word-keep" href="https://haonan-dong.github.io/tags/#security"><span class="octicon octicon-tag"></span>&nbsp;security</a>
+                    
+                    <a class="word-keep" href="https://haonan-dong.github.io/tags/#Java"><span class="octicon octicon-tag"></span>&nbsp;Java</a>
+                    
+                </span>
+            </p>
+          </header>
+          <hr class="boundary">
+          <article>
+            <h1 id="section">概述</h1>
+
+<p><a href="http://projects.spring.io/spring-security">Spring Security</a>这是一种基于Spring AOP和Servlet过滤器的安全框架。它提供全面的安全性解决方案，同时在Web请求级和方法调用级处理身份确认和授权。在Spring Framework基础上，Spring Security充分利用了依赖注入（DI，Dependency Injection）和面向切面技术。</p>
+
+<ul id="markdown-toc">
+  <li><a href="#section">概述</a></li>
+  <li><a href="#filter">Filter</a></li>
+  <li><a href="#http">HTTP</a></li>
+  <li><a href="#filterchain">FilterChain</a></li>
+  <li><a href="#filtersecurityinterceptor">FilterSecurityInterceptor</a></li>
+  <li><a href="#authenticationmanager">AuthenticationManager</a></li>
+  <li><a href="#accessdecisionmanager">AccessDecisionManager</a></li>
+  <li><a href="#securitymetadatasource">SecurityMetadataSource</a></li>
+</ul>
+
+<p>本文的宗旨并非描述如何从零开始搭建一个 “hello world” 级的demo，或者列举有哪些可配置项（这种类似于词典的文档，没有比<a href="http://docs.spring.io/spring-security/site/docs/4.0.1.RELEASE/reference/htmlsingle/">参考书</a>更合适的了），而是简单描述spring-security项目的整体结构，设计思想，以及某些重要配置做了什么。</p>
+
+<p>本文所有内容基于spring-security-4.0.1.RELEASE ,你可以在<a href="https://github.com/spring-projects/spring-security">Github</a>中找到它，或者使用Maven获取，引入spring-security-config是为了通过命名空间简化配置。</p>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"> <a href="#n1" name="n1">1</a></span><span style="color:#070;font-weight:bold">&lt;dependency&gt;</span>
+<span class="line-numbers"> <a href="#n2" name="n2">2</a></span>    <span style="color:#070;font-weight:bold">&lt;groupId&gt;</span>org.springframework.security<span style="color:#070;font-weight:bold">&lt;/groupId&gt;</span>
+<span class="line-numbers"> <a href="#n3" name="n3">3</a></span>    <span style="color:#070;font-weight:bold">&lt;artifactId&gt;</span>spring-security-web<span style="color:#070;font-weight:bold">&lt;/artifactId&gt;</span>
+<span class="line-numbers"> <a href="#n4" name="n4">4</a></span>    <span style="color:#070;font-weight:bold">&lt;version&gt;</span>4.0.1.RELEASE<span style="color:#070;font-weight:bold">&lt;/version&gt;</span>
+<span class="line-numbers"> <a href="#n5" name="n5">5</a></span><span style="color:#070;font-weight:bold">&lt;/dependency&gt;</span>
+<span class="line-numbers"> <a href="#n6" name="n6">6</a></span><span style="color:#070;font-weight:bold">&lt;dependency&gt;</span>
+<span class="line-numbers"> <a href="#n7" name="n7">7</a></span>    <span style="color:#070;font-weight:bold">&lt;groupId&gt;</span>org.springframework.security<span style="color:#070;font-weight:bold">&lt;/groupId&gt;</span>
+<span class="line-numbers"> <a href="#n8" name="n8">8</a></span>    <span style="color:#070;font-weight:bold">&lt;artifactId&gt;</span>spring-security-config<span style="color:#070;font-weight:bold">&lt;/artifactId&gt;</span>
+<span class="line-numbers"> <a href="#n9" name="n9">9</a></span>    <span style="color:#070;font-weight:bold">&lt;version&gt;</span>4.0.1.RELEASE<span style="color:#070;font-weight:bold">&lt;/version&gt;</span>
+<span class="line-numbers"><strong><a href="#n10" name="n10">10</a></strong></span><span style="color:#070;font-weight:bold">&lt;/dependency&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<h1 id="filter">Filter</h1>
+
+<p>spring-security的业务流程是独立于项目的，我们需要在web.xml中指定其入口，注意该过滤器必须在项目的过滤器之前。</p>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span><span style="color:#070;font-weight:bold">&lt;filter&gt;</span>
+<span class="line-numbers"><a href="#n2" name="n2">2</a></span>    <span style="color:#070;font-weight:bold">&lt;filter-name&gt;</span>springSecurityFilterChain<span style="color:#070;font-weight:bold">&lt;/filter-name&gt;</span>
+<span class="line-numbers"><a href="#n3" name="n3">3</a></span>    <span style="color:#070;font-weight:bold">&lt;filter-class&gt;</span>org.springframework.web.filter.DelegatingFilterProxy<span style="color:#070;font-weight:bold">&lt;/filter-class&gt;</span>
+<span class="line-numbers"><a href="#n4" name="n4">4</a></span><span style="color:#070;font-weight:bold">&lt;/filter&gt;</span>
+<span class="line-numbers"><a href="#n5" name="n5">5</a></span><span style="color:#070;font-weight:bold">&lt;filter-mapping&gt;</span>
+<span class="line-numbers"><a href="#n6" name="n6">6</a></span>    <span style="color:#070;font-weight:bold">&lt;filter-name&gt;</span>springSecurityFilterChain<span style="color:#070;font-weight:bold">&lt;/filter-name&gt;</span>
+<span class="line-numbers"><a href="#n7" name="n7">7</a></span>    <span style="color:#070;font-weight:bold">&lt;servlet-name&gt;</span>/*<span style="color:#070;font-weight:bold">&lt;/servlet-name&gt;</span>
+<span class="line-numbers"><a href="#n8" name="n8">8</a></span><span style="color:#070;font-weight:bold">&lt;/filter-mapping&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<p>值得一提的是，该过滤器的名字具有特殊意义，没有特别需求不建议修改，我们可以在该过滤的源码中看到，其过滤行为委托给了一个<code>delegate</code>对象，该delegate对象是一个从spring容器中获取的bean，依据的beanid就是filter-name。</p>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"> <a href="#n1" name="n1">1</a></span><span style="color:#007">@Override</span>
+<span class="line-numbers"> <a href="#n2" name="n2">2</a></span><span style="color:#088;font-weight:bold">protected</span> <span style="color:#339;font-weight:bold">void</span> initFilterBean() <span style="color:#088;font-weight:bold">throws</span> ServletException {
+<span class="line-numbers"> <a href="#n3" name="n3">3</a></span>        <span style="color:#088;font-weight:bold">synchronized</span> (<span style="color:#950">this</span>.delegateMonitor) {
+<span class="line-numbers"> <a href="#n4" name="n4">4</a></span>                <span style="color:#080;font-weight:bold">if</span> (<span style="color:#950">this</span>.delegate == <span style="color:#069">null</span>) {
+<span class="line-numbers"> <a href="#n5" name="n5">5</a></span>
+<span class="line-numbers"> <a href="#n6" name="n6">6</a></span>                        <span style="color:#080;font-weight:bold">if</span> (<span style="color:#950">this</span>.targetBeanName == <span style="color:#069">null</span>) {
+<span class="line-numbers"> <a href="#n7" name="n7">7</a></span>                                <span style="color:#950">this</span>.targetBeanName = getFilterName();
+<span class="line-numbers"> <a href="#n8" name="n8">8</a></span>                        }
+<span class="line-numbers"> <a href="#n9" name="n9">9</a></span>
+<span class="line-numbers"><strong><a href="#n10" name="n10">10</a></strong></span>                        WebApplicationContext wac = findWebApplicationContext();
+<span class="line-numbers"><a href="#n11" name="n11">11</a></span>                        <span style="color:#080;font-weight:bold">if</span> (wac != <span style="color:#069">null</span>) {
+<span class="line-numbers"><a href="#n12" name="n12">12</a></span>                                <span style="color:#950">this</span>.delegate = initDelegate(wac);
+<span class="line-numbers"><a href="#n13" name="n13">13</a></span>                        }
+<span class="line-numbers"><a href="#n14" name="n14">14</a></span>                }
+<span class="line-numbers"><a href="#n15" name="n15">15</a></span>        }
+<span class="line-numbers"><a href="#n16" name="n16">16</a></span>}
+</pre></div>
+</div>
+</div>
+
+<h1 id="http">HTTP</h1>
+
+<p>我们可以在security中声明多个<code>http</code>元素，每个http元素将产生一个<code>FilterChain</code>，这些FilterChain将按照声明顺序加入到<code>FilterChainProxy</code>中，而这个FilterChainProxy就是web.xml中定义的springSecurityFilterChain内部的<code>delegate</code>。</p>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span><span style="color:#070;font-weight:bold">&lt;security:http</span> <span style="color:#b48">security</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">none</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">pattern</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">/favicon.ico</span><span style="color:#710">&quot;</span></span> <span style="color:#070;font-weight:bold">/&gt;</span>
+<span class="line-numbers"><a href="#n2" name="n2">2</a></span><span style="color:#070;font-weight:bold">&lt;security:http</span> <span style="color:#b48">security</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">none</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">pattern</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">/resources/**</span><span style="color:#710">&quot;</span></span> <span style="color:#070;font-weight:bold">/&gt;</span>
+<span class="line-numbers"><a href="#n3" name="n3">3</a></span><span style="color:#070;font-weight:bold">&lt;security:http</span> <span style="color:#b48">security</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">none</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">pattern</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">/user/login</span><span style="color:#710">&quot;</span></span> <span style="color:#070;font-weight:bold">/&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<p>在http元素也就是FilterChain中，以责任链的形式存在多个<code>Filter</code>，这些Filter真正执行过滤操作，http标签中的许多配置项，如<code> &lt;security:http-basic/&gt;</code>、<code>&lt;security:logout/&gt;</code>等，其实就是创建指定的Filter，以下表格列举了这些Filter。</p>
+
+<p><img src="https://bit-ranger.github.io/blog/static/img/spring-security-filter.png" alt="filter" /></p>
+
+<p>利用别名，我们可以将自定义的过滤器加入指定的位置，或者替换其中的某个过滤器。</p>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span><span style="color:#070;font-weight:bold">&lt;security:custom-filter</span> <span style="color:#b48">ref</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">filterSecurityInterceptor</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">before</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">FILTER_SECURITY_INTERCEPTOR</span><span style="color:#710">&quot;</span></span> <span style="color:#070;font-weight:bold">/&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<p>整体来看，一个FilterChainProxy中可以包含有多个FilterChain，一个FilterChain中又可以包含有多个Filter，然而对于一个既定请求，只会使用其中一个FilterChain。</p>
+
+<h1 id="filterchain">FilterChain</h1>
+
+<p><img src="https://bit-ranger.github.io/blog/static/img/spring-security-filterChain.jpg" alt="filterChain" /></p>
+
+<p>上图列举了一些Filter, 此处将说明这些Filter的作用, 在需要插入自定义Filter时, 这些说明可以作为参考。</p>
+
+<ul>
+  <li>
+    <p>SecurityContextPersistenceFilter<br />
+  创建一个空的SecurityContext（如果session中没有SecurityContext实例），然后持久化到session中。在filter原路返回时，还需要保存这个SecurityContext实例到session中。</p>
+  </li>
+  <li>
+    <p>RequestCacheAwareFilter<br />
+  用于用户登录成功后，重新恢复因为登录被打断的请求</p>
+  </li>
+  <li>
+    <p>AnonymousAuthenticationFilter<br />
+  如果之前的过滤器都没有认证成功，则为当前的SecurityContext中添加一个经过匿名认证的token, 所有与认证相关的过滤器（如CasAuthenticationFilter）都应当放在AnonymousAuthenticationFilter之前。</p>
+  </li>
+  <li>
+    <p>SessionManagementFilter<br />
+  1.session固化保护-通过session-fixation-protection配置<br />
+  2.session并发控制-通过concurrency-control配置</p>
+  </li>
+  <li>
+    <p>ExceptionTranslationFilter<br />
+  主要拦截两类安全异常：认证异常、访问拒绝异常。而且仅仅是捕获后面的过滤器产生的异常。所以在自定义拦截器时，需要注意在链中的顺序。</p>
+  </li>
+  <li>
+    <p>FilterSecurityInterceptor<br />
+  通过决策管理器、认证管理器、安全元数据来判断用户是否能够访问资源。</p>
+  </li>
+</ul>
+
+<h1 id="filtersecurityinterceptor">FilterSecurityInterceptor</h1>
+
+<p>如果一个http请求能够匹配security定义的规则，那么该请求将进入security处理流程，大体上，security分为三个部分：</p>
+
+<ul>
+  <li>AuthenticationManager 处理认证请求</li>
+  <li>AccessDecisionManager 提供访问决策</li>
+  <li>SecurityMetadataSource 元数据</li>
+</ul>
+
+<p>以下代码摘自<code>AbstractSecurityInterceptor</code>， 这是<code>FilterSecurityInterceptor</code>的父类， 也正是在此处区分了web请求拦截器与方法调用拦截器。(代码有所精简)</p>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"> <a href="#n1" name="n1">1</a></span><span style="color:#088;font-weight:bold">protected</span> InterceptorStatusToken beforeInvocation(<span style="color:#0a8;font-weight:bold">Object</span> object) {
+<span class="line-numbers"> <a href="#n2" name="n2">2</a></span>
+<span class="line-numbers"> <a href="#n3" name="n3">3</a></span>        <span style="color:#080;font-weight:bold">if</span> (!getSecureObjectClass().isAssignableFrom(object.getClass())) {
+<span class="line-numbers"> <a href="#n4" name="n4">4</a></span>                <span style="color:#080;font-weight:bold">throw</span> <span style="color:#080;font-weight:bold">new</span> <span style="color:#C00;font-weight:bold">IllegalArgumentException</span>();
+<span class="line-numbers"> <a href="#n5" name="n5">5</a></span>        }
+<span class="line-numbers"> <a href="#n6" name="n6">6</a></span>
+<span class="line-numbers"> <a href="#n7" name="n7">7</a></span>        <span style="color:#0a8;font-weight:bold">Collection</span>&lt;ConfigAttribute&gt; attributes =
+<span class="line-numbers"> <a href="#n8" name="n8">8</a></span>                <span style="color:#950">this</span>.obtainSecurityMetadataSource().getAttributes(object);
+<span class="line-numbers"> <a href="#n9" name="n9">9</a></span>
+<span class="line-numbers"><strong><a href="#n10" name="n10">10</a></strong></span>        <span style="color:#080;font-weight:bold">if</span> (attributes == <span style="color:#069">null</span> || attributes.isEmpty()) {
+<span class="line-numbers"><a href="#n11" name="n11">11</a></span>                <span style="color:#080;font-weight:bold">if</span> (rejectPublicInvocations) {
+<span class="line-numbers"><a href="#n12" name="n12">12</a></span>                        <span style="color:#080;font-weight:bold">throw</span> <span style="color:#080;font-weight:bold">new</span> <span style="color:#C00;font-weight:bold">IllegalArgumentException</span>();
+<span class="line-numbers"><a href="#n13" name="n13">13</a></span>                }
+<span class="line-numbers"><a href="#n14" name="n14">14</a></span>                publishEvent(<span style="color:#080;font-weight:bold">new</span> PublicInvocationEvent(object));
+<span class="line-numbers"><a href="#n15" name="n15">15</a></span>                <span style="color:#080;font-weight:bold">return</span> <span style="color:#069">null</span>; <span style="color:#777">// no further work post-invocation</span>
+<span class="line-numbers"><a href="#n16" name="n16">16</a></span>        }
+<span class="line-numbers"><a href="#n17" name="n17">17</a></span>
+<span class="line-numbers"><a href="#n18" name="n18">18</a></span>        <span style="color:#080;font-weight:bold">if</span> (SecurityContextHolder.getContext().getAuthentication() == <span style="color:#069">null</span>) {
+<span class="line-numbers"><a href="#n19" name="n19">19</a></span>            <span style="color:#777">//...</span>
+<span class="line-numbers"><strong><a href="#n20" name="n20">20</a></strong></span>        }
+<span class="line-numbers"><a href="#n21" name="n21">21</a></span>
+<span class="line-numbers"><a href="#n22" name="n22">22</a></span>        Authentication authenticated = authenticateIfRequired();
+<span class="line-numbers"><a href="#n23" name="n23">23</a></span>
+<span class="line-numbers"><a href="#n24" name="n24">24</a></span>        <span style="color:#777">// Attempt authorization</span>
+<span class="line-numbers"><a href="#n25" name="n25">25</a></span>        <span style="color:#080;font-weight:bold">try</span> {
+<span class="line-numbers"><a href="#n26" name="n26">26</a></span>                <span style="color:#950">this</span>.accessDecisionManager.decide(authenticated, object, attributes);
+<span class="line-numbers"><a href="#n27" name="n27">27</a></span>        }
+<span class="line-numbers"><a href="#n28" name="n28">28</a></span>        <span style="color:#080;font-weight:bold">catch</span> (AccessDeniedException accessDeniedException) {
+<span class="line-numbers"><a href="#n29" name="n29">29</a></span>                publishEvent(<span style="color:#080;font-weight:bold">new</span> AuthorizationFailureEvent(object, attributes,
+<span class="line-numbers"><strong><a href="#n30" name="n30">30</a></strong></span>                            authenticated,accessDeniedException));
+<span class="line-numbers"><a href="#n31" name="n31">31</a></span>                <span style="color:#080;font-weight:bold">throw</span> accessDeniedException;
+<span class="line-numbers"><a href="#n32" name="n32">32</a></span>        }
+<span class="line-numbers"><a href="#n33" name="n33">33</a></span>}
+<span class="line-numbers"><a href="#n34" name="n34">34</a></span>
+<span class="line-numbers"><a href="#n35" name="n35">35</a></span>
+<span class="line-numbers"><a href="#n36" name="n36">36</a></span><span style="color:#088;font-weight:bold">private</span> Authentication authenticateIfRequired() {
+<span class="line-numbers"><a href="#n37" name="n37">37</a></span>    Authentication authentication = SecurityContextHolder.getContext()
+<span class="line-numbers"><a href="#n38" name="n38">38</a></span>            .getAuthentication();
+<span class="line-numbers"><a href="#n39" name="n39">39</a></span>
+<span class="line-numbers"><strong><a href="#n40" name="n40">40</a></strong></span>    <span style="color:#080;font-weight:bold">if</span> (authentication.isAuthenticated() &amp;&amp; !alwaysReauthenticate) {
+<span class="line-numbers"><a href="#n41" name="n41">41</a></span>        <span style="color:#080;font-weight:bold">return</span> authentication;
+<span class="line-numbers"><a href="#n42" name="n42">42</a></span>    }
+<span class="line-numbers"><a href="#n43" name="n43">43</a></span>
+<span class="line-numbers"><a href="#n44" name="n44">44</a></span>    authentication = authenticationManager.authenticate(authentication);
+<span class="line-numbers"><a href="#n45" name="n45">45</a></span>
+<span class="line-numbers"><a href="#n46" name="n46">46</a></span>    SecurityContextHolder.getContext().setAuthentication(authentication);
+<span class="line-numbers"><a href="#n47" name="n47">47</a></span>
+<span class="line-numbers"><a href="#n48" name="n48">48</a></span>    <span style="color:#080;font-weight:bold">return</span> authentication;
+<span class="line-numbers"><a href="#n49" name="n49">49</a></span>}
+</pre></div>
+</div>
+</div>
+
+<p>在FilterSecurityInterceptor的处理流程中，首先会处理认证请求，获取用户信息，然后决策处理器根据用户信息与权限元数据进行决策，同样，这三个部分都是可以自定义的。</p>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span><span style="color:#777">&lt;!-- 自定义过滤器 --&gt;</span>
+<span class="line-numbers"><a href="#n2" name="n2">2</a></span><span style="color:#070;font-weight:bold">&lt;bean</span> <span style="color:#b48">id</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">filterSecurityInterceptor</span><span style="color:#710">&quot;</span></span>
+<span class="line-numbers"><a href="#n3" name="n3">3</a></span>            <span style="color:#b48">class</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">org.springframework.security.web.access.intercept.FilterSecurityInterceptor</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">&gt;</span>
+<span class="line-numbers"><a href="#n4" name="n4">4</a></span>    <span style="color:#070;font-weight:bold">&lt;property</span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">securityMetadataSource</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">ref</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">securityMetadataSource</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">/&gt;</span>
+<span class="line-numbers"><a href="#n5" name="n5">5</a></span>    <span style="color:#070;font-weight:bold">&lt;property</span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">authenticationManager</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">ref</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">authenticationManager</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">/&gt;</span>
+<span class="line-numbers"><a href="#n6" name="n6">6</a></span>    <span style="color:#070;font-weight:bold">&lt;property</span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">accessDecisionManager</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">ref</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">accessDecisionManager</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">/&gt;</span>
+<span class="line-numbers"><a href="#n7" name="n7">7</a></span><span style="color:#070;font-weight:bold">&lt;/bean&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<h1 id="authenticationmanager">AuthenticationManager</h1>
+
+<p>AuthenticationManager处理认证请求，然而它并不直接处理，而是将工作委托给了一个<code>ProviderManager</code>，ProviderManager又将工作委托给了一个<code>AuthenticationProvider</code>列表，只要任何一个AuthenticationProvider认证通过，则AuthenticationManager认证通过，我们可以配置一个或者多个AuthenticationProvider，还可以对密码进行加密。</p>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span><span style="color:#070;font-weight:bold">&lt;security:authentication-manager</span> <span style="color:#b48">id</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">authenticationManager</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">&gt;</span>
+<span class="line-numbers"><a href="#n2" name="n2">2</a></span>    <span style="color:#070;font-weight:bold">&lt;security:authentication-provider</span> <span style="color:#b48">user-service-ref</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">userDetailsService</span><span style="color:#710">&quot;</span></span> <span style="color:#070;font-weight:bold">&gt;</span>
+<span class="line-numbers"><a href="#n3" name="n3">3</a></span>        <span style="color:#070;font-weight:bold">&lt;security:password-encoder</span> <span style="color:#b48">base64</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">true</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">hash</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">md5</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">&gt;</span>
+<span class="line-numbers"><a href="#n4" name="n4">4</a></span>            <span style="color:#070;font-weight:bold">&lt;security:salt-source</span> <span style="color:#b48">user-property</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">username</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">/&gt;</span>
+<span class="line-numbers"><a href="#n5" name="n5">5</a></span>        <span style="color:#070;font-weight:bold">&lt;/security:password-encoder&gt;</span>
+<span class="line-numbers"><a href="#n6" name="n6">6</a></span>    <span style="color:#070;font-weight:bold">&lt;/security:authentication-provider&gt;</span>
+<span class="line-numbers"><a href="#n7" name="n7">7</a></span><span style="color:#070;font-weight:bold">&lt;/security:authentication-manager&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<p>考虑到一种常见情形，用户输入用户名密码，然后与数据比对，验证用户信息，security提供了类来处理。</p>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span><span style="color:#070;font-weight:bold">&lt;bean</span> <span style="color:#b48">id</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">userDetailsService</span><span style="color:#710">&quot;</span></span>
+<span class="line-numbers"><a href="#n2" name="n2">2</a></span>            <span style="color:#b48">class</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">org.springframework.security.core.userdetails.jdbc.JdbcDaoImpl</span><span style="color:#710">&quot;</span></span> <span style="color:#070;font-weight:bold">&gt;</span>
+<span class="line-numbers"><a href="#n3" name="n3">3</a></span>     <span style="color:#070;font-weight:bold">&lt;property</span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">dataSource</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">ref</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">dataSource</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">/&gt;</span>
+<span class="line-numbers"><a href="#n4" name="n4">4</a></span><span style="color:#070;font-weight:bold">&lt;/bean&gt;</span>
+</pre></div>
+</div>
+</div>
+<p>JdbcDaoImpl使用内置的SQL查询数据，这些SQL以常量的形式出现在JdbcDaoImpl开头，同样可以注入修改。</p>
+
+<h1 id="accessdecisionmanager">AccessDecisionManager</h1>
+
+<p>AccessDecisionManager提供访问决策，它同样不会直接处理，而是仅仅抽象为一种投票规则，然后决策行为委托给所有投票人。</p>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"> <a href="#n1" name="n1">1</a></span><span style="color:#777">&lt;!-- 决策管理器 --&gt;</span>
+<span class="line-numbers"> <a href="#n2" name="n2">2</a></span><span style="color:#070;font-weight:bold">&lt;bean</span> <span style="color:#b48">id</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">accessDecisionManager</span><span style="color:#710">&quot;</span></span>
+<span class="line-numbers"> <a href="#n3" name="n3">3</a></span>            <span style="color:#b48">class</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">org.springframework.security.access.vote.AffirmativeBased</span><span style="color:#710">&quot;</span></span> <span style="color:#070;font-weight:bold">&gt;</span>
+<span class="line-numbers"> <a href="#n4" name="n4">4</a></span>    <span style="color:#070;font-weight:bold">&lt;property</span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">allowIfAllAbstainDecisions</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">value</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">false</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">/&gt;</span>
+<span class="line-numbers"> <a href="#n5" name="n5">5</a></span>    <span style="color:#070;font-weight:bold">&lt;constructor-arg</span> <span style="color:#b48">index</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">0</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">&gt;</span>
+<span class="line-numbers"> <a href="#n6" name="n6">6</a></span>        <span style="color:#070;font-weight:bold">&lt;list&gt;</span>
+<span class="line-numbers"> <a href="#n7" name="n7">7</a></span>           <span style="color:#777">&lt;!-- &lt;bean class=&quot;org.springframework.security.web.access.expression.WebExpressionVoter&quot;/&gt;--&gt;</span>
+<span class="line-numbers"> <a href="#n8" name="n8">8</a></span>            <span style="color:#070;font-weight:bold">&lt;bean</span> <span style="color:#b48">class</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">org.springframework.security.access.vote.RoleVoter</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">&gt;</span>
+<span class="line-numbers"> <a href="#n9" name="n9">9</a></span>                <span style="color:#777">&lt;!-- 支持所有角色名称，无需前缀 --&gt;</span>
+<span class="line-numbers"><strong><a href="#n10" name="n10">10</a></strong></span>                <span style="color:#070;font-weight:bold">&lt;property</span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">rolePrefix</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">value</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">/&gt;</span>
+<span class="line-numbers"><a href="#n11" name="n11">11</a></span>            <span style="color:#070;font-weight:bold">&lt;/bean&gt;</span>
+<span class="line-numbers"><a href="#n12" name="n12">12</a></span>            <span style="color:#070;font-weight:bold">&lt;bean</span> <span style="color:#b48">class</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">org.springframework.security.access.vote.AuthenticatedVoter</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">/&gt;</span>
+<span class="line-numbers"><a href="#n13" name="n13">13</a></span>        <span style="color:#070;font-weight:bold">&lt;/list&gt;</span>
+<span class="line-numbers"><a href="#n14" name="n14">14</a></span>    <span style="color:#070;font-weight:bold">&lt;/constructor-arg&gt;</span>
+<span class="line-numbers"><a href="#n15" name="n15">15</a></span><span style="color:#070;font-weight:bold">&lt;/bean&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<p>security提供了三种投票规则：</p>
+
+<ul>
+  <li>AffirmativeBased 只要有一个voter同意就通过</li>
+  <li>ConsensusBased 只要投同意票的大于投反对票的就通过</li>
+  <li>UnanimousBased 需要一致同意才通过</li>
+</ul>
+
+<p>以下为<code>AffirmativeBased</code>决策过程</p>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"> <a href="#n1" name="n1">1</a></span><span style="color:#088;font-weight:bold">public</span> <span style="color:#339;font-weight:bold">void</span> decide(Authentication authentication, <span style="color:#0a8;font-weight:bold">Object</span> object,
+<span class="line-numbers"> <a href="#n2" name="n2">2</a></span>                <span style="color:#0a8;font-weight:bold">Collection</span>&lt;ConfigAttribute&gt; configAttributes) <span style="color:#088;font-weight:bold">throws</span> AccessDeniedException {
+<span class="line-numbers"> <a href="#n3" name="n3">3</a></span>        <span style="color:#339;font-weight:bold">int</span> deny = <span style="color:#00D">0</span>;
+<span class="line-numbers"> <a href="#n4" name="n4">4</a></span>
+<span class="line-numbers"> <a href="#n5" name="n5">5</a></span>        <span style="color:#080;font-weight:bold">for</span> (AccessDecisionVoter voter : getDecisionVoters()) {
+<span class="line-numbers"> <a href="#n6" name="n6">6</a></span>                <span style="color:#339;font-weight:bold">int</span> result = voter.vote(authentication, object, configAttributes);
+<span class="line-numbers"> <a href="#n7" name="n7">7</a></span>
+<span class="line-numbers"> <a href="#n8" name="n8">8</a></span>                <span style="color:#080;font-weight:bold">switch</span> (result) {
+<span class="line-numbers"> <a href="#n9" name="n9">9</a></span>                <span style="color:#080;font-weight:bold">case</span> AccessDecisionVoter.ACCESS_GRANTED:
+<span class="line-numbers"><strong><a href="#n10" name="n10">10</a></strong></span>                        <span style="color:#080;font-weight:bold">return</span>;
+<span class="line-numbers"><a href="#n11" name="n11">11</a></span>
+<span class="line-numbers"><a href="#n12" name="n12">12</a></span>                <span style="color:#080;font-weight:bold">case</span> AccessDecisionVoter.ACCESS_DENIED:
+<span class="line-numbers"><a href="#n13" name="n13">13</a></span>                        deny++;
+<span class="line-numbers"><a href="#n14" name="n14">14</a></span>
+<span class="line-numbers"><a href="#n15" name="n15">15</a></span>                        <span style="color:#080;font-weight:bold">break</span>;
+<span class="line-numbers"><a href="#n16" name="n16">16</a></span>
+<span class="line-numbers"><a href="#n17" name="n17">17</a></span>                <span style="color:#080;font-weight:bold">default</span>:
+<span class="line-numbers"><a href="#n18" name="n18">18</a></span>                        <span style="color:#080;font-weight:bold">break</span>;
+<span class="line-numbers"><a href="#n19" name="n19">19</a></span>                }
+<span class="line-numbers"><strong><a href="#n20" name="n20">20</a></strong></span>        }
+<span class="line-numbers"><a href="#n21" name="n21">21</a></span>
+<span class="line-numbers"><a href="#n22" name="n22">22</a></span>        <span style="color:#080;font-weight:bold">if</span> (deny &gt; <span style="color:#00D">0</span>) {
+<span class="line-numbers"><a href="#n23" name="n23">23</a></span>                <span style="color:#080;font-weight:bold">throw</span> <span style="color:#080;font-weight:bold">new</span> AccessDeniedException(messages.getMessage(
+<span class="line-numbers"><a href="#n24" name="n24">24</a></span>                                <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">AbstractAccessDecisionManager.accessDenied</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Access is denied</span><span style="color:#710">&quot;</span></span>));
+<span class="line-numbers"><a href="#n25" name="n25">25</a></span>        }
+<span class="line-numbers"><a href="#n26" name="n26">26</a></span>
+<span class="line-numbers"><a href="#n27" name="n27">27</a></span>        <span style="color:#777">// To get this far, every AccessDecisionVoter abstained</span>
+<span class="line-numbers"><a href="#n28" name="n28">28</a></span>        checkAllowIfAllAbstainDecisions();
+<span class="line-numbers"><a href="#n29" name="n29">29</a></span>}
+</pre></div>
+</div>
+</div>
+
+<h1 id="securitymetadatasource">SecurityMetadataSource</h1>
+
+<p>SecurityMetadataSource定义权限元数据（如资源与角色的关系），并提供了一个核心方法<code>Collection&lt;ConfigAttribute&gt; getAttributes(Object object)</code>来获取资源对应的角色列表，这种结构非常类似于Map。</p>
+
+<p>security提供了<code>DefaultFilterInvocationSecurityMetadataSource</code>来进行角色读取操作，并将数据存储委托给一个<code>LinkedHashMap</code>对象。</p>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"> <a href="#n1" name="n1">1</a></span><span style="color:#777">&lt;!-- 资源与角色关系元数据 --&gt;</span>
+<span class="line-numbers"> <a href="#n2" name="n2">2</a></span><span style="color:#070;font-weight:bold">&lt;bean</span> <span style="color:#b48">id</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">securityMetadataSource</span><span style="color:#710">&quot;</span></span>
+<span class="line-numbers"> <a href="#n3" name="n3">3</a></span>            <span style="color:#b48">class</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">org.springframework.security.web.access.intercept.DefaultFilterInvocationSecurityMetadataSource</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">&gt;</span>
+<span class="line-numbers"> <a href="#n4" name="n4">4</a></span>    <span style="color:#070;font-weight:bold">&lt;constructor-arg</span> <span style="color:#b48">index</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">0</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">&gt;</span>
+<span class="line-numbers"> <a href="#n5" name="n5">5</a></span>        <span style="color:#070;font-weight:bold">&lt;bean</span> <span style="color:#b48">class</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">top.rainynight.site.core.RequestMapFactoryBean</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">&gt;</span>
+<span class="line-numbers"> <a href="#n6" name="n6">6</a></span>            <span style="color:#070;font-weight:bold">&lt;property</span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">dataSource</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">ref</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">dataSource</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">/&gt;</span>
+<span class="line-numbers"> <a href="#n7" name="n7">7</a></span>        <span style="color:#070;font-weight:bold">&lt;/bean&gt;</span>
+<span class="line-numbers"> <a href="#n8" name="n8">8</a></span>    <span style="color:#070;font-weight:bold">&lt;/constructor-arg&gt;</span>
+<span class="line-numbers"> <a href="#n9" name="n9">9</a></span><span style="color:#070;font-weight:bold">&lt;/bean&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<p>DefaultFilterInvocationSecurityMetadataSource获取角色方法</p>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"> <a href="#n1" name="n1">1</a></span><span style="color:#088;font-weight:bold">public</span> <span style="color:#0a8;font-weight:bold">Collection</span>&lt;ConfigAttribute&gt; getAttributes(<span style="color:#0a8;font-weight:bold">Object</span> object) {
+<span class="line-numbers"> <a href="#n2" name="n2">2</a></span>        <span style="color:#088;font-weight:bold">final</span> HttpServletRequest request = ((FilterInvocation) object).getRequest();
+<span class="line-numbers"> <a href="#n3" name="n3">3</a></span>        <span style="color:#080;font-weight:bold">for</span> (<span style="color:#0a8;font-weight:bold">Map</span>.Entry&lt;RequestMatcher, <span style="color:#0a8;font-weight:bold">Collection</span>&lt;ConfigAttribute&gt;&gt; entry : requestMap
+<span class="line-numbers"> <a href="#n4" name="n4">4</a></span>                        .entrySet()) {
+<span class="line-numbers"> <a href="#n5" name="n5">5</a></span>                <span style="color:#080;font-weight:bold">if</span> (entry.getKey().matches(request)) {
+<span class="line-numbers"> <a href="#n6" name="n6">6</a></span>                        <span style="color:#080;font-weight:bold">return</span> entry.getValue();
+<span class="line-numbers"> <a href="#n7" name="n7">7</a></span>                }
+<span class="line-numbers"> <a href="#n8" name="n8">8</a></span>        }
+<span class="line-numbers"> <a href="#n9" name="n9">9</a></span>        <span style="color:#080;font-weight:bold">return</span> <span style="color:#069">null</span>;
+<span class="line-numbers"><strong><a href="#n10" name="n10">10</a></strong></span>}
+</pre></div>
+</div>
+</div>
+
+
+          </article>
+          <hr class="boundary">
+          <div id="post-share" class="bdsharebuttonbox">
+              <a href="#" class="bds_more" data-cmd="more"></a>
+              <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+              <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+              <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+              <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+              <a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+          </div>
+        </div>
+        <div class="pad-min"></div>
+        <div id="post-comment" class="sheet post hidden">
+            <div id="disqus_thread"></div>
+        </div>
+    </div>
+    <div class="content-navigation col-lg-3">
+      <div class="shadow-bottom-center" >
+        <div class="content-navigation-toc">
+            <div class="content-navigation-header">
+                <span class="octicon octicon-list-unordered"></span>&nbsp;Toc
+            </div>
+            <div class="content-navigation-list toc"></div>
+        </div>
+        <div class="content-navigation-tag">
+            <div class="content-navigation-header">
+                <span class="octicon octicon-list-unordered"></span>&nbsp;Tags
+            </div>
+            <div class="content-navigation-list">
+                <ul>
+                    
+                    <li>
+                        <a href="https://haonan-dong.github.io/tags#spring"><span class="octicon octicon-tag"></span>&nbsp;spring</a>
+                    </li>
+                    
+                    <li>
+                        <a href="https://haonan-dong.github.io/tags#security"><span class="octicon octicon-tag"></span>&nbsp;security</a>
+                    </li>
+                    
+                    <li>
+                        <a href="https://haonan-dong.github.io/tags#Java"><span class="octicon octicon-tag"></span>&nbsp;Java</a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="content-navigation-related">
+            <div class="content-navigation-header">
+                <span class="octicon octicon-list-unordered"></span>&nbsp;Related
+            </div>
+            <div class="content-navigation-list">
+                <ul>
+                    
+
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                                    
+                                
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                                
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                                    
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                                
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+                                
+                                    
+                                
+                            
+
+                            
+                                
+                                    
+                                
+                            
+
+                            
+                                
+                            
+                        
+                    
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+                                
+                                    
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                                
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                                    
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                                
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+                                
+                                    
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                                
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                                    
+                                
+                            
+
+                            
+                                
+                                    
+                                
+                            
+
+                            
+                                
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                                    
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                                
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                                    
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                                
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                                    
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                                
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                                    
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                                
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                                    
+                                
+                            
+                                
+                            
+
+                            
+                                
+                                    
+                                
+                            
+
+                            
+                                
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                                    
+                                
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                                
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+
+                            
+                                
+                                    
+                                
+                            
+
+                            
+                                
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                                    
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                                
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                                    
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                                
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+
+                    
+                        
+                            <li>
+                                <a href="https://haonan-dong.github.io/java/mvc-validator/">记一次在spring-mvc中踩坑的经历</a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://haonan-dong.github.io/java/rmi/">RMI</a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://haonan-dong.github.io/web/servlet-encode/">Servlet乱码分析</a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://haonan-dong.github.io/java/validator/">Bean Validation</a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://haonan-dong.github.io/java/javajs/">Java中用js解析json</a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://haonan-dong.github.io/database/sqlappend/">SQL 拼接</a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://haonan-dong.github.io/web/webservice/">WebService</a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://haonan-dong.github.io/java/java-newfeature/">Java8 新特性</a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://haonan-dong.github.io/java/java-concurrent/">Java Concurrent</a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://haonan-dong.github.io/java/jvm/">Java虚拟机</a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://haonan-dong.github.io/java/effective/">Effective Java</a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://haonan-dong.github.io/web/fileupload/">Custom Fileupload</a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://haonan-dong.github.io/java/reentrantlock/">可重入锁</a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://haonan-dong.github.io/web/resubmit/">防止重复提交的几种办法</a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://haonan-dong.github.io/java/java-nio/">Java NIO</a>
+                            </li>
+                        
+                    
+                </ul>
+            </div>
+        </div>
+      </div>
+    </div>
+</div>
+    </div>
+    <div class="page-scrollTop" data-toggle="tooltip" data-placement="top" title="Top">
+        <a href="javascript:void(0);">
+            <div class="arrow"></div>
+            <div class="stick"></div>
+        </a>
+    </div>
+</div>
+
+    <footer  class="footnote footnote-tiffany">
+        <div class="container">
+                <a class="foot-item" href="mailto:sincerebravefight@gmail.com" target="_blank"><span class="octicon octicon-mail"></span></a>
+                <a class="foot-item" href="https://github.com/bit-ranger" target="_blank"><span class="octicon octicon-mark-github"></span></a>
+                <a class="foot-item" href="https://haonan-dong.github.io/feed.xml" target="_blank"><span class="octicon octicon-rss"></span></a>
+                <a class="foot-item" href="https://haonan-dong.github.io/link/"><span class="octicon octicon-link-external"></span></a>
+                &nbsp;
+                <a href="https://github.com/bit-ranger"><span class="word-keep">&copy; bit-ranger</span></a>
+        </div>
+    </footer>
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://haonan-dong.github.io/static/js/script.js"></script>
+    <script type="text/javascript" src="https://haonan-dong.github.io/static/js/gitment.js"></script>
+    <script type="text/javascript" src="https://haonan-dong.github.io/static/js/post.js"></script>
+    
+
+
+</body>
+</html>

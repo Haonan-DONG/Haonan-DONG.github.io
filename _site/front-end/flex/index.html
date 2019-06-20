@@ -1,0 +1,1775 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Flex</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="keywords" content="Flex, front-end, Flex,ActionScript,script, λ lambda" />
+    <meta name="description" content="Flex, front-end, Flex,ActionScript,script, " />
+    <meta name="theme-color" content="#2CA6CB"/>
+    <link rel="shortcut icon" type="image/x-icon" media="screen" href="https://haonan-dong.github.io/favicon.ico" />
+    <link rel="canonical" href="https://haonan-dong.github.io/front-end/flex/" />
+    <link rel="alternate" type="application/rss+xml" title="λ lambda" href="https://haonan-dong.github.io/feed.xml"  />
+
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/octicons/3.5.0/octicons.min.css" >
+    <link rel="stylesheet" type="text/css" href="https://haonan-dong.github.io/static/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="https://haonan-dong.github.io/static/css/highlight.css" />
+    <link rel="stylesheet" type="text/css" href="https://haonan-dong.github.io/static/css/gitment.css" />
+    <link rel="stylesheet" type="text/css" href="https://haonan-dong.github.io/static/css/post.css" />
+    
+
+</head>
+
+
+<body>
+
+    <header>
+        <nav class="navbar navbar-tiffany rectangle" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="https://haonan-dong.github.io/">λ lambda</a>
+                    <p class="navbar-text"></p>
+                </div>
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        
+                        <li>
+                        <a href="https://haonan-dong.github.io/" class="word-keep"><span class="octicon octicon-book"></span></span>&nbsp;&nbsp;Blog</a>
+                        </li>
+                        
+                        
+                        <li>
+                            <a href="https://haonan-dong.github.io/archive/" class="word-keep"><span class="octicon octicon-repo"></span>&nbsp;&nbsp;Archive</a>
+                        </li>
+                        
+                        
+                        
+                        <li>
+                            <a href="https://haonan-dong.github.io/category/" class="word-keep"><span class="octicon octicon-list-unordered"></span>&nbsp;&nbsp;Category</a>
+                        </li>
+                        
+                        
+                        
+                        <li>
+                            <a href="https://haonan-dong.github.io/tags/" class="word-keep"><span class="octicon octicon-tag"></span>&nbsp;&nbsp;Tag</a>
+                        </li>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <li><a href="#stq=" class="search-button"><span class="octicon octicon-search"></span></a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+
+
+<div class="main">
+    <div class="container">
+        <div class="row">
+    <div class="content col-lg-9">
+        <div class="sheet post">
+          <header>
+            <h2>Flex</h2>
+            <p class="post-meta">
+                <span class="octicon octicon-clock"></span> Apr 20, 2014
+            </p>
+            <p class="post-tag">
+                <span><a href="https://haonan-dong.github.io/category/#front-end"><span class="octicon octicon-list-unordered"></span>&nbsp;front-end</a></span>
+                <span>
+                    <a class="word-keep" href="https://haonan-dong.github.io/tags/#Flex"><span class="octicon octicon-tag"></span>&nbsp;Flex</a>
+                    
+                    <a class="word-keep" href="https://haonan-dong.github.io/tags/#ActionScript"><span class="octicon octicon-tag"></span>&nbsp;ActionScript</a>
+                    
+                    <a class="word-keep" href="https://haonan-dong.github.io/tags/#script"><span class="octicon octicon-tag"></span>&nbsp;script</a>
+                    
+                </span>
+            </p>
+          </header>
+          <hr class="boundary">
+          <article>
+            <ul id="markdown-toc">
+  <li><a href="#section">产品</a></li>
+  <li><a href="#flex">Flex基础</a>    <ul>
+      <li><a href="#section-1">应用程序模型</a></li>
+      <li><a href="#mvc">MVC模型</a></li>
+      <li><a href="#flex-">Flex 编程模型</a></li>
+      <li><a href="#flex--1">Flex 元素</a></li>
+      <li><a href="#section-2">发布方式</a></li>
+    </ul>
+  </li>
+  <li><a href="#section-3">界面布局</a>    <ul>
+      <li><a href="#section-4">控制应用程序的外观</a></li>
+      <li><a href="#section-5">受约束的布局</a></li>
+    </ul>
+  </li>
+  <li><a href="#section-6">事件与行为</a>    <ul>
+      <li><a href="#section-7">多态页面</a></li>
+      <li><a href="#section-8">创建行为</a></li>
+    </ul>
+  </li>
+  <li><a href="#section-9">连接数据</a>    <ul>
+      <li><a href="#section-10">连接数据服务器</a></li>
+      <li><a href="#section-11">安全性</a></li>
+    </ul>
+  </li>
+  <li><a href="#section-12">图表组件</a></li>
+  <li><a href="#mxml">MXML</a></li>
+  <li><a href="#actionscript">ActionScript</a></li>
+  <li><a href="#xml">XML</a>    <ul>
+      <li><a href="#xml-1">创建xml对象</a></li>
+      <li><a href="#xml-2">处理XML对象</a>        <ul>
+          <li><a href="#section-13">查询</a></li>
+          <li><a href="#section-14">修改</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><a href="#section-15">备忘</a></li>
+  <li><a href="#springmvc">整合SpringMVC</a>    <ul>
+      <li><a href="#section-16">依赖</a></li>
+      <li><a href="#webxml">配置web.xml</a></li>
+      <li><a href="#srping">Srping容器</a></li>
+      <li><a href="#section-17">通道</a></li>
+      <li><a href="#section-18">配置远程服务</a></li>
+      <li><a href="#flexchannel">flex使用默认channel</a></li>
+      <li><a href="#section-19">测试</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="section">产品</h1>
+
+<ol>
+  <li>
+    <p>Adobe® Flex™ SDK</p>
+  </li>
+  <li>
+    <p>Adobe® Flex™ Builder™</p>
+  </li>
+  <li>
+    <p>Adobe® Flex™ Data Services</p>
+  </li>
+  <li>
+    <p>Adobe® Flex™ Charting</p>
+  </li>
+</ol>
+
+<h1 id="flex">Flex基础</h1>
+
+<h2 id="section-1">应用程序模型</h2>
+
+<p>用容器（如Box）控件（如Button）来描述用户的操作界面</p>
+
+<h2 id="mvc">MVC模型</h2>
+
+<ol>
+  <li>
+    <p>模型/Model 组件封装了数据和与数据相关的行为。</p>
+  </li>
+  <li>
+    <p>视图/View 组件定义了应用程序的用户界面。</p>
+  </li>
+  <li>
+    <p>控制器/Controller 组件则负责处理程序中的数据连接。</p>
+  </li>
+</ol>
+
+<h2 id="flex-">Flex 编程模型</h2>
+
+<p>Flex 包含了<strong>Flex 类库</strong>、<strong>MXML</strong> 和<strong>ActionScript</strong> 编程语言，以及<strong>Flex 编译器</strong>和<strong>调试器</strong>。</p>
+
+<blockquote>
+  <p>MXML 和 ActionScript 编程语言都提供了访问Flex 类库的能力。</p>
+</blockquote>
+
+<p>通常的做法是：使用MXML 去定义用户界面的元素，使用ActionScript 去定义客户端的逻辑并进行控制。</p>
+
+<p>Flex 类库包括了<strong>Flex 组件</strong>、<strong>管理器</strong>和<strong>行为</strong>。</p>
+
+<h2 id="flex--1">Flex 元素</h2>
+
+<ul>
+  <li>
+    <p>Flex framework</p>
+  </li>
+  <li>
+    <p>MXML</p>
+  </li>
+  <li>
+    <p>ActionScript 3.0</p>
+  </li>
+  <li>
+    <p>CSS</p>
+  </li>
+  <li>
+    <p>图形资源</p>
+  </li>
+  <li>
+    <p>数据 </p>
+  </li>
+</ul>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span><span style="color:#070;font-weight:bold">&lt;mx:Application</span> <span style="color:#b48">xmlns:mx</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">http://www.adobe.com/2006/mxml</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">layout</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">absolute</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">&gt;</span>
+<span class="line-numbers"><a href="#n2" name="n2">2</a></span>    <span style="color:#070;font-weight:bold">&lt;mx:Panel&gt;</span>
+<span class="line-numbers"><a href="#n3" name="n3">3</a></span>        <span style="color:#070;font-weight:bold">&lt;mx:TextArea</span> <span style="color:#b48">text</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Say hello to Flex!</span><span style="color:#710">&quot;</span></span> <span style="color:#070;font-weight:bold">/&gt;</span>
+<span class="line-numbers"><a href="#n4" name="n4">4</a></span>        <span style="color:#070;font-weight:bold">&lt;mx:Button</span> <span style="color:#b48">label</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Close</span><span style="color:#710">&quot;</span></span> <span style="color:#070;font-weight:bold">/&gt;</span>
+<span class="line-numbers"><a href="#n5" name="n5">5</a></span>    <span style="color:#070;font-weight:bold">&lt;/mx:Panel&gt;</span>
+<span class="line-numbers"><a href="#n6" name="n6">6</a></span><span style="color:#070;font-weight:bold">&lt;/mx:Application&gt;</span>
+<span class="line-numbers"><a href="#n7" name="n7">7</a></span>
+</pre></div>
+</div>
+</div>
+
+<h2 id="section-2">发布方式</h2>
+
+<ol>
+  <li>
+    <p>客户端模式，即应用程序只运行在客户端上而不需要服务器资源。</p>
+  </li>
+  <li>
+    <p>使用简单的RPC 访问服务器数据，即使用HTTPService（HTTP GET 或POST 请求）和WebService（通过使用SOAP）。</p>
+  </li>
+  <li>
+    <p>Flex Data Services 模式，可以提供更为高级的特性，如数据同步、安全增强等等。</p>
+  </li>
+</ol>
+
+<h1 id="section-3">界面布局</h1>
+
+<p>样式</p>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span><span style="color:#070;font-weight:bold">&lt;mx:Style&gt;</span>
+<span class="line-numbers"><a href="#n2" name="n2">2</a></span>     {
+<span class="line-numbers"><a href="#n3" name="n3">3</a></span>        fontSize: 36px;
+<span class="line-numbers"><a href="#n4" name="n4">4</a></span>        fontWeight: bold;
+<span class="line-numbers"><a href="#n5" name="n5">5</a></span>     }
+<span class="line-numbers"><a href="#n6" name="n6">6</a></span><span style="color:#070;font-weight:bold">&lt;/mx:Style&gt;</span>
+<span class="line-numbers"><a href="#n7" name="n7">7</a></span>
+</pre></div>
+</div>
+</div>
+<p>外部样式</p>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span><span style="color:#070;font-weight:bold">&lt;mx:Style</span> <span style="color:#b48">source</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">styles.css</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">/&gt;</span>
+<span class="line-numbers"><a href="#n2" name="n2">2</a></span>
+</pre></div>
+</div>
+</div>
+
+<h2 id="section-4">控制应用程序的外观</h2>
+
+<ol>
+  <li>
+    <p>大小/Sizes，即组件或应用程序的高度和宽度。</p>
+  </li>
+  <li>
+    <p>样式/Styles，即一组特性，如字体、排列方式、颜<br />
+色等。它们都是通过层叠样式（ CSS）来进行设置的。</p>
+  </li>
+  <li>
+    <p>皮肤/Skins，即可以进行改变的组件视觉元素。</p>
+  </li>
+  <li>
+    <p>行为/Behaviors，即Flex 组件在视觉或听觉效果方面的变化。</p>
+  </li>
+  <li>
+    <p>视图状态/View state 可以让你通过修改它的基础内容，来改变组件或程序的内容和外观。</p>
+  </li>
+  <li>
+    <p>变换/Transitions 可以让你定义屏幕上发生改变的视图状态。</p>
+  </li>
+</ol>
+
+<h2 id="section-5">受约束的布局</h2>
+
+<p>受约束的布局可以确保用户界面中的组件在程序窗</p>
+
+<p>口大小发生变化时，也能自动地作出调节。备注：可以通过使用嵌套的布局容器/nested layout container 来实现相同的目的</p>
+
+<p>创建受约束的布局，你必须将容器的布局属性设置为绝对方式（ <code>layout="absolute"</code>）备注：帆布容器/canvas container 并不需要进行layout=”absolute”的属性设置，因为它默认是绝对布局方式。</p>
+
+<p>在Flex 中，所有的约束都是被设置为与<strong>容器</strong>的相对距离，它们不可能被设置为相对于其它控件</p>
+
+<p><strong>控件</strong></p>
+
+<p>ComboBox，List，HorizontalList。</p>
+
+<h1 id="section-6">事件与行为</h1>
+
+<p>外部ActionScript</p>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span><span style="color:#070;font-weight:bold">&lt;mx:Script</span> <span style="color:#b48">source</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">myFunctions.as</span><span style="color:#710">&quot;</span></span> <span style="color:#070;font-weight:bold">/&gt;</span>
+<span class="line-numbers"><a href="#n2" name="n2">2</a></span>
+</pre></div>
+</div>
+</div>
+
+<p>被事件触发的行为</p>
+
+<p>mxml中的组件被赋予id后，在as中将可以直接作为对象进就行操作，如例子中的<code>vBox</code></p>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span>var locales:ArrayCollection = new ArrayCollection([{label:&quot;en_us&quot;, data:&quot;en_us&quot;},{label:&quot;zh_cn&quot;, data:&quot;zh_cn&quot;}]);
+<span class="line-numbers"><a href="#n2" name="n2">2</a></span>
+<span class="line-numbers"><a href="#n3" name="n3">3</a></span>var child:ComboBox = new ComboBox();
+<span class="line-numbers"><a href="#n4" name="n4">4</a></span>child.dataProvider=locales;
+<span class="line-numbers"><a href="#n5" name="n5">5</a></span>vBox.addChild(child);
+<span class="line-numbers"><a href="#n6" name="n6">6</a></span>
+</pre></div>
+</div>
+</div>
+
+<p>也可以在as中为事件绑定行为</p>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span>//change事件绑定
+<span class="line-numbers"><a href="#n2" name="n2">2</a></span>localeComboBox.addEventListener(ListEvent.CHANGE,localeComboxChangeHandler);
+<span class="line-numbers"><a href="#n3" name="n3">3</a></span>
+</pre></div>
+</div>
+</div>
+
+<h2 id="section-7">多态页面</h2>
+
+<p>用ViewStack 组件、创建单独的MXML 文件、或者使用视图状态</p>
+
+<h2 id="section-8">创建行为</h2>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span><span style="color:#070;font-weight:bold">&lt;mx:Glow</span> <span style="color:#b48">id</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">buttonGlow</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">color</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">0x99FF66</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">alphaFrom</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">1.0</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">alphaTo</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">0.3</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">duration</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">1500</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">/&gt;</span>
+<span class="line-numbers"><a href="#n2" name="n2">2</a></span><span style="color:#070;font-weight:bold">&lt;mx:Button</span> <span style="color:#b48">x</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">40</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">y</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">60</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">label</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">View</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">id</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">myButton</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">mo</span>
+<span class="line-numbers"><a href="#n3" name="n3">3</a></span><span style="color:#b48">useUpEffect</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">{buttonGlow}</span><span style="color:#710">&quot;</span></span> <span style="color:#070;font-weight:bold">/&gt;</span>
+<span class="line-numbers"><a href="#n4" name="n4">4</a></span>
+</pre></div>
+</div>
+</div>
+
+<h1 id="section-9">连接数据</h1>
+
+<p>数据源，url获取xml类型数据</p>
+
+<p>flex 不直接连接数据库，而是用数据服务组件获取xml数据</p>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span><span style="color:#070;font-weight:bold">&lt;mx:HTTPService</span> <span style="color:#b48">id</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">simpleData</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">url</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">...</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">/&gt;</span>
+<span class="line-numbers"><a href="#n2" name="n2">2</a></span>
+</pre></div>
+</div>
+</div>
+
+<p>数据绑定，并非简单的引用，dataProvider与simpleData.lastResult.products.items是同步变化的</p>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span><span style="color:#070;font-weight:bold">&lt;mx:DataGrid</span> <span style="color:#b48">dataProvider</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">{simpleData.lastResult.products.items}</span><span style="color:#710">&quot;</span></span> <span style="color:#070;font-weight:bold">&gt;</span>
+<span class="line-numbers"><a href="#n2" name="n2">2</a></span>            <span style="color:#070;font-weight:bold">&lt;mx:columns&gt;</span>
+<span class="line-numbers"><a href="#n3" name="n3">3</a></span>                <span style="color:#070;font-weight:bold">&lt;mx:DataGridColumn</span> <span style="color:#b48">headerText</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">resources</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">dataField</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">resources</span><span style="color:#710">&quot;</span></span> <span style="color:#070;font-weight:bold">/&gt;</span>
+<span class="line-numbers"><a href="#n4" name="n4">4</a></span>            <span style="color:#070;font-weight:bold">&lt;/mx:columns&gt;</span>
+<span class="line-numbers"><a href="#n5" name="n5">5</a></span>        <span style="color:#070;font-weight:bold">&lt;/mx:DataGrid&gt;</span>
+<span class="line-numbers"><a href="#n6" name="n6">6</a></span>
+</pre></div>
+</div>
+</div>
+
+<p>事件绑定</p>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span><span style="color:#070;font-weight:bold">&lt;mx:Button</span> <span style="color:#b48">label</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">load</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">click</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">simpleData.send();</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">/&gt;</span>
+<span class="line-numbers"><a href="#n2" name="n2">2</a></span>
+</pre></div>
+</div>
+</div>
+
+<h2 id="section-10">连接数据服务器</h2>
+
+<ol>
+  <li>
+    <p>WebService 提供对使用SOAP 的web 服务器的访问。</p>
+  </li>
+  <li>
+    <p>HTTPService 提供对返回数据的HTTP URLs 的访问。</p>
+  </li>
+  <li>
+    <p>RemoteObject 通过使用AML 协议提供对Java 对象（Java Beans、EJBs、POJOs）的访问。该选项目前仅适用于Flex Data Services 或Macromedia ColdFusion MX 7.0.2.</p>
+  </li>
+</ol>
+
+<h2 id="section-11">安全性</h2>
+
+<ol>
+  <li>
+    <p>swf与数据源必须同域</p>
+  </li>
+  <li>
+    <p>可以使用代理访问远程数据源，但是swf必须与代理服务器同域</p>
+  </li>
+  <li>
+    <p>安装<code>crossdomain.xml</code>（跨域策略/cross-domain policy）文件在数据源的宿主Web 服务器上。<br />
+crossdomain.xml 文件允许位于其它域中的SWF 文件对数据源的访问。 </p>
+  </li>
+</ol>
+
+<h1 id="section-12">图表组件</h1>
+
+<ul>
+  <li>
+    <p>区域形图表/Area charts</p>
+  </li>
+  <li>
+    <p>气泡形图表/Bubble charts</p>
+  </li>
+  <li>
+    <p>烛形图表/Candlestick charts</p>
+  </li>
+  <li>
+    <p>柱形图表/Column charts</p>
+  </li>
+  <li>
+    <p>高低开合形图表/HighLowOpenClose charts</p>
+  </li>
+  <li>
+    <p>线形图表/Line charts</p>
+  </li>
+  <li>
+    <p>饼形图表/Pie charts</p>
+  </li>
+  <li>
+    <p>标绘形图表/Plot charts</p>
+  </li>
+  <li>
+    <p>扩展CartesianChart 控件来创建定制的图表</p>
+  </li>
+</ul>
+
+<blockquote>
+  <p>使用<code>dataProvider</code> 属性定义图表的数据</p>
+</blockquote>
+
+<h1 id="mxml">MXML</h1>
+
+<p>MXM 相关的技术标准有</p>
+
+<ol>
+  <li>
+    <p>XML 标准。XML 文档使用标签去决定结构化信息的内容，以及它们之间的关系。</p>
+  </li>
+  <li>
+    <p>事件模型标准。Flex 事件模型是文档对象模型/Document Object Model （DOM）第三级事件的一个子集，该模型是由World Wide Web Consortium（W3C）起草制定。</p>
+  </li>
+  <li>
+    <p>Web 服务标准Flex 提供与服务器交互的MXML 标签，遵循了Web 服务描述语言/Web Services<br />
+Description Language（WSDL）的规则。具体包括了简单对象访问协议/Simple Object Access Pr<br />
+otocol（SOAP）和超文本传送协议/Hypertext Transfer Protocol（HTTP）。</p>
+  </li>
+  <li>
+    <p>Java 标准</p>
+  </li>
+</ol>
+
+<p>Flex 提供了与服务器端Java 对象交互的MXML 标签，包括plain old Java objects（POJOs），Java</p>
+
+<p>Beans 和企业级/Enterprise JavaBeans（EJBs）。</p>
+
+<ol>
+  <li>HTTP 标准</li>
+</ol>
+
+<p>Flex 提供了相应的MXML 标签去支持标准的HTTP GET 和POST 请求，以及对HTTP 返回数据的处理。</p>
+
+<ol>
+  <li>图形标准</li>
+</ol>
+
+<p>Flex 还提供了相应的MXML 标签去使用JPEG，GIF 和PNG 图象。Flex 还能够将SWF 文件和Scala<br />
+ble Vector Graphics（SVG）文件导入到应用程序中。</p>
+
+<ol>
+  <li>层叠样式表标准MXML 样式的定义和使用遵循了W3C Cascading Style Sheets （CSS）标准。</li>
+</ol>
+
+<h1 id="actionscript">ActionScript</h1>
+
+<p>ActionScript 3.0 的特性完全实现了ECMAScript for XML (E4X)。<br />
+在flex中使用ActionScript</p>
+
+<ol>
+  <li>
+    <p>在<code>&lt;mx:Script&gt;</code>标签中插入ActionScript 代码块。</p>
+  </li>
+  <li>
+    <p>调用存储在<strong>system_classes</strong> 目录结构中的全局ActionScript 功能函数。</p>
+  </li>
+  <li>
+    <p>引用**user_classes **中的外部类和包来处理更为复杂的任务。</p>
+  </li>
+  <li>
+    <p>使用标准的Flex 组件。</p>
+  </li>
+  <li>
+    <p>使用ActionScript 类扩展已有的组件。</p>
+  </li>
+  <li>
+    <p>使用ActionScript 创建新的组件。</p>
+  </li>
+  <li>
+    <p>在Flash 创建环境中创建新的组件（ SWC 文件）。</p>
+  </li>
+</ol>
+
+<h1 id="xml">XML</h1>
+
+<h2 id="xml-1">创建xml对象</h2>
+
+<ul>
+  <li>字面量方式，AS可以自动识别，如果加上引号就不是XML类型而是String类型了</li>
+</ul>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span>var textXmlObj:XML = <span style="color:#070;font-weight:bold">&lt;test&gt;</span><span style="color:#070;font-weight:bold">&lt;element&gt;</span>text<span style="color:#070;font-weight:bold">&lt;/element&gt;</span><span style="color:#070;font-weight:bold">&lt;/test&gt;</span>;  
+<span class="line-numbers"><a href="#n2" name="n2">2</a></span>
+</pre></div>
+</div>
+</div>
+
+<ul>
+  <li>XML字面量中可以加入动态内容</li>
+</ul>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span>var text_node:String = &quot;text&quot;;  
+<span class="line-numbers"><a href="#n2" name="n2">2</a></span>var textXmlObj:XML = <span style="color:#070;font-weight:bold">&lt;test&gt;</span><span style="color:#070;font-weight:bold">&lt;element&gt;</span>{text_node}<span style="color:#070;font-weight:bold">&lt;/element&gt;</span><span style="color:#070;font-weight:bold">&lt;/test&gt;</span>;  
+<span class="line-numbers"><a href="#n3" name="n3">3</a></span>
+</pre></div>
+</div>
+</div>
+
+<ul>
+  <li>通过XML类创建实例</li>
+</ul>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span>var myText:String = &quot;text&quot;;  
+<span class="line-numbers"><a href="#n2" name="n2">2</a></span>var str:String = &quot;<span style="color:#070;font-weight:bold">&lt;test&gt;</span><span style="color:#070;font-weight:bold">&lt;element&gt;</span>&quot;+ myText + &quot;<span style="color:#070;font-weight:bold">&lt;/element&gt;</span><span style="color:#070;font-weight:bold">&lt;/test&gt;</span>&quot;;  
+<span class="line-numbers"><a href="#n3" name="n3">3</a></span>var textXmlObj:XML = new XML(str);  
+<span class="line-numbers"><a href="#n4" name="n4">4</a></span>
+</pre></div>
+</div>
+</div>
+
+<ul>
+  <li>从外部加载XML对象</li>
+</ul>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span> <span style="color:#070;font-weight:bold">&lt;mx:HTTPService</span> <span style="color:#b48">id</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">simpleData</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">url</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">simpleData.xml</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">useProxy</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">false</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">result</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">test(event);</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">/&gt;</span> 
+<span class="line-numbers"><a href="#n2" name="n2">2</a></span>
+</pre></div>
+</div>
+</div>
+
+<h2 id="xml-2">处理XML对象</h2>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"> <a href="#n1" name="n1">1</a></span><span style="color:#070;font-weight:bold">&lt;items&gt;</span>
+<span class="line-numbers"> <a href="#n2" name="n2">2</a></span>        <span style="color:#070;font-weight:bold">&lt;item</span> <span style="color:#b48">index</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">0</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">&gt;</span>
+<span class="line-numbers"> <a href="#n3" name="n3">3</a></span>                <span style="color:#070;font-weight:bold">&lt;name&gt;</span>Mobile Phone<span style="color:#070;font-weight:bold">&lt;/name&gt;</span>
+<span class="line-numbers"> <a href="#n4" name="n4">4</a></span>                <span style="color:#070;font-weight:bold">&lt;price&gt;</span>$199<span style="color:#070;font-weight:bold">&lt;/price&gt;</span>
+<span class="line-numbers"> <a href="#n5" name="n5">5</a></span>        <span style="color:#070;font-weight:bold">&lt;/item&gt;</span>
+<span class="line-numbers"> <a href="#n6" name="n6">6</a></span>        <span style="color:#070;font-weight:bold">&lt;item</span> <span style="color:#b48">index</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">1</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">&gt;</span>
+<span class="line-numbers"> <a href="#n7" name="n7">7</a></span>                <span style="color:#070;font-weight:bold">&lt;name&gt;</span>Car Charger<span style="color:#070;font-weight:bold">&lt;/name&gt;</span>
+<span class="line-numbers"> <a href="#n8" name="n8">8</a></span>                <span style="color:#070;font-weight:bold">&lt;price&gt;</span>$34<span style="color:#070;font-weight:bold">&lt;/price&gt;</span>
+<span class="line-numbers"> <a href="#n9" name="n9">9</a></span>        <span style="color:#070;font-weight:bold">&lt;/item&gt;</span>
+<span class="line-numbers"><strong><a href="#n10" name="n10">10</a></strong></span><span style="color:#070;font-weight:bold">&lt;/items&gt;</span>
+<span class="line-numbers"><a href="#n11" name="n11">11</a></span>
+</pre></div>
+</div>
+</div>
+
+<p>使用<strong><code>E4X</code></strong>简化对XML的操作</p>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span> <span style="color:#070;font-weight:bold">&lt;mx:HTTPService</span> <span style="color:#b48">id</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">simpleData</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">url</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">simpleData.xml</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">useProxy</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">false</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">result</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">test(event);</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">resultFormat</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">e4x</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">/&gt;</span>
+<span class="line-numbers"><a href="#n2" name="n2">2</a></span>
+</pre></div>
+</div>
+</div>
+
+<h3 id="section-13">查询</h3>
+
+<p>使用<code>.</code>操作符查询节点</p>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span>simpleData.lastResult.item
+<span class="line-numbers"><a href="#n2" name="n2">2</a></span>
+</pre></div>
+</div>
+</div>
+<p>使用<code>[]</code>访问指定索引的节点，<strong>将无法检测到数据变化</strong>，根节点被忽略</p>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span>simpleData.lastResult.item[0]
+<span class="line-numbers"><a href="#n2" name="n2">2</a></span>
+</pre></div>
+</div>
+</div>
+<p>使用<code>..</code>访问所有指定名称的节点，忽略上下级关系</p>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span>simpleData.lastResult..name
+<span class="line-numbers"><a href="#n2" name="n2">2</a></span>
+</pre></div>
+</div>
+</div>
+<p>使用<code>@</code>访问节点属性</p>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span>simpleData.lastResult.item[0].@index
+<span class="line-numbers"><a href="#n2" name="n2">2</a></span>
+</pre></div>
+</div>
+</div>
+<p>过滤节点(<code>&lt;</code>与<code>&gt;</code>无法在mxml中使用，需要转义)</p>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span>simpleData.lastResult.item.(price==34)
+<span class="line-numbers"><a href="#n2" name="n2">2</a></span>
+</pre></div>
+</div>
+</div>
+<p>过滤属性</p>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span>simpleData.lastResult.item.(@index==0)
+<span class="line-numbers"><a href="#n2" name="n2">2</a></span>
+</pre></div>
+</div>
+</div>
+<p>修改获取的数据（不改变xml源对象）</p>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span>simpleData.lastResult.item.(price=998)}
+<span class="line-numbers"><a href="#n2" name="n2">2</a></span>
+</pre></div>
+</div>
+</div>
+<p>HttpService对象在加载外部XML后会自动把它转换成ArrayCollection对象</p>
+
+<p>如果需要属性结构如（Tree组件），需要在HTTPService对象中加上resultFormat=”e4x”以XML的格式读取进来而不要转换为ArrayCollection</p>
+
+<h3 id="section-14">修改</h3>
+
+<blockquote>
+  <p>如果绑定的xml数据发生的变化，如何将变化传递到引用？目前发现似乎是自动的，有待研究。</p>
+</blockquote>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span>var myxml:XML = <span style="color:#070;font-weight:bold">&lt;books&gt;</span>
+<span class="line-numbers"><a href="#n2" name="n2">2</a></span>     <span style="color:#070;font-weight:bold">&lt;book</span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">flex tutorial</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">&gt;</span>
+<span class="line-numbers"><a href="#n3" name="n3">3</a></span>         <span style="color:#070;font-weight:bold">&lt;price&gt;</span>30<span style="color:#070;font-weight:bold">&lt;/price&gt;</span>
+<span class="line-numbers"><a href="#n4" name="n4">4</a></span>         <span style="color:#070;font-weight:bold">&lt;author&gt;</span>adobe<span style="color:#070;font-weight:bold">&lt;/author&gt;</span>
+<span class="line-numbers"><a href="#n5" name="n5">5</a></span>     <span style="color:#070;font-weight:bold">&lt;/book&gt;</span>
+<span class="line-numbers"><a href="#n6" name="n6">6</a></span> <span style="color:#070;font-weight:bold">&lt;/books&gt;</span>
+<span class="line-numbers"><a href="#n7" name="n7">7</a></span>
+</pre></div>
+</div>
+</div>
+<p>添加节点，insert指定子节点位置插入，append添加到子节点末尾，prepend插入到子节点开头</p>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span>myxml.insertChildAfter(myxml.book[0],<span style="color:#070;font-weight:bold">&lt;newbook</span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">After</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">/&gt;</span>);
+<span class="line-numbers"><a href="#n2" name="n2">2</a></span>myxml.insertChildBefore(myxml.book[0],<span style="color:#070;font-weight:bold">&lt;newbook</span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Before</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">/&gt;</span>);
+<span class="line-numbers"><a href="#n3" name="n3">3</a></span>myxml.appendChild(<span style="color:#070;font-weight:bold">&lt;newbook</span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Append</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">/&gt;</span>);
+<span class="line-numbers"><a href="#n4" name="n4">4</a></span>myxml.prependChild(<span style="color:#070;font-weight:bold">&lt;newbook</span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Prepend</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">/&gt;</span>);   
+<span class="line-numbers"><a href="#n5" name="n5">5</a></span>
+</pre></div>
+</div>
+</div>
+<p>添加属性</p>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span>myxml.book[0].@date=&quot;2008&quot;;
+<span class="line-numbers"><a href="#n2" name="n2">2</a></span>
+</pre></div>
+</div>
+</div>
+<p>修改xml对象，此处增加<code>&lt;author&gt;</code>标签content为奥多比</p>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span>myxml.book[0].author=&quot;奥多比&quot;;
+<span class="line-numbers"><a href="#n2" name="n2">2</a></span>
+</pre></div>
+</div>
+</div>
+<p>删除节点，属性，content</p>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span>delete myxml.book[0].@name;
+<span class="line-numbers"><a href="#n2" name="n2">2</a></span>delete myxml.book[0].author;
+<span class="line-numbers"><a href="#n3" name="n3">3</a></span>delete myxml.book[0].price.text()[0];
+<span class="line-numbers"><a href="#n4" name="n4">4</a></span>
+</pre></div>
+</div>
+</div>
+
+<h1 id="section-15">备忘</h1>
+
+<p>IDEA 编译出错 <strong>java.net.SocketTimeoutException: Accept timed out</strong><br />
+&gt;<a href="http://stackoverflow.com/questions/11016571/intellij-idea-11-flex-compilation-issue">Stack Overflow</a><br />
+&gt;<br />
+&gt;1. Go to <strong>Settings</strong> &gt; <strong>Compiler</strong> &gt; <strong>Flex Compiler</strong><br />
+&gt;<br />
+&gt;2. Choose <strong>Mxmlc/compx</strong> instead of the default <strong>Built-in compiler shell</strong><br />
+&gt;<br />
+&gt;3. Compile your application</p>
+
+<h1 id="springmvc">整合SpringMVC</h1>
+
+<p>Flex要想与Spring进行配合使用，需要一个附加的组件BlazeDS。BlazeDS可以将Flex前端的通信内容（amf 格式 Action Message format，一种flex定义的通信规则）转换为java的相关类和对象。</p>
+
+<p>请求处理的简单流程是，flex客户端向服务器发送Request请求，服务器根据Web.xml中的映射，找到Spring配置文档中与flex相关的配置，这个配置就是<code>MessageBroker</code>，MessageBroker是Spring容器根据flex的<code>services-config.xml</code>文件生成的，在services-config.xml中指定了消息通道，Spring将请求交给这个通道（一般是默认通道），通道根据<code>remoting-config.xml</code>中配置的remoting-service和Adapter将flex的amf转换为java的实例信息。如果需要安全或者消息订阅（jms）还需要提供<code>messaging-config.xml</code>和<code>proxy-config.xml</code>配置文件。</p>
+
+<p>结合使用Spring和BlazeDS必须对MessageBroker进行配置。从flex客户端发来的Http 消息（messages）通过Spring的DispatcherServlet（在web.xml中配置）传递给Spring管理的MessageBroker（在Spring的配置文档中指明）。如果使用Spring管理的MessageBroker就不必配置BlazeDS的<code>MessageBrokerServlet</code>（在web.xml文档中指明）了。</p>
+
+<h2 id="section-16">依赖</h2>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"> <a href="#n1" name="n1">1</a></span>  <span style="color:#070;font-weight:bold">&lt;properties&gt;</span>
+<span class="line-numbers"> <a href="#n2" name="n2">2</a></span>    <span style="color:#070;font-weight:bold">&lt;spring.version&gt;</span>3.0.1.RELEASE<span style="color:#070;font-weight:bold">&lt;/spring.version&gt;</span>
+<span class="line-numbers"> <a href="#n3" name="n3">3</a></span>    <span style="color:#070;font-weight:bold">&lt;flex.version&gt;</span>4.6<span style="color:#070;font-weight:bold">&lt;/flex.version&gt;</span>
+<span class="line-numbers"> <a href="#n4" name="n4">4</a></span>  <span style="color:#070;font-weight:bold">&lt;/properties&gt;</span>
+<span class="line-numbers"> <a href="#n5" name="n5">5</a></span>
+<span class="line-numbers"> <a href="#n6" name="n6">6</a></span>  <span style="color:#070;font-weight:bold">&lt;dependencies&gt;</span>
+<span class="line-numbers"> <a href="#n7" name="n7">7</a></span>      <span style="color:#070;font-weight:bold">&lt;dependency&gt;</span>
+<span class="line-numbers"> <a href="#n8" name="n8">8</a></span>          <span style="color:#070;font-weight:bold">&lt;groupId&gt;</span>org.springframework<span style="color:#070;font-weight:bold">&lt;/groupId&gt;</span>
+<span class="line-numbers"> <a href="#n9" name="n9">9</a></span>          <span style="color:#070;font-weight:bold">&lt;artifactId&gt;</span>spring-webmvc<span style="color:#070;font-weight:bold">&lt;/artifactId&gt;</span>
+<span class="line-numbers"><strong><a href="#n10" name="n10">10</a></strong></span>          <span style="color:#070;font-weight:bold">&lt;version&gt;</span>${spring.version}<span style="color:#070;font-weight:bold">&lt;/version&gt;</span>
+<span class="line-numbers"><a href="#n11" name="n11">11</a></span>      <span style="color:#070;font-weight:bold">&lt;/dependency&gt;</span>
+<span class="line-numbers"><a href="#n12" name="n12">12</a></span>      <span style="color:#070;font-weight:bold">&lt;dependency&gt;</span>
+<span class="line-numbers"><a href="#n13" name="n13">13</a></span>          <span style="color:#070;font-weight:bold">&lt;groupId&gt;</span>org.springframework.flex<span style="color:#070;font-weight:bold">&lt;/groupId&gt;</span>
+<span class="line-numbers"><a href="#n14" name="n14">14</a></span>          <span style="color:#070;font-weight:bold">&lt;artifactId&gt;</span>org.springframework.flex<span style="color:#070;font-weight:bold">&lt;/artifactId&gt;</span>
+<span class="line-numbers"><a href="#n15" name="n15">15</a></span>          <span style="color:#070;font-weight:bold">&lt;version&gt;</span>1.0.3.RELEASE<span style="color:#070;font-weight:bold">&lt;/version&gt;</span>
+<span class="line-numbers"><a href="#n16" name="n16">16</a></span>      <span style="color:#070;font-weight:bold">&lt;/dependency&gt;</span>
+<span class="line-numbers"><a href="#n17" name="n17">17</a></span>
+<span class="line-numbers"><a href="#n18" name="n18">18</a></span>      <span style="color:#777">&lt;!-- flex library --&gt;</span>
+<span class="line-numbers"><a href="#n19" name="n19">19</a></span>
+<span class="line-numbers"><strong><a href="#n20" name="n20">20</a></strong></span>      <span style="color:#070;font-weight:bold">&lt;dependency&gt;</span>
+<span class="line-numbers"><a href="#n21" name="n21">21</a></span>          <span style="color:#070;font-weight:bold">&lt;groupId&gt;</span>com.adobe.flex<span style="color:#070;font-weight:bold">&lt;/groupId&gt;</span>
+<span class="line-numbers"><a href="#n22" name="n22">22</a></span>          <span style="color:#070;font-weight:bold">&lt;artifactId&gt;</span>messaging-common<span style="color:#070;font-weight:bold">&lt;/artifactId&gt;</span>
+<span class="line-numbers"><a href="#n23" name="n23">23</a></span>          <span style="color:#070;font-weight:bold">&lt;version&gt;</span>${flex.version}<span style="color:#070;font-weight:bold">&lt;/version&gt;</span>
+<span class="line-numbers"><a href="#n24" name="n24">24</a></span>      <span style="color:#070;font-weight:bold">&lt;/dependency&gt;</span>
+<span class="line-numbers"><a href="#n25" name="n25">25</a></span>      <span style="color:#070;font-weight:bold">&lt;dependency&gt;</span>
+<span class="line-numbers"><a href="#n26" name="n26">26</a></span>          <span style="color:#070;font-weight:bold">&lt;groupId&gt;</span>com.adobe.flex<span style="color:#070;font-weight:bold">&lt;/groupId&gt;</span>
+<span class="line-numbers"><a href="#n27" name="n27">27</a></span>          <span style="color:#070;font-weight:bold">&lt;artifactId&gt;</span>messaging-core<span style="color:#070;font-weight:bold">&lt;/artifactId&gt;</span>
+<span class="line-numbers"><a href="#n28" name="n28">28</a></span>          <span style="color:#070;font-weight:bold">&lt;version&gt;</span>${flex.version}<span style="color:#070;font-weight:bold">&lt;/version&gt;</span>
+<span class="line-numbers"><a href="#n29" name="n29">29</a></span>      <span style="color:#070;font-weight:bold">&lt;/dependency&gt;</span>
+<span class="line-numbers"><strong><a href="#n30" name="n30">30</a></strong></span>      <span style="color:#070;font-weight:bold">&lt;dependency&gt;</span>
+<span class="line-numbers"><a href="#n31" name="n31">31</a></span>          <span style="color:#070;font-weight:bold">&lt;groupId&gt;</span>com.adobe.flex<span style="color:#070;font-weight:bold">&lt;/groupId&gt;</span>
+<span class="line-numbers"><a href="#n32" name="n32">32</a></span>          <span style="color:#070;font-weight:bold">&lt;artifactId&gt;</span>messaging-remoting<span style="color:#070;font-weight:bold">&lt;/artifactId&gt;</span>
+<span class="line-numbers"><a href="#n33" name="n33">33</a></span>          <span style="color:#070;font-weight:bold">&lt;version&gt;</span>${flex.version}<span style="color:#070;font-weight:bold">&lt;/version&gt;</span>
+<span class="line-numbers"><a href="#n34" name="n34">34</a></span>      <span style="color:#070;font-weight:bold">&lt;/dependency&gt;</span>
+<span class="line-numbers"><a href="#n35" name="n35">35</a></span>      <span style="color:#070;font-weight:bold">&lt;dependency&gt;</span>
+<span class="line-numbers"><a href="#n36" name="n36">36</a></span>          <span style="color:#070;font-weight:bold">&lt;groupId&gt;</span>backport-util-concurrent<span style="color:#070;font-weight:bold">&lt;/groupId&gt;</span>
+<span class="line-numbers"><a href="#n37" name="n37">37</a></span>          <span style="color:#070;font-weight:bold">&lt;artifactId&gt;</span>backport-util-concurrent<span style="color:#070;font-weight:bold">&lt;/artifactId&gt;</span>
+<span class="line-numbers"><a href="#n38" name="n38">38</a></span>          <span style="color:#070;font-weight:bold">&lt;version&gt;</span>3.1<span style="color:#070;font-weight:bold">&lt;/version&gt;</span>
+<span class="line-numbers"><a href="#n39" name="n39">39</a></span>      <span style="color:#070;font-weight:bold">&lt;/dependency&gt;</span>
+<span class="line-numbers"><strong><a href="#n40" name="n40">40</a></strong></span>      <span style="color:#070;font-weight:bold">&lt;dependency&gt;</span>
+<span class="line-numbers"><a href="#n41" name="n41">41</a></span>          <span style="color:#070;font-weight:bold">&lt;groupId&gt;</span>cglib<span style="color:#070;font-weight:bold">&lt;/groupId&gt;</span>
+<span class="line-numbers"><a href="#n42" name="n42">42</a></span>          <span style="color:#070;font-weight:bold">&lt;artifactId&gt;</span>cglib<span style="color:#070;font-weight:bold">&lt;/artifactId&gt;</span>
+<span class="line-numbers"><a href="#n43" name="n43">43</a></span>          <span style="color:#070;font-weight:bold">&lt;version&gt;</span>2.2.2<span style="color:#070;font-weight:bold">&lt;/version&gt;</span>
+<span class="line-numbers"><a href="#n44" name="n44">44</a></span>      <span style="color:#070;font-weight:bold">&lt;/dependency&gt;</span>
+<span class="line-numbers"><a href="#n45" name="n45">45</a></span>  <span style="color:#070;font-weight:bold">&lt;/dependencies</span>
+<span class="line-numbers"><a href="#n46" name="n46">46</a></span>
+</pre></div>
+</div>
+</div>
+
+<h2 id="webxml">配置web.xml</h2>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"> <a href="#n1" name="n1">1</a></span><span style="color:#070;font-weight:bold">&lt;servlet&gt;</span>
+<span class="line-numbers"> <a href="#n2" name="n2">2</a></span>    <span style="color:#070;font-weight:bold">&lt;servlet-name&gt;</span>Spring MVC Dispatcher Servlet<span style="color:#070;font-weight:bold">&lt;/servlet-name&gt;</span>
+<span class="line-numbers"> <a href="#n3" name="n3">3</a></span>    <span style="color:#070;font-weight:bold">&lt;servlet-class&gt;</span>org.springframework.web.servlet.DispatcherServlet<span style="color:#070;font-weight:bold">&lt;/servlet-class&gt;</span>
+<span class="line-numbers"> <a href="#n4" name="n4">4</a></span>    <span style="color:#070;font-weight:bold">&lt;init-param&gt;</span>
+<span class="line-numbers"> <a href="#n5" name="n5">5</a></span>        <span style="color:#070;font-weight:bold">&lt;param-name&gt;</span>contextConfigLocation<span style="color:#070;font-weight:bold">&lt;/param-name&gt;</span>
+<span class="line-numbers"> <a href="#n6" name="n6">6</a></span>        <span style="color:#070;font-weight:bold">&lt;param-value&gt;</span>
+<span class="line-numbers"> <a href="#n7" name="n7">7</a></span>            classpath:applicationContext.xml
+<span class="line-numbers"> <a href="#n8" name="n8">8</a></span>        <span style="color:#070;font-weight:bold">&lt;/param-value&gt;</span>
+<span class="line-numbers"> <a href="#n9" name="n9">9</a></span>    <span style="color:#070;font-weight:bold">&lt;/init-param&gt;</span>
+<span class="line-numbers"><strong><a href="#n10" name="n10">10</a></strong></span>    <span style="color:#070;font-weight:bold">&lt;load-on-startup&gt;</span>1<span style="color:#070;font-weight:bold">&lt;/load-on-startup&gt;</span>
+<span class="line-numbers"><a href="#n11" name="n11">11</a></span><span style="color:#070;font-weight:bold">&lt;/servlet&gt;</span>
+<span class="line-numbers"><a href="#n12" name="n12">12</a></span>
+<span class="line-numbers"><a href="#n13" name="n13">13</a></span><span style="color:#777">&lt;!-- MessageBroker Servlet flex mapping--&gt;</span>
+<span class="line-numbers"><a href="#n14" name="n14">14</a></span><span style="color:#070;font-weight:bold">&lt;servlet-mapping&gt;</span>
+<span class="line-numbers"><a href="#n15" name="n15">15</a></span>    <span style="color:#070;font-weight:bold">&lt;servlet-name&gt;</span>Spring MVC Dispatcher Servlet<span style="color:#070;font-weight:bold">&lt;/servlet-name&gt;</span>
+<span class="line-numbers"><a href="#n16" name="n16">16</a></span>    <span style="color:#070;font-weight:bold">&lt;url-pattern&gt;</span>/messagebroker/*<span style="color:#070;font-weight:bold">&lt;/url-pattern&gt;</span>
+<span class="line-numbers"><a href="#n17" name="n17">17</a></span><span style="color:#070;font-weight:bold">&lt;/servlet-mapping&gt;</span>
+<span class="line-numbers"><a href="#n18" name="n18">18</a></span>
+</pre></div>
+</div>
+</div>
+
+<p>Flex通过<code>AMF</code>通道的形式进行通信的，所谓的AMF通道就是指一种编码形式。MessageBroker可以将Flex格式的请求转换成具体的java的调用，并将反馈回的内容（response）编码成Flex能够识别的对象（amf）。</p>
+
+<h2 id="srping">Srping容器</h2>
+
+<p>使用了默认位置的配置文件</p>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"> <a href="#n1" name="n1">1</a></span><span style="color:#579">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="line-numbers"> <a href="#n2" name="n2">2</a></span><span style="color:#070;font-weight:bold">&lt;beans</span> <span style="color:#b48">xmlns</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">http://www.springframework.org/schema/beans</span><span style="color:#710">&quot;</span></span>
+<span class="line-numbers"> <a href="#n3" name="n3">3</a></span>       <span style="color:#b48">xmlns:xsi</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">http://www.w3.org/2001/XMLSchema-instance</span><span style="color:#710">&quot;</span></span>
+<span class="line-numbers"> <a href="#n4" name="n4">4</a></span>       <span style="color:#b48">xmlns:flex</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">http://www.springframework.org/schema/flex</span><span style="color:#710">&quot;</span></span>
+<span class="line-numbers"> <a href="#n5" name="n5">5</a></span>       <span style="color:#b48">xmlns:context</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">http://www.springframework.org/schema/context</span><span style="color:#710">&quot;</span></span>
+<span class="line-numbers"> <a href="#n6" name="n6">6</a></span>       <span style="color:#b48">xsi:schemaLocation</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd</span></span>
+<span class="line-numbers"> <a href="#n7" name="n7">7</a></span><span style="background-color:hsla(0,100%,50%,0.05)">       <span style="color:#D20">http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd</span></span>
+<span class="line-numbers"> <a href="#n8" name="n8">8</a></span><span style="background-color:hsla(0,100%,50%,0.05)">       <span style="color:#D20">http://www.springframework.org/schema/flex http://www.springframework.org/schema/flex/spring-flex-1.0.xsd</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">&gt;</span>
+<span class="line-numbers"> <a href="#n9" name="n9">9</a></span>
+<span class="line-numbers"><strong><a href="#n10" name="n10">10</a></strong></span>        <span style="color:#777">&lt;!-- 使用默认位置的配置文件/WEB-INF/flex/services-config.xml--&gt;</span>
+<span class="line-numbers"><a href="#n11" name="n11">11</a></span>       <span style="color:#070;font-weight:bold">&lt;flex:message-broker</span><span style="color:#070;font-weight:bold">/&gt;</span>
+<span class="line-numbers"><a href="#n12" name="n12">12</a></span>    <span style="color:#070;font-weight:bold">&lt;/bean&gt;</span>
+<span class="line-numbers"><a href="#n13" name="n13">13</a></span><span style="color:#070;font-weight:bold">&lt;/beans&gt;</span>
+<span class="line-numbers"><a href="#n14" name="n14">14</a></span>
+</pre></div>
+</div>
+</div>
+
+<h2 id="section-17">通道</h2>
+
+<p>在BlazeDS的配置文件services-config.xml中定义的通道必须与相应的映射相对应。</p>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span><span style="color:#070;font-weight:bold">&lt;channels&gt;</span>
+<span class="line-numbers"><a href="#n2" name="n2">2</a></span>        <span style="color:#070;font-weight:bold">&lt;channel-definition</span> <span style="color:#b48">id</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">my-amf</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">class</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">mx.messaging.channels.AMFChannel</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">&gt;</span>
+<span class="line-numbers"><a href="#n3" name="n3">3</a></span>    <span style="color:#777">&lt;!-- {context.root}之后的messagebroker必须与ServletMapping相同 --&gt;</span>
+<span class="line-numbers"><a href="#n4" name="n4">4</a></span>    <span style="color:#070;font-weight:bold">&lt;endpoint</span> <span style="color:#b48">url</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">http://{server.name}:{server.port}/{context.root}/messagebroker/amf</span><span style="color:#710">&quot;</span></span>
+<span class="line-numbers"><a href="#n5" name="n5">5</a></span>              <span style="color:#b48">class</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">flex.messaging.endpoints.AMFEndpoint</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">/&gt;</span>
+<span class="line-numbers"><a href="#n6" name="n6">6</a></span>        <span style="color:#070;font-weight:bold">&lt;/channel-definition&gt;</span>
+<span class="line-numbers"><a href="#n7" name="n7">7</a></span><span style="color:#070;font-weight:bold">&lt;/channels&gt;</span>
+<span class="line-numbers"><a href="#n8" name="n8">8</a></span>
+</pre></div>
+</div>
+</div>
+
+<h2 id="section-18">配置远程服务</h2>
+
+<p>这里有列举了两种发布方式，任选一种即可。</p>
+
+<p>①创建使用注解发布的服务</p>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"> <a href="#n1" name="n1">1</a></span><span style="color:#080;font-weight:bold">package</span> <span style="color:#707;font-weight:bold">top.rainynight.flex2spring</span>;
+<span class="line-numbers"> <a href="#n2" name="n2">2</a></span>
+<span class="line-numbers"> <a href="#n3" name="n3">3</a></span><span style="color:#080;font-weight:bold">import</span> <span style="color:#B44;font-weight:bold">org.springframework.flex.remoting.RemotingDestination</span>;
+<span class="line-numbers"> <a href="#n4" name="n4">4</a></span><span style="color:#080;font-weight:bold">import</span> <span style="color:#B44;font-weight:bold">org.springframework.flex.remoting.RemotingInclude</span>;
+<span class="line-numbers"> <a href="#n5" name="n5">5</a></span><span style="color:#080;font-weight:bold">import</span> <span style="color:#B44;font-weight:bold">org.springframework.stereotype.Component</span>;
+<span class="line-numbers"> <a href="#n6" name="n6">6</a></span>
+<span class="line-numbers"> <a href="#n7" name="n7">7</a></span><span style="color:#007">@Component</span>
+<span class="line-numbers"> <a href="#n8" name="n8">8</a></span><span style="color:#007">@RemotingDestination</span>
+<span class="line-numbers"> <a href="#n9" name="n9">9</a></span><span style="color:#088;font-weight:bold">public</span> <span style="color:#339;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">AnnotationRPC</span> {
+<span class="line-numbers"><strong><a href="#n10" name="n10">10</a></strong></span>
+<span class="line-numbers"><a href="#n11" name="n11">11</a></span>    <span style="color:#088;font-weight:bold">public</span> <span style="color:#0a8;font-weight:bold">String</span> read(<span style="color:#0a8;font-weight:bold">String</span> id) {
+<span class="line-numbers"><a href="#n12" name="n12">12</a></span>        <span style="color:#080;font-weight:bold">return</span> <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">annotation works</span><span style="color:#710">&quot;</span></span>;
+<span class="line-numbers"><a href="#n13" name="n13">13</a></span>    }
+<span class="line-numbers"><a href="#n14" name="n14">14</a></span>
+<span class="line-numbers"><a href="#n15" name="n15">15</a></span>}
+<span class="line-numbers"><a href="#n16" name="n16">16</a></span>
+</pre></div>
+</div>
+</div>
+<p>②创建使用xml发布的服务</p>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"> <a href="#n1" name="n1">1</a></span><span style="color:#080;font-weight:bold">package</span> <span style="color:#707;font-weight:bold">top.rainynight.flex2spring</span>;
+<span class="line-numbers"> <a href="#n2" name="n2">2</a></span>
+<span class="line-numbers"> <a href="#n3" name="n3">3</a></span><span style="color:#777">/**</span>
+<span class="line-numbers"> <a href="#n4" name="n4">4</a></span><span style="color:#777"> * Created by sllx on 2015-03-16.</span>
+<span class="line-numbers"> <a href="#n5" name="n5">5</a></span><span style="color:#777"> */</span>
+<span class="line-numbers"> <a href="#n6" name="n6">6</a></span><span style="color:#088;font-weight:bold">public</span> <span style="color:#339;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">XmlConfRPC</span> {
+<span class="line-numbers"> <a href="#n7" name="n7">7</a></span>    <span style="color:#088;font-weight:bold">public</span> <span style="color:#0a8;font-weight:bold">String</span> read(<span style="color:#0a8;font-weight:bold">String</span> id) {
+<span class="line-numbers"> <a href="#n8" name="n8">8</a></span>        <span style="color:#080;font-weight:bold">return</span> <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">xml works</span><span style="color:#710">&quot;</span></span>;
+<span class="line-numbers"> <a href="#n9" name="n9">9</a></span>    }
+<span class="line-numbers"><strong><a href="#n10" name="n10">10</a></strong></span>}
+<span class="line-numbers"><a href="#n11" name="n11">11</a></span>
+</pre></div>
+</div>
+</div>
+<p>发布配置发布方式任选一种即可</p>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span><span style="color:#070;font-weight:bold">&lt;context:component-scan</span> <span style="color:#b48">base-package</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">top</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">/&gt;</span>
+<span class="line-numbers"><a href="#n2" name="n2">2</a></span>
+<span class="line-numbers"><a href="#n3" name="n3">3</a></span><span style="color:#070;font-weight:bold">&lt;bean</span> <span style="color:#b48">id</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">xmlConfRPC</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">class</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">top.rainynight.flex2spring.XmlConfRPC</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">&gt;</span>
+<span class="line-numbers"><a href="#n4" name="n4">4</a></span> <span style="color:#070;font-weight:bold">&lt;flex:remoting-destination</span><span style="color:#070;font-weight:bold">/&gt;</span>
+<span class="line-numbers"><a href="#n5" name="n5">5</a></span><span style="color:#070;font-weight:bold">&lt;/bean&gt;</span>
+<span class="line-numbers"><a href="#n6" name="n6">6</a></span>
+</pre></div>
+</div>
+</div>
+
+<h2 id="flexchannel">flex使用默认channel</h2>
+<p>flex配置编译参数</p>
+
+<pre><code>-services "pathToWebappRoot/WEB-INF/flex/services-config.xml" -locale en_US
+
+</code></pre>
+
+<h2 id="section-19">测试</h2>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"> <a href="#n1" name="n1">1</a></span><span style="color:#579">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span>
+<span class="line-numbers"> <a href="#n2" name="n2">2</a></span><span style="color:#070;font-weight:bold">&lt;s:Application</span> <span style="color:#b48">xmlns:fx</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">http://ns.adobe.com/mxml/2009</span><span style="color:#710">&quot;</span></span> 
+<span class="line-numbers"> <a href="#n3" name="n3">3</a></span>                           <span style="color:#b48">xmlns:s</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">library://ns.adobe.com/flex/spark</span><span style="color:#710">&quot;</span></span> 
+<span class="line-numbers"> <a href="#n4" name="n4">4</a></span>                           <span style="color:#b48">xmlns:mx</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">library://ns.adobe.com/flex/mx</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">minWidth</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">955</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">minHeight</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">600</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">applicationComplete</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">applicationCompleteHandler(event)</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">&gt;</span>
+<span class="line-numbers"> <a href="#n5" name="n5">5</a></span>        <span style="color:#070;font-weight:bold">&lt;fx:Script&gt;</span>
+<span class="line-numbers"> <a href="#n6" name="n6">6</a></span>                <span style="font-weight:bold;color:#666">&lt;![CDATA[</span>
+<span class="line-numbers"> <a href="#n7" name="n7">7</a></span>                        import mx.controls.Alert;
+<span class="line-numbers"> <a href="#n8" name="n8">8</a></span>                        import mx.events.FlexEvent;
+<span class="line-numbers"> <a href="#n9" name="n9">9</a></span>                        import mx.messaging.events.MessageAckEvent;
+<span class="line-numbers"><strong><a href="#n10" name="n10">10</a></strong></span>                        import mx.rpc.events.FaultEvent;
+<span class="line-numbers"><a href="#n11" name="n11">11</a></span>                        import mx.rpc.events.ResultEvent;
+<span class="line-numbers"><a href="#n12" name="n12">12</a></span>                        
+<span class="line-numbers"><a href="#n13" name="n13">13</a></span>                        
+<span class="line-numbers"><a href="#n14" name="n14">14</a></span>                        protected function resultHandler(event:ResultEvent):void
+<span class="line-numbers"><a href="#n15" name="n15">15</a></span>                        {
+<span class="line-numbers"><a href="#n16" name="n16">16</a></span>                                Alert.show(event.result.toString(),&quot;result&quot;);
+<span class="line-numbers"><a href="#n17" name="n17">17</a></span>                        }
+<span class="line-numbers"><a href="#n18" name="n18">18</a></span>                        
+<span class="line-numbers"><a href="#n19" name="n19">19</a></span>                        protected function faultHandler(event:FaultEvent):void
+<span class="line-numbers"><strong><a href="#n20" name="n20">20</a></strong></span>                        {
+<span class="line-numbers"><a href="#n21" name="n21">21</a></span>                                Alert.show(event.message.toString() ,&quot;error&quot;);
+<span class="line-numbers"><a href="#n22" name="n22">22</a></span>                        }
+<span class="line-numbers"><a href="#n23" name="n23">23</a></span>                        
+<span class="line-numbers"><a href="#n24" name="n24">24</a></span>                        protected function applicationCompleteHandler(event:FlexEvent):void
+<span class="line-numbers"><a href="#n25" name="n25">25</a></span>                        {
+<span class="line-numbers"><a href="#n26" name="n26">26</a></span>                                ro.read(&quot;1&quot;);
+<span class="line-numbers"><a href="#n27" name="n27">27</a></span>                        }
+<span class="line-numbers"><a href="#n28" name="n28">28</a></span>                        
+<span class="line-numbers"><a href="#n29" name="n29">29</a></span>                <span style="font-weight:bold;color:#666">]]&gt;</span>
+<span class="line-numbers"><strong><a href="#n30" name="n30">30</a></strong></span>        <span style="color:#070;font-weight:bold">&lt;/fx:Script&gt;</span>
+<span class="line-numbers"><a href="#n31" name="n31">31</a></span>        <span style="color:#070;font-weight:bold">&lt;fx:Declarations&gt;</span>
+<span class="line-numbers"><a href="#n32" name="n32">32</a></span>                <span style="color:#070;font-weight:bold">&lt;s:RemoteObject</span> <span style="color:#b48">destination</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">annotationRPC</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">id</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">ro</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">result</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">resultHandler(event)</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">fault</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">faultHandler(event)</span><span style="color:#710">&quot;</span></span> <span style="color:#070;font-weight:bold">/&gt;</span>
+<span class="line-numbers"><a href="#n33" name="n33">33</a></span>        <span style="color:#070;font-weight:bold">&lt;/fx:Declarations&gt;</span>
+<span class="line-numbers"><a href="#n34" name="n34">34</a></span><span style="color:#070;font-weight:bold">&lt;/s:Application&gt;</span>
+<span class="line-numbers"><a href="#n35" name="n35">35</a></span>
+<span class="line-numbers"><a href="#n36" name="n36">36</a></span>
+</pre></div>
+</div>
+</div>
+
+          </article>
+          <hr class="boundary">
+          <div id="post-share" class="bdsharebuttonbox">
+              <a href="#" class="bds_more" data-cmd="more"></a>
+              <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+              <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+              <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+              <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+              <a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+          </div>
+        </div>
+        <div class="pad-min"></div>
+        <div id="post-comment" class="sheet post hidden">
+            <div id="disqus_thread"></div>
+        </div>
+    </div>
+    <div class="content-navigation col-lg-3">
+      <div class="shadow-bottom-center" >
+        <div class="content-navigation-toc">
+            <div class="content-navigation-header">
+                <span class="octicon octicon-list-unordered"></span>&nbsp;Toc
+            </div>
+            <div class="content-navigation-list toc"></div>
+        </div>
+        <div class="content-navigation-tag">
+            <div class="content-navigation-header">
+                <span class="octicon octicon-list-unordered"></span>&nbsp;Tags
+            </div>
+            <div class="content-navigation-list">
+                <ul>
+                    
+                    <li>
+                        <a href="https://haonan-dong.github.io/tags#Flex"><span class="octicon octicon-tag"></span>&nbsp;Flex</a>
+                    </li>
+                    
+                    <li>
+                        <a href="https://haonan-dong.github.io/tags#ActionScript"><span class="octicon octicon-tag"></span>&nbsp;ActionScript</a>
+                    </li>
+                    
+                    <li>
+                        <a href="https://haonan-dong.github.io/tags#script"><span class="octicon octicon-tag"></span>&nbsp;script</a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="content-navigation-related">
+            <div class="content-navigation-header">
+                <span class="octicon octicon-list-unordered"></span>&nbsp;Related
+            </div>
+            <div class="content-navigation-list">
+                <ul>
+                    
+
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                                    
+                                
+                            
+
+                            
+                                
+                                    
+                                
+                            
+
+                            
+                                
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                                    
+                                
+                            
+
+                            
+                                
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+                                
+                                    
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                                
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+
+                    
+                        
+                            <li>
+                                <a href="https://haonan-dong.github.io/front-end/js-summary/">Javascript 总结</a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://haonan-dong.github.io/front-end/webtool/">DIY的 ajax 框架</a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://haonan-dong.github.io/linux/shell-trash/">告别rm,自制回收站</a>
+                            </li>
+                        
+                    
+                </ul>
+            </div>
+        </div>
+      </div>
+    </div>
+</div>
+    </div>
+    <div class="page-scrollTop" data-toggle="tooltip" data-placement="top" title="Top">
+        <a href="javascript:void(0);">
+            <div class="arrow"></div>
+            <div class="stick"></div>
+        </a>
+    </div>
+</div>
+
+    <footer  class="footnote footnote-tiffany">
+        <div class="container">
+                <a class="foot-item" href="mailto:sincerebravefight@gmail.com" target="_blank"><span class="octicon octicon-mail"></span></a>
+                <a class="foot-item" href="https://github.com/bit-ranger" target="_blank"><span class="octicon octicon-mark-github"></span></a>
+                <a class="foot-item" href="https://haonan-dong.github.io/feed.xml" target="_blank"><span class="octicon octicon-rss"></span></a>
+                <a class="foot-item" href="https://haonan-dong.github.io/link/"><span class="octicon octicon-link-external"></span></a>
+                &nbsp;
+                <a href="https://github.com/bit-ranger"><span class="word-keep">&copy; bit-ranger</span></a>
+        </div>
+    </footer>
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://haonan-dong.github.io/static/js/script.js"></script>
+    <script type="text/javascript" src="https://haonan-dong.github.io/static/js/gitment.js"></script>
+    <script type="text/javascript" src="https://haonan-dong.github.io/static/js/post.js"></script>
+    
+
+
+</body>
+</html>

@@ -1,0 +1,1023 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>记一次在spring-mvc中踩坑的经历</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="keywords" content="记一次在spring-mvc中踩坑的经历, java, spring,mvc,java, λ lambda" />
+    <meta name="description" content="记一次在spring-mvc中踩坑的经历, java, spring,mvc,java, 今天打算在项目中加入数据验证功能，具体可参考 数据验证" />
+    <meta name="theme-color" content="#2CA6CB"/>
+    <link rel="shortcut icon" type="image/x-icon" media="screen" href="https://haonan-dong.github.io/favicon.ico" />
+    <link rel="canonical" href="https://haonan-dong.github.io/java/mvc-validator/" />
+    <link rel="alternate" type="application/rss+xml" title="λ lambda" href="https://haonan-dong.github.io/feed.xml"  />
+
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/octicons/3.5.0/octicons.min.css" >
+    <link rel="stylesheet" type="text/css" href="https://haonan-dong.github.io/static/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="https://haonan-dong.github.io/static/css/highlight.css" />
+    <link rel="stylesheet" type="text/css" href="https://haonan-dong.github.io/static/css/gitment.css" />
+    <link rel="stylesheet" type="text/css" href="https://haonan-dong.github.io/static/css/post.css" />
+    
+
+</head>
+
+
+<body>
+
+    <header>
+        <nav class="navbar navbar-tiffany rectangle" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="https://haonan-dong.github.io/">λ lambda</a>
+                    <p class="navbar-text"></p>
+                </div>
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        
+                        <li>
+                        <a href="https://haonan-dong.github.io/" class="word-keep"><span class="octicon octicon-book"></span></span>&nbsp;&nbsp;Blog</a>
+                        </li>
+                        
+                        
+                        <li>
+                            <a href="https://haonan-dong.github.io/archive/" class="word-keep"><span class="octicon octicon-repo"></span>&nbsp;&nbsp;Archive</a>
+                        </li>
+                        
+                        
+                        
+                        <li>
+                            <a href="https://haonan-dong.github.io/category/" class="word-keep"><span class="octicon octicon-list-unordered"></span>&nbsp;&nbsp;Category</a>
+                        </li>
+                        
+                        
+                        
+                        <li>
+                            <a href="https://haonan-dong.github.io/tags/" class="word-keep"><span class="octicon octicon-tag"></span>&nbsp;&nbsp;Tag</a>
+                        </li>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <li><a href="#stq=" class="search-button"><span class="octicon octicon-search"></span></a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+
+
+<div class="main">
+    <div class="container">
+        <div class="row">
+    <div class="content col-lg-9">
+        <div class="sheet post">
+          <header>
+            <h2>记一次在spring-mvc中踩坑的经历</h2>
+            <p class="post-meta">
+                <span class="octicon octicon-clock"></span> May 27, 2017
+            </p>
+            <p class="post-tag">
+                <span><a href="https://haonan-dong.github.io/category/#java"><span class="octicon octicon-list-unordered"></span>&nbsp;java</a></span>
+                <span>
+                    <a class="word-keep" href="https://haonan-dong.github.io/tags/#spring"><span class="octicon octicon-tag"></span>&nbsp;spring</a>
+                    
+                    <a class="word-keep" href="https://haonan-dong.github.io/tags/#mvc"><span class="octicon octicon-tag"></span>&nbsp;mvc</a>
+                    
+                    <a class="word-keep" href="https://haonan-dong.github.io/tags/#java"><span class="octicon octicon-tag"></span>&nbsp;java</a>
+                    
+                </span>
+            </p>
+          </header>
+          <hr class="boundary">
+          <article>
+            <p>今天打算在项目中加入数据验证功能，具体可参考 <a href="http://jinnianshilongnian.iteye.com/blog/1733708">数据验证</a></p>
+
+<p>过程无须赘述</p>
+
+<p>配置完成后，奇怪的现象发生了，<code>BindingResult.hasErrors()</code>永远返回false<br />
+<img src="https://bit-ranger.github.io/blog/static/img/mvc-validator/hasErrors.jpg" alt="hasErrors" /></p>
+
+<p>这是什么情况? validator 未指定？我赶紧检查配置：<br />
+<img src="https://bit-ranger.github.io/blog/static/img/mvc-validator/notNull.jpg" alt="notNull" /></p>
+
+<p><img src="https://bit-ranger.github.io/blog/static/img/mvc-validator/driven.jpg" alt="driven" /><br />
+配置没有问题，日志能够正常打印，且没有错误，排除类加载失败的可能。</p>
+
+<p>上google搜索一下！<br />
+<img src="https://bit-ranger.github.io/blog/static/img/mvc-validator/google.jpg" alt="google" /><br />
+翻看了第一页的回复，大多来自stackoverflow，无非是让你引入包, 加配置, 我项目里配置符合这些回复的要求, 所以需要另想办法</p>
+
+<p>自己动手吧!我加入如下代码，以验证validator是否被正确加载<br />
+<img src="https://bit-ranger.github.io/blog/static/img/mvc-validator/initBinder.jpg" alt="initBinder" /><br />
+validator果然为null, 且如果拿到validator对象并set进去，就可以解决<code>BindingResult.hasErrors()</code>永远返回false的问题,<br />
+然而，这种处理方式需要在每个Controller中写一遍initBinder, 这种方式并不完美。</p>
+
+<p>是什么原因造成validator丢失呢?<br />
+我们知道<code>annotation-driven</code>会在spring中自动注册多个bean, 详情请移步<a href="https://my.oschina.net/HeliosFly/blog/205343">自动注册</a><br />
+会不会是项目中存在某些配置覆盖了其中的bean，造成了validator丢失?<br />
+仔细扫描一下配置文件, 发现果然如此, 项目中为了更换json转换器, 自定义了一个bean<br />
+<img src="https://bit-ranger.github.io/blog/static/img/mvc-validator/adapter.jpg" alt="adapter" /></p>
+
+<p>到了这个地步基本上找到原因了，解决方式很简单，将validator绑定起来就可以了<br />
+<img src="https://bit-ranger.github.io/blog/static/img/mvc-validator/validator-config.jpg" alt="validator-config" /></p>
+
+
+          </article>
+          <hr class="boundary">
+          <div id="post-share" class="bdsharebuttonbox">
+              <a href="#" class="bds_more" data-cmd="more"></a>
+              <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+              <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+              <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+              <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+              <a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+          </div>
+        </div>
+        <div class="pad-min"></div>
+        <div id="post-comment" class="sheet post hidden">
+            <div id="disqus_thread"></div>
+        </div>
+    </div>
+    <div class="content-navigation col-lg-3">
+      <div class="shadow-bottom-center" >
+        <div class="content-navigation-toc">
+            <div class="content-navigation-header">
+                <span class="octicon octicon-list-unordered"></span>&nbsp;Toc
+            </div>
+            <div class="content-navigation-list toc"></div>
+        </div>
+        <div class="content-navigation-tag">
+            <div class="content-navigation-header">
+                <span class="octicon octicon-list-unordered"></span>&nbsp;Tags
+            </div>
+            <div class="content-navigation-list">
+                <ul>
+                    
+                    <li>
+                        <a href="https://haonan-dong.github.io/tags#spring"><span class="octicon octicon-tag"></span>&nbsp;spring</a>
+                    </li>
+                    
+                    <li>
+                        <a href="https://haonan-dong.github.io/tags#mvc"><span class="octicon octicon-tag"></span>&nbsp;mvc</a>
+                    </li>
+                    
+                    <li>
+                        <a href="https://haonan-dong.github.io/tags#java"><span class="octicon octicon-tag"></span>&nbsp;java</a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="content-navigation-related">
+            <div class="content-navigation-header">
+                <span class="octicon octicon-list-unordered"></span>&nbsp;Related
+            </div>
+            <div class="content-navigation-list">
+                <ul>
+                    
+
+                    
+                        
+                            
+
+                            
+                                
+                                    
+                                
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                                
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                                    
+                                
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                                
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                                    
+                                
+                            
+                                
+                            
+
+                            
+                                
+                                    
+                                
+                            
+
+                            
+                                
+                            
+                        
+                    
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                                    
+                                
+                            
+
+                            
+                                
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                                    
+                                
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                                
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                                    
+                                
+                            
+
+                            
+                                
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                                    
+                                
+                            
+
+                            
+                                
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                                    
+                                
+                            
+
+                            
+                                
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                                    
+                                
+                            
+
+                            
+                                
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                                    
+                                
+                            
+
+                            
+                                
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                                    
+                                
+                            
+
+                            
+                                
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                                    
+                                
+                            
+
+                            
+                                
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                                    
+                                
+                            
+
+                            
+                                
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                                    
+                                
+                            
+
+                            
+                                
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+
+                    
+                        
+                            <li>
+                                <a href="https://haonan-dong.github.io/algorithm/large-file-diff-concurrent/">大文件内容对比多线程版本</a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://haonan-dong.github.io/algorithm/large-file-diff/">大文件内容对比</a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://haonan-dong.github.io/java/FullGc/">大对象引起的频繁FULL GC</a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://haonan-dong.github.io/java/rmi/">RMI</a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://haonan-dong.github.io/web/spring-security/">spring security 探秘</a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://haonan-dong.github.io/java/validator/">Bean Validation</a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://haonan-dong.github.io/java/javajs/">Java中用js解析json</a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://haonan-dong.github.io/java/java-newfeature/">Java8 新特性</a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://haonan-dong.github.io/java/java-concurrent/">Java Concurrent</a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://haonan-dong.github.io/java/jvm/">Java虚拟机</a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://haonan-dong.github.io/java/effective/">Effective Java</a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://haonan-dong.github.io/java/reentrantlock/">可重入锁</a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://haonan-dong.github.io/java/java-nio/">Java NIO</a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://haonan-dong.github.io/java/java-io/">Java IO</a>
+                            </li>
+                        
+                    
+                </ul>
+            </div>
+        </div>
+      </div>
+    </div>
+</div>
+    </div>
+    <div class="page-scrollTop" data-toggle="tooltip" data-placement="top" title="Top">
+        <a href="javascript:void(0);">
+            <div class="arrow"></div>
+            <div class="stick"></div>
+        </a>
+    </div>
+</div>
+
+    <footer  class="footnote footnote-tiffany">
+        <div class="container">
+                <a class="foot-item" href="mailto:sincerebravefight@gmail.com" target="_blank"><span class="octicon octicon-mail"></span></a>
+                <a class="foot-item" href="https://github.com/bit-ranger" target="_blank"><span class="octicon octicon-mark-github"></span></a>
+                <a class="foot-item" href="https://haonan-dong.github.io/feed.xml" target="_blank"><span class="octicon octicon-rss"></span></a>
+                <a class="foot-item" href="https://haonan-dong.github.io/link/"><span class="octicon octicon-link-external"></span></a>
+                &nbsp;
+                <a href="https://github.com/bit-ranger"><span class="word-keep">&copy; bit-ranger</span></a>
+        </div>
+    </footer>
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://haonan-dong.github.io/static/js/script.js"></script>
+    <script type="text/javascript" src="https://haonan-dong.github.io/static/js/gitment.js"></script>
+    <script type="text/javascript" src="https://haonan-dong.github.io/static/js/post.js"></script>
+    
+
+
+</body>
+</html>

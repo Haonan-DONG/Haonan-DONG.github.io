@@ -1,0 +1,1204 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Servlet乱码分析</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="keywords" content="Servlet乱码分析, web, servlet,encode,Java, λ lambda" />
+    <meta name="description" content="Servlet乱码分析, web, servlet,encode,Java, 我们知道，web浏览器会将form中的内容打包成HTTP请求体，然后发送到服务端，服务端对请求体解析后可以得到传递的数据。这当中包含两个过程：encode与decode。" />
+    <meta name="theme-color" content="#2CA6CB"/>
+    <link rel="shortcut icon" type="image/x-icon" media="screen" href="https://haonan-dong.github.io/favicon.ico" />
+    <link rel="canonical" href="https://haonan-dong.github.io/web/servlet-encode/" />
+    <link rel="alternate" type="application/rss+xml" title="λ lambda" href="https://haonan-dong.github.io/feed.xml"  />
+
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/octicons/3.5.0/octicons.min.css" >
+    <link rel="stylesheet" type="text/css" href="https://haonan-dong.github.io/static/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="https://haonan-dong.github.io/static/css/highlight.css" />
+    <link rel="stylesheet" type="text/css" href="https://haonan-dong.github.io/static/css/gitment.css" />
+    <link rel="stylesheet" type="text/css" href="https://haonan-dong.github.io/static/css/post.css" />
+    
+
+</head>
+
+
+<body>
+
+    <header>
+        <nav class="navbar navbar-tiffany rectangle" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="https://haonan-dong.github.io/">λ lambda</a>
+                    <p class="navbar-text"></p>
+                </div>
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        
+                        <li>
+                        <a href="https://haonan-dong.github.io/" class="word-keep"><span class="octicon octicon-book"></span></span>&nbsp;&nbsp;Blog</a>
+                        </li>
+                        
+                        
+                        <li>
+                            <a href="https://haonan-dong.github.io/archive/" class="word-keep"><span class="octicon octicon-repo"></span>&nbsp;&nbsp;Archive</a>
+                        </li>
+                        
+                        
+                        
+                        <li>
+                            <a href="https://haonan-dong.github.io/category/" class="word-keep"><span class="octicon octicon-list-unordered"></span>&nbsp;&nbsp;Category</a>
+                        </li>
+                        
+                        
+                        
+                        <li>
+                            <a href="https://haonan-dong.github.io/tags/" class="word-keep"><span class="octicon octicon-tag"></span>&nbsp;&nbsp;Tag</a>
+                        </li>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <li><a href="#stq=" class="search-button"><span class="octicon octicon-search"></span></a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+
+
+<div class="main">
+    <div class="container">
+        <div class="row">
+    <div class="content col-lg-9">
+        <div class="sheet post">
+          <header>
+            <h2>Servlet乱码分析</h2>
+            <p class="post-meta">
+                <span class="octicon octicon-clock"></span> Mar 17, 2015
+            </p>
+            <p class="post-tag">
+                <span><a href="https://haonan-dong.github.io/category/#web"><span class="octicon octicon-list-unordered"></span>&nbsp;web</a></span>
+                <span>
+                    <a class="word-keep" href="https://haonan-dong.github.io/tags/#servlet"><span class="octicon octicon-tag"></span>&nbsp;servlet</a>
+                    
+                    <a class="word-keep" href="https://haonan-dong.github.io/tags/#encode"><span class="octicon octicon-tag"></span>&nbsp;encode</a>
+                    
+                    <a class="word-keep" href="https://haonan-dong.github.io/tags/#Java"><span class="octicon octicon-tag"></span>&nbsp;Java</a>
+                    
+                </span>
+            </p>
+          </header>
+          <hr class="boundary">
+          <article>
+            <p>我们知道，web浏览器会将form中的内容打包成HTTP请求体，然后发送到服务端，服务端对请求体解析后可以得到传递的数据。这当中包含两个过程：<code>encode</code>与<code>decode</code>。</p>
+
+<ul id="markdown-toc">
+  <li><a href="#http">HTTP</a></li>
+  <li><a href="#urlencode">UrlEncode</a></li>
+  <li><a href="#urldecode">UrlDecode</a></li>
+  <li><a href="#section">方案</a></li>
+</ul>
+
+<h1 id="http">HTTP</h1>
+
+<p>我们使用ServerSocket搭建一个小服务器来看清http请求的全貌, 该服务器只有一个功能, 就是打印请求体。</p>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"> <a href="#n1" name="n1">1</a></span><span style="color:#088;font-weight:bold">public</span> <span style="color:#339;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">HttpPrint</span> {
+<span class="line-numbers"> <a href="#n2" name="n2">2</a></span>    <span style="color:#088;font-weight:bold">private</span> <span style="color:#0a8;font-weight:bold">ServerSocket</span> serverSocket;
+<span class="line-numbers"> <a href="#n3" name="n3">3</a></span>
+<span class="line-numbers"> <a href="#n4" name="n4">4</a></span>    <span style="color:#088;font-weight:bold">public</span> HttpPrint() <span style="color:#088;font-weight:bold">throws</span> <span style="color:#C00;font-weight:bold">IOException</span> {
+<span class="line-numbers"> <a href="#n5" name="n5">5</a></span>        serverSocket = <span style="color:#080;font-weight:bold">new</span> <span style="color:#0a8;font-weight:bold">ServerSocket</span>(<span style="color:#00D">8080</span>);
+<span class="line-numbers"> <a href="#n6" name="n6">6</a></span>    }
+<span class="line-numbers"> <a href="#n7" name="n7">7</a></span>
+<span class="line-numbers"> <a href="#n8" name="n8">8</a></span>    <span style="color:#088;font-weight:bold">public</span> <span style="color:#339;font-weight:bold">void</span> show() <span style="color:#088;font-weight:bold">throws</span> <span style="color:#C00;font-weight:bold">IOException</span>{
+<span class="line-numbers"> <a href="#n9" name="n9">9</a></span>        <span style="color:#080;font-weight:bold">while</span>(<span style="color:#069">true</span>){
+<span class="line-numbers"><strong><a href="#n10" name="n10">10</a></strong></span>            <span style="color:#0a8;font-weight:bold">Socket</span> socket = serverSocket.accept();
+<span class="line-numbers"><a href="#n11" name="n11">11</a></span>            <span style="color:#339;font-weight:bold">byte</span><span style="color:#339;font-weight:bold">[]</span> buf = <span style="color:#080;font-weight:bold">new</span> <span style="color:#339;font-weight:bold">byte</span>[<span style="color:#00D">1024</span>];
+<span class="line-numbers"><a href="#n12" name="n12">12</a></span>            <span style="color:#0a8;font-weight:bold">InputStream</span> is =  socket.getInputStream();
+<span class="line-numbers"><a href="#n13" name="n13">13</a></span>            <span style="color:#0a8;font-weight:bold">ByteArrayOutputStream</span> os = <span style="color:#080;font-weight:bold">new</span> <span style="color:#0a8;font-weight:bold">ByteArrayOutputStream</span>();
+<span class="line-numbers"><a href="#n14" name="n14">14</a></span>            <span style="color:#339;font-weight:bold">int</span> n = <span style="color:#00D">0</span>;
+<span class="line-numbers"><a href="#n15" name="n15">15</a></span>            <span style="color:#080;font-weight:bold">while</span> ((n = is.read(buf)) &gt; -<span style="color:#00D">1</span>){
+<span class="line-numbers"><a href="#n16" name="n16">16</a></span>                os.write(buf,<span style="color:#00D">0</span>,n);
+<span class="line-numbers"><a href="#n17" name="n17">17</a></span>            }
+<span class="line-numbers"><a href="#n18" name="n18">18</a></span>            os.close();
+<span class="line-numbers"><a href="#n19" name="n19">19</a></span>            is.close();
+<span class="line-numbers"><strong><a href="#n20" name="n20">20</a></strong></span>            socket.close();
+<span class="line-numbers"><a href="#n21" name="n21">21</a></span>            <span style="color:#0a8;font-weight:bold">System</span>.out.println(os);
+<span class="line-numbers"><a href="#n22" name="n22">22</a></span>        }
+<span class="line-numbers"><a href="#n23" name="n23">23</a></span>    }
+<span class="line-numbers"><a href="#n24" name="n24">24</a></span>
+<span class="line-numbers"><a href="#n25" name="n25">25</a></span>    <span style="color:#088;font-weight:bold">public</span> <span style="color:#088;font-weight:bold">static</span> <span style="color:#339;font-weight:bold">void</span> main(<span style="color:#0a8;font-weight:bold">String</span><span style="color:#339;font-weight:bold">[]</span> args) <span style="color:#088;font-weight:bold">throws</span> <span style="color:#C00;font-weight:bold">IOException</span> {
+<span class="line-numbers"><a href="#n26" name="n26">26</a></span>        <span style="color:#080;font-weight:bold">new</span> HttpPrint().show();
+<span class="line-numbers"><a href="#n27" name="n27">27</a></span>    }
+<span class="line-numbers"><a href="#n28" name="n28">28</a></span>}
+</pre></div>
+</div>
+</div>
+
+<p>用html页面来发送get与post请求</p>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span><span style="color:#070;font-weight:bold">&lt;a</span> <span style="color:#b48">href</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">http://localhost:8080/hsp?param=你好全世界</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">&gt;</span>Test<span style="color:#070;font-weight:bold">&lt;/a&gt;</span>
+<span class="line-numbers"><a href="#n2" name="n2">2</a></span><span style="color:#070;font-weight:bold">&lt;form</span> <span style="color:#b48">action</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">http://localhost:8080/hsp</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">method</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">post</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">&gt;</span>
+<span class="line-numbers"><a href="#n3" name="n3">3</a></span>   <span style="color:#070;font-weight:bold">&lt;input</span> <span style="color:#b48">type</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">text</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">param</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">value</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">你好全世界</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">/&gt;</span>
+<span class="line-numbers"><a href="#n4" name="n4">4</a></span>   <span style="color:#070;font-weight:bold">&lt;input</span> <span style="color:#b48">type</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">submit</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">/&gt;</span>
+<span class="line-numbers"><a href="#n5" name="n5">5</a></span><span style="color:#070;font-weight:bold">&lt;/form&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<p>启动服务器后，查看打印内容，在我的机器上，请求内容如下:</p>
+
+<p>get</p>
+
+<p><img src="https://bit-ranger.github.io/blog/static/img/servlet-encode/get.png" alt="get" /></p>
+
+<p>post</p>
+
+<p><img src="https://bit-ranger.github.io/blog/static/img/servlet-encode/post.png" alt="post" /></p>
+
+<p>从post中的<code>Content-Type:application/x-www-form-urlencoded</code>可以看到，虽然数据为中文，但是在传递的时候，经过了一次urlEncode，这样一来，在数据交换层面就可以屏蔽编码的不一致性。</p>
+
+<h1 id="urlencode">UrlEncode</h1>
+
+<p><code>urlEncode</code>的任务是将form中的数据进行编码, 编码过程非常简单, 任何字符只要不是<code>ASCII</code>码, 它们都将被转换成字节形式, 每个字节都写成这种形式：一个 “%” 后面跟着两位16进制的数值。<br />
+urlEncode只能识别ASCII码，可以想象的是，那些urlEncode不能识别的字符，也就是十六进制数，一定是依赖于特定的字符集产生的, 字符集包括unicode,iso等。</p>
+
+<p>那么浏览器用的是什么字符集呢? 答案是：默认与<code>contentType</code>相同, form可以通过属性<code>accept-charset</code>指定。</p>
+
+<p>例如我们通常可以在jsp中看到这样的设置:</p>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span>&lt;%@page contentType=&quot;text/html;charset=UTF-8&quot; %&gt;
+</pre></div>
+</div>
+</div>
+
+<p>或者在html中这样设置:</p>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span><span style="color:#070;font-weight:bold">&lt;meta</span> <span style="color:#b48">http-equiv</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Content-Type</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">content</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">text/html; charset=UTF-8</span><span style="color:#710">&quot;</span></span> <span style="color:#070;font-weight:bold">/&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<p>这表示浏览器得到响应流之后，用contentType指定的字符集，将流中的字节转换为字符，同样地，也会用这个字符集将页面中字符转换为字节。</p>
+
+<p>关于浏览器设定字符集的问题，我们不过多讨论，现在只需要知道有这么个过程就行了, 需要注意的是，无论浏览器使用什么字符集，服务端都是无法获知的。<br />
+这里需要换位考虑一下，浏览器是一个客户端，应该让客户端 “迁就” 服务端, 所以浏览器请求一个服务的时候，应该让浏览器考虑服务端支持什么字符集, 得到了响应后, 用服务端告诉浏览器的字符集进行解析。</p>
+
+<h1 id="urldecode">UrlDecode</h1>
+
+<p>现在我们将目光转向Servlet, 并使用上面的html来请求服务，请确保请求的字符集为<code>unicode</code>, 应用服务器使用tomcat6。</p>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"> <a href="#n1" name="n1">1</a></span><span style="color:#088;font-weight:bold">public</span> <span style="color:#339;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">HttpServletPrint</span> <span style="color:#088;font-weight:bold">extends</span> HttpServlet{
+<span class="line-numbers"> <a href="#n2" name="n2">2</a></span>    <span style="color:#007">@Override</span>
+<span class="line-numbers"> <a href="#n3" name="n3">3</a></span>    <span style="color:#088;font-weight:bold">protected</span> <span style="color:#339;font-weight:bold">void</span> doPost(HttpServletRequest req, HttpServletResponse resp) <span style="color:#088;font-weight:bold">throws</span> ServletException, <span style="color:#C00;font-weight:bold">IOException</span> {
+<span class="line-numbers"> <a href="#n4" name="n4">4</a></span>        <span style="color:#0a8;font-weight:bold">System</span>.out.println(req.getParameter(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">param</span><span style="color:#710">&quot;</span></span>));
+<span class="line-numbers"> <a href="#n5" name="n5">5</a></span>    }
+<span class="line-numbers"> <a href="#n6" name="n6">6</a></span>
+<span class="line-numbers"> <a href="#n7" name="n7">7</a></span>    <span style="color:#007">@Override</span>
+<span class="line-numbers"> <a href="#n8" name="n8">8</a></span>    <span style="color:#088;font-weight:bold">protected</span> <span style="color:#339;font-weight:bold">void</span> doGet(HttpServletRequest req, HttpServletResponse resp) <span style="color:#088;font-weight:bold">throws</span> ServletException, <span style="color:#C00;font-weight:bold">IOException</span> {
+<span class="line-numbers"> <a href="#n9" name="n9">9</a></span>        <span style="color:#950">this</span>.doPost(req,resp);
+<span class="line-numbers"><strong><a href="#n10" name="n10">10</a></strong></span>    }
+<span class="line-numbers"><a href="#n11" name="n11">11</a></span>}
+</pre></div>
+</div>
+</div>
+
+<p>get与post结果如下，果然不负众望地乱码了(如果不乱码，我还写个毛？)。</p>
+
+<p><img src="https://bit-ranger.github.io/blog/static/img/servlet-encode/param.png" alt="param" /></p>
+
+<p>现在我们从Servlet中看看请求体, 修改上面的Servlet代码如下：</p>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"> <a href="#n1" name="n1">1</a></span><span style="color:#088;font-weight:bold">public</span> <span style="color:#339;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">HttpServletPrint</span> <span style="color:#088;font-weight:bold">extends</span> HttpServlet{
+<span class="line-numbers"> <a href="#n2" name="n2">2</a></span>    <span style="color:#007">@Override</span>
+<span class="line-numbers"> <a href="#n3" name="n3">3</a></span>    <span style="color:#088;font-weight:bold">protected</span> <span style="color:#339;font-weight:bold">void</span> doPost(HttpServletRequest req, HttpServletResponse resp) <span style="color:#088;font-weight:bold">throws</span> ServletException, <span style="color:#C00;font-weight:bold">IOException</span> {
+<span class="line-numbers"> <a href="#n4" name="n4">4</a></span>        <span style="color:#777">//System.out.println(req.getParameter(&quot;param&quot;));</span>
+<span class="line-numbers"> <a href="#n5" name="n5">5</a></span>        <span style="color:#339;font-weight:bold">byte</span><span style="color:#339;font-weight:bold">[]</span> buf = <span style="color:#080;font-weight:bold">new</span> <span style="color:#339;font-weight:bold">byte</span>[<span style="color:#00D">1024</span>];
+<span class="line-numbers"> <a href="#n6" name="n6">6</a></span>        <span style="color:#339;font-weight:bold">int</span> n = <span style="color:#00D">0</span>;
+<span class="line-numbers"> <a href="#n7" name="n7">7</a></span>        <span style="color:#0a8;font-weight:bold">ByteArrayOutputStream</span> bos = <span style="color:#080;font-weight:bold">new</span> <span style="color:#0a8;font-weight:bold">ByteArrayOutputStream</span>();
+<span class="line-numbers"> <a href="#n8" name="n8">8</a></span>        <span style="color:#0a8;font-weight:bold">InputStream</span> is = req.getInputStream();
+<span class="line-numbers"> <a href="#n9" name="n9">9</a></span>        <span style="color:#080;font-weight:bold">while</span> ((n = is.read(buf, <span style="color:#00D">0</span>, buf.length))&gt;-<span style="color:#00D">1</span>){
+<span class="line-numbers"><strong><a href="#n10" name="n10">10</a></strong></span>            bos.write(buf, <span style="color:#00D">0</span>, n);
+<span class="line-numbers"><a href="#n11" name="n11">11</a></span>        }
+<span class="line-numbers"><a href="#n12" name="n12">12</a></span>        <span style="color:#0a8;font-weight:bold">String</span> param = bos.toString();
+<span class="line-numbers"><a href="#n13" name="n13">13</a></span>        <span style="color:#0a8;font-weight:bold">String</span> s = <span style="color:#0a8;font-weight:bold">URLDecoder</span>.decode(param,<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">utf-8</span><span style="color:#710">&quot;</span></span>);
+<span class="line-numbers"><a href="#n14" name="n14">14</a></span>        <span style="color:#0a8;font-weight:bold">System</span>.out.println(s);
+<span class="line-numbers"><a href="#n15" name="n15">15</a></span>    }
+<span class="line-numbers"><a href="#n16" name="n16">16</a></span>
+<span class="line-numbers"><a href="#n17" name="n17">17</a></span>    <span style="color:#007">@Override</span>
+<span class="line-numbers"><a href="#n18" name="n18">18</a></span>    <span style="color:#088;font-weight:bold">protected</span> <span style="color:#339;font-weight:bold">void</span> doGet(HttpServletRequest req, HttpServletResponse resp) <span style="color:#088;font-weight:bold">throws</span> ServletException, <span style="color:#C00;font-weight:bold">IOException</span> {
+<span class="line-numbers"><a href="#n19" name="n19">19</a></span>        <span style="color:#950">this</span>.doPost(req,resp);
+<span class="line-numbers"><strong><a href="#n20" name="n20">20</a></strong></span>    }
+<span class="line-numbers"><a href="#n21" name="n21">21</a></span>}
+</pre></div>
+</div>
+</div>
+
+<p>get与post结果如下,Servlet将http头部解析完成后，将请求体留了下来供应用程序使用, 这是考虑到http请求可能有多种 <a href="http://www.w3school.com.cn/tags/att_form_enctype.asp">enctype</a> , 请求体的结构可能不同,<br />
+例如，<code>multipart/form-data</code>就不是这样的key=value结构，关于multipart/form-data，我在这篇 <a href="http://blog.rainynight.top/2014-04-15/fileupload/">fileupload</a> 中曾有过简要分析。</p>
+
+<p><img src="https://bit-ranger.github.io/blog/static/img/servlet-encode/body-utf.png" alt="body-utf" /></p>
+
+<p>从图中可以看到, 设置了正确的字符集后, 服务端将能够正确地解析, get部分什么都没有，这是因为get没有请求体。</p>
+
+<p>让我们换种字符集试试, 比如, 将servet中的”utf-8”换成”iso-8859-1”。</p>
+
+<p><img src="https://bit-ranger.github.io/blog/static/img/servlet-encode/body-iso.png" alt="body-iso" /></p>
+
+<p>嘿，果然如我所料，而且这个字符串好像很眼熟，和req.getParameter(“param”)结果是一样的，没错，事实上，tomcat默认的字符集就是<code>iso-8859-1</code>, 我们从中可以得到一个推论，tomcat使用默认的字符集，对http请求进行过一次decode。</p>
+
+<h1 id="section">方案</h1>
+
+<p><code>urlDecode</code>的任务是将请求中的百分号码转换成字符，显而易见的是，使用与<code>urlEncode</code>时相同的字符集才能成功转换。通常的做法是，让服务端支持涵盖多国语言的”utf-8”，然后让客户端也用”utf-8”请求服务。</p>
+
+<p>指定服务端字符集的方式有两种，一是修改应用服务器的默认编码，二是添加一个过滤器进行编码转换, 方法一最方便, 但是影响了程序的可移植性, 方法二可移植, 它只需要做一件事:<code>requet.setCharacterEncoding("UTF-8");</code>,<br />
+实际上，该过滤器并没有进行任何编码转换的工作，它仅仅只是一个配置，该配置项将被后续程序使用，这些后续程序包括web服务器内置的解析程序，以及第三方解析工具等。</p>
+
+<p>需要注意的是，requet.setCharacterEncoding(“UTF-8”);，只对请求体有效，也就是说，请求头不归它管，而是由web服务器采用自己配置的字符编码进行解析，此时如果url中包含中文（如get请求的参数），那么将不可避免地出现字符丢失。<br />
+解决办法是在客户端对url进行<code>encodeURI</code><strong>两次</strong>, 然后再在服务端<code>URLDecoder.decode(param,"utf-8");</code>。</p>
+
+<p>为什么要 <a href="http://www.w3school.com.cn/jsref/jsref_encodeuri.asp">encodeURI</a> 两次？talk is cheap， let’s code！</p>
+
+<p><img src="https://bit-ranger.github.io/blog/static/img/servlet-encode/encodeURI.png" alt="encodeURI" /></p>
+
+<p>注意观察这张图片，从中发现了什么? 没错，第一次encodeURI生成了HTTP一节的示例中一样的结果。<br />
+我们在浏览器窗口中输入 “http://localhost:8080/hsp?param=%E4%BD%A0%E5%A5%BD%E5%85%A8%E4%B8%96%E7%95%8C”, 会发现它变成了 “http://localhost:8080/hsp?param=你好全世界”,<br />
+在url里，浏览器认为%是个转义字符，浏览器会把%与%之间的编码，两位两位取出后进行decode, 也就是变回 “你好全世界”, 然后再用这个url发送请求, 最终实际发送的内容实际上还是<code>%E4%BD%A0%E5%A5%BD%E5%85%A8%E4%B8%96%E7%95%8C</code>。<br />
+换言之，以明文传递的这种url会被浏览器否决一次，再换言之，在js中进行一次encodeURI等于什么都没做。</p>
+
+<p>再注意观察第2和第3个输出，有什么规律? 是的，从第二次开始encodeURI只是将<code>%</code>变成了<code>%25</code>，<br />
+根据我们刚才总结出的规律可知，在encodeURI两次的情况下，最后发送到浏览器中的数据为<code>%25E4%25BD%25A0%25E5%25A5%25BD%25E5%2585%25A8%25E4%25B8%2596%25E7%2595%258C</code>,<br />
+理所当然的，web服务器将使用默认的字符集对其decode, 然而, 无论选择哪种字符集, 将<code>%25</code>转换成<code>%</code>总是不会出错的, decode之后，<code>%E4%BD%A0%E5%A5%BD%E5%85%A8%E4%B8%96%E7%95%8C</code> 将完整地送到Servlet手上。</p>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span><span style="color:#0a8;font-weight:bold">System</span>.out.println(<span style="color:#0a8;font-weight:bold">URLDecoder</span>.decode(req.getParameter(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">param</span><span style="color:#710">&quot;</span></span>),<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">utf-8</span><span style="color:#710">&quot;</span></span>));
+</pre></div>
+</div>
+</div>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span>window.location.href=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">http://localhost:8080/hsp?param=</span><span style="color:#710">&quot;</span></span> + encodeURI(encodeURI(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">你好全世界</span><span style="color:#710">'</span></span>));
+</pre></div>
+</div>
+</div>
+
+<p><img src="https://bit-ranger.github.io/blog/static/img/servlet-encode/world.png" alt="world" /></p>
+
+
+          </article>
+          <hr class="boundary">
+          <div id="post-share" class="bdsharebuttonbox">
+              <a href="#" class="bds_more" data-cmd="more"></a>
+              <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+              <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+              <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+              <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+              <a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+          </div>
+        </div>
+        <div class="pad-min"></div>
+        <div id="post-comment" class="sheet post hidden">
+            <div id="disqus_thread"></div>
+        </div>
+    </div>
+    <div class="content-navigation col-lg-3">
+      <div class="shadow-bottom-center" >
+        <div class="content-navigation-toc">
+            <div class="content-navigation-header">
+                <span class="octicon octicon-list-unordered"></span>&nbsp;Toc
+            </div>
+            <div class="content-navigation-list toc"></div>
+        </div>
+        <div class="content-navigation-tag">
+            <div class="content-navigation-header">
+                <span class="octicon octicon-list-unordered"></span>&nbsp;Tags
+            </div>
+            <div class="content-navigation-list">
+                <ul>
+                    
+                    <li>
+                        <a href="https://haonan-dong.github.io/tags#servlet"><span class="octicon octicon-tag"></span>&nbsp;servlet</a>
+                    </li>
+                    
+                    <li>
+                        <a href="https://haonan-dong.github.io/tags#encode"><span class="octicon octicon-tag"></span>&nbsp;encode</a>
+                    </li>
+                    
+                    <li>
+                        <a href="https://haonan-dong.github.io/tags#Java"><span class="octicon octicon-tag"></span>&nbsp;Java</a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="content-navigation-related">
+            <div class="content-navigation-header">
+                <span class="octicon octicon-list-unordered"></span>&nbsp;Related
+            </div>
+            <div class="content-navigation-list">
+                <ul>
+                    
+
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                                    
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                                
+                            
+                        
+                    
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+                                
+                                    
+                                
+                            
+
+                            
+                                
+                                    
+                                
+                            
+
+                            
+                                
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+                                
+                                    
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                                
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                                    
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                                
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+                                
+                                    
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                                
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                                    
+                                
+                            
+
+                            
+                                
+                                    
+                                
+                            
+
+                            
+                                
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                                    
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                                
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                                    
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                                
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                                    
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                                
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                                    
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                                
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                                    
+                                
+                            
+                                
+                            
+
+                            
+                                
+                                    
+                                
+                            
+
+                            
+                                
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                                    
+                                
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                                
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+
+                            
+                                
+                                    
+                                
+                            
+
+                            
+                                
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                                    
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                                
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                                    
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                                
+                            
+                        
+                    
+                        
+                            
+
+                            
+                                
+                            
+                                
+                            
+
+                            
+                                
+                            
+
+                            
+                        
+                    
+
+                    
+                        
+                            <li>
+                                <a href="https://haonan-dong.github.io/java/rmi/">RMI</a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://haonan-dong.github.io/web/spring-security/">spring security 探秘</a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://haonan-dong.github.io/java/validator/">Bean Validation</a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://haonan-dong.github.io/java/javajs/">Java中用js解析json</a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://haonan-dong.github.io/database/sqlappend/">SQL 拼接</a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://haonan-dong.github.io/web/webservice/">WebService</a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://haonan-dong.github.io/java/java-newfeature/">Java8 新特性</a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://haonan-dong.github.io/java/java-concurrent/">Java Concurrent</a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://haonan-dong.github.io/java/jvm/">Java虚拟机</a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://haonan-dong.github.io/java/effective/">Effective Java</a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://haonan-dong.github.io/web/fileupload/">Custom Fileupload</a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://haonan-dong.github.io/java/reentrantlock/">可重入锁</a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://haonan-dong.github.io/web/resubmit/">防止重复提交的几种办法</a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://haonan-dong.github.io/java/java-nio/">Java NIO</a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://haonan-dong.github.io/java/java-io/">Java IO</a>
+                            </li>
+                        
+                    
+                </ul>
+            </div>
+        </div>
+      </div>
+    </div>
+</div>
+    </div>
+    <div class="page-scrollTop" data-toggle="tooltip" data-placement="top" title="Top">
+        <a href="javascript:void(0);">
+            <div class="arrow"></div>
+            <div class="stick"></div>
+        </a>
+    </div>
+</div>
+
+    <footer  class="footnote footnote-tiffany">
+        <div class="container">
+                <a class="foot-item" href="mailto:sincerebravefight@gmail.com" target="_blank"><span class="octicon octicon-mail"></span></a>
+                <a class="foot-item" href="https://github.com/bit-ranger" target="_blank"><span class="octicon octicon-mark-github"></span></a>
+                <a class="foot-item" href="https://haonan-dong.github.io/feed.xml" target="_blank"><span class="octicon octicon-rss"></span></a>
+                <a class="foot-item" href="https://haonan-dong.github.io/link/"><span class="octicon octicon-link-external"></span></a>
+                &nbsp;
+                <a href="https://github.com/bit-ranger"><span class="word-keep">&copy; bit-ranger</span></a>
+        </div>
+    </footer>
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://haonan-dong.github.io/static/js/script.js"></script>
+    <script type="text/javascript" src="https://haonan-dong.github.io/static/js/gitment.js"></script>
+    <script type="text/javascript" src="https://haonan-dong.github.io/static/js/post.js"></script>
+    
+
+
+</body>
+</html>
