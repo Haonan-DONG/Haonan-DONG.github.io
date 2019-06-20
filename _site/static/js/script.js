@@ -42,7 +42,7 @@ function search(){
         e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.appendChild(s);
     })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
 
-    _st('install','iXZyPokVfxFaBTvi64Y6','2.0.0');
+    _st('install','Wuhan University','2.0.0');
 }
 
 

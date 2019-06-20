@@ -6,12 +6,12 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="keywords" content="Custom Fileupload, web, fileupload,Java,Http, λ lambda" />
+    <meta name="keywords" content="Custom Fileupload, web, fileupload,Java,Http, Haonan Dong's Website" />
     <meta name="description" content="Custom Fileupload, web, fileupload,Java,Http, " />
     <meta name="theme-color" content="#2CA6CB"/>
     <link rel="shortcut icon" type="image/x-icon" media="screen" href="https://haonan-dong.github.io/favicon.ico" />
     <link rel="canonical" href="https://haonan-dong.github.io/web/fileupload/" />
-    <link rel="alternate" type="application/rss+xml" title="λ lambda" href="https://haonan-dong.github.io/feed.xml"  />
+    <link rel="alternate" type="application/rss+xml" title="Haonan Dong's Website" href="https://haonan-dong.github.io/feed.xml"  />
 
     <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="https://cdn.bootcss.com/octicons/3.5.0/octicons.min.css" >
@@ -35,7 +35,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="https://haonan-dong.github.io/">λ lambda</a>
+                    <a class="navbar-brand" href="https://haonan-dong.github.io/">Haonan Dong's Website</a>
                     <p class="navbar-text"></p>
                 </div>
                 <div class="collapse navbar-collapse">
@@ -162,7 +162,7 @@
 
 <p>在我的机器上，显示如下内容，可以看到，这个一个get请求</p>
 
-<p><img src="https://bit-ranger.github.io/blog/static/img/http-get.png" alt="http-get" /></p>
+<p><img src="https://haonan-dong.github.io/static/img/http-get.png" alt="http-get" /></p>
 
 <p>下面利用一个 html 的 form表单提交 post 请求</p>
 
@@ -178,7 +178,7 @@
 
 <p>在我的机器上，显示如下内容</p>
 
-<p><img src="https://bit-ranger.github.io/blog/static/img/http-post.png" alt="http-post" /></p>
+<p><img src="https://haonan-dong.github.io/static/img/http-post.png" alt="http-post" /></p>
 
 <p>注意图中被红色框起来的部分，第一个红框指示了本次请求中，用来分隔不同元素的分隔线。</p>
 
@@ -220,11 +220,11 @@
 
 <p>情况A，分隔线完好地存在于buffer中，图中的bundary即为分隔线</p>
 
-<p><img src="https://bit-ranger.github.io/blog/static/img/boundary-A.png" alt="boundary-A" /></p>
+<p><img src="https://haonan-dong.github.io/static/img/boundary-A.png" alt="boundary-A" /></p>
 
 <p>情况B，分隔线的一部分存在于buffer中</p>
 
-<p><img src="https://bit-ranger.github.io/blog/static/img/boundary-B.png" alt="boundary-B" /></p>
+<p><img src="https://haonan-dong.github.io/static/img/boundary-B.png" alt="boundary-B" /></p>
 
 <p>在B情况下，<code>boundary</code>有多少字节存在于buffer中是不确定的，而且依靠这些不完整的字节根本无法判断他是否属于boundary开头。</p>
 
@@ -234,7 +234,7 @@
 
 <p>这个关健区中很有可能存在被截断boundary，每次检查到<code>pad</code>开头时立即收手，此位置之前的数据可以确保没有boundary，在下次填充buffer时，将这个关健区中的数据复制到buffer开头再处理。很显然，关健区<code>pad</code>长度应该等于boundary，如图：</p>
 
-<p><img src="https://bit-ranger.github.io/blog/static/img/boundary-C.png" alt="pad" /></p>
+<p><img src="https://haonan-dong.github.io/static/img/boundary-C.png" alt="pad" /></p>
 
 <h1 id="section-2">关键代码</h1>
 
@@ -1222,8 +1222,8 @@
 
     <footer  class="footnote footnote-tiffany">
         <div class="container">
-                <a class="foot-item" href="mailto:sincerebravefight@gmail.com" target="_blank"><span class="octicon octicon-mail"></span></a>
-                <a class="foot-item" href="https://github.com/bit-ranger" target="_blank"><span class="octicon octicon-mark-github"></span></a>
+                <a class="foot-item" href="mailto:august_dong@163.com  haonandong.cn@gmail.com" target="_blank"><span class="octicon octicon-mail"></span></a>
+                <a class="foot-item" href="https://github.com/Haonan DONG" target="_blank"><span class="octicon octicon-mark-github"></span></a>
                 <a class="foot-item" href="https://haonan-dong.github.io/feed.xml" target="_blank"><span class="octicon octicon-rss"></span></a>
                 <a class="foot-item" href="https://haonan-dong.github.io/link/"><span class="octicon octicon-link-external"></span></a>
                 &nbsp;

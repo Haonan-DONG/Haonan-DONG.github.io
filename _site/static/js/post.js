@@ -27,7 +27,7 @@ function share(){
 function gitment() {
     var gitment = new Gitment({
         id: window.location.pathname,
-        owner: 'bit-ranger',
+        owner: 'Haonan DONG',
         repo: 'blog',
         oauth: {
             client_id: 'a6fb73b3e790e234bab8',

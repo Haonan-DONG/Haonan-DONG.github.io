@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>λ lambda</title>
+    <title>Haonan Dong&#39;s Website</title>
     <description></description>
     <link>https://haonan-dong.github.io/</link>
     <atom:link href="https://haonan-dong.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 20 Jun 2019 12:22:28 +0800</pubDate>
-    <lastBuildDate>Thu, 20 Jun 2019 12:22:28 +0800</lastBuildDate>
+    <pubDate>Thu, 20 Jun 2019 13:12:23 +0800</pubDate>
+    <lastBuildDate>Thu, 20 Jun 2019 13:12:23 +0800</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
     
       <item>
@@ -434,20 +434,20 @@ cpu频率3.40GHZ，磁盘顺序读450MB/s，随机读190MB/s，顺序写250MB/s�
 &lt;p&gt;过程无须赘述&lt;/p&gt;
 
 &lt;p&gt;配置完成后，奇怪的现象发生了，&lt;code&gt;BindingResult.hasErrors()&lt;/code&gt;永远返回false&lt;br /&gt;
-&lt;img src=&quot;https://bit-ranger.github.io/blog/static/img/mvc-validator/hasErrors.jpg&quot; alt=&quot;hasErrors&quot; /&gt;&lt;/p&gt;
+&lt;img src=&quot;https://haonan-dong.github.io/static/img/mvc-validator/hasErrors.jpg&quot; alt=&quot;hasErrors&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;这是什么情况? validator 未指定？我赶紧检查配置：&lt;br /&gt;
-&lt;img src=&quot;https://bit-ranger.github.io/blog/static/img/mvc-validator/notNull.jpg&quot; alt=&quot;notNull&quot; /&gt;&lt;/p&gt;
+&lt;img src=&quot;https://haonan-dong.github.io/static/img/mvc-validator/notNull.jpg&quot; alt=&quot;notNull&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://bit-ranger.github.io/blog/static/img/mvc-validator/driven.jpg&quot; alt=&quot;driven&quot; /&gt;&lt;br /&gt;
+&lt;p&gt;&lt;img src=&quot;https://haonan-dong.github.io/static/img/mvc-validator/driven.jpg&quot; alt=&quot;driven&quot; /&gt;&lt;br /&gt;
 配置没有问题，日志能够正常打印，且没有错误，排除类加载失败的可能。&lt;/p&gt;
 
 &lt;p&gt;上google搜索一下！&lt;br /&gt;
-&lt;img src=&quot;https://bit-ranger.github.io/blog/static/img/mvc-validator/google.jpg&quot; alt=&quot;google&quot; /&gt;&lt;br /&gt;
+&lt;img src=&quot;https://haonan-dong.github.io/static/img/mvc-validator/google.jpg&quot; alt=&quot;google&quot; /&gt;&lt;br /&gt;
 翻看了第一页的回复，大多来自stackoverflow，无非是让你引入包, 加配置, 我项目里配置符合这些回复的要求, 所以需要另想办法&lt;/p&gt;
 
 &lt;p&gt;自己动手吧!我加入如下代码，以验证validator是否被正确加载&lt;br /&gt;
-&lt;img src=&quot;https://bit-ranger.github.io/blog/static/img/mvc-validator/initBinder.jpg&quot; alt=&quot;initBinder&quot; /&gt;&lt;br /&gt;
+&lt;img src=&quot;https://haonan-dong.github.io/static/img/mvc-validator/initBinder.jpg&quot; alt=&quot;initBinder&quot; /&gt;&lt;br /&gt;
 validator果然为null, 且如果拿到validator对象并set进去，就可以解决&lt;code&gt;BindingResult.hasErrors()&lt;/code&gt;永远返回false的问题,&lt;br /&gt;
 然而，这种处理方式需要在每个Controller中写一遍initBinder, 这种方式并不完美。&lt;/p&gt;
 
@@ -455,10 +455,10 @@ validator果然为null, 且如果拿到validator对象并set进去，就可以�
 我们知道&lt;code&gt;annotation-driven&lt;/code&gt;会在spring中自动注册多个bean, 详情请移步&lt;a href=&quot;https://my.oschina.net/HeliosFly/blog/205343&quot;&gt;自动注册&lt;/a&gt;&lt;br /&gt;
 会不会是项目中存在某些配置覆盖了其中的bean，造成了validator丢失?&lt;br /&gt;
 仔细扫描一下配置文件, 发现果然如此, 项目中为了更换json转换器, 自定义了一个bean&lt;br /&gt;
-&lt;img src=&quot;https://bit-ranger.github.io/blog/static/img/mvc-validator/adapter.jpg&quot; alt=&quot;adapter&quot; /&gt;&lt;/p&gt;
+&lt;img src=&quot;https://haonan-dong.github.io/static/img/mvc-validator/adapter.jpg&quot; alt=&quot;adapter&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;到了这个地步基本上找到原因了，解决方式很简单，将validator绑定起来就可以了&lt;br /&gt;
-&lt;img src=&quot;https://bit-ranger.github.io/blog/static/img/mvc-validator/validator-config.jpg&quot; alt=&quot;validator-config&quot; /&gt;&lt;/p&gt;
+&lt;img src=&quot;https://haonan-dong.github.io/static/img/mvc-validator/validator-config.jpg&quot; alt=&quot;validator-config&quot; /&gt;&lt;/p&gt;
 
 </description>
         <pubDate>Sat, 27 May 2017 00:00:00 +0800</pubDate>
@@ -961,7 +961,7 @@ free 指向下一段可用内存，内存分配时递增的地址就是通过它
         <title>Javascript 总结</title>
         <description>&lt;p&gt;超级长图，小心流量。&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://bit-ranger.github.io/blog/static/img/JavaScriptMindMap.jpg&quot; alt=&quot;javascript&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://haonan-dong.github.io/static/img/JavaScriptMindMap.jpg&quot; alt=&quot;javascript&quot; /&gt;&lt;/p&gt;
 
 </description>
         <pubDate>Thu, 07 May 2015 00:00:00 +0800</pubDate>
@@ -1660,7 +1660,7 @@ java.util.Enumeration&lt;/p&gt;
 
 &lt;p&gt;RMI示意图：&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://bit-ranger.github.io/blog/static/img/rmi.jpg&quot; alt=&quot;rmi&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://haonan-dong.github.io/static/img/rmi.jpg&quot; alt=&quot;rmi&quot; /&gt;&lt;/p&gt;
 
 &lt;h1 id=&quot;demo&quot;&gt;Demo&lt;/h1&gt;
 
@@ -1812,11 +1812,11 @@ java.util.Enumeration&lt;/p&gt;
 
 &lt;p&gt;get&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://bit-ranger.github.io/blog/static/img/servlet-encode/get.png&quot; alt=&quot;get&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://haonan-dong.github.io/static/img/servlet-encode/get.png&quot; alt=&quot;get&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;post&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://bit-ranger.github.io/blog/static/img/servlet-encode/post.png&quot; alt=&quot;post&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://haonan-dong.github.io/static/img/servlet-encode/post.png&quot; alt=&quot;post&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;从post中的&lt;code&gt;Content-Type:application/x-www-form-urlencoded&lt;/code&gt;可以看到，虽然数据为中文，但是在传递的时候，经过了一次urlEncode，这样一来，在数据交换层面就可以屏蔽编码的不一致性。&lt;/p&gt;
 
@@ -1870,7 +1870,7 @@ urlEncode只能识别ASCII码，可以想象的是，那些urlEncode不能识别
 
 &lt;p&gt;get与post结果如下，果然不负众望地乱码了(如果不乱码，我还写个毛？)。&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://bit-ranger.github.io/blog/static/img/servlet-encode/param.png&quot; alt=&quot;param&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://haonan-dong.github.io/static/img/servlet-encode/param.png&quot; alt=&quot;param&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;现在我们从Servlet中看看请求体, 修改上面的Servlet代码如下：&lt;/p&gt;
 
@@ -1903,13 +1903,13 @@ urlEncode只能识别ASCII码，可以想象的是，那些urlEncode不能识别
 &lt;p&gt;get与post结果如下,Servlet将http头部解析完成后，将请求体留了下来供应用程序使用, 这是考虑到http请求可能有多种 &lt;a href=&quot;http://www.w3school.com.cn/tags/att_form_enctype.asp&quot;&gt;enctype&lt;/a&gt; , 请求体的结构可能不同,&lt;br /&gt;
 例如，&lt;code&gt;multipart/form-data&lt;/code&gt;就不是这样的key=value结构，关于multipart/form-data，我在这篇 &lt;a href=&quot;http://blog.rainynight.top/2014-04-15/fileupload/&quot;&gt;fileupload&lt;/a&gt; 中曾有过简要分析。&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://bit-ranger.github.io/blog/static/img/servlet-encode/body-utf.png&quot; alt=&quot;body-utf&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://haonan-dong.github.io/static/img/servlet-encode/body-utf.png&quot; alt=&quot;body-utf&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;从图中可以看到, 设置了正确的字符集后, 服务端将能够正确地解析, get部分什么都没有，这是因为get没有请求体。&lt;/p&gt;
 
 &lt;p&gt;让我们换种字符集试试, 比如, 将servet中的”utf-8”换成”iso-8859-1”。&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://bit-ranger.github.io/blog/static/img/servlet-encode/body-iso.png&quot; alt=&quot;body-iso&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://haonan-dong.github.io/static/img/servlet-encode/body-iso.png&quot; alt=&quot;body-iso&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;嘿，果然如我所料，而且这个字符串好像很眼熟，和req.getParameter(“param”)结果是一样的，没错，事实上，tomcat默认的字符集就是&lt;code&gt;iso-8859-1&lt;/code&gt;, 我们从中可以得到一个推论，tomcat使用默认的字符集，对http请求进行过一次decode。&lt;/p&gt;
 
@@ -1925,7 +1925,7 @@ urlEncode只能识别ASCII码，可以想象的是，那些urlEncode不能识别
 
 &lt;p&gt;为什么要 &lt;a href=&quot;http://www.w3school.com.cn/jsref/jsref_encodeuri.asp&quot;&gt;encodeURI&lt;/a&gt; 两次？talk is cheap， let’s code！&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://bit-ranger.github.io/blog/static/img/servlet-encode/encodeURI.png&quot; alt=&quot;encodeURI&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://haonan-dong.github.io/static/img/servlet-encode/encodeURI.png&quot; alt=&quot;encodeURI&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;注意观察这张图片，从中发现了什么? 没错，第一次encodeURI生成了HTTP一节的示例中一样的结果。&lt;br /&gt;
 我们在浏览器窗口中输入 “http://localhost:8080/hsp?param=%E4%BD%A0%E5%A5%BD%E5%85%A8%E4%B8%96%E7%95%8C”, 会发现它变成了 “http://localhost:8080/hsp?param=你好全世界”,&lt;br /&gt;
@@ -1948,7 +1948,7 @@ urlEncode只能识别ASCII码，可以想象的是，那些urlEncode不能识别
 &lt;/div&gt;
 &lt;/div&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://bit-ranger.github.io/blog/static/img/servlet-encode/world.png&quot; alt=&quot;world&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://haonan-dong.github.io/static/img/servlet-encode/world.png&quot; alt=&quot;world&quot; /&gt;&lt;/p&gt;
 
 </description>
         <pubDate>Tue, 17 Mar 2015 00:00:00 +0800</pubDate>
@@ -2056,7 +2056,7 @@ urlEncode只能识别ASCII码，可以想象的是，那些urlEncode不能识别
 
 &lt;p&gt;在http元素也就是FilterChain中，以责任链的形式存在多个&lt;code&gt;Filter&lt;/code&gt;，这些Filter真正执行过滤操作，http标签中的许多配置项，如&lt;code&gt; &amp;lt;security:http-basic/&amp;gt;&lt;/code&gt;、&lt;code&gt;&amp;lt;security:logout/&amp;gt;&lt;/code&gt;等，其实就是创建指定的Filter，以下表格列举了这些Filter。&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://bit-ranger.github.io/blog/static/img/spring-security-filter.png&quot; alt=&quot;filter&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://haonan-dong.github.io/static/img/spring-security-filter.png&quot; alt=&quot;filter&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;利用别名，我们可以将自定义的过滤器加入指定的位置，或者替换其中的某个过滤器。&lt;/p&gt;
 
@@ -2070,7 +2070,7 @@ urlEncode只能识别ASCII码，可以想象的是，那些urlEncode不能识别
 
 &lt;h1 id=&quot;filterchain&quot;&gt;FilterChain&lt;/h1&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://bit-ranger.github.io/blog/static/img/spring-security-filterChain.jpg&quot; alt=&quot;filterChain&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://haonan-dong.github.io/static/img/spring-security-filterChain.jpg&quot; alt=&quot;filterChain&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;上图列举了一些Filter, 此处将说明这些Filter的作用, 在需要插入自定义Filter时, 这些说明可以作为参考。&lt;/p&gt;
 

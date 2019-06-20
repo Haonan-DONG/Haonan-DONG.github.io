@@ -6,12 +6,12 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="keywords" content="Servlet乱码分析, web, servlet,encode,Java, λ lambda" />
+    <meta name="keywords" content="Servlet乱码分析, web, servlet,encode,Java, Haonan Dong's Website" />
     <meta name="description" content="Servlet乱码分析, web, servlet,encode,Java, 我们知道，web浏览器会将form中的内容打包成HTTP请求体，然后发送到服务端，服务端对请求体解析后可以得到传递的数据。这当中包含两个过程：encode与decode。" />
     <meta name="theme-color" content="#2CA6CB"/>
     <link rel="shortcut icon" type="image/x-icon" media="screen" href="https://haonan-dong.github.io/favicon.ico" />
     <link rel="canonical" href="https://haonan-dong.github.io/web/servlet-encode/" />
-    <link rel="alternate" type="application/rss+xml" title="λ lambda" href="https://haonan-dong.github.io/feed.xml"  />
+    <link rel="alternate" type="application/rss+xml" title="Haonan Dong's Website" href="https://haonan-dong.github.io/feed.xml"  />
 
     <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="https://cdn.bootcss.com/octicons/3.5.0/octicons.min.css" >
@@ -35,7 +35,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="https://haonan-dong.github.io/">λ lambda</a>
+                    <a class="navbar-brand" href="https://haonan-dong.github.io/">Haonan Dong's Website</a>
                     <p class="navbar-text"></p>
                 </div>
                 <div class="collapse navbar-collapse">
@@ -169,11 +169,11 @@
 
 <p>get</p>
 
-<p><img src="https://bit-ranger.github.io/blog/static/img/servlet-encode/get.png" alt="get" /></p>
+<p><img src="https://haonan-dong.github.io/static/img/servlet-encode/get.png" alt="get" /></p>
 
 <p>post</p>
 
-<p><img src="https://bit-ranger.github.io/blog/static/img/servlet-encode/post.png" alt="post" /></p>
+<p><img src="https://haonan-dong.github.io/static/img/servlet-encode/post.png" alt="post" /></p>
 
 <p>从post中的<code>Content-Type:application/x-www-form-urlencoded</code>可以看到，虽然数据为中文，但是在传递的时候，经过了一次urlEncode，这样一来，在数据交换层面就可以屏蔽编码的不一致性。</p>
 
@@ -227,7 +227,7 @@ urlEncode只能识别ASCII码，可以想象的是，那些urlEncode不能识别
 
 <p>get与post结果如下，果然不负众望地乱码了(如果不乱码，我还写个毛？)。</p>
 
-<p><img src="https://bit-ranger.github.io/blog/static/img/servlet-encode/param.png" alt="param" /></p>
+<p><img src="https://haonan-dong.github.io/static/img/servlet-encode/param.png" alt="param" /></p>
 
 <p>现在我们从Servlet中看看请求体, 修改上面的Servlet代码如下：</p>
 
@@ -260,13 +260,13 @@ urlEncode只能识别ASCII码，可以想象的是，那些urlEncode不能识别
 <p>get与post结果如下,Servlet将http头部解析完成后，将请求体留了下来供应用程序使用, 这是考虑到http请求可能有多种 <a href="http://www.w3school.com.cn/tags/att_form_enctype.asp">enctype</a> , 请求体的结构可能不同,<br />
 例如，<code>multipart/form-data</code>就不是这样的key=value结构，关于multipart/form-data，我在这篇 <a href="http://blog.rainynight.top/2014-04-15/fileupload/">fileupload</a> 中曾有过简要分析。</p>
 
-<p><img src="https://bit-ranger.github.io/blog/static/img/servlet-encode/body-utf.png" alt="body-utf" /></p>
+<p><img src="https://haonan-dong.github.io/static/img/servlet-encode/body-utf.png" alt="body-utf" /></p>
 
 <p>从图中可以看到, 设置了正确的字符集后, 服务端将能够正确地解析, get部分什么都没有，这是因为get没有请求体。</p>
 
 <p>让我们换种字符集试试, 比如, 将servet中的”utf-8”换成”iso-8859-1”。</p>
 
-<p><img src="https://bit-ranger.github.io/blog/static/img/servlet-encode/body-iso.png" alt="body-iso" /></p>
+<p><img src="https://haonan-dong.github.io/static/img/servlet-encode/body-iso.png" alt="body-iso" /></p>
 
 <p>嘿，果然如我所料，而且这个字符串好像很眼熟，和req.getParameter(“param”)结果是一样的，没错，事实上，tomcat默认的字符集就是<code>iso-8859-1</code>, 我们从中可以得到一个推论，tomcat使用默认的字符集，对http请求进行过一次decode。</p>
 
@@ -282,7 +282,7 @@ urlEncode只能识别ASCII码，可以想象的是，那些urlEncode不能识别
 
 <p>为什么要 <a href="http://www.w3school.com.cn/jsref/jsref_encodeuri.asp">encodeURI</a> 两次？talk is cheap， let’s code！</p>
 
-<p><img src="https://bit-ranger.github.io/blog/static/img/servlet-encode/encodeURI.png" alt="encodeURI" /></p>
+<p><img src="https://haonan-dong.github.io/static/img/servlet-encode/encodeURI.png" alt="encodeURI" /></p>
 
 <p>注意观察这张图片，从中发现了什么? 没错，第一次encodeURI生成了HTTP一节的示例中一样的结果。<br />
 我们在浏览器窗口中输入 “http://localhost:8080/hsp?param=%E4%BD%A0%E5%A5%BD%E5%85%A8%E4%B8%96%E7%95%8C”, 会发现它变成了 “http://localhost:8080/hsp?param=你好全世界”,<br />
@@ -305,7 +305,7 @@ urlEncode只能识别ASCII码，可以想象的是，那些urlEncode不能识别
 </div>
 </div>
 
-<p><img src="https://bit-ranger.github.io/blog/static/img/servlet-encode/world.png" alt="world" /></p>
+<p><img src="https://haonan-dong.github.io/static/img/servlet-encode/world.png" alt="world" /></p>
 
 
           </article>
@@ -1184,8 +1184,8 @@ urlEncode只能识别ASCII码，可以想象的是，那些urlEncode不能识别
 
     <footer  class="footnote footnote-tiffany">
         <div class="container">
-                <a class="foot-item" href="mailto:sincerebravefight@gmail.com" target="_blank"><span class="octicon octicon-mail"></span></a>
-                <a class="foot-item" href="https://github.com/bit-ranger" target="_blank"><span class="octicon octicon-mark-github"></span></a>
+                <a class="foot-item" href="mailto:august_dong@163.com  haonandong.cn@gmail.com" target="_blank"><span class="octicon octicon-mail"></span></a>
+                <a class="foot-item" href="https://github.com/Haonan DONG" target="_blank"><span class="octicon octicon-mark-github"></span></a>
                 <a class="foot-item" href="https://haonan-dong.github.io/feed.xml" target="_blank"><span class="octicon octicon-rss"></span></a>
                 <a class="foot-item" href="https://haonan-dong.github.io/link/"><span class="octicon octicon-link-external"></span></a>
                 &nbsp;
