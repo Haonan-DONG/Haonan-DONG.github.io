@@ -6,8 +6,8 @@
 </description>
     <link>http://haonan-dong.github.io/</link>
     <atom:link href="http://haonan-dong.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 23 Jun 2019 19:51:37 +0800</pubDate>
-    <lastBuildDate>Sun, 23 Jun 2019 19:51:37 +0800</lastBuildDate>
+    <pubDate>Sun, 23 Jun 2019 19:53:14 +0800</pubDate>
+    <lastBuildDate>Sun, 23 Jun 2019 19:53:14 +0800</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
     
       <item>
@@ -16,9 +16,13 @@
 &lt;p&gt;Hi, my name is Haonan Dong, a junior undergraduate in School of Geodesy and Geomatics, Wuhan University. I major in Photogrammetry and Remote sensing.&lt;/p&gt;
 
 &lt;h1 id=&quot;research-interest&quot;&gt;Research Interest&lt;/h1&gt;
-&lt;p&gt;Even though I am an undergraduate, I really want to change the world using fancy technology concerning environment perception and understanding.
-1. Vision Navigation (through AR/VR platform)
-2. SLAM and Autonomous System.&lt;/p&gt;
+&lt;p&gt;Even though I am an undergraduate, I really want to change the world using fancy technology concerning environment perception and understanding.&lt;/p&gt;
+
+&lt;h3 id=&quot;section&quot;&gt;#&lt;/h3&gt;
+&lt;ol&gt;
+  &lt;li&gt;Vision Navigation (through AR/VR platform)&lt;/li&gt;
+  &lt;li&gt;SLAM and Autonomous System.&lt;/li&gt;
+&lt;/ol&gt;
 
 </description>
         <pubDate>Sun, 23 Jun 2019 00:00:00 +0800</pubDate>
