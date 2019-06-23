@@ -7,6 +7,7 @@ github_username:  haonan-dong
 
 # Build settings
 #include:
+email: august_dong@163.com
 #source: _source
 #dstination: _deploy
 markdown: kramdown
