@@ -5,7 +5,7 @@ description: >
 author: Haonan Dong 
 email: august_dong@163.com// haonandong.cn@gmail.com
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "http://alexcarpenter.github.io" # the base hostname & protocol for your site
+url: "http://haonan-dong.github.io" # the base hostname & protocol for your site
 github_username:  haonan-dong
 
 # Build settings
