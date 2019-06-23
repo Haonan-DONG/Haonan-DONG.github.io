@@ -7,8 +7,8 @@ github_username:  haonan-dong
 
 # Build settings
 #include:
-source: _source
-dstination: _deploy
+#source: _source
+#dstination: _deploy
 markdown: kramdown
 permalink: /:year/:month/:title
 sass:
