@@ -1,10 +1,7 @@
 # Site settings
 title: Haonan Dong's Website
-description: >
- Home page for Haonan Dong's Website.
-author: Haonan Dong 
-email: august_dong@163.com// haonandong.cn@gmail.com
-baseurl: "" # the subpath of your site, e.g. /blog
+emial: august_dong@163.com
+description: Home page for Haonan Dong's Website.
 url: "http://haonan-dong.github.io" # the base hostname & protocol for your site
 github_username:  haonan-dong
 
