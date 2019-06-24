@@ -12,4 +12,10 @@ Even though I am an undergraduate, I really want to change the world using fancy
 1. Vision Navigation (through AR/VR platform)
 2. SLAM and Autonomous System.
 
-Thank you for visiting.
+# picutre
+![vision navigation](/home/haonan-dong.github.io/assets/img/vision-navigation.jpg)
+
+> From my professor: You need to know what you are interested in, then let us talk about how to make it come true.
+
+
+Thank you for visiting
