@@ -14,7 +14,7 @@ Even though I am an undergraduate, I really want to change the world using fancy
 
 # CV
 Here is my CV's link.
-[CV](/home/haonan-dong.github.io/assets/files/CV.pdf)
+[CV](https://github.com/haonan-dong/haonan-dong.github.io/blob/master/assets/files/CV.pdf)
 
 > From my professor: You need to know what you are interested in, then let us talk about how to make it come true.
 
