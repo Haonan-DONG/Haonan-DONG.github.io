@@ -6,8 +6,8 @@
 </description>
     <link>http://haonan-dong.github.io/</link>
     <atom:link href="http://haonan-dong.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 24 Jun 2019 12:26:06 +0800</pubDate>
-    <lastBuildDate>Mon, 24 Jun 2019 12:26:06 +0800</lastBuildDate>
+    <pubDate>Mon, 24 Jun 2019 12:47:06 +0800</pubDate>
+    <lastBuildDate>Mon, 24 Jun 2019 12:47:06 +0800</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
     
       <item>
@@ -24,8 +24,9 @@
   &lt;li&gt;SLAM and Autonomous System.&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;h1 id=&quot;picutre&quot;&gt;picutre&lt;/h1&gt;
-&lt;p&gt;&lt;img src=&quot;/home/haonan-dong.github.io/assets/img/vision-navigation.jpg&quot; alt=&quot;vision navigation&quot; /&gt;&lt;/p&gt;
+&lt;h1 id=&quot;cv&quot;&gt;CV&lt;/h1&gt;
+&lt;p&gt;Here is my CV’s link.
+&lt;a href=&quot;/home/haonan-dong.github.io/assets/files/CV.pdf&quot;&gt;CV&lt;/a&gt;&lt;/p&gt;
 
 &lt;blockquote&gt;
   &lt;p&gt;From my professor: You need to know what you are interested in, then let us talk about how to make it come true.&lt;/p&gt;
