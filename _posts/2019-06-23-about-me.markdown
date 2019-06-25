@@ -2,7 +2,7 @@
 layout: post
 title: ABOUT ME
 ---
-# Intro 
+# NICE TO MEET U. 
 Hi, my name is Haonan Dong, a junior undergraduate in School of Geodesy and Geomatics, Wuhan University. I major in Photogrammetry and Remote sensing.
 
 # Research Interest
@@ -11,12 +11,11 @@ Even though I am an undergraduate, I really want to change the world using fancy
 #### Topic:
 1. Vision Navigation (through AR/VR platform)
 2. SLAM and Autonomous System.
+![navigation](https://github.com/Haonan-DONG/haonan-dong.github.io/raw/master/assets/img/vision-navigation.jpg)
 
 # CV
 Here is my CV's link.
 [CV](https://github.com/haonan-dong/haonan-dong.github.io/blob/master/assets/files/CV.pdf)
-
-> From my professor: You need to know what you are interested in, then let us talk about how to make it come true.
 
 
 Thank you for visiting
