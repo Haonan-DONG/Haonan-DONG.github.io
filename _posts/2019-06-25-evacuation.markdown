@@ -15,8 +15,6 @@ Mimic experiment shows that our algorithm can preferentially evacuate the rooms 
 
 ## IF YOU HAVE ANY COMMENT ON OUR RESERACH, PLEASE LET ME KNOW.
 
-Here is our unpublished paper. 
-[paper](https://github.com/haonan-dong/haonan-dong.github.io/tree/master/assets/files/evacuation-paper.pdf)
 
-Our codes will be published soon.
+Our paper and codes will be published soon.
 
