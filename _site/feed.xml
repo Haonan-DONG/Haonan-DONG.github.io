@@ -6,9 +6,22 @@
 </description>
     <link>http://haonan-dong.github.io/</link>
     <atom:link href="http://haonan-dong.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 08 Jul 2019 15:55:55 +0800</pubDate>
-    <lastBuildDate>Mon, 08 Jul 2019 15:55:55 +0800</lastBuildDate>
+    <pubDate>Mon, 08 Jul 2019 16:09:43 +0800</pubDate>
+    <lastBuildDate>Mon, 08 Jul 2019 16:09:43 +0800</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
+    
+      <item>
+        <title>My Recent Thought About future</title>
+        <description>&lt;h1 id=&quot;computer-vision&quot;&gt;Computer Vision&lt;/h1&gt;
+&lt;p&gt;##  The Origin Story
+Think about here is a little robot baby, sitting in front of you and facing to you. Supposing that the baby’s head is still, so, what will this baby see with its electric eyes?&lt;/p&gt;
+</description>
+        <pubDate>Mon, 08 Jul 2019 00:00:00 +0800</pubDate>
+        <link>http://haonan-dong.github.io/2019/07/08/My-Thought-about-the-Future.html</link>
+        <guid isPermaLink="true">http://haonan-dong.github.io/2019/07/08/My-Thought-about-the-Future.html</guid>
+        
+        
+      </item>
     
       <item>
         <title>Onging Scientific Research</title>
