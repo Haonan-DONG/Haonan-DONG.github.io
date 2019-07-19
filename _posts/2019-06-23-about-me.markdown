@@ -2,10 +2,14 @@
 layout: post
 title: ABOUT ME
 ---
+
 # NICE TO MEET U. 
 Hi, my name is Haonan Dong, a junior undergraduate in School of Geodesy and Geomatics, Wuhan University. I major in Photogrammetry and Remote sensing.
 
-<img src="https://github.com/haonan-dong/haonan-dong.github.io/raw/master/assets/img/about me/me.JPG" height="300" />
+
+<img src="https://github.com/haonan-dong/haonan-dong.github.io/raw/master/assets/img/about me/me.JPG" height="300"/>
+
+
 
 # Research Interest
 Even though I am an undergraduate, I really want to change the world using fancy technology concerning environment perception and understanding.
@@ -13,6 +17,7 @@ Even though I am an undergraduate, I really want to change the world using fancy
 #### Topic:
 1. Computer Vision: Geometry method, eg: SLAM
 2. Computer Vision based on Learning, eg: Indoor Navigation with AR
+
 
 <img src="https://github.com/haonan-dong/haonan-dong.github.io/raw/master/assets/img/about me/slam.jpeg" height="250" />
 
