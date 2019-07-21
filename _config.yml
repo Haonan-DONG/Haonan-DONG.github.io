@@ -1,11 +1,24 @@
-#o Site settings
-title: Haonan Dong's Website 
-email: august_dong@163.com haonandong.cn@gmail.cn
+# Site settings
+title: Haonan Dong's Website
+general_email: august_dong@163.com
+academic_email: haonandong.cn@gmail.com
+
 description: > # this means to ignore newlines until "baseurl:"
-  This Website is under constrution and thanks for your visiting.
-baseurl: "" # the subpath of your site, e.g. /blog/
-url: "http://haonan-dong.github.io" # the base hostname & protocol for your site
-github_username:  haonan-dong
+  This Website is being under construction. Thank you for visiting.
+
+baseurl: "/academic-portfolio" # the subpath of your site, e.g. /blog/
+
+url: "https://haonan-dong.github.io" # the base hostname & protocol for your site
+
+# twitter_username: jekyllrb
+github_username: haonan-dong
+# feel free to add other links here; you will have to add the SVG icon in _layouts/footer.html
 
 # Build settings
 markdown: kramdown
+
+kramdown:
+  math_engine: mathjax
+
+# Other options
+permalink: blog/:year/:month/:title

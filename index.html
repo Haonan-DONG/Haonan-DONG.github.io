@@ -4,20 +4,18 @@ layout: default
 
 <div class="home">
 
-  <h1 class="page-heading"></h1>
+<p>Hello there, and welcome to my homepage!<br><br>My name is Haonan Dong, and I am a Junior Undergraduate in Wuhan University.
 
-  <ul class="post-list">
-    {% for post in site.posts %}
-      <li>
-        <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
+I maintain a list of research projects and coding journals under the <a href="/research/">Research</a> tab, and a list of other non-research projects under the <a href="/projects">Projects</a> tab. You may also check out my <a href="">Github profile.</a><br><br>
 
-        <h2>
-          <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-        </h2>
-      </li>
-	{% endfor %}
-  </ul>
+</div>
 
- <!--<p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>-->
+<h2>Updates</h2>
+<div class="updates" style="height: 10em; overflow-y: scroll;">
+<ul>
+<li><i>03,2018</i> - Started First Formal Scientific Research through the innovative platform for Undergraduates in Wuhan University.</li>
+<li><i>10,2018</i> - Started Professional Scientific Research with Prof. Deng Fei in my major field.
+<li><i>06,2019</i> - Started an interesting topic about Computer Vision - Geometry - SLAM.
+</ul>
 
 </div>

@@ -2,83 +2,13 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Haonan Dong&#39;s Website</title>
-    <description>This Website is under constrution and thanks for your visiting.
+    <description>This Website is being under construction. Thank you for visiting.
 </description>
-    <link>http://haonan-dong.github.io/</link>
-    <atom:link href="http://haonan-dong.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 19 Jul 2019 12:29:44 +0800</pubDate>
-    <lastBuildDate>Fri, 19 Jul 2019 12:29:44 +0800</lastBuildDate>
+    <link>https://haonan-dong.github.io/academic-portfolio/</link>
+    <atom:link href="https://haonan-dong.github.io/academic-portfolio/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Sun, 21 Jul 2019 19:44:52 +0800</pubDate>
+    <lastBuildDate>Sun, 21 Jul 2019 19:44:52 +0800</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
-    
-      <item>
-        <title>My Recent Thought About Future</title>
-        <description>&lt;h1 id=&quot;computer-vision&quot;&gt;COMPUTER VISION&lt;/h1&gt;
-
-&lt;h3 id=&quot;the-origin-story&quot;&gt;The Origin Story&lt;/h3&gt;
-
-&lt;p&gt;Think about here is a little robot baby, sitting in front of you and facing to you. Supposing that the baby’s head is still, so, what will this baby see with its electric eyes?&lt;/p&gt;
-</description>
-        <pubDate>Mon, 08 Jul 2019 00:00:00 +0800</pubDate>
-        <link>http://haonan-dong.github.io/2019/07/08/My-Thought-about-the-Future.html</link>
-        <guid isPermaLink="true">http://haonan-dong.github.io/2019/07/08/My-Thought-about-the-Future.html</guid>
-        
-        
-      </item>
-    
-      <item>
-        <title>Onging Scientific Research</title>
-        <description>&lt;h1 id=&quot;emergency-evacuation-path-planning-algorithm-for-indoor-fire-in-commercial-buildings&quot;&gt;Emergency Evacuation Path Planning Algorithm for Indoor Fire In Commercial Buildings&lt;/h1&gt;
-
-&lt;p&gt;This is my first scientific research via the undergraduates’ inovation practice platform. Our topic is developing an effect solution to reduce casualty when indoor fire occurs in complicated indoor structures.&lt;/p&gt;
-
-&lt;p&gt;We use the model of combination of analytic hierarchy process(AHP) and entropy weight to determine the evacuation priority of each indoor room.&lt;/p&gt;
-
-&lt;p&gt;Then we plan evacuation routes for each indoor room, according to its evacuation priority, with improved Dijkstra algorithm.&lt;/p&gt;
-
-&lt;p&gt;Mimic experiment shows that our algorithm can preferentially evacuate the rooms near the fire origin, avoid the indoor congestion, and ensure the stability of the evacuation plan.&lt;/p&gt;
-
-&lt;h2 id=&quot;if-you-have-any-comment-on-our-reserach-please-let-me-know&quot;&gt;IF YOU HAVE ANY COMMENT ON OUR RESERACH, PLEASE LET ME KNOW.&lt;/h2&gt;
-
-&lt;p&gt;Our paper and codes will be published soon.&lt;/p&gt;
-
-</description>
-        <pubDate>Tue, 25 Jun 2019 00:00:00 +0800</pubDate>
-        <link>http://haonan-dong.github.io/2019/06/25/evacuation.html</link>
-        <guid isPermaLink="true">http://haonan-dong.github.io/2019/06/25/evacuation.html</guid>
-        
-        
-      </item>
-    
-      <item>
-        <title>ABOUT ME</title>
-        <description>&lt;h1 id=&quot;nice-to-meet-u&quot;&gt;NICE TO MEET U.&lt;/h1&gt;
-&lt;p&gt;Hi, my name is Haonan Dong, a junior undergraduate in School of Geodesy and Geomatics, Wuhan University. I major in Photogrammetry and Remote sensing.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://github.com/haonan-dong/haonan-dong.github.io/raw/master/assets/img/about me/me.JPG&quot; height=&quot;300&quot; /&gt;&lt;/p&gt;
-
-&lt;h1 id=&quot;research-interest&quot;&gt;Research Interest&lt;/h1&gt;
-&lt;p&gt;Even though I am an undergraduate, I really want to change the world using fancy technology concerning environment perception and understanding.&lt;/p&gt;
-
-&lt;h4 id=&quot;topic&quot;&gt;Topic:&lt;/h4&gt;
-&lt;ol&gt;
-  &lt;li&gt;Computer Vision: Geometry method, eg: SLAM&lt;/li&gt;
-  &lt;li&gt;Computer Vision based on Learning, eg: Indoor Navigation with AR&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://github.com/haonan-dong/haonan-dong.github.io/raw/master/assets/img/about me/slam.jpeg&quot; height=&quot;250&quot; /&gt;&lt;/p&gt;
-
-&lt;h1 id=&quot;cv&quot;&gt;CV&lt;/h1&gt;
-&lt;p&gt;Here is my CV’s link.
-&lt;a href=&quot;https://github.com/haonan-dong/haonan-dong.github.io/blob/master/assets/files/CV.pdf&quot;&gt;CV&lt;/a&gt;&lt;/p&gt;
-
-&lt;h1 id=&quot;thank-you-for-visiting&quot;&gt;Thank you for visiting&lt;/h1&gt;
-</description>
-        <pubDate>Sun, 23 Jun 2019 00:00:00 +0800</pubDate>
-        <link>http://haonan-dong.github.io/2019/06/23/about-me.html</link>
-        <guid isPermaLink="true">http://haonan-dong.github.io/2019/06/23/about-me.html</guid>
-        
-        
-      </item>
     
   </channel>
 </rss>
