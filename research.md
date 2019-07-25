@@ -4,8 +4,9 @@ permalink: /research/
 title: Research
 ---
 
-Describe your research interests here.
+Although I am just an undergraduate, I still want to change the world with fancy technology concerning understanding of the the surrounding world.
 
+<div style="display: none">
 <h2>Publications</h2>
 <ul>
 	<li>
@@ -21,23 +22,31 @@ Describe your research interests here.
 		<a href=""><div class="color-button">pdf</div></a><a href=""><div class="color-button">cite</div></a><a href=""><div class="color-button">code</div></a>
 	</li><br>
 </ul>
+</div>
 
 <h2>Research Projects</h2>
 <ul>
 	<li>
-		<b>Project title</b><br>
-		University, Duration<br>
-		<i>Other details such as advisor's name may go here</i><br>
+		<b>Emergency Evacuation Assistant System under Indoor Fire</b><br>
+		Wuhan University<br>
+		<i>Advisor: Professor Yibin Yao, Professor Xianghong Hua</i><br>
 		<a href=""><div class="color-button">report</div></a><a href=""><div class="color-button">code</div></a>
 	</li><br>
 	<li>
-		<b>Project title</b><br>
-		University, Duration<br>
-		<i>Other details such as advisor's name may go here</i><br>
+		<b>Inertial Navigation through Smartphone Platform</b><br>
+		Wuhan University<br>
+		<i>Advisor: Professor Fei Deng</i><br>
 		<a href=""><div class="color-button">report</div></a><a href=""><div class="color-button">code</div></a>
 	</li><br>
 </ul>
 
+<ul>
+	<li>
+		<b>Indoor Structure Point Cloud Matching by Combination of TOF and RGB Data</b><br>
+		Wuhan University<br>
+		<i>Advisor: Professor Fei Deng</i><br>
+
+<div style="display:none">
 <h2>Research Implementations</h2>
 <ul>
 	<li>
@@ -49,3 +58,4 @@ Describe your research interests here.
 		<a href=""><div class="color-button">paper</div></a><a href=""><div class="color-button">report</div></a><a href=""><div class="color-button">code</div></a>
 	</li><br>
 </ul>
+</div>

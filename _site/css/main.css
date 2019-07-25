@@ -234,7 +234,7 @@ dl, dd, ol, ul, figure {
  */
 body {
   font-family: "Open Sans", Helvetica, Arial, sans-serif;
-  font-size: 0.95em;
+  font-size: 1.2em;
   line-height: 1.5;
   font-weight: 300;
   color: #111;
@@ -264,7 +264,7 @@ figure > img {
   display: block; }
 
 figcaption {
-  font-size: 0.83125em; }
+  font-size: 1.05em; }
 
 /**
  * Lists
@@ -456,7 +456,7 @@ a.tosu {
     margin-bottom: 30px; }
 
 .post-meta {
-  font-size: 0.83125em;
+  font-size: 1.05em;
   color: #828282; }
 
 .post-link {

@@ -3,7 +3,7 @@ layout: page
 title: Key Courses Undertaken
 permalink: /miscellany/courses/
 ---
-
+<div style="display:none">
 <h2>At &lt;your university name&gt;</h2>
 
 <h3>Department 1</h3>
@@ -33,4 +33,5 @@ permalink: /miscellany/courses/
 
 <div align= "right">
 	*<i>pursuing currently</i><br><sup>&dagger;</sup><i>accompanied by a separate lab course</i>
+</div>
 </div>
