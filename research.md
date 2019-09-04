@@ -27,24 +27,29 @@ Although I am just an undergraduate, I still want to change the world with fancy
 <h2>Research Projects</h2>
 <ul>
 	<li>
-		<b>Emergency Evacuation Assistant System under Indoor Fire</b><br>
+		<b>Point Cloud Regisration and RGB-D Camera Calibration</b><br>
 		Wuhan University<br>
-		<i>Advisor: Professor Yibin Yao, Professor Xianghong Hua</i><br>
-		<a href=""><div class="color-button">report</div></a><a href=""><div class="color-button">code</div></a>
+		07.2019 - Now<br>
+		<b><i>Advisor: Professor Fei Deng</i></b>
 	</li><br>
+	<br>
 	<li>
 		<b>Inertial Navigation through Smartphone Platform</b><br>
 		Wuhan University<br>
-		<i>Advisor: Professor Fei Deng</i><br>
-		<a href=""><div class="color-button">report</div></a><a href=""><div class="color-button">code</div></a>
+		10.2018 - 06.2019<br>
+		<b><i>Advisor: Professor Fei Deng</i></b>
 	</li><br>
+	<br>
+	<li>
+		<b>Emergency Evacuation Assistant System under Indoor Fire</b><br>
+		Wuhan University<br>
+		03.2018 - 06.2019<br>
+		<b><i>Advisor: Professor Yibin Yao, Professor Xianghong Hua</i></b>
+	</li><br>
+	<br>
 </ul>
 
-<ul>
-	<li>
-		<b>Indoor Structure Point Cloud Matching by Combination of TOF and RGB Data</b><br>
-		Wuhan University<br>
-		<i>Advisor: Professor Fei Deng</i><br>
+
 
 <div style="display:none">
 <h2>Research Implementations</h2>
