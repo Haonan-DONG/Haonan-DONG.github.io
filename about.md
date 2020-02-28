@@ -4,7 +4,7 @@ title: About
 permalink: /about/
 ---
 
-<img src="https://github.com/haonan-dong/haonan-dong.github.io/raw/master/assets/img/about me/me.JPG" height="300" align="center" />
+<div align=center><img src="https://github.com/haonan-dong/haonan-dong.github.io/raw/master/assets/img/about_me/me.JPG" height="450"></div>  
 
 # NICE TO MEET U. 
 Hi, my name is    ***Haonan Dong***  , a senior undergraduate in School of Geodesy and Geomatics, Wuhan University. I major in Photogrammetry and Remote sensing.
@@ -17,7 +17,6 @@ Even though I am an undergraduate, I really want to change the world using fancy
 2. Computer Vision based on Learning, eg: **Remote Sense Image Classification**
 
 
-<img src="https://github.com/haonan-dong/haonan-dong.github.io/raw/master/assets/img/about me/slam.jpeg" height="250" />
-
+<div align=center><img src="https://github.com/haonan-dong/haonan-dong.github.io/raw/master/assets/img/about_me/slam.jpeg" height="450"></div>  
 
 # Thank you for visiting
