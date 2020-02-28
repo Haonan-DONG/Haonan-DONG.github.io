@@ -17,6 +17,4 @@ Even though I am an undergraduate, I really want to change the world using fancy
 2. Computer Vision based on Learning, eg: **Remote Sense Image Classification**
 
 
-<div align=center><img src="https://github.com/haonan-dong/haonan-dong.github.io/raw/master/assets/img/about_me/slam.jpeg" height="350"></div>  
-
 # Thank you for visiting
