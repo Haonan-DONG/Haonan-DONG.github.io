@@ -13,8 +13,8 @@ Hi, my name is    ***Haonan Dong***  , a senior undergraduate in School of Geode
 Even though I am an undergraduate, I really want to change the world using fancy technology concerning environment perception and understanding.
 
 #### Topic:
-1. Computer Vision: Geometry method, eg: **Stereo Vision**
-2. Computer Vision based on Learning, eg: **Remote Sense Image Classification**
+1. Computer Vision: Geometry method, eg: ***MultiView Geometry and SLAM***
+2. Computer Vision based on Learning, eg: ***Deep Learning***
 
 
 # Thank you for visiting
