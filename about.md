@@ -4,7 +4,6 @@ title: About
 permalink: /about/
 ---
 
-<div align=center><img src="http://github.com/haonan-dong/haonan-dong.github.io/raw/master/assets/img/about_me/me.JPG" height="250"></div>  
 
 # NICE TO MEET U. 
 Hi, my name is    ***Haonan Dong***  , a senior undergraduate in School of Geodesy and Geomatics, Wuhan University. I major in Photogrammetry and Remote sensing.
