@@ -12,8 +12,3 @@
 
 - title: "Result"
   href: "/Result/"
-  subcategories:
-    - subtitle: "myPatent"
-      subhref: "/Result/myPatent"
-    - subtitle: "myPaper"
-      subhref: "/Result/myPaper"

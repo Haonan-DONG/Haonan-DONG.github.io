@@ -4,15 +4,14 @@ title: Result
 permalink: /Result/
 ---
 
-Latest Edition: Apr.6.2020
-
+## Patents
 <div style="display:yes">
 <ul>
 	<li><a href="zigbee_patent.pdf">An Indoor Evacuation System based on ZigBee</a> </li>
 </uL>
 </div>
 
-
+## Papers
 <div style="display:yes">
 <ul>
 	<li><a href="paper_evacuation.pdf">Emergency Evacuation Path Planning Algorithm for Indoor Fire
