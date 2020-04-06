@@ -4,21 +4,16 @@
 - title: "Research"
   href: "/research/"
 
-#- title: "Projects"
-# href: "/projects/"
-
 - title: "Blog"
   href: "/blog/"
 
 - title: "CV"
   href: "/cv/"
 
-- title: "Miscellany"
-  href: "/miscellany/"
+- title: "Result"
+  href: "/Result/"
   subcategories:
-    - subtitle: "Courses Undertaken"
-      subhref: "/miscellany/courses/"
-    - subtitle: "Extracurriculars"
-      subhref: "/miscellany/extracurricular/"
-    - subtitle: "Travel"
-      subhref: "/miscellany/travel/"
+    - subtitle: "myPatent"
+      subhref: "/Result/patent/"
+    - subtitle: "paper"
+      subhref: "/Result/myPaper/"
