@@ -14,6 +14,6 @@
   href: "/Result/"
   subcategories:
     - subtitle: "myPatent"
-      subhref: "/Result/patent/"
-    - subtitle: "paper"
-      subhref: "/Result/myPaper/"
+      subhref: "/Result/myPatent"
+    - subtitle: "myPaper"
+      subhref: "/Result/myPaper"
