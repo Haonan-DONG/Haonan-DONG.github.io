@@ -4,11 +4,11 @@
 - title: "Research"
   href: "/research/"
 
-- title: "Blog"
-  href: "/blog/"
-
 - title: "CV"
   href: "/cv/"
 
 - title: "Result"
   href: "/Result/"
+
+#- title: "Blog"
+#  href: "/blog/"
