@@ -25,28 +25,26 @@ Although I am just an undergraduate, I still want to change the world with fancy
 </div>
 
 <h2>Research Projects</h2>
+<div class="updates" style="height: 20em; overflow-y: scroll;">
 <ul>
 	<li>
 		<b>Point Cloud Regisration and RGB-D Camera Calibration</b><br>
 		Wuhan University<br>
-		07.2019 - Now<br>
+		07.2019 - 09.2019<br>
 		<b><i>Advisor: Professor Fei Deng</i></b>
-	</li><br>
-	<br>
+	</li>
 	<li>
 		<b>Inertial Navigation through Smartphone Platform</b><br>
 		Wuhan University<br>
 		10.2018 - 06.2019<br>
 		<b><i>Advisor: Professor Fei Deng</i></b>
-	</li><br>
-	<br>
+	</li>
 	<li>
 		<b>Emergency Evacuation Assistant System under Indoor Fire</b><br>
 		Wuhan University<br>
 		03.2018 - 06.2019<br>
 		<b><i>Advisor: Professor Yibin Yao, Professor Xianghong Hua</i></b>
-	</li><br>
-	<br>
+	</li>
 </ul>
 
 
