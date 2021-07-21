@@ -4,24 +4,9 @@
   
     
     <url>
-      <loc>http://localhost:4000/Result/</loc>
+      <loc>https://haonan-dong.github.io/Result/</loc>
       
-        <lastmod>2020-06-09T15:59:38+08:00</lastmod>
-      
-      
-        <changefreq>monthly</changefreq>
-      
-      
-        <priority>0.3</priority>
-      
-    </url>
-    
-  
-    
-    <url>
-      <loc>http://localhost:4000/about/</loc>
-      
-        <lastmod>2020-06-09T15:59:38+08:00</lastmod>
+        <lastmod>2021-07-21T23:02:19+08:00</lastmod>
       
       
         <changefreq>monthly</changefreq>
@@ -34,24 +19,9 @@
   
     
     <url>
-      <loc>http://localhost:4000/blog/</loc>
+      <loc>https://haonan-dong.github.io/about/</loc>
       
-        <lastmod>2020-06-09T15:59:38+08:00</lastmod>
-      
-      
-        <changefreq>monthly</changefreq>
-      
-      
-        <priority>0.3</priority>
-      
-    </url>
-    
-  
-    
-    <url>
-      <loc>http://localhost:4000/cv/</loc>
-      
-        <lastmod>2020-06-09T15:59:38+08:00</lastmod>
+        <lastmod>2021-07-21T23:02:19+08:00</lastmod>
       
       
         <changefreq>monthly</changefreq>
@@ -64,24 +34,9 @@
   
     
     <url>
-      <loc>http://localhost:4000/feed.xml</loc>
+      <loc>https://haonan-dong.github.io/blog/</loc>
       
-        <lastmod>2020-06-09T15:59:38+08:00</lastmod>
-      
-      
-        <changefreq>monthly</changefreq>
-      
-      
-        <priority>0.3</priority>
-      
-    </url>
-    
-  
-    
-    <url>
-      <loc>http://localhost:4000/</loc>
-      
-        <lastmod>2020-06-09T15:59:38+08:00</lastmod>
+        <lastmod>2021-07-21T23:02:19+08:00</lastmod>
       
       
         <changefreq>monthly</changefreq>
@@ -94,9 +49,9 @@
   
     
     <url>
-      <loc>http://localhost:4000/css/main.css</loc>
+      <loc>https://haonan-dong.github.io/cv/</loc>
       
-        <lastmod>2020-06-09T15:59:38+08:00</lastmod>
+        <lastmod>2021-07-21T23:02:19+08:00</lastmod>
       
       
         <changefreq>monthly</changefreq>
@@ -109,9 +64,9 @@
   
     
     <url>
-      <loc>http://localhost:4000/research/</loc>
+      <loc>https://haonan-dong.github.io/feed.xml</loc>
       
-        <lastmod>2020-06-09T15:59:38+08:00</lastmod>
+        <lastmod>2021-07-21T23:02:19+08:00</lastmod>
       
       
         <changefreq>monthly</changefreq>
@@ -120,15 +75,13 @@
         <priority>0.3</priority>
       
     </url>
-    
-  
     
   
     
     <url>
-      <loc>http://localhost:4000/css/main.css.map</loc>
+      <loc>https://haonan-dong.github.io/</loc>
       
-        <lastmod>2020-06-09T15:59:38+08:00</lastmod>
+        <lastmod>2021-07-21T23:02:19+08:00</lastmod>
       
       
         <changefreq>monthly</changefreq>
@@ -137,6 +90,38 @@
         <priority>0.3</priority>
       
     </url>
+    
+  
+    
+    <url>
+      <loc>https://haonan-dong.github.io/css/main.css</loc>
+      
+        <lastmod>2021-07-21T23:02:19+08:00</lastmod>
+      
+      
+        <changefreq>monthly</changefreq>
+      
+      
+        <priority>0.3</priority>
+      
+    </url>
+    
+  
+    
+    <url>
+      <loc>https://haonan-dong.github.io/research/</loc>
+      
+        <lastmod>2021-07-21T23:02:19+08:00</lastmod>
+      
+      
+        <changefreq>monthly</changefreq>
+      
+      
+        <priority>0.3</priority>
+      
+    </url>
+    
+  
     
   
 </urlset>
