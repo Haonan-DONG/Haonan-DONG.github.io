@@ -22,6 +22,7 @@ In Commercial Buildings</a> </li>
 ## Awards
 <div style="display:yes">
 <ul>
-	<li>Excellent Program in Innovation Platform for Undergraduates of Wuhan University, Dec 2020 </li>
+	<li>Excellent Program in Innovation Platform for Undergraduates of Wuhan University, Dec 2019 </li>
+	<li>Excellent Graduated Student, Jun 2020</li>
 </uL>
 </div>

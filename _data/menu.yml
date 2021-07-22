@@ -1,6 +1,3 @@
-- title: "About"
-  href: "/about/"
-
 - title: "Research"
   href: "/research/"
 
@@ -9,9 +6,6 @@
 
 - title: "Result"
   href: "/Result/"
-
-- title: "Blog"
-  href: "/blog/"
 
 #- title: "Blog"
 #  href: "/blog/"
