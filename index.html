@@ -60,10 +60,11 @@
             <tbody>
               <tr>
                 <td style="padding:20px;width:100%;vertical-align:middle">
-                  <heading>Research</heading>
+                  <heading>Publications</heading>
                   <p>
                     I'm interested in computer vision, deep learning, optimization. Much of my
-                    research is about inferring the physical world (structure, motion, shape, etc) from images.
+                    research is about inferring the physical world (structure, motion, shape, etc) from images like
+                    <strong>structure from motion(SfM)</strong> and <strong>multi-view stereo(MVS)</strong>.
                     Representative papers are <span class="highlight">highlighted</span>.
                   </p>
                 </td>
@@ -91,9 +92,8 @@
                   </script>
                 </td>
                 <td style="padding:20px;width:75%;vertical-align:middle">
-                  <a href="https://hypernerf.github.io/">
-                    <papertitle>Emergency Evacuation Path Planning Algorithm for
-                      Indoor Fire in Commercial Buildings</papertitle>
+                  Emergency Evacuation Path Planning Algorithm for
+                  Indoor Fire in Commercial Buildings
                   </a>
                   <br>
                   <strong>Haonan Dong</strong>,
@@ -112,57 +112,57 @@
                 </td>
               </tr>
 
-              <!-- <tr onmouseout="mipnerf_stop()" onmouseover="mipnerf_start()" bgcolor="#ffffd0">
-                <td style="padding:20px;width:25%;vertical-align:middle">
-                  <div class="one">
-                    <div class="two" id='mipnerf_image'><video width=100% height=100% muted autoplay loop>
-                        <source src="images/mipnerf_ipe_yellow.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                      </video></div>
-                    <img src='images/mipnerf_ipe_yellow.png' width="160">
-                  </div>
-                  <script type="text/javascript">
-                    function mipnerf_start() {
-                      document.getElementById('mipnerf_image').style.opacity = "1";
-                    }
-
-                    function mipnerf_stop() {
-                      document.getElementById('mipnerf_image').style.opacity = "0";
-                    }
-                    mipnerf_stop()
-                  </script>
-                </td>
-                <td style="padding:20px;width:75%;vertical-align:middle">
-                  <a href="http://jonbarron.info/mipnerf">
-                    <papertitle>Mip-NeRF: A Multiscale Representation for Anti-Aliasing Neural Radiance Fields
-                    </papertitle>
-                  </a>
-                  <br>
-                  <strong>Jonathan T. Barron</strong>,
-                  <a href="https://bmild.github.io/">Ben Mildenhall</a>,
-                  <a href="http://matthewtancik.com/">Matthew Tancik</a>, <br>
-                  <a href="https://phogzone.com/">Peter Hedman</a>,
-                  <a href="http://www.ricardomartinbrualla.com/">Ricardo Martin-Brualla</a>,
-                  <a href="https://pratulsrinivasan.github.io/">Pratul Srinivasan</a>
-                  <br>
-                  <em>ICCV</em>, 2021 &nbsp <font color="red"><strong>(Oral Presentation, Best Paper Honorable
-                      Mention)</strong></font>
-                  <br>
-                  <a href="http://jonbarron.info/mipnerf">project page</a>
-                  /
-                  <a href="https://arxiv.org/abs/2103.13415">arXiv</a>
-                  /
-                  <a href="https://youtu.be/EpH175PY1A0">video</a>
-                  /
-                  <a href="https://github.com/google/mipnerf">code</a>
-                  <p></p>
-                  <p>NeRF is aliased, but we can anti-alias it by casting cones and prefiltering the positional encoding
-                    function.</p>
-                </td>
-              </tr> -->
 
 
-              <!-- 
+              <table
+                style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+                <tbody>
+                  <tr>
+                    <td style="padding:20px;width:100%;vertical-align:middle">
+                      <heading>Projects</heading>
+                      <p>
+                        I work with my teammates to do some interesting things with 3D technologies.
+                        Representative works are <span class="highlight">highlighted</span>.
+                      </p>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <table
+                style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+                <tbody>
+
+                  <tr onmouseout="mipnerf_stop()" onmouseover="mipnerf_start()" bgcolor="#ffffd0">
+                    <td style="padding:20px;width:25%;vertical-align:middle">
+                      <div class="one">
+                        <img src='images/scale_sfm.png' width="160">
+                        <img src='images/scale_result.png' width="150">
+                      </div>
+                      <script type="text/javascript">
+                        function mipnerf_start() {
+                          document.getElementById('mipnerf_image').style.opacity = "1";
+                        }
+
+                        function mipnerf_stop() {
+                          document.getElementById('mipnerf_image').style.opacity = "0";
+                        }
+                        mipnerf_stop()
+                      </script>
+                    </td>
+                    <td style="padding:20px;width:75%;vertical-align:middle">
+                      Generate real scale AR map from SIFT and Structure from Motion with Aruco Marker.
+
+                      </a>
+                      <br>
+                      <strong>Haonan Dong</strong>, Hongche Yin, Lei Luo, Jian Yao
+
+                      <p>We present whole pipeline to get AR map with real scale from videos taken by smartphones.</p>
+                    </td>
+                  </tr>
+
+
+                  <!-- 
 
               <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
                 <tbody>
@@ -208,12 +208,12 @@
                   </tr>
                 </tbody>
               </table> -->
-              <table
-                style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
-                <tbody>
-                  <tr>
-                    <td style="padding:0px">
-                      <!-- <br>
+                  <table
+                    style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+                    <tbody>
+                      <tr>
+                        <td style="padding:0px">
+                          <!-- <br>
                       <p style="text-align:right;font-size:small;">
                         Feel free to steal this website's <a
                           href="https://github.com/jonbarron/jonbarron_website">source
@@ -552,14 +552,14 @@
                         <a href="https://fdlandi.github.io/">&#10025;</a>
                         <a href="https://sherrycattt.github.io/">&#10025;</a>
                         <br> -->
-                      <br>
-                      Also, consider using <a href="https://leonidk.com/">Leonid Keselman</a>'s <a
-                        href="https://github.com/leonidk/new_website">Jekyll fork</a> of this page.
-                      </p>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+                          <br>
+                          Also, consider using <a href="https://leonidk.com/">Leonid Keselman</a>'s <a
+                            href="https://github.com/leonidk/new_website">Jekyll fork</a> of this page.
+                          </p>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
         </td>
       </tr>
   </table>
