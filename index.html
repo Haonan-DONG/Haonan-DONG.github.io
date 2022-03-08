@@ -213,86 +213,49 @@
                       <table
                         style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
                         <tbody>
-
-                          <tr onmouseout="hypernerf_stop()" onmouseover="hypernerf_start()">
+                          <tr onmouseout="mipnerf_stop()" onmouseover="mipnerf_start()" bgcolor="#ffffd0">
                             <td style="padding:20px;width:25%;vertical-align:middle">
                               <div class="one">
-                                <img style="width:120%; position:relative;top:15%;right:10%"
-                                  src='images/calibration.png' width="160">
+                                <img style="width:120%; position:relative;top:21%;right:5%"
+                                  src='images/rgbd-reconstruction.png' width="160">
                               </div>
                               <script type="text/javascript">
-                                function hypernerf_start() {
-                                  document.getElementById('hypernerf_image').style.opacity = "1";
+                                function mipnerf_start() {
+                                  document.getElementById('mipnerf_image').style.opacity = "1";
                                 }
 
-                                function hypernerf_stop() {
-                                  document.getElementById('hypernerf_image').style.opacity = "0";
+                                function mipnerf_stop() {
+                                  document.getElementById('mipnerf_image').style.opacity = "0";
                                 }
-                                hypernerf_stop()
+                                mipnerf_stop()
                               </script>
                             </td>
                             <td style="padding:20px;width:75%;vertical-align:middle">
-                              Multi-Camera System Intrinsic and Extrinsic Calibration (Currently).
+                              High-Precise Point Clouds Reconstruction based on the RGB-D Camera (Currently).
 
                               </a>
                               <br>
                               <strong>Haonan Dong</strong>,
-                              Yuyue Liu,
-                              Fei Sun,
-                              Jian Yao
+                              Jian Yao, Wei Li (Huawei Inc.)
                               <br>
 
-                              <p></p>
-                              <p> Currently, we are designing a cheap calibration solution for the multi-camera
-                                intrinsic
-                                and
-                                extrinsic calibration, from the pinhole to the fish-eye, from the monocular to the
-                                stereo.</strong>.</p>
+                              <p>We propose a novel strategy to optimize the depth computed from a RGB-D camera and the
+                                low-accuracy poses from a lightweight online VO. After the optimization, the poses and
+                                the depth are precise enough to rebuild a high-quality model with a simple RGB-D
+                                hardware, say the iPad Pro with the TOF camera.
+                              </p>
                             </td>
                           </tr>
-
 
                           <table
                             style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
                             <tbody>
-                              <tr onmouseout="mipnerf_stop()" onmouseover="mipnerf_start()" bgcolor="#ffffd0">
-                                <td style="padding:20px;width:25%;vertical-align:middle">
-                                  <div class="one">
-                                    <img style="width:120%; position:relative;top:15%;right:5%" src='images/cluster.PNG'
-                                      width="160">
-                                  </div>
-                                  <script type="text/javascript">
-                                    function mipnerf_start() {
-                                      document.getElementById('mipnerf_image').style.opacity = "1";
-                                    }
-
-                                    function mipnerf_stop() {
-                                      document.getElementById('mipnerf_image').style.opacity = "0";
-                                    }
-                                    mipnerf_stop()
-                                  </script>
-                                </td>
-                                <td style="padding:20px;width:75%;vertical-align:middle">
-                                  Online 3D Reconstruction System with High-Performance Computing Cluster (Done).
-
-                                  </a>
-                                  <br>
-                                  <strong>Haonan Dong</strong>, Hongche Yin, Lei Luo, Han Fang, Jian Yao
-
-                                  <p>We present a whole pipeline to get real model (eg. depth maps, textured meshes,
-                                    etc.)
-                                    from multi-view images or videos, and other applications including getting the
-                                    real-scale maps for the AR usage.
-                                  </p>
-                                </td>
-                              </tr>
-
 
                               <tr onmouseout="hypernerf_stop()" onmouseover="hypernerf_start()">
                                 <td style="padding:20px;width:25%;vertical-align:middle">
                                   <div class="one">
                                     <img style="width:120%; position:relative;top:15%;right:10%"
-                                      src='images/federated_learning.PNG' width="160">
+                                      src='images/calibration.png' width="160">
                                   </div>
                                   <script type="text/javascript">
                                     function hypernerf_start() {
@@ -306,27 +269,108 @@
                                   </script>
                                 </td>
                                 <td style="padding:20px;width:75%;vertical-align:middle">
-                                  Intelligent Medical Image Processing based on Federated Learning (Done).
+                                  Multi-Camera System Intrinsic and Extrinsic Calibration (Currently).
 
                                   </a>
                                   <br>
-                                  Li Li,
                                   <strong>Haonan Dong</strong>,
                                   Yuyue Liu,
-                                  Yuan Yang,
+                                  Fei Sun,
                                   Jian Yao
                                   <br>
 
                                   <p></p>
-                                  <p> Using the framework of Federated Learning, we presents a platform for basic
-                                    image
-                                    processing based on deep learning, such as <strong>classification, segmentation and
-                                      detection</strong>.</p>
+                                  <p> Currently, we are designing a cheap calibration solution for the multi-camera
+                                    intrinsic
+                                    and
+                                    extrinsic calibration, from the pinhole to the fish-eye, from the monocular to
+                                    the
+                                    stereo.</strong>.</p>
                                 </td>
                               </tr>
 
 
-                              <!-- 
+                              <table
+                                style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+                                <tbody>
+                                  <tr onmouseout="mipnerf_stop()" onmouseover="mipnerf_start()" bgcolor="#ffffd0">
+                                    <td style="padding:20px;width:25%;vertical-align:middle">
+                                      <div class="one">
+                                        <img style="width:120%; position:relative;top:15%;right:5%"
+                                          src='images/cluster.PNG' width="160">
+                                      </div>
+                                      <script type="text/javascript">
+                                        function mipnerf_start() {
+                                          document.getElementById('mipnerf_image').style.opacity = "1";
+                                        }
+
+                                        function mipnerf_stop() {
+                                          document.getElementById('mipnerf_image').style.opacity = "0";
+                                        }
+                                        mipnerf_stop()
+                                      </script>
+                                    </td>
+                                    <td style="padding:20px;width:75%;vertical-align:middle">
+                                      Online 3D Reconstruction System with High-Performance Computing Cluster
+                                      (Done).
+
+                                      </a>
+                                      <br>
+                                      <strong>Haonan Dong</strong>, Hongche Yin, Lei Luo, Han Fang, Jian Yao
+
+                                      <p>We present a whole pipeline to get real model (eg. depth maps, textured
+                                        meshes,
+                                        etc.)
+                                        from multi-view images or videos, and other applications including getting
+                                        the
+                                        real-scale maps for the AR usage.
+                                      </p>
+                                    </td>
+                                  </tr>
+
+
+                                  <tr onmouseout="hypernerf_stop()" onmouseover="hypernerf_start()">
+                                    <td style="padding:20px;width:25%;vertical-align:middle">
+                                      <div class="one">
+                                        <img style="width:120%; position:relative;top:15%;right:10%"
+                                          src='images/federated_learning.PNG' width="160">
+                                      </div>
+                                      <script type="text/javascript">
+                                        function hypernerf_start() {
+                                          document.getElementById('hypernerf_image').style.opacity = "1";
+                                        }
+
+                                        function hypernerf_stop() {
+                                          document.getElementById('hypernerf_image').style.opacity = "0";
+                                        }
+                                        hypernerf_stop()
+                                      </script>
+                                    </td>
+                                    <td style="padding:20px;width:75%;vertical-align:middle">
+                                      Intelligent Medical Image Processing based on Federated Learning (Done).
+
+                                      </a>
+                                      <br>
+                                      Li Li,
+                                      <strong>Haonan Dong</strong>,
+                                      Yuyue Liu,
+                                      Yuan Yang,
+                                      Jian Yao
+                                      <br>
+
+                                      <p></p>
+                                      <p> Using the framework of Federated Learning, we presents a platform for
+                                        basic
+                                        image
+                                        processing based on deep learning, such as <strong>classification,
+                                          segmentation
+                                          and
+                                          detection</strong>.</p>
+                                    </td>
+                                  </tr>
+
+
+                                  <!-- 
 
               <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
                 <tbody>
@@ -372,12 +416,12 @@
                   </tr>
                 </tbody>
               </table> -->
-                              <table
-                                style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
-                                <tbody>
-                                  <tr>
-                                    <td style="padding:0px">
-                                      <!-- <br>
+                                  <table
+                                    style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+                                    <tbody>
+                                      <tr>
+                                        <td style="padding:0px">
+                                          <!-- <br>
                       <p style="text-align:right;font-size:small;">
                         Feel free to steal this website's <a
                           href="https://github.com/jonbarron/jonbarron_website">source
@@ -716,14 +760,15 @@
                         <a href="https://fdlandi.github.io/">&#10025;</a>
                         <a href="https://sherrycattt.github.io/">&#10025;</a>
                         <br> -->
-                                      <br>
-                                      Also, consider using <a href="https://leonidk.com/">Leonid Keselman</a>'s <a
-                                        href="https://github.com/leonidk/new_website">Jekyll fork</a> of this page.
-                                      </p>
-                                    </td>
-                                  </tr>
-                                </tbody>
-                              </table>
+                                          <br>
+                                          Also, consider using <a href="https://leonidk.com/">Leonid Keselman</a>'s
+                                          <a href="https://github.com/leonidk/new_website">Jekyll fork</a> of this
+                                          page.
+                                          </p>
+                                        </td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
         </td>
       </tr>
   </table>
