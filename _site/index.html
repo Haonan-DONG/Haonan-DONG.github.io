@@ -25,7 +25,7 @@
               <tr style="padding:0px">
                 <td style="padding:2.5%;width:63%;vertical-align:middle">
                   <p style="text-align:center">
-                    <name>Haonan Dong</name>
+                    <name>Haonan Dong 董皓男</name>
                   </p>
                   <p>I am a second-year master at <a href="https://cvrs.whu.edu.cn/">CVRS(Computer Vision & Remote
                       Sensing Lab)</a>, Wuhan University, where
@@ -76,7 +76,7 @@
             </tbody>
           </table>
 
-          <table
+          <!-- <table
             style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
             <tbody>
 
@@ -84,7 +84,7 @@
 
                 <td style="padding:20px;width:15%;vertical-align:middle">
                   <div class="one">
-                    <img style="width:110%;position: relative;bottom:3%;left:0%" src='images/calibration_pipeline.png'
+                    <img style="width:110%;position: relative;bottom:3%;left:0%" src='images/calibrated_result.png'
                       height="170">
                   </div>
                   <script type="text/javascript">
@@ -110,89 +110,120 @@
                     with the proposed pipeline is all you need for the comprehensive
                     optical camera calibration task.</p>
                 </td>
+              </tr> -->
+
+          <table
+            style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+            <tbody>
+
+              <tr onmouseout="hypernerf_stop()" onmouseover="hypernerf_start()">
+                <td style="padding:20px;width:25%;vertical-align:middle">
+                  <div class="one">
+                    <img style="width:110%;position: relative;bottom:3%;left:0%" src='images/calibrated_result.png'
+                      height="170">
+                  </div>
+                  <script type="text/javascript">
+                    function hypernerf_start() {
+                      document.getElementById('hypernerf_image').style.opacity = "1";
+                    }
+
+                    function hypernerf_stop() {
+                      document.getElementById('hypernerf_image').style.opacity = "0";
+                    }
+                    hypernerf_stop()
+                  </script>
+                </td>
+                <td style="padding:20px;width:75%;vertical-align:middle">
+                  Meta-Board: All You Need For Automatic Optical Camera Calibration. Submitted to IROS 2022.
+                  </a>
+                  <br>
+                  <strong>Haonan Dong</strong>, Yuyue Liu, Fei Sun, Jian Yao*, Li Li
+
+                  <p>We present "Meta-Board”, a circular-pattern calibration board that has
+                    rotational invariance. Experiments prove that the “Meta-Board”
+                    with the proposed pipeline is all you need for the comprehensive
+                    optical camera calibration task.</p>
+                </td>
               </tr>
 
               <table
                 style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
                 <tbody>
 
-                  <tr onmouseout="hypernerf_stop()" onmouseover="hypernerf_start()">
-                    <td style="padding:20px;width:25%;vertical-align:middle">
+                  <tr onmouseout="mipnerf_stop()" onmouseover="mipnerf_start()" bgcolor="#ffffd0">
+
+                    <td style="padding:20px;width:15%;vertical-align:middle">
                       <div class="one">
-                        <img src='images/my_paper_1.png' width="190">
+                        <img style="width:80%;position: relative;bottom:3%;left:10%" src='images/dtu_result.png'
+                          height="170">
                       </div>
                       <script type="text/javascript">
-                        function hypernerf_start() {
-                          document.getElementById('hypernerf_image').style.opacity = "1";
+                        function mipnerf_start() {
+                          document.getElementById('mipnerf_image').style.opacity = "1";
                         }
 
-                        function hypernerf_stop() {
-                          document.getElementById('hypernerf_image').style.opacity = "0";
+                        function mipnerf_stop() {
+                          document.getElementById('mipnerf_image').style.opacity = "0";
                         }
-                        hypernerf_stop()
+                        mipnerf_stop()
                       </script>
                     </td>
+
                     <td style="padding:20px;width:75%;vertical-align:middle">
-                      Emergency Evacuation Path Planning Algorithm for
-                      Indoor Fire in Commercial Buildings (In Chinese).
-                      </a>
+                      PatchMVSNet: Patch-wise Unsupervised Multi-View Stereo for
+                      Weakly-Textured Surface Reconstruction. Arxiv Preprint 2022 (
+                      <a href="https://arxiv.org/abs/2203.02156">arXiv:2203.02156</a>
+                      )
                       <br>
-                      <strong>Haonan Dong</strong>,
-                      Xiaotong Ye,
-                      Congpu Hao
-                      <br>
-                      <em>Journal of Geomatics</em>, 2021
-                      <br>
-                      <a
-                        href="https://kns.cnki.net/kcms/detail/detail.aspx?dbcode=CJFD&dbname=CJFDLAST2021&filename=CHXG2021S1011&uniplatform=NZKPT&v=LiHL004B3v51gJGBT2idKxFX5JgQX5356agrIxqI1VKam5ej5gSpNsSdr9693l7t">paper
-                        page</a>
-                      <p></p>
-                      <p> Our algorithm can preferentially evacuate
-                        the rooms near the fire origin，avoid the indoor congestion，and
-                        ensure the stability of the evacuation plan.</p>
+                      <strong>Haonan Dong</strong>, Jian Yao*
+
+                      <p>We present several robust unsupervised learning loss functions for Multi-View Stereo and
+                        our
+                        method reaches
+                        the performance of the state-of-the-art.</p>
                     </td>
                   </tr>
-
 
                   <table
                     style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
                     <tbody>
 
-                      <tr onmouseout="mipnerf_stop()" onmouseover="mipnerf_start()" bgcolor="#ffffd0">
-
-                        <td style="padding:20px;width:15%;vertical-align:middle">
+                      <tr onmouseout="hypernerf_stop()" onmouseover="hypernerf_start()">
+                        <td style="padding:20px;width:25%;vertical-align:middle">
                           <div class="one">
-                            <img style="width:80%;position: relative;bottom:3%;left:10%" src='images/dtu_result.png'
-                              height="170">
+                            <img src='images/my_paper_1.png' width="190">
                           </div>
                           <script type="text/javascript">
-                            function mipnerf_start() {
-                              document.getElementById('mipnerf_image').style.opacity = "1";
+                            function hypernerf_start() {
+                              document.getElementById('hypernerf_image').style.opacity = "1";
                             }
 
-                            function mipnerf_stop() {
-                              document.getElementById('mipnerf_image').style.opacity = "0";
+                            function hypernerf_stop() {
+                              document.getElementById('hypernerf_image').style.opacity = "0";
                             }
-                            mipnerf_stop()
+                            hypernerf_stop()
                           </script>
                         </td>
-
                         <td style="padding:20px;width:75%;vertical-align:middle">
-                          PatchMVSNet: Patch-wise Unsupervised Multi-View Stereo for
-                          Weakly-Textured Surface Reconstruction. Arxiv Preprint 2022 (
-                          <a href="https://arxiv.org/abs/2203.02156">arXiv:2203.02156</a>
-                          )
+                          Emergency Evacuation Path Planning Algorithm for
+                          Indoor Fire in Commercial Buildings (In Chinese).
+                          </a>
                           <br>
-                          <strong>Haonan Dong</strong>, Jian Yao*
-
-                          <p>We present several robust unsupervised learning loss functions for Multi-View Stereo and
-                            our
-                            method reaches
-                            the performance of the state-of-the-art.</p>
+                          <strong>Haonan Dong</strong>,
+                          Xiaotong Ye,
+                          Congpu Hao
+                          <br>
+                          <em>Journal of Geomatics</em>, 2021
+                          <br>
+                          <a
+                            href="https://kns.cnki.net/kcms/detail/detail.aspx?dbcode=CJFD&dbname=CJFDLAST2021&filename=CHXG2021S1011&uniplatform=NZKPT&v=LiHL004B3v51gJGBT2idKxFX5JgQX5356agrIxqI1VKam5ej5gSpNsSdr9693l7t">paper
+                            page</a>
+                          <p></p>
+                          <p> Our algorithm can preferentially evacuate
+                            the rooms near the fire origin，avoid the indoor congestion，and
+                            ensure the stability of the evacuation plan.</p>
                         </td>
                       </tr>
-
-
 
 
                       <table
@@ -239,8 +270,10 @@
                               Jian Yao, Wei Li (Huawei Inc.)
                               <br>
 
-                              <p>We propose a novel strategy to optimize the depth computed from a RGB-D camera and the
-                                low-accuracy poses from a lightweight online VO. After the optimization, the poses and
+                              <p>We propose a novel strategy to optimize the depth computed from a RGB-D camera and
+                                the
+                                low-accuracy poses from a lightweight online VO. After the optimization, the poses
+                                and
                                 the depth are precise enough to rebuild a high-quality model with a simple RGB-D
                                 hardware, say the iPad Pro with the TOF camera.
                               </p>
