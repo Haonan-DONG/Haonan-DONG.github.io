@@ -345,7 +345,9 @@
                                       <strong>Haonan Dong</strong>,
                                       Yuyue Liu,
                                       Fei Sun,
-                                      Jian Yao
+                                      Jian Yao,
+                                      Shaosheng Cao(Didi Global),
+                                      Yuxuan Li(Didi Global)
                                       <br>
 
                                       <p></p>
@@ -444,48 +446,90 @@
                                       <table
                                         style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
                                         <tbody>
-                                          <tr>
-                                            <td style="padding:20px;width:100%;vertical-align:middle">
-                                              <heading>Services</heading>
-                                              <p>
-                                                Paper Reviewer : IROS 2022, ISPRS
-                                              </p>
+
+                                          <tr onmouseout="hypernerf_stop()" onmouseover="hypernerf_start()">
+                                            <td style="padding:20px;width:25%;vertical-align:middle">
+                                              <div class="one">
+                                                <img style="width:110%; position:relative;top:6%;right:1%"
+                                                  src='images/ar_map.png' width="160">
+                                              </div>
+                                              <script type="text/javascript">
+                                                function hypernerf_start() {
+                                                  document.getElementById('hypernerf_image').style.opacity = "1";
+                                                }
+
+                                                function hypernerf_stop() {
+                                                  document.getElementById('hypernerf_image').style.opacity = "0";
+                                                }
+                                                hypernerf_stop()
+                                              </script>
+                                            </td>
+                                            <td style="padding:20px;width:75%;vertical-align:middle">
+                                              Real Scale Map For AR based on Structure from Motion. (Done).
+
+                                              </a>
+                                              <br>
+                                              <strong>Haonan Dong</strong>,
+                                              Hongche Yin,
+                                              Lei Luo,
+                                              Jian Yao
+
+                                              <br>
+
+                                              <p></p>
+                                              <p> Using the printed ArUco Marker, we optimize the whole sparse point
+                                                cloud by bundle adjustment with the real scale. Experiments show that
+                                                our method can recover the real scale of the map and can be directly
+                                                used in the AR applications.</strong>.</p>
                                             </td>
                                           </tr>
-                                        </tbody>
-                                      </table>
 
-                                      <table
-                                        style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
-                                        <tbody>
-                                          <tr>
-                                            <td style="padding:20px;width:100%;vertical-align:middle">
-                                              <heading>Open-Source</heading>
-                                              <p>
-                                                <a href="https://github.com/Haonan-DONG/rgb_3d_reconstruction_pipeline">RGB
-                                                  3D Reconstruction
-                                                  Pipeline</a> : Currently, I developed a software based on classic
-                                                open-src
-                                                codes to reconstruct a textured mesh from video or RGB image
-                                                sequences.<br>
-                                                <br>
-                                                <a href="https://github.com/Haonan-DONG/fusion_depth_mvs">Depth
-                                                  Fusion</a> : This software can fuse the depth from multi-view
-                                                stereo
-                                                result or sensors with known poses with two strategies. One is to
-                                                use
-                                                the
-                                                view selection strategy of COLMAP, and the other is to merge the
-                                                neighboring
-                                                two images.
-                                              </p>
-                                            </td>
-                                          </tr>
-                                        </tbody>
-                                      </table>
+                                          <table
+                                            style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+                                            <tbody>
+                                              <tr>
+                                                <td style="padding:20px;width:100%;vertical-align:middle">
+                                                  <heading>Services</heading>
+                                                  <p>
+                                                    Paper Reviewer : IROS 2022, ISPRS
+                                                  </p>
+                                                </td>
+                                              </tr>
+                                            </tbody>
+                                          </table>
+
+                                          <table
+                                            style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+                                            <tbody>
+                                              <tr>
+                                                <td style="padding:20px;width:100%;vertical-align:middle">
+                                                  <heading>Open-Source</heading>
+                                                  <p>
+                                                    <a
+                                                      href="https://github.com/Haonan-DONG/rgb_3d_reconstruction_pipeline">RGB
+                                                      3D Reconstruction
+                                                      Pipeline</a> : Currently, I developed a software based on classic
+                                                    open-src
+                                                    codes to reconstruct a textured mesh from video or RGB image
+                                                    sequences.<br>
+                                                    <br>
+                                                    <a href="https://github.com/Haonan-DONG/fusion_depth_mvs">Depth
+                                                      Fusion</a> : This software can fuse the depth from multi-view
+                                                    stereo
+                                                    result or sensors with known poses with two strategies. One is to
+                                                    use
+                                                    the
+                                                    view selection strategy of COLMAP, and the other is to merge the
+                                                    neighboring
+                                                    two images.
+                                                  </p>
+                                                </td>
+                                              </tr>
+                                            </tbody>
+                                          </table>
 
 
-                                      <!-- 
+                                          <!-- 
 
               <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
                 <tbody>
@@ -531,12 +575,12 @@
                   </tr>
                 </tbody>
               </table> -->
-                                      <table
-                                        style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
-                                        <tbody>
-                                          <tr>
-                                            <td style="padding:0px">
-                                              <!-- <br>
+                                          <table
+                                            style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+                                            <tbody>
+                                              <tr>
+                                                <td style="padding:0px">
+                                                  <!-- <br>
                       <p style="text-align:right;font-size:small;">
                         Feel free to steal this website's <a
                           href="https://github.com/jonbarron/jonbarron_website">source
@@ -875,17 +919,17 @@
                         <a href="https://fdlandi.github.io/">&#10025;</a>
                         <a href="https://sherrycattt.github.io/">&#10025;</a>
                         <br> -->
-                                              <br>
-                                              Also, consider using <a href="https://leonidk.com/">Leonid
-                                                Keselman</a>'s
-                                              <a href="https://github.com/leonidk/new_website">Jekyll fork</a> of
-                                              this
-                                              page.
-                                              </p>
-                                            </td>
-                                          </tr>
-                                        </tbody>
-                                      </table>
+                                                  <br>
+                                                  Also, consider using <a href="https://leonidk.com/">Leonid
+                                                    Keselman</a>'s
+                                                  <a href="https://github.com/leonidk/new_website">Jekyll fork</a> of
+                                                  this
+                                                  page.
+                                                  </p>
+                                                </td>
+                                              </tr>
+                                            </tbody>
+                                          </table>
         </td>
       </tr>
   </table>
