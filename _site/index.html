@@ -27,10 +27,15 @@
                   <p style="text-align:center">
                     <name>Haonan Dong 董皓男</name>
                   </p>
-                  <p>I am a third-year master at <a href="https://cvrs.whu.edu.cn/">CVRS(Computer Vision & Remote
+                  <p>I will be an engineer at <a href="http://www.xgrids.cn/">XGRIDS</a> in July, where I will continue
+                    my work in 3D computer vision. Before that, I
+                    got my
+                    master degree at
+                    <a href="https://cvrs.whu.edu.cn/">CVRS(Computer Vision & Remote
                       Sensing Lab)</a>, Wuhan University, where
                     I work on 3D computer vision and I am supervised by <a href="https://cvrs.whu.edu.cn/jianyao/">Prof.
-                      Jian Yao</a>.
+                      Jian Yao</a>. In July, 2022, I was fortunately worked with <a
+                      href="https://lingjie0206.github.io/">Prof. Lingjie Liu</a> on NeRF.
                   </p>
                   <p>
                     I am interested in most 3D techs including Neural Radiance Field (NeRF),
@@ -119,38 +124,6 @@
             style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
             <tbody>
 
-              <tr onmouseout="hypernerf_stop()" onmouseover="hypernerf_start()">
-                <td style="padding:20px;width:25%;vertical-align:middle">
-                  <div class="one">
-                    <img style="width:110%;position: relative;bottom:3%;left:0%" src='images/calibrated_result.png'
-                      height="170">
-                  </div>
-                  <script type="text/javascript">
-                    function hypernerf_start() {
-                      document.getElementById('hypernerf_image').style.opacity = "1";
-                    }
-
-                    function hypernerf_stop() {
-                      document.getElementById('hypernerf_image').style.opacity = "0";
-                    }
-                    hypernerf_stop()
-                  </script>
-                </td>
-                <td style="padding:20px;width:75%;vertical-align:middle">
-                  Learning-Based Encoded Target Detection on Iteratively Orthorectified Images for Accurate Fisheye
-                  Calibration. Under review.
-                  </a>
-                  <br>
-                  <strong>Haonan Dong</strong>, Jian Yao*, Ye Gong, Li Li,
-                  Shaoshen Cao, Yuxuan Li.
-
-                  <p>We present a circular-pattern calibration board that has
-                    rotational invariance. Experiments prove that this board
-                    with the proposed pipeline is all you need for the comprehensive
-                    optical camera calibration task.</p>
-                </td>
-              </tr>
-
               <table
                 style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
                 <tbody>
@@ -159,7 +132,7 @@
 
                     <td style="padding:20px;width:15%;vertical-align:middle">
                       <div class="one">
-                        <img style="width:80%;position: relative;bottom:3%;left:10%" src='images/dtu_result.png'
+                        <img style="width:110%;position: relative;bottom:3%;left:0%" src='images/calibration_paper.png'
                           height="170">
                       </div>
                       <script type="text/javascript">
@@ -174,6 +147,77 @@
                       </script>
                     </td>
 
+                    <td style="padding:20px;width:75%;vertical-align:middle">
+                      Learning-Based Encoded Target Detection on Iteratively Orthorectified Images for Accurate Fisheye
+                      Calibration.
+                      <br>
+                      <strong>Haonan Dong</strong>, Jian Yao*, Ye Gong, Li Li,
+                      Shaoshen Cao, Yuxuan Li.
+                      <br>
+                      <em>The Photogrammetric Record</em>, 2023
+                      <br>
+                      <a href="https://doi.org/10.1111/phor.12453">paper
+                        page</a>
+
+                      <p>We present a circular-pattern calibration board that has
+                        rotational invariance. Experiments prove that this board
+                        with the proposed pipeline is all you need for the comprehensive
+                        optical camera calibration task.</p>
+                    </td>
+                  </tr>
+
+                  <tr onmouseout="hypernerf_stop()" onmouseover="hypernerf_start()">
+                    <td style="padding:20px;width:25%;vertical-align:middle">
+                      <div class="one">
+                        <img style="width:110%;position: relative;bottom:3%;left:0%" src='images/sfm_paper.png'
+                          height="170">
+                      </div>
+                      <script type="text/javascript">
+                        function hypernerf_start() {
+                          document.getElementById('hypernerf_image').style.opacity = "1";
+                        }
+
+                        function hypernerf_stop() {
+                          document.getElementById('hypernerf_image').style.opacity = "0";
+                        }
+                        hypernerf_stop()
+                      </script>
+                    </td>
+                    <td style="padding:20px;width:75%;vertical-align:middle">
+                      View-Graph Key-Subset Extraction from Efficient and Robust Structure from Motion.
+                      <br>
+                      Ye Gong, Pengwei Zhou, Yuyue Liu, <strong>Haonan Dong</strong>, Li Li, Jian Yao*
+                      <br>
+                      <em>The Photogrammetric Record</em>, 2023
+                      <br>
+                      <a href="https://doi.org/10.1111/phor.12451">paper
+                        page</a>
+
+                      <p>An approach for view-graph key-subset extraction is proposed to address the data redundancy and
+                        uneven distribution problem in SfM. Experiments conducted on a variety of datasets demonstrate
+                        the advantages of our approach in efficiency, robustness and even accuracy compared to SOTA
+                        methods.</p>
+                    </td>
+                  </tr>
+
+
+                  <tr onmouseout="hypernerf_stop()" onmouseover="hypernerf_start()">
+                    <td style="padding:20px;width:25%;vertical-align:middle">
+                      <div class="one">
+                        <img style="width:85%;position: relative;bottom:3%;left:10%" src='images/dtu_result.png'
+                          height="170">
+                      </div>
+                      <script type="text/javascript">
+                        function hypernerf_start() {
+                          document.getElementById('hypernerf_image').style.opacity = "1";
+                        }
+
+                        function hypernerf_stop() {
+                          document.getElementById('hypernerf_image').style.opacity = "0";
+                        }
+                        hypernerf_stop()
+                      </script>
+                    </td>
                     <td style="padding:20px;width:75%;vertical-align:middle">
                       PatchMVSNet: Patch-wise Unsupervised Multi-View Stereo for
                       Weakly-Textured Surface Reconstruction. Arxiv Preprint 2022 (
@@ -268,11 +312,15 @@
                               </script>
                             </td>
                             <td style="padding:20px;width:75%;vertical-align:middle">
-                              Instant Neural Implicit Field Surface Reconstruction.
-
+                              Instant Neural Implicit Field Surface Reconstruction. (Summer Intern, 2022)
+                              <br>
+                              <strong>Haonan Dong</strong>, <a href="https://lingjie0206.github.io">Lingjie Liu</a>
+                              <br>
                               <p></p>
-                              <p> By integrating NeuS into the instant-ngp framework, and the performance is 6X faster
-                                than the official implementation. Currently I work on the density-grid accelerating by
+                              <p> By integrating NeuS into the instant-ngp framework, and the performance is 6X
+                                faster
+                                than the official implementation. Currently I work on the density-grid accelerating
+                                by
                                 the ray marching algorithm to further enhance the performance.</strong>.</p>
                             </td>
                           </tr>
@@ -298,12 +346,12 @@
                                   </script>
                                 </td>
                                 <td style="padding:20px;width:75%;vertical-align:middle">
-                                  Highly-Precise Point Clouds Reconstruction with RGB-D Camera.
+                                  Highly-Precise Point Clouds Reconstruction with RGB-D Camera (Done).
 
                                   </a>
                                   <br>
-                                  <strong>Haonan Dong</strong>,
-                                  Jian Yao, Ran Ding (Huawei Inc), Wei Li (Huawei Inc.)
+                                  <strong>Haonan Dong</strong>, Pengwei Zhou,
+                                  Jian Yao, Ran Ding (Huawei Inc)
                                   <br>
 
                                   <p>We propose a novel strategy to optimize the depth computed from a RGB-D camera
@@ -480,7 +528,8 @@
 
                                               <p></p>
                                               <p> Using the printed ArUco Marker, we optimize the whole sparse point
-                                                cloud by bundle adjustment with the real scale. Experiments show that
+                                                cloud by bundle adjustment with the real scale. Experiments show
+                                                that
                                                 our method can recover the real scale of the map and can be directly
                                                 used in the AR applications.</strong>.</p>
                                             </td>
@@ -510,7 +559,8 @@
                                                     <a
                                                       href="https://github.com/Haonan-DONG/rgb_3d_reconstruction_pipeline">RGB
                                                       3D Reconstruction
-                                                      Pipeline</a> : Currently, I developed a software based on classic
+                                                      Pipeline</a> : Currently, I developed a software based on
+                                                    classic
                                                     open-src
                                                     codes to reconstruct a textured mesh from video or RGB image
                                                     sequences.<br>
@@ -518,7 +568,8 @@
                                                     <a href="https://github.com/Haonan-DONG/fusion_depth_mvs">Depth
                                                       Fusion</a> : This software can fuse the depth from multi-view
                                                     stereo
-                                                    result or sensors with known poses with two strategies. One is to
+                                                    result or sensors with known poses with two strategies. One is
+                                                    to
                                                     use
                                                     the
                                                     view selection strategy of COLMAP, and the other is to merge the
@@ -930,7 +981,8 @@
                                                   <br>
                                                   Also, consider using <a href="https://leonidk.com/">Leonid
                                                     Keselman</a>'s
-                                                  <a href="https://github.com/leonidk/new_website">Jekyll fork</a> of
+                                                  <a href="https://github.com/leonidk/new_website">Jekyll fork</a>
+                                                  of
                                                   this
                                                   page.
                                                   </p>
